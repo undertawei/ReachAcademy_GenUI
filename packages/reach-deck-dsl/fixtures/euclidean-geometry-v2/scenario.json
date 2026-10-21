@@ -1,0 +1,105 @@
+{
+  "envelope": {
+    "schemaVersion": "reach-science-kit/v1",
+    "kitId": "euclidean-geometry-2d",
+    "kitVersion": 2,
+    "spec": {
+      "schemaVersion": "reach-euclidean-geometry/v2",
+      "dimension": 2,
+      "ariaLabel": "Learner auxiliary construction",
+      "units": "cm",
+      "parameters": [],
+      "objects": [
+        { "id": "A", "kind": "freePoint", "x": 0, "y": 0 },
+        { "id": "B", "kind": "freePoint", "x": 6, "y": 0 },
+        { "id": "P", "kind": "freePoint", "x": 2, "y": 4 },
+        { "id": "AB", "kind": "segment", "a": "A", "b": "B" },
+        { "id": "AP", "kind": "segment", "a": "A", "b": "P" }
+      ],
+      "measurements": [],
+      "relations": [{ "id": "baseLines", "kind": "lineLine", "line1": "AB", "line2": "AP" }],
+      "assertions": [],
+      "presentation": {
+        "objects": [
+          { "object": "A", "label": "A" },
+          { "object": "B", "label": "B" },
+          { "object": "P", "label": "P" },
+          { "object": "AB" },
+          { "object": "AP" }
+        ],
+        "measurements": [],
+        "relations": [{ "relation": "baseLines", "label": "AB / AP" }],
+        "groups": [],
+        "rightAngles": [],
+        "camera": { "kind": "planar", "bounds": [-2, -2, 8, 6] }
+      },
+      "interaction": {
+        "parameters": [],
+        "freedoms": [],
+        "selectable": ["A", "B", "P", "AB", "AP"],
+        "visibleGroups": [],
+        "reset": "initial",
+        "exploration": {
+          "objectKinds": ["segment", "midpoint", "pointOnLine", "footToLine"],
+          "measurementKinds": ["distance", "lineAngle"],
+          "relationKinds": ["lineLine"],
+          "referenceableObjects": ["A", "B", "P", "AB", "AP"],
+          "limits": { "objects": 8, "measurements": 4, "relations": 2 },
+          "feedback": "onRequest"
+        }
+      },
+      "authoring": {
+        "schemaVersion": "reach-geometry-authoring/v1",
+        "editable": {
+          "parameters": [],
+          "objects": ["AP"],
+          "measurements": [],
+          "relations": ["baseLines"],
+          "freedoms": []
+        },
+        "deletable": {
+          "objects": [],
+          "measurements": [],
+          "relations": ["baseLines"]
+        },
+        "externalReferences": ["AP"]
+      }
+    }
+  },
+  "auxiliary": {
+    "objects": [
+      { "id": "L_M", "kind": "midpoint", "a": "A", "b": "B" },
+      { "id": "L_PM", "kind": "segment", "a": "P", "b": "L_M" },
+      { "id": "L_F", "kind": "footToLine", "point": "P", "line": "AB" },
+      { "id": "L_PF", "kind": "segment", "a": "P", "b": "L_F" },
+      { "id": "L_On", "kind": "pointOnLine", "line": "AB", "t": 0.5 }
+    ],
+    "measurements": [
+      { "id": "L_height", "kind": "distance", "a": "P", "b": "L_F" },
+      { "id": "L_angle", "kind": "lineAngle", "line1": "L_PM", "line2": "AB" }
+    ],
+    "relations": [{ "id": "L_position", "kind": "lineLine", "line1": "L_PM", "line2": "AB" }],
+    "freedoms": [
+      {
+        "id": "L_dragOn",
+        "kind": "line",
+        "object": "L_On",
+        "range": { "min": 0, "max": 1, "step": 0.05 }
+      }
+    ],
+    "presentation": {
+      "objects": [
+        { "object": "L_M", "label": "M", "colorToken": "accent" },
+        { "object": "L_PM", "lineStyle": "dashed" },
+        { "object": "L_F", "label": "F" },
+        { "object": "L_PF", "lineStyle": "dotted" },
+        { "object": "L_On", "label": "Q" }
+      ],
+      "measurements": [
+        { "measurement": "L_height", "label": "height", "decimals": 2 },
+        { "measurement": "L_angle", "label": "angle", "decimals": 1 }
+      ],
+      "relations": [{ "relation": "L_position", "label": "position", "visible": true }]
+    }
+  }
+}

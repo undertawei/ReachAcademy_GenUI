@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "decksmith-replay-case/v1",
+  "id": "case2-image-service-unavailable",
+  "teacherCase": 2,
+  "summary": "图片上游重试后仍失败：工具报错交还模型，文档不变，答复说明服务暂不可用且未替换。",
+  "provenance": {
+    "kind": "synthetic-reconstruction",
+    "observedOn": "2026-10-08",
+    "notes": "重建自图片上游持续不可用的情形。"
+  },
+  "document": "energy-lesson.json",
+  "request": {
+    "prompt": "只把左下角电池改成充电电池",
+    "pageId": "55555555-5555-4555-8555-555555555555:page-1",
+    "selectedElementIds": ["p1-hero"],
+    "promptContractVersion": "decksmith-prompt/v2"
+  },
+  "capturedWith": {
+    "toolParameterSha256": {
+      "edit_native_image": "3b8aa274296f297ad73564b94bfc4cc96626f8e578f4741d49d17243f919cfda"
+    }
+  },
+  "transcript": [
+    {
+      "toolCalls": [
+        {
+          "id": "edit-hero",
+          "name": "edit_native_image",
+          "arguments": {
+            "pageId": "55555555-5555-4555-8555-555555555555:page-1",
+            "elementId": "p1-hero",
+            "instruction": "只把左下角的电池改成一块正在充电的充电电池，其他内容保持不变"
+          }
+        }
+      ],
+      "usage": {
+        "input": 7400,
+        "output": 120
+      }
+    },
+    {
+      "text": "图片服务暂时不可用，原图没有被替换。请稍后再试。",
+      "usage": {
+        "input": 7800,
+        "output": 50
+      }
+    }
+  ],
+  "services": {
+    "imageEdit": [
+      {
+        "fail": {
+          "message": "upstream unavailable",
+          "status": 503,
+          "retryable": true
+        }
+      },
+      {
+        "fail": {
+          "message": "upstream unavailable",
+          "status": 503,
+          "retryable": true
+        }
+      }
+    ]
+  },
+  "expect": {
+    "changed": false,
+    "outcome": {
+      "mutationStatus": "none",
+      "toolErrorCount": 1
+    },
+    "modelTurns": 2,
+    "toolResults": [
+      {
+        "callId": "edit-hero",
+        "isError": true,
+        "includes": ["upstream unavailable"]
+      }
+    ],
+    "serviceCalls": {
+      "imageEdit": 2
+    }
+  }
+}

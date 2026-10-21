@@ -1,0 +1,37 @@
+{
+  "name": "@reachany/tiptap-mathlive",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/node-view.d.ts",
+      "default": "./dist/node-view.js"
+    },
+    "./static": {
+      "types": "./dist/static.d.ts",
+      "default": "./dist/static.js"
+    },
+    "./styles.css": "./styles.css"
+  },
+  "sideEffects": [
+    "./styles.css"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --pool=threads --maxWorkers=1"
+  },
+  "dependencies": {
+    "@tiptap/core": "3.28.0",
+    "katex": "0.16.33",
+    "mathlive": "0.110.0"
+  },
+  "devDependencies": {
+    "@reachany/tsconfig": "workspace:*",
+    "@tiptap/extension-mathematics": "3.28.0",
+    "@tiptap/starter-kit": "3.28.0",
+    "jsdom": "^25.0.1",
+    "vitest": "^3.2.4"
+  }
+}

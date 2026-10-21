@@ -1,0 +1,401 @@
+/*
+ * 上浮笔记列表：绝对定位在播放列（不滚动的定高容器）里，由宿主测量后停靠在控制条正上方，
+ * 横向与播放器对齐；从控制条向上浮出（共享 rx-float-in-up 动效）。播放列本身不滚动，
+ * 所以无论页面类型、题目区滚到哪里，列表都完整落在视口内。
+ */
+.drawer {
+  position: absolute;
+  z-index: var(--reachany-z-sticky);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-top: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-card) var(--reachany-radius-card) 0 0;
+  background: var(--reachany-color-surface);
+  box-shadow: var(--reachany-shadow-overlay);
+  animation: global(rx-float-in-up) var(--reachany-motion-duration-moderate)
+    var(--reachany-motion-easing-enter) both;
+  color: var(--reachany-color-text);
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--reachany-space-3);
+  border-bottom: 1px solid var(--reachany-color-border-subtle);
+  padding: var(--reachany-space-2) var(--reachany-space-4);
+}
+
+.drawerHeader div {
+  display: flex;
+  align-items: baseline;
+  gap: var(--reachany-space-2);
+}
+.drawerHeader strong {
+  font-size: var(--reachany-text-body);
+}
+.drawerHeader div span {
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+}
+.drawerError {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--reachany-color-danger-text);
+  font-size: var(--reachany-text-caption);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.drawerHeader .iconButton {
+  margin-left: auto;
+}
+
+.thumbRow {
+  display: flex;
+  align-items: stretch;
+  gap: var(--reachany-space-3);
+  overflow-x: auto;
+  overscroll-behavior: contain;
+  padding: var(--reachany-space-3) var(--reachany-space-4);
+}
+.drawerHint {
+  align-self: center;
+  margin: var(--reachany-space-3) var(--reachany-space-2);
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-body-sm);
+  white-space: nowrap;
+}
+
+.thumbCard {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-card);
+  background: var(--reachany-color-surface);
+  box-shadow: var(--reachany-shadow-field);
+}
+.thumbOpen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--reachany-space-2);
+  border: 0;
+  border-radius: var(--reachany-radius-card);
+  background: transparent;
+  padding: var(--reachany-space-2);
+  cursor: pointer;
+  text-align: left;
+}
+.thumbOpen:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+.thumbSvg,
+.thumbPlaceholder {
+  display: block;
+  width: calc(var(--reachany-space-1) * 37);
+  height: calc(var(--reachany-space-1) * 21);
+  border-radius: var(--reachany-radius-md);
+  background: var(--reachany-color-surface-muted);
+}
+.thumbCaption {
+  display: flex;
+  align-items: baseline;
+  gap: var(--reachany-space-2);
+}
+.thumbCaption strong {
+  font-size: var(--reachany-text-caption);
+}
+.thumbCaption span {
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+}
+.thumbActions {
+  position: absolute;
+  top: var(--reachany-space-3);
+  right: var(--reachany-space-3);
+  display: flex;
+  gap: var(--reachany-space-1);
+}
+.thumbActions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--reachany-space-1) * 7);
+  height: calc(var(--reachany-space-1) * 7);
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-md);
+  background: var(--reachany-color-surface);
+  color: var(--reachany-color-text);
+  cursor: pointer;
+}
+.thumbActions button:hover {
+  background: var(--reachany-color-surface-warm);
+}
+.thumbActions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.addCard {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--reachany-space-2);
+  width: calc(var(--reachany-space-1) * 37);
+  border: 1px dashed var(--reachany-color-border-warm);
+  border-radius: var(--reachany-radius-card);
+  background: var(--reachany-color-surface-subtle);
+  padding: var(--reachany-space-2);
+  color: var(--reachany-color-primary);
+  cursor: pointer;
+}
+.addCard span {
+  max-width: calc(var(--reachany-space-1) * 33);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+  text-align: center;
+}
+.addCard:hover {
+  background: var(--reachany-color-surface-warm);
+}
+.addCard:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* 编辑画布：绝对覆盖整个播放列（含控制条与状态行），右栏保持可见。 */
+.editorOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: var(--reachany-z-sticky);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--reachany-radius-card);
+  background: var(--reachany-color-canvas);
+  color: var(--reachany-color-text);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--reachany-space-4);
+  border-bottom: 1px solid var(--reachany-color-border);
+  background: var(--reachany-color-surface);
+  padding: var(--reachany-space-2) var(--reachany-space-4);
+}
+
+.header div {
+  display: flex;
+  align-items: baseline;
+  gap: var(--reachany-space-2);
+}
+.header strong {
+  font-size: var(--reachany-text-body);
+}
+.header span {
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+}
+
+.iconButton,
+.toolbar button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--reachany-space-2);
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-md);
+  background: var(--reachany-color-surface);
+  color: var(--reachany-color-text);
+  cursor: pointer;
+}
+
+.iconButton {
+  width: calc(var(--reachany-space-1) * 9);
+  height: calc(var(--reachany-space-1) * 9);
+}
+.iconButton:hover,
+.toolbar button:hover {
+  background: var(--reachany-color-surface-warm);
+}
+.iconButton:disabled,
+.toolbar button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.error {
+  border-bottom: 1px solid var(--reachany-color-danger-border);
+  background: var(--reachany-color-danger-soft);
+  padding: var(--reachany-space-2) var(--reachany-space-4);
+  color: var(--reachany-color-danger-text);
+  font-size: var(--reachany-text-body-sm);
+}
+
+.editor {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+}
+.editorActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--reachany-space-3);
+  border-top: 1px solid var(--reachany-color-border);
+  background: var(--reachany-color-surface);
+  padding: var(--reachany-space-2) var(--reachany-space-4);
+}
+.canvasShell {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--reachany-space-2);
+  overflow-x: auto;
+  border-bottom: 1px solid var(--reachany-color-border);
+  background: var(--reachany-color-surface);
+  padding: var(--reachany-space-2) var(--reachany-space-4);
+}
+.toolbar button {
+  width: calc(var(--reachany-space-1) * 9);
+  height: calc(var(--reachany-space-1) * 9);
+  flex: 0 0 auto;
+}
+.toolbar button.activeTool {
+  border-color: var(--reachany-color-primary);
+  background: var(--reachany-color-primary-soft);
+  color: var(--reachany-color-primary-text-on-soft);
+}
+.toolbar label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--reachany-space-2);
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  white-space: nowrap;
+}
+.toolbar label span {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+}
+.toolbar input[type='color'] {
+  width: calc(var(--reachany-space-1) * 8);
+  height: calc(var(--reachany-space-1) * 8);
+  border: 0;
+  background: transparent;
+}
+.toolbar input[type='range'] {
+  width: calc(var(--reachany-space-1) * 25);
+}
+.zoomValue {
+  width: calc(var(--reachany-space-1) * 12);
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  text-align: center;
+}
+
+.canvas {
+  position: relative;
+  min-height: 0;
+  flex: 1;
+  overflow: hidden;
+  background: var(--reachany-color-canvas);
+  touch-action: none;
+  user-select: none;
+}
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--reachany-color-border) 1px, transparent 1px);
+  pointer-events: none;
+}
+.world {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+}
+/*
+ * 白板「世界坐标」：参照页固定 800×450（与 DECK_RECT 一致），文本框字号也是世界坐标里的值，
+ * 随画布缩放一起变——属于画布内容（规范 06 §3 的 Deck 画布例外），不是界面尺寸。
+ */
+.deckReference {
+  position: absolute;
+  left: -400px;
+  top: -225px;
+  width: 800px;
+  height: 450px;
+  overflow: hidden;
+  border: 2px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-card);
+  background: var(--reachany-color-surface);
+  box-shadow: var(--reachany-shadow-overlay);
+  pointer-events: none;
+}
+.deckReference :global(.reach-deck-player) {
+  width: 800px;
+}
+.ink {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.textBox {
+  position: absolute;
+  min-height: calc(var(--reachany-space-1) * 21);
+  resize: both;
+  border: 1px dashed var(--reachany-color-text-tertiary);
+  border-radius: var(--reachany-radius-sm);
+  background: var(--reachany-color-surface);
+  padding: var(--reachany-space-2);
+  font:
+    18px/1.45 system-ui,
+    sans-serif;
+  user-select: text;
+}
+.textBox:focus {
+  border-style: solid;
+  border-color: var(--reachany-color-primary);
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+@media (max-width: calc(var(--reachany-space-1) * 160)) {
+  .thumbSvg,
+  .thumbPlaceholder {
+    width: calc(var(--reachany-space-1) * 30);
+    height: calc(var(--reachany-space-1) * 17);
+  }
+  .addCard {
+    width: calc(var(--reachany-space-1) * 30);
+  }
+  .toolbar {
+    padding-inline: var(--reachany-space-2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer {
+    animation: none;
+  }
+}

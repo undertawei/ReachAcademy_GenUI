@@ -1,0 +1,508 @@
+/* Tabs、Steps、SideNav（规范 03 §3.11、§3.12、§3.16，动效 04 §3.2、§3.8）。 */
+
+/* —— Tabs —— */
+.rx-tabs {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.rx-tab-list {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  align-items: stretch;
+  gap: var(--reachany-space-8);
+}
+
+.rx-tab {
+  position: relative;
+  display: inline-flex;
+  min-height: 40px;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  padding: var(--reachany-space-2) 0;
+  border: 0;
+  border-radius: var(--reachany-radius-sm);
+  background: transparent;
+  color: var(--reachany-color-text-secondary);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--reachany-text-body);
+  font-weight: 400;
+  line-height: var(--reachany-text-body-line-height);
+  white-space: nowrap;
+  transition: color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.rx-tabs[data-size='lg'] .rx-tab {
+  min-height: 48px;
+  font-size: var(--reachany-text-subtitle);
+  line-height: var(--reachany-text-subtitle-line-height);
+}
+
+.rx-tab:hover:not(:disabled, [data-state='selected']) {
+  color: var(--reachany-color-text);
+}
+
+.rx-tab[data-state='selected'] {
+  color: var(--reachany-color-primary);
+  font-weight: 500;
+}
+
+.rx-tab:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-tab:disabled {
+  color: var(--reachany-color-text-tertiary);
+  cursor: not-allowed;
+}
+
+.rx-tab-content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--reachany-space-1);
+}
+
+.rx-tab-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.rx-tab-icon > svg {
+  width: 16px;
+  height: 16px;
+}
+
+.rx-tab-count {
+  font-weight: inherit;
+}
+
+/* 下划线：2px primary、宽度同文字、圆角 2；从旧位置滑到新位置（transform 平移 + scaleX，moderate standard）。
+ * 以 100px 为基准宽度按 --rx-tab-indicator-width / 100 缩放。 */
+.rx-tab-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  height: 2px;
+  border-radius: var(--reachany-radius-xs);
+  background: var(--reachany-color-primary);
+  pointer-events: none;
+  transform: translateX(var(--rx-tab-indicator-x, 0px))
+    scaleX(calc(var(--rx-tab-indicator-width, 0) / 100));
+  transform-origin: left center;
+  transition: transform var(--reachany-motion-duration-moderate)
+    var(--reachany-motion-easing-standard);
+}
+
+.rx-tab-indicator[data-state='hidden'] {
+  display: none;
+}
+
+/* 面板 Tabs（学习页右侧）：16px 图标 + 14 文字，等分宽度 */
+.rx-tabs[data-variant='panel'] .rx-tab-list {
+  gap: 0;
+  border-bottom: 1px solid var(--reachany-color-border-subtle);
+}
+
+.rx-tabs[data-variant='panel'] .rx-tab {
+  min-height: 44px;
+  flex: 1 1 0;
+  padding: 0 var(--reachany-space-3);
+}
+
+.rx-tab-panel {
+  min-width: 0;
+  outline: none;
+}
+
+.rx-tab-panel:focus-visible {
+  border-radius: var(--reachany-radius-sm);
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+/* 页内 Tab 切换：面板淡入 fast，不做位移（04 §3.2）。 */
+.rx-tab-panel[data-state='active'] {
+  animation: rx-fade-in var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+/* —— ClosableTabs（多份试卷）—— */
+.rx-closable-tabs {
+  display: flex;
+  min-width: 0;
+}
+
+.rx-closable-tabs-scroller {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: var(--reachany-space-2);
+  /* 给焦点环留出位置，避免被横向滚动裁切 */
+  padding: 3px;
+}
+
+.rx-closable-tabs-list {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--reachany-space-2);
+}
+
+.rx-closable-tab {
+  position: relative;
+  display: inline-flex;
+  height: 30px;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  align-items: center;
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-sm);
+  background: var(--reachany-color-surface);
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+  transition:
+    background-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    border-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+.rx-closable-tab:hover:not([data-state='selected']) {
+  border-color: var(--reachany-color-text-tertiary);
+  color: var(--reachany-color-text);
+}
+
+.rx-closable-tab[data-state='selected'] {
+  border-color: var(--reachany-color-primary);
+  background: var(--reachany-color-surface-warm-strong);
+  color: var(--reachany-color-text);
+}
+
+.rx-closable-tab-trigger {
+  max-width: 160px;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 0 var(--reachany-space-3);
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rx-closable-tab-trigger:has(+ .rx-closable-tab-close) {
+  padding-right: var(--reachany-space-1);
+}
+
+.rx-closable-tab-trigger:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-closable-tab-close {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--reachany-space-1);
+  padding: 0;
+  border: 0;
+  border-radius: var(--reachany-radius-xs);
+  background: transparent;
+  color: var(--reachany-color-text-tertiary);
+  cursor: pointer;
+  transition:
+    background-color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard),
+    color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard);
+}
+
+.rx-closable-tab-close:hover {
+  background: var(--reachany-color-surface-muted);
+  color: var(--reachany-color-text);
+}
+
+.rx-closable-tab-close > svg {
+  width: 12px;
+  height: 12px;
+}
+
+.rx-closable-tabs-add {
+  display: inline-flex;
+  height: 30px;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--reachany-space-1);
+  padding: 0 var(--reachany-space-3);
+  border: 1px dashed var(--reachany-color-primary);
+  border-radius: var(--reachany-radius-sm);
+  background: transparent;
+  color: var(--reachany-color-primary);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+  white-space: nowrap;
+  transition: background-color var(--reachany-motion-duration-fast)
+    var(--reachany-motion-easing-standard);
+}
+
+.rx-closable-tabs-add:hover {
+  background: var(--reachany-color-primary-soft);
+}
+
+.rx-closable-tabs-add:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-closable-tabs-add-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* —— Steps 步骤条 —— */
+.rx-steps {
+  display: grid;
+  min-width: 0;
+  min-height: var(--reachany-step-bar-height);
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--reachany-space-4);
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+}
+
+.rx-steps-leading {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-self: start;
+}
+
+.rx-steps-actions {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-self: end;
+  gap: var(--reachany-space-2);
+}
+
+.rx-steps-list {
+  display: flex;
+  align-items: center;
+  gap: var(--reachany-space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rx-steps-item {
+  display: flex;
+  align-items: center;
+  gap: var(--reachany-space-4);
+}
+
+.rx-steps-connector {
+  width: 80px;
+  flex: 0 0 auto;
+  border-top: 1px solid var(--reachany-color-border);
+  transition: border-color var(--reachany-motion-duration-fast)
+    var(--reachany-motion-easing-standard);
+}
+
+.rx-steps-connector[data-state='complete'] {
+  border-top-color: var(--reachany-color-ink);
+}
+
+.rx-steps-trigger {
+  display: inline-flex;
+  align-items: baseline;
+  padding: 0;
+  border: 0;
+  border-radius: var(--reachany-radius-sm);
+  background: transparent;
+  color: var(--reachany-color-text-secondary);
+  font-family: inherit;
+  font-size: var(--reachany-text-subtitle);
+  font-weight: 400;
+  line-height: var(--reachany-text-subtitle-line-height);
+  white-space: nowrap;
+  transition: color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+.rx-steps-item[data-state='complete'] .rx-steps-trigger {
+  color: var(--reachany-color-text);
+  font-weight: 500;
+}
+
+.rx-steps-item[data-state='current'] .rx-steps-trigger {
+  color: var(--reachany-color-primary);
+  font-weight: 600;
+}
+
+button.rx-steps-trigger {
+  cursor: pointer;
+}
+
+button.rx-steps-trigger:hover {
+  color: var(--reachany-color-primary);
+}
+
+button.rx-steps-trigger:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-steps-index {
+  white-space: pre;
+}
+
+@media (max-width: 1279px) {
+  .rx-steps-connector {
+    width: 40px;
+  }
+}
+
+/* —— SideNav 二级导航 —— */
+.rx-side-nav {
+  --rx-side-nav-inset: var(--reachany-space-4);
+
+  display: flex;
+  width: var(--reachany-side-nav-width);
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: var(--reachany-space-4);
+  background: var(--reachany-color-surface);
+}
+
+.rx-side-nav[data-inset='page'] {
+  --rx-side-nav-inset: var(--reachany-space-10);
+}
+
+.rx-side-nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--reachany-space-1);
+}
+
+.rx-side-nav-group-title {
+  padding: 0 var(--reachany-space-3) 0 var(--rx-side-nav-inset);
+  color: var(--reachany-color-text-tertiary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+.rx-side-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rx-side-nav-item {
+  position: relative;
+  display: flex;
+  height: 36px;
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--reachany-space-2);
+  padding: 0 var(--reachany-space-3) 0 var(--rx-side-nav-inset);
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-body);
+  font-weight: 500;
+  line-height: var(--reachany-text-body-line-height);
+  text-decoration: none;
+  transition:
+    background-color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard),
+    color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.rx-side-nav-item:hover {
+  background: var(--reachany-color-surface-muted);
+  color: var(--reachany-color-text);
+}
+
+.rx-side-nav-item[aria-current='page'] {
+  background: var(--reachany-color-primary-soft-strong);
+  color: var(--reachany-color-primary-text-on-soft);
+}
+
+/* 选中项左侧 4px primary 竖条（通高） */
+.rx-side-nav-item[aria-current='page']::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  background: var(--reachany-color-primary);
+  content: '';
+}
+
+.rx-side-nav-item:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-side-nav-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.rx-side-nav-icon > svg {
+  width: 16px;
+  height: 16px;
+}
+
+.rx-side-nav-label {
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rx-side-nav-count {
+  flex: 0 0 auto;
+  color: var(--reachany-color-text-tertiary);
+  font-size: var(--reachany-text-caption);
+  font-weight: 400;
+}
+
+.rx-side-nav-item[aria-current='page'] .rx-side-nav-count {
+  color: inherit;
+}
+
+/* —— 减少动效（04 §4）—— */
+@media (prefers-reduced-motion: reduce) {
+  .rx-tab,
+  .rx-tab-indicator,
+  .rx-closable-tab,
+  .rx-closable-tab-close,
+  .rx-closable-tabs-add,
+  .rx-steps-connector,
+  .rx-steps-trigger,
+  .rx-side-nav-item {
+    transition: none;
+  }
+
+  .rx-tab-panel[data-state='active'] {
+    animation: none;
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "decksmith-replay-media/v1",
+  "files": {
+    "hero.png": {
+      "contentType": "image/png",
+      "width": 2,
+      "height": 2,
+      "sizeBytes": 75,
+      "sha256": "a0badbb735fd32f6d11a91c84c2c145b639225f170bd6fdb36df96c21a82830b"
+    },
+    "battery-dry.png": {
+      "contentType": "image/png",
+      "width": 2,
+      "height": 2,
+      "sizeBytes": 71,
+      "sha256": "b658c9dbe8d642ad2b89c330fa836906d39607ddc803a1ca29a771db2aeb8fbd"
+    },
+    "battery-rechargeable.png": {
+      "contentType": "image/png",
+      "width": 2,
+      "height": 2,
+      "sizeBytes": 75,
+      "sha256": "49553ff711033a3b02cf1d6615e957c56a70a7e7d739473c3d14121f11a77512"
+    },
+    "edited-hero.png": {
+      "contentType": "image/png",
+      "width": 2,
+      "height": 2,
+      "sizeBytes": 75,
+      "sha256": "6890144721f419e1b105aa83f3dd1afd9de7482a3c4b64596eac6c2223771cb6"
+    }
+  }
+}

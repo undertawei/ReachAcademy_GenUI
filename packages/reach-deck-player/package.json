@@ -1,0 +1,74 @@
+{
+  "name": "@reachany/reach-deck-player",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": "./styles.css",
+    "./fonts/fonts.css": "./fonts/fonts.css"
+  },
+  "sideEffects": [
+    "./styles.css",
+    "./fonts/fonts.css"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "check:interactive-runtimes": "node scripts/generate-interactive-runtimes.mjs --check",
+    "generate:interactive-runtimes": "node scripts/generate-interactive-runtimes.mjs",
+    "generate:function-plot-runtime": "node scripts/generate-reach-function-plot-runtime.mjs",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "node scripts/generate-interactive-runtimes.mjs --check && vitest run --pool=threads --maxWorkers=1"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "dependencies": {
+    "3dmol": "2.5.5",
+    "@mathigon/euclid": "1.2.3",
+    "@mathigon/fermat": "1.1.23",
+    "@nightingale-elements/nightingale-sequence": "5.6.0",
+    "@noble/hashes": "1.8.0",
+    "@tailwindcss/browser": "4.3.0",
+    "@turf/bearing": "7.4.0",
+    "@turf/distance": "7.4.0",
+    "@reachany/reach-deck-dsl": "workspace:*",
+    "@reachany/reach-deck-geometry": "workspace:*",
+    "@reachany/reach-deck-rich-text": "workspace:*",
+    "@reachany/ui": "workspace:*",
+    "@reachany/tiptap-mathlive": "workspace:*",
+    "@tiptap/react": "3.28.0",
+    "animate.css": "4.1.1",
+    "cytoscape": "3.34.2",
+    "d3-geo": "3.1.1",
+    "expr-eval-fork": "3.0.3",
+    "function-plot": "1.25.4",
+    "jsxgraph": "1.13.2",
+    "lucide-react": "^0.562.0",
+    "lucide": "0.562.0",
+    "matter-js": "0.20.0",
+    "smiles-drawer": "2.4.1",
+    "three": "0.185.1",
+    "topojson-client": "3.1.0",
+    "world-atlas": "2.0.2",
+    "@reachany/learner-editor": "workspace:*"
+  },
+  "devDependencies": {
+    "@reachany/tsconfig": "workspace:*",
+    "@types/jsdom": "^21.1.7",
+    "@types/matter-js": "0.20.2",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/three": "0.185.4",
+    "esbuild": "0.27.7",
+    "jsdom": "^25.0.1",
+    "playwright-core": "1.60.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "typescript": "^5.0.0"
+  }
+}

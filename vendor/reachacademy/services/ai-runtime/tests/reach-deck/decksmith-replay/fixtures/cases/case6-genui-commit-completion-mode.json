@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "decksmith-replay-case/v1",
+  "id": "case6-genui-commit-completion-mode",
+  "teacherCase": 6,
+  "summary": "GenUI 新建：插入、写入、带类型化 completionMode 提交一次成功。",
+  "provenance": {
+    "kind": "synthetic-reconstruction",
+    "observedOn": "2026-10-08",
+    "notes": "重建自第 5 页 GenUI 四次失败于自由 JSON runtimePolicy 的反馈；快修后只需 completionMode。"
+  },
+  "document": "energy-lesson.json",
+  "request": {
+    "prompt": "在这一页后面加一个电功计算器 GenUI，学生算完点完成",
+    "pageId": "55555555-5555-4555-8555-555555555555:page-3",
+    "promptContractVersion": "decksmith-prompt/v2"
+  },
+  "capturedWith": {
+    "toolParameterSha256": {
+      "check_and_commit_interactive_page": "c5494e1b7831d5948d141ae82f152bc588e0c5183c2ea5527901d7acb0073a21",
+      "insert_interactive_page": "2e56cffd76dcf8febc4acce4e562a5b144ab9918fea8d37b8fd0df8a550f85a9",
+      "read_interactive_authoring_contract": "8243f0af367f188a376f2c17b5eabe872a2f7a979813e0d4e2be6d594c2aa259",
+      "write_interactive_html": "7e623c59a3548c6a846ac9de248d89b7c8cccbe2ad146c03ee6dec0a64bf2db0"
+    }
+  },
+  "transcript": [
+    {
+      "toolCalls": [
+        {
+          "id": "interactive-contract",
+          "name": "read_interactive_authoring_contract",
+          "arguments": {}
+        },
+        {
+          "id": "insert",
+          "name": "insert_interactive_page",
+          "arguments": {
+            "title": "电功计算器",
+            "position": 4
+          }
+        }
+      ],
+      "usage": {
+        "input": 15300,
+        "output": 60
+      }
+    },
+    {
+      "toolCalls": [
+        {
+          "id": "write",
+          "name": "write_interactive_html",
+          "arguments": {
+            "pageId": {
+              "$ref": "insert.pageId"
+            },
+            "documentHtml": "<!doctype html><html><head><style>body{margin:0;font-family:sans-serif}</style></head><body><p>输入电压、电流和时间，算出电功。</p><input id=\"u\" type=\"number\" value=\"6\"><input id=\"i\" type=\"number\" value=\"2\"><input id=\"t\" type=\"number\" value=\"10\"><button id=\"go\">计算</button><p id=\"w\"></p><script>document.getElementById(\"go\").addEventListener(\"click\",()=>{const w=[\"u\",\"i\",\"t\"].map((id)=>Number(document.getElementById(id).value)).reduce((a,b)=>a*b,1);document.getElementById(\"w\").textContent=\"W = \"+w+\" J\";window.ReachInteractive?.complete?.();});window.ReachInteractive?.ready?.();</script></body></html>",
+            "narrationText": "输入电压、电流和时间，算一算电功是多少。"
+          }
+        }
+      ],
+      "usage": {
+        "input": 15600,
+        "output": 900
+      }
+    },
+    {
+      "toolCalls": [
+        {
+          "id": "commit",
+          "name": "check_and_commit_interactive_page",
+          "arguments": {
+            "pageId": {
+              "$ref": "insert.pageId"
+            },
+            "completionMode": "explicit"
+          }
+        }
+      ],
+      "usage": {
+        "input": 16700,
+        "output": 50
+      }
+    },
+    {
+      "text": "已在第 3 页后新增“电功计算器”互动页，学生点“计算”后即算完成。",
+      "usage": {
+        "input": 16900,
+        "output": 60
+      }
+    }
+  ],
+  "expect": {
+    "changed": true,
+    "outcome": {
+      "mutationStatus": "proposal",
+      "toolErrorCount": 0
+    },
+    "modelTurns": 4,
+    "toolResults": [
+      {
+        "callId": "interactive-contract",
+        "isError": false,
+        "includes": [
+          "Interactive authoring and validation contract:",
+          "EDITING TOOL OUTPUT ADAPTER"
+        ]
+      },
+      {
+        "callId": "write",
+        "isError": false
+      },
+      {
+        "callId": "commit",
+        "isError": false,
+        "includes": ["\"committed\":true"]
+      }
+    ],
+    "userPromptIncludes": ["The current page is an Interactive (GenUI) page"],
+    "userPromptExcludes": [
+      "Interactive coding context is enabled",
+      "Interactive authoring and validation contract:"
+    ]
+  }
+}

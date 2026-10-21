@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "decksmith-replay-case/v1",
+  "id": "case2-transient-image-failure-retried",
+  "teacherCase": 2,
+  "summary": "图片上游瞬时失败（503 可重试）在工具内部重试一次后成功。",
+  "provenance": {
+    "kind": "synthetic-reconstruction",
+    "observedOn": "2026-10-08",
+    "notes": "重建自 2026-10-02 同页 4 次瞬时失败；投影历史保留上一轮失败的固定套话。"
+  },
+  "document": "energy-lesson.json",
+  "request": {
+    "prompt": "再试一次，只把左下角电池改成充电电池",
+    "pageId": "55555555-5555-4555-8555-555555555555:page-1",
+    "selectedElementIds": ["p1-hero"],
+    "history": [
+      {
+        "role": "user",
+        "text": "只把左下角电池改成充电电池"
+      },
+      {
+        "role": "assistant",
+        "text": "Decksmith 未修改课件：有 1 个工具操作失败。"
+      }
+    ],
+    "promptContractVersion": "decksmith-prompt/v2"
+  },
+  "capturedWith": {
+    "toolParameterSha256": {
+      "edit_native_image": "3b8aa274296f297ad73564b94bfc4cc96626f8e578f4741d49d17243f919cfda"
+    }
+  },
+  "transcript": [
+    {
+      "toolCalls": [
+        {
+          "id": "edit-hero",
+          "name": "edit_native_image",
+          "arguments": {
+            "pageId": "55555555-5555-4555-8555-555555555555:page-1",
+            "elementId": "p1-hero",
+            "instruction": "只把左下角的电池改成一块正在充电的充电电池，其他内容保持不变"
+          }
+        }
+      ],
+      "usage": {
+        "input": 7600,
+        "output": 120
+      }
+    },
+    {
+      "text": "已参考原图把左下角的电池改成充电电池，请检查后再采用。",
+      "usage": {
+        "input": 8100,
+        "output": 60
+      }
+    }
+  ],
+  "services": {
+    "imageEdit": [
+      {
+        "fail": {
+          "message": "upstream unavailable",
+          "status": 503,
+          "retryable": true
+        }
+      },
+      {
+        "image": "edited-hero.png",
+        "usage": {
+          "promptTokens": 1168,
+          "completionTokens": 1398,
+          "totalTokens": 2566
+        }
+      }
+    ]
+  },
+  "expect": {
+    "changed": true,
+    "outcome": {
+      "mutationStatus": "proposal",
+      "toolErrorCount": 0
+    },
+    "modelTurns": 2,
+    "toolResults": [
+      {
+        "callId": "edit-hero",
+        "isError": false
+      }
+    ],
+    "userPromptIncludes": [
+      "Previous panel conversation (oldest first):",
+      "Decksmith: Decksmith 未修改课件：有 1 个工具操作失败。"
+    ],
+    "serviceCalls": {
+      "imageEdit": 2
+    }
+  }
+}

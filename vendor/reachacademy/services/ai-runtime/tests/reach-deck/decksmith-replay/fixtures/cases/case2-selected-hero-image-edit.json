@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "decksmith-replay-case/v1",
+  "id": "case2-selected-hero-image-edit",
+  "teacherCase": 2,
+  "summary": "选中题图后\"只把左下角电池改成充电电池\"：edit_native_image 在同一元素上换绑新资源，几何不变。",
+  "provenance": {
+    "kind": "synthetic-reconstruction",
+    "observedOn": "2026-10-08",
+    "notes": "重建自测试环境改图反馈：单张能量转化题图，教师先在画布上选中再发指令。"
+  },
+  "document": "energy-lesson.json",
+  "request": {
+    "prompt": "只把左下角电池改成充电电池",
+    "pageId": "55555555-5555-4555-8555-555555555555:page-1",
+    "selectedElementIds": ["p1-hero"],
+    "promptContractVersion": "decksmith-prompt/v2"
+  },
+  "capturedWith": {
+    "toolParameterSha256": {
+      "edit_native_image": "3b8aa274296f297ad73564b94bfc4cc96626f8e578f4741d49d17243f919cfda"
+    }
+  },
+  "transcript": [
+    {
+      "toolCalls": [
+        {
+          "id": "edit-hero",
+          "name": "edit_native_image",
+          "arguments": {
+            "pageId": "55555555-5555-4555-8555-555555555555:page-1",
+            "elementId": "p1-hero",
+            "instruction": "只把左下角的电池改成一块正在充电的充电电池，其他内容保持不变"
+          }
+        }
+      ],
+      "usage": {
+        "input": 7400,
+        "output": 120
+      }
+    },
+    {
+      "text": "已参考原图把左下角的电池改成正在充电的充电电池，整体构图沿用原图，但细节可能略有不同，请检查后再采用。",
+      "usage": {
+        "input": 7900,
+        "output": 80
+      }
+    }
+  ],
+  "services": {
+    "imageEdit": [
+      {
+        "image": "edited-hero.png",
+        "usage": {
+          "promptTokens": 1168,
+          "completionTokens": 1398,
+          "totalTokens": 2566
+        }
+      }
+    ]
+  },
+  "expect": {
+    "changed": true,
+    "outcome": {
+      "mutationStatus": "proposal",
+      "toolErrorCount": 0
+    },
+    "modelTurns": 2,
+    "toolResults": [
+      {
+        "callId": "edit-hero",
+        "isError": false,
+        "includes": ["\"geometryPreserved\":true"]
+      }
+    ],
+    "userPromptIncludes": [
+      "The teacher selected these element ids on the current page: p1-hero",
+      "Teacher request: 只把左下角电池改成充电电池"
+    ],
+    "serviceCalls": {
+      "imageEdit": 1,
+      "imageGenerate": 0
+    }
+  }
+}

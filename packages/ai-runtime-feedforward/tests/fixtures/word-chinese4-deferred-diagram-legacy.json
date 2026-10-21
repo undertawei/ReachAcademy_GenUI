@@ -1,0 +1,6395 @@
+{
+  "commit": "c383febf8",
+  "cases": [
+    {
+      "id": "answered-only-diagram-command-deferred-slots",
+      "sources": [
+        {
+          "id": "old",
+          "content": [
+            {
+              "type": "text",
+              "text": "1．根据诗句内容填空。"
+            }
+          ]
+        },
+        {
+          "id": "s1",
+          "content": [
+            {
+              "type": "text",
+              "text": "(1)作者是____。"
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "content": [
+            {
+              "type": "text",
+              "text": "(2)采用了____。"
+            }
+          ]
+        },
+        {
+          "id": "old-key",
+          "content": [
+            {
+              "type": "text",
+              "text": "【答案】白居易     比喻"
+            }
+          ]
+        },
+        {
+          "id": "heading",
+          "content": [
+            {
+              "type": "text",
+              "text": "根据下图，完成练习。"
+            }
+          ]
+        },
+        {
+          "id": "diagram",
+          "content": [
+            {
+              "type": "image",
+              "attrs": {
+                "sourceMediaId": "diagram"
+              }
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "content": [
+            {
+              "type": "text",
+              "text": "2．小鸟住在哪里？"
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "content": [
+            {
+              "type": "text",
+              "text": "3．小鸟什么时候唱歌？"
+            }
+          ]
+        },
+        {
+          "id": "key",
+          "content": [
+            {
+              "type": "text",
+              "text": "【答案】2．山里    3．清晨"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "questionType": "short_answer",
+          "sourceLabel": "1",
+          "question": [
+            {
+              "blockId": "old",
+              "start": 2,
+              "end": 11
+            }
+          ],
+          "answer": [],
+          "analysis": [],
+          "knowledgePoints": [],
+          "children": [
+            {
+              "questionType": "fill_in_the_blank",
+              "sourceLabel": "1",
+              "question": [
+                {
+                  "blockId": "s1",
+                  "start": 3,
+                  "end": 11
+                }
+              ],
+              "answer": [
+                {
+                  "blockId": "old-key",
+                  "start": 4,
+                  "end": 7
+                }
+              ],
+              "analysis": [],
+              "knowledgePoints": [],
+              "children": [],
+              "blanks": [
+                {
+                  "marker": {
+                    "blockId": "s1",
+                    "start": 6,
+                    "end": 10
+                  },
+                  "answer": [
+                    {
+                      "blockId": "old-key",
+                      "start": 4,
+                      "end": 7
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "questionType": "fill_in_the_blank",
+              "sourceLabel": "2",
+              "question": [
+                {
+                  "blockId": "s2",
+                  "start": 3,
+                  "end": 11
+                }
+              ],
+              "answer": [
+                {
+                  "blockId": "old-key",
+                  "start": 12,
+                  "end": 14
+                }
+              ],
+              "analysis": [],
+              "knowledgePoints": [],
+              "children": [],
+              "blanks": [
+                {
+                  "marker": {
+                    "blockId": "s2",
+                    "start": 6,
+                    "end": 10
+                  },
+                  "answer": [
+                    {
+                      "blockId": "old-key",
+                      "start": 12,
+                      "end": 14
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "questionType": "short_answer",
+          "question": [
+            {
+              "blockId": "heading",
+              "start": 0,
+              "end": 10
+            },
+            {
+              "blockId": "diagram",
+              "start": 0,
+              "end": 1
+            }
+          ],
+          "answer": [],
+          "analysis": [],
+          "knowledgePoints": [],
+          "children": [
+            {
+              "questionType": "short_answer",
+              "sourceLabel": "2",
+              "question": [
+                {
+                  "blockId": "q2",
+                  "start": 2,
+                  "end": 9
+                }
+              ],
+              "answer": [
+                {
+                  "blockId": "key",
+                  "start": 6,
+                  "end": 8
+                }
+              ],
+              "analysis": [],
+              "knowledgePoints": [],
+              "children": []
+            },
+            {
+              "questionType": "short_answer",
+              "sourceLabel": "3",
+              "question": [
+                {
+                  "blockId": "q3",
+                  "start": 2,
+                  "end": 11
+                }
+              ],
+              "answer": [
+                {
+                  "blockId": "key",
+                  "start": 14,
+                  "end": 16
+                }
+              ],
+              "analysis": [],
+              "knowledgePoints": [],
+              "children": []
+            }
+          ]
+        }
+      ],
+      "preview": {
+        "parserVersion": "word-import/v1",
+        "questions": [
+          {
+            "id": "wi-ed3b8e4c1f873ce5d29bacfe37c98be270f5119d2d5020fce4e5c48e646e4ef8",
+            "question_index": 1,
+            "question_type": "short_answer",
+            "question": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "根据诗句内容填空。"
+                    }
+                  ]
+                }
+              ]
+            },
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "analysis": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "cognitive_schema": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "has_answer": false,
+            "sub_problems": [
+              {
+                "id": "wi-ef4628a0cf548bd96d33b5beab4f805ca5243c184815b53f08ec8a00b8792dc5",
+                "question_index": 1,
+                "question_type": "fill_in_the_blank",
+                "question": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "作者是"
+                        },
+                        {
+                          "type": "quizBlank",
+                          "attrs": {
+                            "blankId": "wi-65e2df7db8c2dc5b461afb0ae0923e4b5d93763635e71c5594221706d2bd37ec",
+                            "blankIndex": 1
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "。"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "answer": [],
+                "analysis": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "cognitive_schema": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "has_answer": true,
+                "sub_problems": [],
+                "blanks": [
+                  {
+                    "id": "wi-65e2df7db8c2dc5b461afb0ae0923e4b5d93763635e71c5594221706d2bd37ec",
+                    "blank_index": 1,
+                    "answer": {
+                      "type": "doc",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "白居易"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "wi-0bfd50cdfe0072afe37a3d05469b4a1b7e9a722a1a35f985816a966c62ef6643",
+                "question_index": 2,
+                "question_type": "fill_in_the_blank",
+                "question": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "采用了"
+                        },
+                        {
+                          "type": "quizBlank",
+                          "attrs": {
+                            "blankId": "wi-86ae191522aa4d860913aeb0d1896c0b7c69426085baa9da195c1a803e3636c5",
+                            "blankIndex": 1
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "。"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "answer": [],
+                "analysis": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "cognitive_schema": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "has_answer": true,
+                "sub_problems": [],
+                "blanks": [
+                  {
+                    "id": "wi-86ae191522aa4d860913aeb0d1896c0b7c69426085baa9da195c1a803e3636c5",
+                    "blank_index": 1,
+                    "answer": {
+                      "type": "doc",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "比喻"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "wi-a87e77190d3ff5c6541c991c7bc1c586c09f94b8a5f39a605ab76d0123e0f727",
+            "question_index": 2,
+            "question_type": "short_answer",
+            "question": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "根据下图，完成练习。"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "image",
+                      "attrs": {
+                        "sourceMediaId": "diagram"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "analysis": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "cognitive_schema": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "has_answer": false,
+            "sub_problems": [
+              {
+                "id": "wi-68495114918351229222bdc40d9f60aa0b7411df6647d29779d0bbe2b02a7249",
+                "question_index": 1,
+                "question_type": "short_answer",
+                "question": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "小鸟住在哪里？"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "answer": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "山里"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "analysis": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "cognitive_schema": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "has_answer": true,
+                "sub_problems": []
+              },
+              {
+                "id": "wi-a036e8be4a93b9362aba428558d800131c2eeefee93f7535e5024838cc9bc5dd",
+                "question_index": 2,
+                "question_type": "short_answer",
+                "question": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "小鸟什么时候唱歌？"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "answer": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "清晨"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "analysis": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "cognitive_schema": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "has_answer": true,
+                "sub_problems": []
+              }
+            ]
+          }
+        ],
+        "diagnostics": [
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-ed3b8e4c1f873ce5d29bacfe37c98be270f5119d2d5020fce4e5c48e646e4ef8"
+          },
+          {
+            "code": "word-import.missing-answer",
+            "severity": "warning",
+            "questionId": "wi-ed3b8e4c1f873ce5d29bacfe37c98be270f5119d2d5020fce4e5c48e646e4ef8"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-ef4628a0cf548bd96d33b5beab4f805ca5243c184815b53f08ec8a00b8792dc5"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-0bfd50cdfe0072afe37a3d05469b4a1b7e9a722a1a35f985816a966c62ef6643"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-a87e77190d3ff5c6541c991c7bc1c586c09f94b8a5f39a605ab76d0123e0f727"
+          },
+          {
+            "code": "word-import.missing-answer",
+            "severity": "warning",
+            "questionId": "wi-a87e77190d3ff5c6541c991c7bc1c586c09f94b8a5f39a605ab76d0123e0f727"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-68495114918351229222bdc40d9f60aa0b7411df6647d29779d0bbe2b02a7249"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-a036e8be4a93b9362aba428558d800131c2eeefee93f7535e5024838cc9bc5dd"
+          },
+          {
+            "code": "word-import.check-question-boundary",
+            "severity": "warning",
+            "blockId": "heading"
+          }
+        ],
+        "sources": {
+          "wi-ed3b8e4c1f873ce5d29bacfe37c98be270f5119d2d5020fce4e5c48e646e4ef8": {
+            "blockIds": ["old"],
+            "sourceLabel": "1",
+            "sourceRanges": [
+              {
+                "blockId": "old",
+                "start": 2,
+                "end": 11
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old",
+                    "start": 2,
+                    "end": 11
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          },
+          "wi-ef4628a0cf548bd96d33b5beab4f805ca5243c184815b53f08ec8a00b8792dc5": {
+            "blockIds": ["s1"],
+            "sourceLabel": "1",
+            "sourceRanges": [
+              {
+                "blockId": "s1",
+                "start": 3,
+                "end": 11
+              },
+              {
+                "blockId": "old-key",
+                "start": 4,
+                "end": 7
+              },
+              {
+                "blockId": "s1",
+                "start": 6,
+                "end": 10
+              },
+              {
+                "blockId": "old-key",
+                "start": 4,
+                "end": 7
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "s1",
+                    "start": 3,
+                    "end": 11
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 4,
+                    "end": 7
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-65e2df7db8c2dc5b461afb0ae0923e4b5d93763635e71c5594221706d2bd37ec",
+                  "part": "marker"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "s1",
+                    "start": 6,
+                    "end": 10
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-65e2df7db8c2dc5b461afb0ae0923e4b5d93763635e71c5594221706d2bd37ec",
+                  "part": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 4,
+                    "end": 7
+                  }
+                ]
+              }
+            ]
+          },
+          "wi-0bfd50cdfe0072afe37a3d05469b4a1b7e9a722a1a35f985816a966c62ef6643": {
+            "blockIds": ["s2"],
+            "sourceLabel": "2",
+            "sourceRanges": [
+              {
+                "blockId": "s2",
+                "start": 3,
+                "end": 11
+              },
+              {
+                "blockId": "old-key",
+                "start": 12,
+                "end": 14
+              },
+              {
+                "blockId": "s2",
+                "start": 6,
+                "end": 10
+              },
+              {
+                "blockId": "old-key",
+                "start": 12,
+                "end": 14
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "s2",
+                    "start": 3,
+                    "end": 11
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 12,
+                    "end": 14
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-86ae191522aa4d860913aeb0d1896c0b7c69426085baa9da195c1a803e3636c5",
+                  "part": "marker"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "s2",
+                    "start": 6,
+                    "end": 10
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-86ae191522aa4d860913aeb0d1896c0b7c69426085baa9da195c1a803e3636c5",
+                  "part": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 12,
+                    "end": 14
+                  }
+                ]
+              }
+            ]
+          },
+          "wi-a87e77190d3ff5c6541c991c7bc1c586c09f94b8a5f39a605ab76d0123e0f727": {
+            "blockIds": ["heading", "diagram"],
+            "sourceRanges": [
+              {
+                "blockId": "heading",
+                "start": 0,
+                "end": 10
+              },
+              {
+                "blockId": "diagram",
+                "start": 0,
+                "end": 1
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "heading",
+                    "start": 0,
+                    "end": 10
+                  },
+                  {
+                    "blockId": "diagram",
+                    "start": 0,
+                    "end": 1
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          },
+          "wi-68495114918351229222bdc40d9f60aa0b7411df6647d29779d0bbe2b02a7249": {
+            "blockIds": ["q2"],
+            "sourceLabel": "2",
+            "sourceRanges": [
+              {
+                "blockId": "q2",
+                "start": 2,
+                "end": 9
+              },
+              {
+                "blockId": "key",
+                "start": 6,
+                "end": 8
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "q2",
+                    "start": 2,
+                    "end": 9
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "key",
+                    "start": 6,
+                    "end": 8
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          },
+          "wi-a036e8be4a93b9362aba428558d800131c2eeefee93f7535e5024838cc9bc5dd": {
+            "blockIds": ["q3"],
+            "sourceLabel": "3",
+            "sourceRanges": [
+              {
+                "blockId": "q3",
+                "start": 2,
+                "end": 11
+              },
+              {
+                "blockId": "key",
+                "start": 14,
+                "end": 16
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "q3",
+                    "start": 2,
+                    "end": 11
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "key",
+                    "start": 14,
+                    "end": 16
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          }
+        },
+        "diagnosticVersion": "word-import-diagnostics/v1",
+        "fieldDiagnostics": [
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-ed3b8e4c1f873ce5d29bacfe37c98be270f5119d2d5020fce4e5c48e646e4ef8%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-ed3b8e4c1f873ce5d29bacfe37c98be270f5119d2d5020fce4e5c48e646e4ef8",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-ef4628a0cf548bd96d33b5beab4f805ca5243c184815b53f08ec8a00b8792dc5%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-ef4628a0cf548bd96d33b5beab4f805ca5243c184815b53f08ec8a00b8792dc5",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-0bfd50cdfe0072afe37a3d05469b4a1b7e9a722a1a35f985816a966c62ef6643%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-0bfd50cdfe0072afe37a3d05469b4a1b7e9a722a1a35f985816a966c62ef6643",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-a87e77190d3ff5c6541c991c7bc1c586c09f94b8a5f39a605ab76d0123e0f727%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-a87e77190d3ff5c6541c991c7bc1c586c09f94b8a5f39a605ab76d0123e0f727",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-68495114918351229222bdc40d9f60aa0b7411df6647d29779d0bbe2b02a7249%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-68495114918351229222bdc40d9f60aa0b7411df6647d29779d0bbe2b02a7249",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-a036e8be4a93b9362aba428558d800131c2eeefee93f7535e5024838cc9bc5dd%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-a036e8be4a93b9362aba428558d800131c2eeefee93f7535e5024838cc9bc5dd",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22legacy%22%2C0%2C%22word-import.check-question-boundary%22%2Cnull%2C%22heading%22%5D",
+            "code": "word-import.check-question-boundary",
+            "severity": "warning",
+            "phase": "parse",
+            "target": {
+              "kind": "unresolved",
+              "itemId": "wid:%5B%22legacy%22%2C0%2C%22word-import.check-question-boundary%22%2Cnull%2C%22heading%22%5D"
+            },
+            "blocksApply": false,
+            "recovery": "none",
+            "sourceRanges": [
+              {
+                "blockId": "heading"
+              }
+            ],
+            "params": {
+              "sourceUnavailable": false
+            }
+          }
+        ],
+        "unresolvedItems": [
+          {
+            "id": "wid:%5B%22legacy%22%2C0%2C%22word-import.check-question-boundary%22%2Cnull%2C%22heading%22%5D",
+            "kind": "unassigned",
+            "code": "word-import.check-question-boundary",
+            "sourceRanges": [
+              {
+                "blockId": "heading"
+              }
+            ]
+          }
+        ],
+        "sourceExcerpts": [
+          {
+            "range": {
+              "blockId": "heading",
+              "start": 0,
+              "end": 10
+            },
+            "text": "根据下图，完成练习。",
+            "excerptTruncated": false
+          }
+        ],
+        "diagnosticsTruncated": false
+      }
+    },
+    {
+      "id": "answered-only-diagram-command-deferred-multiple",
+      "sources": [
+        {
+          "id": "old",
+          "content": [
+            {
+              "type": "text",
+              "text": "1．根据诗句内容填空。"
+            }
+          ]
+        },
+        {
+          "id": "s1",
+          "content": [
+            {
+              "type": "text",
+              "text": "(1)作者是____，朝代是____。"
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "content": [
+            {
+              "type": "text",
+              "text": "(2)采用了____。"
+            }
+          ]
+        },
+        {
+          "id": "old-key",
+          "content": [
+            {
+              "type": "text",
+              "text": "【答案】白居易     唐代     比喻"
+            }
+          ]
+        },
+        {
+          "id": "heading",
+          "content": [
+            {
+              "type": "text",
+              "text": "根据下图，完成练习。"
+            }
+          ]
+        },
+        {
+          "id": "diagram",
+          "content": [
+            {
+              "type": "image",
+              "attrs": {
+                "sourceMediaId": "diagram"
+              }
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "content": [
+            {
+              "type": "text",
+              "text": "2．小鸟住在哪里？"
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "content": [
+            {
+              "type": "text",
+              "text": "3．小鸟什么时候唱歌？"
+            }
+          ]
+        },
+        {
+          "id": "key",
+          "content": [
+            {
+              "type": "text",
+              "text": "【答案】2．山里    3．清晨"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "questionType": "short_answer",
+          "sourceLabel": "1",
+          "question": [
+            {
+              "blockId": "old",
+              "start": 2,
+              "end": 11
+            }
+          ],
+          "answer": [],
+          "analysis": [],
+          "knowledgePoints": [],
+          "children": [
+            {
+              "questionType": "fill_in_the_blank",
+              "sourceLabel": "1",
+              "question": [
+                {
+                  "blockId": "s1",
+                  "start": 3,
+                  "end": 19
+                }
+              ],
+              "answer": [
+                {
+                  "blockId": "old-key",
+                  "start": 4,
+                  "end": 7
+                },
+                {
+                  "blockId": "old-key",
+                  "start": 12,
+                  "end": 14
+                }
+              ],
+              "analysis": [],
+              "knowledgePoints": [],
+              "children": [],
+              "blanks": [
+                {
+                  "marker": {
+                    "blockId": "s1",
+                    "start": 6,
+                    "end": 10
+                  },
+                  "answer": [
+                    {
+                      "blockId": "old-key",
+                      "start": 4,
+                      "end": 7
+                    }
+                  ]
+                },
+                {
+                  "marker": {
+                    "blockId": "s1",
+                    "start": 14,
+                    "end": 18
+                  },
+                  "answer": [
+                    {
+                      "blockId": "old-key",
+                      "start": 12,
+                      "end": 14
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "questionType": "fill_in_the_blank",
+              "sourceLabel": "2",
+              "question": [
+                {
+                  "blockId": "s2",
+                  "start": 3,
+                  "end": 11
+                }
+              ],
+              "answer": [
+                {
+                  "blockId": "old-key",
+                  "start": 19,
+                  "end": 21
+                }
+              ],
+              "analysis": [],
+              "knowledgePoints": [],
+              "children": [],
+              "blanks": [
+                {
+                  "marker": {
+                    "blockId": "s2",
+                    "start": 6,
+                    "end": 10
+                  },
+                  "answer": [
+                    {
+                      "blockId": "old-key",
+                      "start": 19,
+                      "end": 21
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "questionType": "short_answer",
+          "question": [
+            {
+              "blockId": "heading",
+              "start": 0,
+              "end": 10
+            },
+            {
+              "blockId": "diagram",
+              "start": 0,
+              "end": 1
+            }
+          ],
+          "answer": [],
+          "analysis": [],
+          "knowledgePoints": [],
+          "children": [
+            {
+              "questionType": "short_answer",
+              "sourceLabel": "2",
+              "question": [
+                {
+                  "blockId": "q2",
+                  "start": 2,
+                  "end": 9
+                }
+              ],
+              "answer": [
+                {
+                  "blockId": "key",
+                  "start": 6,
+                  "end": 8
+                }
+              ],
+              "analysis": [],
+              "knowledgePoints": [],
+              "children": []
+            },
+            {
+              "questionType": "short_answer",
+              "sourceLabel": "3",
+              "question": [
+                {
+                  "blockId": "q3",
+                  "start": 2,
+                  "end": 11
+                }
+              ],
+              "answer": [
+                {
+                  "blockId": "key",
+                  "start": 14,
+                  "end": 16
+                }
+              ],
+              "analysis": [],
+              "knowledgePoints": [],
+              "children": []
+            }
+          ]
+        }
+      ],
+      "preview": {
+        "parserVersion": "word-import/v1",
+        "questions": [
+          {
+            "id": "wi-b40f8b501353ef0a1b224a2811d321ea8a7446067962d83d5aab7e09657b8a7d",
+            "question_index": 1,
+            "question_type": "short_answer",
+            "question": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "根据诗句内容填空。"
+                    }
+                  ]
+                }
+              ]
+            },
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "analysis": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "cognitive_schema": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "has_answer": false,
+            "sub_problems": [
+              {
+                "id": "wi-6a181c828d9213b0255e34bb28be42523c9c13ce359518f0012df24fc218c083",
+                "question_index": 1,
+                "question_type": "fill_in_the_blank",
+                "question": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "作者是"
+                        },
+                        {
+                          "type": "quizBlank",
+                          "attrs": {
+                            "blankId": "wi-8e1333b88db14c66abc74f2bd34152bb16811cd4a8ff9259cc4b2b8bfb8ee234",
+                            "blankIndex": 1
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "，朝代是"
+                        },
+                        {
+                          "type": "quizBlank",
+                          "attrs": {
+                            "blankId": "wi-c63e9533666a0fb57a5029d4b7183b8be46f121153bca15f846de906e1a82c37",
+                            "blankIndex": 2
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "。"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "answer": [],
+                "analysis": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "cognitive_schema": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "has_answer": true,
+                "sub_problems": [],
+                "blanks": [
+                  {
+                    "id": "wi-8e1333b88db14c66abc74f2bd34152bb16811cd4a8ff9259cc4b2b8bfb8ee234",
+                    "blank_index": 1,
+                    "answer": {
+                      "type": "doc",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "白居易"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "wi-c63e9533666a0fb57a5029d4b7183b8be46f121153bca15f846de906e1a82c37",
+                    "blank_index": 2,
+                    "answer": {
+                      "type": "doc",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "唐代"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "wi-c8bdaf8678469b50928194ff472d9d319530bbcf05f3ea295522ceb4762ee4e9",
+                "question_index": 2,
+                "question_type": "fill_in_the_blank",
+                "question": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "采用了"
+                        },
+                        {
+                          "type": "quizBlank",
+                          "attrs": {
+                            "blankId": "wi-6c9c9f6d4fa037a70069c79370d51a2479cc58a14bf10888b1c156a4e199e2cf",
+                            "blankIndex": 1
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "。"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "answer": [],
+                "analysis": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "cognitive_schema": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "has_answer": true,
+                "sub_problems": [],
+                "blanks": [
+                  {
+                    "id": "wi-6c9c9f6d4fa037a70069c79370d51a2479cc58a14bf10888b1c156a4e199e2cf",
+                    "blank_index": 1,
+                    "answer": {
+                      "type": "doc",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "比喻"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "wi-f88d5b8faf8c908624520b556121dfe8481dc20448d1589c0b706ff1295230ec",
+            "question_index": 2,
+            "question_type": "short_answer",
+            "question": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "根据下图，完成练习。"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "image",
+                      "attrs": {
+                        "sourceMediaId": "diagram"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "analysis": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "cognitive_schema": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "has_answer": false,
+            "sub_problems": [
+              {
+                "id": "wi-0216f39b42f8919f76489386283bbac0c5f56d3ae598ebd5b818970973ecbd74",
+                "question_index": 1,
+                "question_type": "short_answer",
+                "question": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "小鸟住在哪里？"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "answer": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "山里"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "analysis": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "cognitive_schema": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "has_answer": true,
+                "sub_problems": []
+              },
+              {
+                "id": "wi-f9321eabb7b6f32c9cbe74315d63e8aef3c888fbbfe04f7fc3fac82a78f3da76",
+                "question_index": 2,
+                "question_type": "short_answer",
+                "question": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "小鸟什么时候唱歌？"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "answer": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "清晨"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "analysis": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "cognitive_schema": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "has_answer": true,
+                "sub_problems": []
+              }
+            ]
+          }
+        ],
+        "diagnostics": [
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-b40f8b501353ef0a1b224a2811d321ea8a7446067962d83d5aab7e09657b8a7d"
+          },
+          {
+            "code": "word-import.missing-answer",
+            "severity": "warning",
+            "questionId": "wi-b40f8b501353ef0a1b224a2811d321ea8a7446067962d83d5aab7e09657b8a7d"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-6a181c828d9213b0255e34bb28be42523c9c13ce359518f0012df24fc218c083"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-c8bdaf8678469b50928194ff472d9d319530bbcf05f3ea295522ceb4762ee4e9"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-f88d5b8faf8c908624520b556121dfe8481dc20448d1589c0b706ff1295230ec"
+          },
+          {
+            "code": "word-import.missing-answer",
+            "severity": "warning",
+            "questionId": "wi-f88d5b8faf8c908624520b556121dfe8481dc20448d1589c0b706ff1295230ec"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-0216f39b42f8919f76489386283bbac0c5f56d3ae598ebd5b818970973ecbd74"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-f9321eabb7b6f32c9cbe74315d63e8aef3c888fbbfe04f7fc3fac82a78f3da76"
+          },
+          {
+            "code": "word-import.check-question-boundary",
+            "severity": "warning",
+            "blockId": "heading"
+          }
+        ],
+        "sources": {
+          "wi-b40f8b501353ef0a1b224a2811d321ea8a7446067962d83d5aab7e09657b8a7d": {
+            "blockIds": ["old"],
+            "sourceLabel": "1",
+            "sourceRanges": [
+              {
+                "blockId": "old",
+                "start": 2,
+                "end": 11
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old",
+                    "start": 2,
+                    "end": 11
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          },
+          "wi-6a181c828d9213b0255e34bb28be42523c9c13ce359518f0012df24fc218c083": {
+            "blockIds": ["s1"],
+            "sourceLabel": "1",
+            "sourceRanges": [
+              {
+                "blockId": "s1",
+                "start": 3,
+                "end": 19
+              },
+              {
+                "blockId": "old-key",
+                "start": 4,
+                "end": 7
+              },
+              {
+                "blockId": "old-key",
+                "start": 12,
+                "end": 14
+              },
+              {
+                "blockId": "s1",
+                "start": 6,
+                "end": 10
+              },
+              {
+                "blockId": "old-key",
+                "start": 4,
+                "end": 7
+              },
+              {
+                "blockId": "s1",
+                "start": 14,
+                "end": 18
+              },
+              {
+                "blockId": "old-key",
+                "start": 12,
+                "end": 14
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "s1",
+                    "start": 3,
+                    "end": 19
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 4,
+                    "end": 7
+                  },
+                  {
+                    "blockId": "old-key",
+                    "start": 12,
+                    "end": 14
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-8e1333b88db14c66abc74f2bd34152bb16811cd4a8ff9259cc4b2b8bfb8ee234",
+                  "part": "marker"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "s1",
+                    "start": 6,
+                    "end": 10
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-8e1333b88db14c66abc74f2bd34152bb16811cd4a8ff9259cc4b2b8bfb8ee234",
+                  "part": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 4,
+                    "end": 7
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-c63e9533666a0fb57a5029d4b7183b8be46f121153bca15f846de906e1a82c37",
+                  "part": "marker"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "s1",
+                    "start": 14,
+                    "end": 18
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-c63e9533666a0fb57a5029d4b7183b8be46f121153bca15f846de906e1a82c37",
+                  "part": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 12,
+                    "end": 14
+                  }
+                ]
+              }
+            ]
+          },
+          "wi-c8bdaf8678469b50928194ff472d9d319530bbcf05f3ea295522ceb4762ee4e9": {
+            "blockIds": ["s2"],
+            "sourceLabel": "2",
+            "sourceRanges": [
+              {
+                "blockId": "s2",
+                "start": 3,
+                "end": 11
+              },
+              {
+                "blockId": "old-key",
+                "start": 19,
+                "end": 21
+              },
+              {
+                "blockId": "s2",
+                "start": 6,
+                "end": 10
+              },
+              {
+                "blockId": "old-key",
+                "start": 19,
+                "end": 21
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "s2",
+                    "start": 3,
+                    "end": 11
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 19,
+                    "end": 21
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-6c9c9f6d4fa037a70069c79370d51a2479cc58a14bf10888b1c156a4e199e2cf",
+                  "part": "marker"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "s2",
+                    "start": 6,
+                    "end": 10
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-6c9c9f6d4fa037a70069c79370d51a2479cc58a14bf10888b1c156a4e199e2cf",
+                  "part": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 19,
+                    "end": 21
+                  }
+                ]
+              }
+            ]
+          },
+          "wi-f88d5b8faf8c908624520b556121dfe8481dc20448d1589c0b706ff1295230ec": {
+            "blockIds": ["heading", "diagram"],
+            "sourceRanges": [
+              {
+                "blockId": "heading",
+                "start": 0,
+                "end": 10
+              },
+              {
+                "blockId": "diagram",
+                "start": 0,
+                "end": 1
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "heading",
+                    "start": 0,
+                    "end": 10
+                  },
+                  {
+                    "blockId": "diagram",
+                    "start": 0,
+                    "end": 1
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          },
+          "wi-0216f39b42f8919f76489386283bbac0c5f56d3ae598ebd5b818970973ecbd74": {
+            "blockIds": ["q2"],
+            "sourceLabel": "2",
+            "sourceRanges": [
+              {
+                "blockId": "q2",
+                "start": 2,
+                "end": 9
+              },
+              {
+                "blockId": "key",
+                "start": 6,
+                "end": 8
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "q2",
+                    "start": 2,
+                    "end": 9
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "key",
+                    "start": 6,
+                    "end": 8
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          },
+          "wi-f9321eabb7b6f32c9cbe74315d63e8aef3c888fbbfe04f7fc3fac82a78f3da76": {
+            "blockIds": ["q3"],
+            "sourceLabel": "3",
+            "sourceRanges": [
+              {
+                "blockId": "q3",
+                "start": 2,
+                "end": 11
+              },
+              {
+                "blockId": "key",
+                "start": 14,
+                "end": 16
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "q3",
+                    "start": 2,
+                    "end": 11
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "key",
+                    "start": 14,
+                    "end": 16
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          }
+        },
+        "diagnosticVersion": "word-import-diagnostics/v1",
+        "fieldDiagnostics": [
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-b40f8b501353ef0a1b224a2811d321ea8a7446067962d83d5aab7e09657b8a7d%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-b40f8b501353ef0a1b224a2811d321ea8a7446067962d83d5aab7e09657b8a7d",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-6a181c828d9213b0255e34bb28be42523c9c13ce359518f0012df24fc218c083%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-6a181c828d9213b0255e34bb28be42523c9c13ce359518f0012df24fc218c083",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-c8bdaf8678469b50928194ff472d9d319530bbcf05f3ea295522ceb4762ee4e9%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-c8bdaf8678469b50928194ff472d9d319530bbcf05f3ea295522ceb4762ee4e9",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-f88d5b8faf8c908624520b556121dfe8481dc20448d1589c0b706ff1295230ec%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-f88d5b8faf8c908624520b556121dfe8481dc20448d1589c0b706ff1295230ec",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-0216f39b42f8919f76489386283bbac0c5f56d3ae598ebd5b818970973ecbd74%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-0216f39b42f8919f76489386283bbac0c5f56d3ae598ebd5b818970973ecbd74",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-f9321eabb7b6f32c9cbe74315d63e8aef3c888fbbfe04f7fc3fac82a78f3da76%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-f9321eabb7b6f32c9cbe74315d63e8aef3c888fbbfe04f7fc3fac82a78f3da76",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22legacy%22%2C0%2C%22word-import.check-question-boundary%22%2Cnull%2C%22heading%22%5D",
+            "code": "word-import.check-question-boundary",
+            "severity": "warning",
+            "phase": "parse",
+            "target": {
+              "kind": "unresolved",
+              "itemId": "wid:%5B%22legacy%22%2C0%2C%22word-import.check-question-boundary%22%2Cnull%2C%22heading%22%5D"
+            },
+            "blocksApply": false,
+            "recovery": "none",
+            "sourceRanges": [
+              {
+                "blockId": "heading"
+              }
+            ],
+            "params": {
+              "sourceUnavailable": false
+            }
+          }
+        ],
+        "unresolvedItems": [
+          {
+            "id": "wid:%5B%22legacy%22%2C0%2C%22word-import.check-question-boundary%22%2Cnull%2C%22heading%22%5D",
+            "kind": "unassigned",
+            "code": "word-import.check-question-boundary",
+            "sourceRanges": [
+              {
+                "blockId": "heading"
+              }
+            ]
+          }
+        ],
+        "sourceExcerpts": [
+          {
+            "range": {
+              "blockId": "heading",
+              "start": 0,
+              "end": 10
+            },
+            "text": "根据下图，完成练习。",
+            "excerptTruncated": false
+          }
+        ],
+        "diagnosticsTruncated": false
+      }
+    },
+    {
+      "id": "answered-only-diagram-command-deferred-image",
+      "sources": [
+        {
+          "id": "old",
+          "content": [
+            {
+              "type": "text",
+              "text": "1．请补充下面内容。"
+            }
+          ]
+        },
+        {
+          "id": "s1",
+          "content": [
+            {
+              "type": "text",
+              "text": "(1)第一处是____。"
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "content": [
+            {
+              "type": "text",
+              "text": "(2)第二处是____。"
+            }
+          ]
+        },
+        {
+          "id": "old-key",
+          "content": [
+            {
+              "type": "text",
+              "text": "【答案】"
+            },
+            {
+              "type": "image",
+              "attrs": {
+                "sourceMediaId": "answer1"
+              }
+            },
+            {
+              "type": "text",
+              "text": "     "
+            },
+            {
+              "type": "image",
+              "attrs": {
+                "sourceMediaId": "answer2"
+              }
+            }
+          ]
+        },
+        {
+          "id": "heading",
+          "content": [
+            {
+              "type": "text",
+              "text": "根据下图，完成练习。"
+            }
+          ]
+        },
+        {
+          "id": "diagram",
+          "content": [
+            {
+              "type": "image",
+              "attrs": {
+                "sourceMediaId": "diagram"
+              }
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "content": [
+            {
+              "type": "text",
+              "text": "2．小鸟住在哪里？"
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "content": [
+            {
+              "type": "text",
+              "text": "3．小鸟什么时候唱歌？"
+            }
+          ]
+        },
+        {
+          "id": "key",
+          "content": [
+            {
+              "type": "text",
+              "text": "【答案】2．山里    3．清晨"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "questionType": "short_answer",
+          "sourceLabel": "1",
+          "question": [
+            {
+              "blockId": "old",
+              "start": 2,
+              "end": 10
+            }
+          ],
+          "answer": [],
+          "analysis": [],
+          "knowledgePoints": [],
+          "children": [
+            {
+              "questionType": "fill_in_the_blank",
+              "sourceLabel": "1",
+              "question": [
+                {
+                  "blockId": "s1",
+                  "start": 3,
+                  "end": 12
+                }
+              ],
+              "answer": [
+                {
+                  "blockId": "old-key",
+                  "start": 4,
+                  "end": 5
+                }
+              ],
+              "analysis": [],
+              "knowledgePoints": [],
+              "children": [],
+              "blanks": [
+                {
+                  "marker": {
+                    "blockId": "s1",
+                    "start": 7,
+                    "end": 11
+                  },
+                  "answer": [
+                    {
+                      "blockId": "old-key",
+                      "start": 4,
+                      "end": 5
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "questionType": "fill_in_the_blank",
+              "sourceLabel": "2",
+              "question": [
+                {
+                  "blockId": "s2",
+                  "start": 3,
+                  "end": 12
+                }
+              ],
+              "answer": [
+                {
+                  "blockId": "old-key",
+                  "start": 10,
+                  "end": 11
+                }
+              ],
+              "analysis": [],
+              "knowledgePoints": [],
+              "children": [],
+              "blanks": [
+                {
+                  "marker": {
+                    "blockId": "s2",
+                    "start": 7,
+                    "end": 11
+                  },
+                  "answer": [
+                    {
+                      "blockId": "old-key",
+                      "start": 10,
+                      "end": 11
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "questionType": "short_answer",
+          "question": [
+            {
+              "blockId": "heading",
+              "start": 0,
+              "end": 10
+            },
+            {
+              "blockId": "diagram",
+              "start": 0,
+              "end": 1
+            }
+          ],
+          "answer": [],
+          "analysis": [],
+          "knowledgePoints": [],
+          "children": [
+            {
+              "questionType": "short_answer",
+              "sourceLabel": "2",
+              "question": [
+                {
+                  "blockId": "q2",
+                  "start": 2,
+                  "end": 9
+                }
+              ],
+              "answer": [
+                {
+                  "blockId": "key",
+                  "start": 6,
+                  "end": 8
+                }
+              ],
+              "analysis": [],
+              "knowledgePoints": [],
+              "children": []
+            },
+            {
+              "questionType": "short_answer",
+              "sourceLabel": "3",
+              "question": [
+                {
+                  "blockId": "q3",
+                  "start": 2,
+                  "end": 11
+                }
+              ],
+              "answer": [
+                {
+                  "blockId": "key",
+                  "start": 14,
+                  "end": 16
+                }
+              ],
+              "analysis": [],
+              "knowledgePoints": [],
+              "children": []
+            }
+          ]
+        }
+      ],
+      "preview": {
+        "parserVersion": "word-import/v1",
+        "questions": [
+          {
+            "id": "wi-be0207377d0b6bb059e88e591ae9ce96a1a5b47ac8f97998b7df1fd5e4e6c7c0",
+            "question_index": 1,
+            "question_type": "short_answer",
+            "question": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "请补充下面内容。"
+                    }
+                  ]
+                }
+              ]
+            },
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "analysis": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "cognitive_schema": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "has_answer": false,
+            "sub_problems": [
+              {
+                "id": "wi-b72f22f8095695361a6bd5fc723f75787331130ff7ff217c247279f9a906b6d2",
+                "question_index": 1,
+                "question_type": "fill_in_the_blank",
+                "question": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "第一处是"
+                        },
+                        {
+                          "type": "quizBlank",
+                          "attrs": {
+                            "blankId": "wi-744696dd285a5e6bdb2e61b8ea8dc5a2ceb4a3e9bf2032c6e3dac956c572ffaf",
+                            "blankIndex": 1
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "。"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "answer": [],
+                "analysis": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "cognitive_schema": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "has_answer": true,
+                "sub_problems": [],
+                "blanks": [
+                  {
+                    "id": "wi-744696dd285a5e6bdb2e61b8ea8dc5a2ceb4a3e9bf2032c6e3dac956c572ffaf",
+                    "blank_index": 1,
+                    "answer": {
+                      "type": "doc",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "image",
+                              "attrs": {
+                                "sourceMediaId": "answer1"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "wi-9347c3007fa82f566132204c8bd2787a92213dd7c9303106d044516c56a5b117",
+                "question_index": 2,
+                "question_type": "fill_in_the_blank",
+                "question": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "第二处是"
+                        },
+                        {
+                          "type": "quizBlank",
+                          "attrs": {
+                            "blankId": "wi-da2f9e05bd0645cc3f1861e49ae510a8354ddb9c7a172932f468df861f9fe346",
+                            "blankIndex": 1
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "。"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "answer": [],
+                "analysis": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "cognitive_schema": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "has_answer": true,
+                "sub_problems": [],
+                "blanks": [
+                  {
+                    "id": "wi-da2f9e05bd0645cc3f1861e49ae510a8354ddb9c7a172932f468df861f9fe346",
+                    "blank_index": 1,
+                    "answer": {
+                      "type": "doc",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "image",
+                              "attrs": {
+                                "sourceMediaId": "answer2"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "wi-b57f9fb5e14fd008a2f864653ae8acaa6462695e9cca9907ec695888e413c983",
+            "question_index": 2,
+            "question_type": "short_answer",
+            "question": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "根据下图，完成练习。"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "image",
+                      "attrs": {
+                        "sourceMediaId": "diagram"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "analysis": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "cognitive_schema": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "has_answer": false,
+            "sub_problems": [
+              {
+                "id": "wi-7e220775437297f48a77abee6a0d23e82f31ab01c2bbf3e0a971fa2f2d53059b",
+                "question_index": 1,
+                "question_type": "short_answer",
+                "question": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "小鸟住在哪里？"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "answer": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "山里"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "analysis": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "cognitive_schema": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "has_answer": true,
+                "sub_problems": []
+              },
+              {
+                "id": "wi-1673487c59c83d4ce88beaea663e9e2e5647fb27f61578b9e130e3878ade365e",
+                "question_index": 2,
+                "question_type": "short_answer",
+                "question": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "小鸟什么时候唱歌？"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "answer": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "清晨"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "analysis": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "cognitive_schema": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "has_answer": true,
+                "sub_problems": []
+              }
+            ]
+          }
+        ],
+        "diagnostics": [
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-be0207377d0b6bb059e88e591ae9ce96a1a5b47ac8f97998b7df1fd5e4e6c7c0"
+          },
+          {
+            "code": "word-import.missing-answer",
+            "severity": "warning",
+            "questionId": "wi-be0207377d0b6bb059e88e591ae9ce96a1a5b47ac8f97998b7df1fd5e4e6c7c0"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-b72f22f8095695361a6bd5fc723f75787331130ff7ff217c247279f9a906b6d2"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-9347c3007fa82f566132204c8bd2787a92213dd7c9303106d044516c56a5b117"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-b57f9fb5e14fd008a2f864653ae8acaa6462695e9cca9907ec695888e413c983"
+          },
+          {
+            "code": "word-import.missing-answer",
+            "severity": "warning",
+            "questionId": "wi-b57f9fb5e14fd008a2f864653ae8acaa6462695e9cca9907ec695888e413c983"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-7e220775437297f48a77abee6a0d23e82f31ab01c2bbf3e0a971fa2f2d53059b"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-1673487c59c83d4ce88beaea663e9e2e5647fb27f61578b9e130e3878ade365e"
+          },
+          {
+            "code": "word-import.check-question-boundary",
+            "severity": "warning",
+            "blockId": "heading"
+          }
+        ],
+        "sources": {
+          "wi-be0207377d0b6bb059e88e591ae9ce96a1a5b47ac8f97998b7df1fd5e4e6c7c0": {
+            "blockIds": ["old"],
+            "sourceLabel": "1",
+            "sourceRanges": [
+              {
+                "blockId": "old",
+                "start": 2,
+                "end": 10
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old",
+                    "start": 2,
+                    "end": 10
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          },
+          "wi-b72f22f8095695361a6bd5fc723f75787331130ff7ff217c247279f9a906b6d2": {
+            "blockIds": ["s1"],
+            "sourceLabel": "1",
+            "sourceRanges": [
+              {
+                "blockId": "s1",
+                "start": 3,
+                "end": 12
+              },
+              {
+                "blockId": "old-key",
+                "start": 4,
+                "end": 5
+              },
+              {
+                "blockId": "s1",
+                "start": 7,
+                "end": 11
+              },
+              {
+                "blockId": "old-key",
+                "start": 4,
+                "end": 5
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "s1",
+                    "start": 3,
+                    "end": 12
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 4,
+                    "end": 5
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-744696dd285a5e6bdb2e61b8ea8dc5a2ceb4a3e9bf2032c6e3dac956c572ffaf",
+                  "part": "marker"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "s1",
+                    "start": 7,
+                    "end": 11
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-744696dd285a5e6bdb2e61b8ea8dc5a2ceb4a3e9bf2032c6e3dac956c572ffaf",
+                  "part": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 4,
+                    "end": 5
+                  }
+                ]
+              }
+            ]
+          },
+          "wi-9347c3007fa82f566132204c8bd2787a92213dd7c9303106d044516c56a5b117": {
+            "blockIds": ["s2"],
+            "sourceLabel": "2",
+            "sourceRanges": [
+              {
+                "blockId": "s2",
+                "start": 3,
+                "end": 12
+              },
+              {
+                "blockId": "old-key",
+                "start": 10,
+                "end": 11
+              },
+              {
+                "blockId": "s2",
+                "start": 7,
+                "end": 11
+              },
+              {
+                "blockId": "old-key",
+                "start": 10,
+                "end": 11
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "s2",
+                    "start": 3,
+                    "end": 12
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 10,
+                    "end": 11
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-da2f9e05bd0645cc3f1861e49ae510a8354ddb9c7a172932f468df861f9fe346",
+                  "part": "marker"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "s2",
+                    "start": 7,
+                    "end": 11
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-da2f9e05bd0645cc3f1861e49ae510a8354ddb9c7a172932f468df861f9fe346",
+                  "part": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 10,
+                    "end": 11
+                  }
+                ]
+              }
+            ]
+          },
+          "wi-b57f9fb5e14fd008a2f864653ae8acaa6462695e9cca9907ec695888e413c983": {
+            "blockIds": ["heading", "diagram"],
+            "sourceRanges": [
+              {
+                "blockId": "heading",
+                "start": 0,
+                "end": 10
+              },
+              {
+                "blockId": "diagram",
+                "start": 0,
+                "end": 1
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "heading",
+                    "start": 0,
+                    "end": 10
+                  },
+                  {
+                    "blockId": "diagram",
+                    "start": 0,
+                    "end": 1
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          },
+          "wi-7e220775437297f48a77abee6a0d23e82f31ab01c2bbf3e0a971fa2f2d53059b": {
+            "blockIds": ["q2"],
+            "sourceLabel": "2",
+            "sourceRanges": [
+              {
+                "blockId": "q2",
+                "start": 2,
+                "end": 9
+              },
+              {
+                "blockId": "key",
+                "start": 6,
+                "end": 8
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "q2",
+                    "start": 2,
+                    "end": 9
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "key",
+                    "start": 6,
+                    "end": 8
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          },
+          "wi-1673487c59c83d4ce88beaea663e9e2e5647fb27f61578b9e130e3878ade365e": {
+            "blockIds": ["q3"],
+            "sourceLabel": "3",
+            "sourceRanges": [
+              {
+                "blockId": "q3",
+                "start": 2,
+                "end": 11
+              },
+              {
+                "blockId": "key",
+                "start": 14,
+                "end": 16
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "q3",
+                    "start": 2,
+                    "end": 11
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "key",
+                    "start": 14,
+                    "end": 16
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          }
+        },
+        "diagnosticVersion": "word-import-diagnostics/v1",
+        "fieldDiagnostics": [
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-be0207377d0b6bb059e88e591ae9ce96a1a5b47ac8f97998b7df1fd5e4e6c7c0%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-be0207377d0b6bb059e88e591ae9ce96a1a5b47ac8f97998b7df1fd5e4e6c7c0",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-b72f22f8095695361a6bd5fc723f75787331130ff7ff217c247279f9a906b6d2%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-b72f22f8095695361a6bd5fc723f75787331130ff7ff217c247279f9a906b6d2",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-9347c3007fa82f566132204c8bd2787a92213dd7c9303106d044516c56a5b117%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-9347c3007fa82f566132204c8bd2787a92213dd7c9303106d044516c56a5b117",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-b57f9fb5e14fd008a2f864653ae8acaa6462695e9cca9907ec695888e413c983%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-b57f9fb5e14fd008a2f864653ae8acaa6462695e9cca9907ec695888e413c983",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-7e220775437297f48a77abee6a0d23e82f31ab01c2bbf3e0a971fa2f2d53059b%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-7e220775437297f48a77abee6a0d23e82f31ab01c2bbf3e0a971fa2f2d53059b",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-1673487c59c83d4ce88beaea663e9e2e5647fb27f61578b9e130e3878ade365e%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-1673487c59c83d4ce88beaea663e9e2e5647fb27f61578b9e130e3878ade365e",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22legacy%22%2C0%2C%22word-import.check-question-boundary%22%2Cnull%2C%22heading%22%5D",
+            "code": "word-import.check-question-boundary",
+            "severity": "warning",
+            "phase": "parse",
+            "target": {
+              "kind": "unresolved",
+              "itemId": "wid:%5B%22legacy%22%2C0%2C%22word-import.check-question-boundary%22%2Cnull%2C%22heading%22%5D"
+            },
+            "blocksApply": false,
+            "recovery": "none",
+            "sourceRanges": [
+              {
+                "blockId": "heading"
+              }
+            ],
+            "params": {
+              "sourceUnavailable": false
+            }
+          }
+        ],
+        "unresolvedItems": [
+          {
+            "id": "wid:%5B%22legacy%22%2C0%2C%22word-import.check-question-boundary%22%2Cnull%2C%22heading%22%5D",
+            "kind": "unassigned",
+            "code": "word-import.check-question-boundary",
+            "sourceRanges": [
+              {
+                "blockId": "heading"
+              }
+            ]
+          }
+        ],
+        "sourceExcerpts": [
+          {
+            "range": {
+              "blockId": "heading",
+              "start": 0,
+              "end": 10
+            },
+            "text": "根据下图，完成练习。",
+            "excerptTruncated": false
+          }
+        ],
+        "diagnosticsTruncated": false
+      }
+    },
+    {
+      "id": "answered-only-diagram-command-deferred-inlineMath",
+      "sources": [
+        {
+          "id": "old",
+          "content": [
+            {
+              "type": "text",
+              "text": "1．请补充下面内容。"
+            }
+          ]
+        },
+        {
+          "id": "s1",
+          "content": [
+            {
+              "type": "text",
+              "text": "(1)第一处是____。"
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "content": [
+            {
+              "type": "text",
+              "text": "(2)第二处是____。"
+            }
+          ]
+        },
+        {
+          "id": "old-key",
+          "content": [
+            {
+              "type": "text",
+              "text": "【答案】"
+            },
+            {
+              "type": "inlineMath",
+              "attrs": {
+                "latex": "x+1"
+              }
+            },
+            {
+              "type": "text",
+              "text": "     "
+            },
+            {
+              "type": "inlineMath",
+              "attrs": {
+                "latex": "y+2"
+              }
+            }
+          ]
+        },
+        {
+          "id": "heading",
+          "content": [
+            {
+              "type": "text",
+              "text": "根据下图，完成练习。"
+            }
+          ]
+        },
+        {
+          "id": "diagram",
+          "content": [
+            {
+              "type": "image",
+              "attrs": {
+                "sourceMediaId": "diagram"
+              }
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "content": [
+            {
+              "type": "text",
+              "text": "2．小鸟住在哪里？"
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "content": [
+            {
+              "type": "text",
+              "text": "3．小鸟什么时候唱歌？"
+            }
+          ]
+        },
+        {
+          "id": "key",
+          "content": [
+            {
+              "type": "text",
+              "text": "【答案】2．山里    3．清晨"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "questionType": "short_answer",
+          "sourceLabel": "1",
+          "question": [
+            {
+              "blockId": "old",
+              "start": 2,
+              "end": 10
+            }
+          ],
+          "answer": [],
+          "analysis": [],
+          "knowledgePoints": [],
+          "children": [
+            {
+              "questionType": "fill_in_the_blank",
+              "sourceLabel": "1",
+              "question": [
+                {
+                  "blockId": "s1",
+                  "start": 3,
+                  "end": 12
+                }
+              ],
+              "answer": [
+                {
+                  "blockId": "old-key",
+                  "start": 4,
+                  "end": 5
+                }
+              ],
+              "analysis": [],
+              "knowledgePoints": [],
+              "children": [],
+              "blanks": [
+                {
+                  "marker": {
+                    "blockId": "s1",
+                    "start": 7,
+                    "end": 11
+                  },
+                  "answer": [
+                    {
+                      "blockId": "old-key",
+                      "start": 4,
+                      "end": 5
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "questionType": "fill_in_the_blank",
+              "sourceLabel": "2",
+              "question": [
+                {
+                  "blockId": "s2",
+                  "start": 3,
+                  "end": 12
+                }
+              ],
+              "answer": [
+                {
+                  "blockId": "old-key",
+                  "start": 10,
+                  "end": 11
+                }
+              ],
+              "analysis": [],
+              "knowledgePoints": [],
+              "children": [],
+              "blanks": [
+                {
+                  "marker": {
+                    "blockId": "s2",
+                    "start": 7,
+                    "end": 11
+                  },
+                  "answer": [
+                    {
+                      "blockId": "old-key",
+                      "start": 10,
+                      "end": 11
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "questionType": "short_answer",
+          "question": [
+            {
+              "blockId": "heading",
+              "start": 0,
+              "end": 10
+            },
+            {
+              "blockId": "diagram",
+              "start": 0,
+              "end": 1
+            }
+          ],
+          "answer": [],
+          "analysis": [],
+          "knowledgePoints": [],
+          "children": [
+            {
+              "questionType": "short_answer",
+              "sourceLabel": "2",
+              "question": [
+                {
+                  "blockId": "q2",
+                  "start": 2,
+                  "end": 9
+                }
+              ],
+              "answer": [
+                {
+                  "blockId": "key",
+                  "start": 6,
+                  "end": 8
+                }
+              ],
+              "analysis": [],
+              "knowledgePoints": [],
+              "children": []
+            },
+            {
+              "questionType": "short_answer",
+              "sourceLabel": "3",
+              "question": [
+                {
+                  "blockId": "q3",
+                  "start": 2,
+                  "end": 11
+                }
+              ],
+              "answer": [
+                {
+                  "blockId": "key",
+                  "start": 14,
+                  "end": 16
+                }
+              ],
+              "analysis": [],
+              "knowledgePoints": [],
+              "children": []
+            }
+          ]
+        }
+      ],
+      "preview": {
+        "parserVersion": "word-import/v1",
+        "questions": [
+          {
+            "id": "wi-6588646437365577fd1879a18ee677e9f440465b2ad128359b76151886f7a67b",
+            "question_index": 1,
+            "question_type": "short_answer",
+            "question": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "请补充下面内容。"
+                    }
+                  ]
+                }
+              ]
+            },
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "analysis": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "cognitive_schema": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "has_answer": false,
+            "sub_problems": [
+              {
+                "id": "wi-bdc9e3b06d59b669a74b5539ce67580c275cdfd524b33db1ba37a79fa5cd1673",
+                "question_index": 1,
+                "question_type": "fill_in_the_blank",
+                "question": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "第一处是"
+                        },
+                        {
+                          "type": "quizBlank",
+                          "attrs": {
+                            "blankId": "wi-41f35e5c4cd6eef21a62bb822e391f16cd063c0c6fdf189f2b3fd646b75ab724",
+                            "blankIndex": 1
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "。"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "answer": [],
+                "analysis": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "cognitive_schema": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "has_answer": true,
+                "sub_problems": [],
+                "blanks": [
+                  {
+                    "id": "wi-41f35e5c4cd6eef21a62bb822e391f16cd063c0c6fdf189f2b3fd646b75ab724",
+                    "blank_index": 1,
+                    "answer": {
+                      "type": "doc",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "inlineMath",
+                              "attrs": {
+                                "latex": "x+1"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "wi-429e3c39372e2f2f7d885260ac9b884fb4d6788dba373f763e7626bd4c68da3c",
+                "question_index": 2,
+                "question_type": "fill_in_the_blank",
+                "question": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "第二处是"
+                        },
+                        {
+                          "type": "quizBlank",
+                          "attrs": {
+                            "blankId": "wi-86171195d1e49c6054c57652f32f8f831937bfa608103db26c486344c679a2db",
+                            "blankIndex": 1
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "。"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "answer": [],
+                "analysis": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "cognitive_schema": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "has_answer": true,
+                "sub_problems": [],
+                "blanks": [
+                  {
+                    "id": "wi-86171195d1e49c6054c57652f32f8f831937bfa608103db26c486344c679a2db",
+                    "blank_index": 1,
+                    "answer": {
+                      "type": "doc",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "inlineMath",
+                              "attrs": {
+                                "latex": "y+2"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "wi-d6ec5c8f1463aa27bb1228df638658322d7f0a227516493921bce11f07200ae6",
+            "question_index": 2,
+            "question_type": "short_answer",
+            "question": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "根据下图，完成练习。"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "image",
+                      "attrs": {
+                        "sourceMediaId": "diagram"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "analysis": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "cognitive_schema": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "has_answer": false,
+            "sub_problems": [
+              {
+                "id": "wi-7b9ed451b5d989f3983c81c5d1dcefee70edeb4879db193a0fd8156c4a34ccf3",
+                "question_index": 1,
+                "question_type": "short_answer",
+                "question": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "小鸟住在哪里？"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "answer": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "山里"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "analysis": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "cognitive_schema": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "has_answer": true,
+                "sub_problems": []
+              },
+              {
+                "id": "wi-29ba2028d651093df3fc178c4273a56e124f5785b19b50626ab20c96d9ddb99c",
+                "question_index": 2,
+                "question_type": "short_answer",
+                "question": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "小鸟什么时候唱歌？"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "answer": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "清晨"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "analysis": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "cognitive_schema": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "has_answer": true,
+                "sub_problems": []
+              }
+            ]
+          }
+        ],
+        "diagnostics": [
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-6588646437365577fd1879a18ee677e9f440465b2ad128359b76151886f7a67b"
+          },
+          {
+            "code": "word-import.missing-answer",
+            "severity": "warning",
+            "questionId": "wi-6588646437365577fd1879a18ee677e9f440465b2ad128359b76151886f7a67b"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-bdc9e3b06d59b669a74b5539ce67580c275cdfd524b33db1ba37a79fa5cd1673"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-429e3c39372e2f2f7d885260ac9b884fb4d6788dba373f763e7626bd4c68da3c"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-d6ec5c8f1463aa27bb1228df638658322d7f0a227516493921bce11f07200ae6"
+          },
+          {
+            "code": "word-import.missing-answer",
+            "severity": "warning",
+            "questionId": "wi-d6ec5c8f1463aa27bb1228df638658322d7f0a227516493921bce11f07200ae6"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-7b9ed451b5d989f3983c81c5d1dcefee70edeb4879db193a0fd8156c4a34ccf3"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-29ba2028d651093df3fc178c4273a56e124f5785b19b50626ab20c96d9ddb99c"
+          },
+          {
+            "code": "word-import.check-question-boundary",
+            "severity": "warning",
+            "blockId": "heading"
+          }
+        ],
+        "sources": {
+          "wi-6588646437365577fd1879a18ee677e9f440465b2ad128359b76151886f7a67b": {
+            "blockIds": ["old"],
+            "sourceLabel": "1",
+            "sourceRanges": [
+              {
+                "blockId": "old",
+                "start": 2,
+                "end": 10
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old",
+                    "start": 2,
+                    "end": 10
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          },
+          "wi-bdc9e3b06d59b669a74b5539ce67580c275cdfd524b33db1ba37a79fa5cd1673": {
+            "blockIds": ["s1"],
+            "sourceLabel": "1",
+            "sourceRanges": [
+              {
+                "blockId": "s1",
+                "start": 3,
+                "end": 12
+              },
+              {
+                "blockId": "old-key",
+                "start": 4,
+                "end": 5
+              },
+              {
+                "blockId": "s1",
+                "start": 7,
+                "end": 11
+              },
+              {
+                "blockId": "old-key",
+                "start": 4,
+                "end": 5
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "s1",
+                    "start": 3,
+                    "end": 12
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 4,
+                    "end": 5
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-41f35e5c4cd6eef21a62bb822e391f16cd063c0c6fdf189f2b3fd646b75ab724",
+                  "part": "marker"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "s1",
+                    "start": 7,
+                    "end": 11
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-41f35e5c4cd6eef21a62bb822e391f16cd063c0c6fdf189f2b3fd646b75ab724",
+                  "part": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 4,
+                    "end": 5
+                  }
+                ]
+              }
+            ]
+          },
+          "wi-429e3c39372e2f2f7d885260ac9b884fb4d6788dba373f763e7626bd4c68da3c": {
+            "blockIds": ["s2"],
+            "sourceLabel": "2",
+            "sourceRanges": [
+              {
+                "blockId": "s2",
+                "start": 3,
+                "end": 12
+              },
+              {
+                "blockId": "old-key",
+                "start": 10,
+                "end": 11
+              },
+              {
+                "blockId": "s2",
+                "start": 7,
+                "end": 11
+              },
+              {
+                "blockId": "old-key",
+                "start": 10,
+                "end": 11
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "s2",
+                    "start": 3,
+                    "end": 12
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 10,
+                    "end": 11
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-86171195d1e49c6054c57652f32f8f831937bfa608103db26c486344c679a2db",
+                  "part": "marker"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "s2",
+                    "start": 7,
+                    "end": 11
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-86171195d1e49c6054c57652f32f8f831937bfa608103db26c486344c679a2db",
+                  "part": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 10,
+                    "end": 11
+                  }
+                ]
+              }
+            ]
+          },
+          "wi-d6ec5c8f1463aa27bb1228df638658322d7f0a227516493921bce11f07200ae6": {
+            "blockIds": ["heading", "diagram"],
+            "sourceRanges": [
+              {
+                "blockId": "heading",
+                "start": 0,
+                "end": 10
+              },
+              {
+                "blockId": "diagram",
+                "start": 0,
+                "end": 1
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "heading",
+                    "start": 0,
+                    "end": 10
+                  },
+                  {
+                    "blockId": "diagram",
+                    "start": 0,
+                    "end": 1
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          },
+          "wi-7b9ed451b5d989f3983c81c5d1dcefee70edeb4879db193a0fd8156c4a34ccf3": {
+            "blockIds": ["q2"],
+            "sourceLabel": "2",
+            "sourceRanges": [
+              {
+                "blockId": "q2",
+                "start": 2,
+                "end": 9
+              },
+              {
+                "blockId": "key",
+                "start": 6,
+                "end": 8
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "q2",
+                    "start": 2,
+                    "end": 9
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "key",
+                    "start": 6,
+                    "end": 8
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          },
+          "wi-29ba2028d651093df3fc178c4273a56e124f5785b19b50626ab20c96d9ddb99c": {
+            "blockIds": ["q3"],
+            "sourceLabel": "3",
+            "sourceRanges": [
+              {
+                "blockId": "q3",
+                "start": 2,
+                "end": 11
+              },
+              {
+                "blockId": "key",
+                "start": 14,
+                "end": 16
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "q3",
+                    "start": 2,
+                    "end": 11
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "key",
+                    "start": 14,
+                    "end": 16
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          }
+        },
+        "diagnosticVersion": "word-import-diagnostics/v1",
+        "fieldDiagnostics": [
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-6588646437365577fd1879a18ee677e9f440465b2ad128359b76151886f7a67b%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-6588646437365577fd1879a18ee677e9f440465b2ad128359b76151886f7a67b",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-bdc9e3b06d59b669a74b5539ce67580c275cdfd524b33db1ba37a79fa5cd1673%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-bdc9e3b06d59b669a74b5539ce67580c275cdfd524b33db1ba37a79fa5cd1673",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-429e3c39372e2f2f7d885260ac9b884fb4d6788dba373f763e7626bd4c68da3c%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-429e3c39372e2f2f7d885260ac9b884fb4d6788dba373f763e7626bd4c68da3c",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-d6ec5c8f1463aa27bb1228df638658322d7f0a227516493921bce11f07200ae6%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-d6ec5c8f1463aa27bb1228df638658322d7f0a227516493921bce11f07200ae6",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-7b9ed451b5d989f3983c81c5d1dcefee70edeb4879db193a0fd8156c4a34ccf3%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-7b9ed451b5d989f3983c81c5d1dcefee70edeb4879db193a0fd8156c4a34ccf3",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-29ba2028d651093df3fc178c4273a56e124f5785b19b50626ab20c96d9ddb99c%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-29ba2028d651093df3fc178c4273a56e124f5785b19b50626ab20c96d9ddb99c",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22legacy%22%2C0%2C%22word-import.check-question-boundary%22%2Cnull%2C%22heading%22%5D",
+            "code": "word-import.check-question-boundary",
+            "severity": "warning",
+            "phase": "parse",
+            "target": {
+              "kind": "unresolved",
+              "itemId": "wid:%5B%22legacy%22%2C0%2C%22word-import.check-question-boundary%22%2Cnull%2C%22heading%22%5D"
+            },
+            "blocksApply": false,
+            "recovery": "none",
+            "sourceRanges": [
+              {
+                "blockId": "heading"
+              }
+            ],
+            "params": {
+              "sourceUnavailable": false
+            }
+          }
+        ],
+        "unresolvedItems": [
+          {
+            "id": "wid:%5B%22legacy%22%2C0%2C%22word-import.check-question-boundary%22%2Cnull%2C%22heading%22%5D",
+            "kind": "unassigned",
+            "code": "word-import.check-question-boundary",
+            "sourceRanges": [
+              {
+                "blockId": "heading"
+              }
+            ]
+          }
+        ],
+        "sourceExcerpts": [
+          {
+            "range": {
+              "blockId": "heading",
+              "start": 0,
+              "end": 10
+            },
+            "text": "根据下图，完成练习。",
+            "excerptTruncated": false
+          }
+        ],
+        "diagnosticsTruncated": false
+      }
+    },
+    {
+      "id": "answered-only-diagram-command-deferred-descendant",
+      "sources": [
+        {
+          "id": "old",
+          "content": [
+            {
+              "type": "text",
+              "text": "1．完成下面的填空。"
+            }
+          ]
+        },
+        {
+          "id": "s1",
+          "content": [
+            {
+              "type": "text",
+              "text": "(1)根据诗句内容填空。"
+            }
+          ]
+        },
+        {
+          "id": "c1",
+          "content": [
+            {
+              "type": "text",
+              "text": "①作者是____。"
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "content": [
+            {
+              "type": "text",
+              "text": "②采用了____。"
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "content": [
+            {
+              "type": "text",
+              "text": "(2)诗人的心情是____。"
+            }
+          ]
+        },
+        {
+          "id": "old-key",
+          "content": [
+            {
+              "type": "text",
+              "text": "【答案】(1)白居易     比喻"
+            }
+          ]
+        },
+        {
+          "id": "old-key2",
+          "content": [
+            {
+              "type": "text",
+              "text": "(2)快乐"
+            }
+          ]
+        },
+        {
+          "id": "heading",
+          "content": [
+            {
+              "type": "text",
+              "text": "根据下图，完成练习。"
+            }
+          ]
+        },
+        {
+          "id": "diagram",
+          "content": [
+            {
+              "type": "image",
+              "attrs": {
+                "sourceMediaId": "diagram"
+              }
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "content": [
+            {
+              "type": "text",
+              "text": "2．小鸟住在哪里？"
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "content": [
+            {
+              "type": "text",
+              "text": "3．小鸟什么时候唱歌？"
+            }
+          ]
+        },
+        {
+          "id": "key",
+          "content": [
+            {
+              "type": "text",
+              "text": "【答案】2．山里    3．清晨"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "questionType": "short_answer",
+          "sourceLabel": "1",
+          "question": [
+            {
+              "blockId": "old",
+              "start": 2,
+              "end": 10
+            }
+          ],
+          "answer": [],
+          "analysis": [],
+          "knowledgePoints": [],
+          "children": [
+            {
+              "questionType": "short_answer",
+              "sourceLabel": "1",
+              "question": [
+                {
+                  "blockId": "s1",
+                  "start": 3,
+                  "end": 12
+                }
+              ],
+              "answer": [],
+              "analysis": [],
+              "knowledgePoints": [],
+              "children": [
+                {
+                  "questionType": "fill_in_the_blank",
+                  "sourceLabel": "①",
+                  "question": [
+                    {
+                      "blockId": "c1",
+                      "start": 1,
+                      "end": 9
+                    }
+                  ],
+                  "answer": [
+                    {
+                      "blockId": "old-key",
+                      "start": 7,
+                      "end": 10
+                    }
+                  ],
+                  "analysis": [],
+                  "knowledgePoints": [],
+                  "children": [],
+                  "blanks": [
+                    {
+                      "marker": {
+                        "blockId": "c1",
+                        "start": 4,
+                        "end": 8
+                      },
+                      "answer": [
+                        {
+                          "blockId": "old-key",
+                          "start": 7,
+                          "end": 10
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "questionType": "fill_in_the_blank",
+                  "sourceLabel": "②",
+                  "question": [
+                    {
+                      "blockId": "c2",
+                      "start": 1,
+                      "end": 9
+                    }
+                  ],
+                  "answer": [
+                    {
+                      "blockId": "old-key",
+                      "start": 15,
+                      "end": 17
+                    }
+                  ],
+                  "analysis": [],
+                  "knowledgePoints": [],
+                  "children": [],
+                  "blanks": [
+                    {
+                      "marker": {
+                        "blockId": "c2",
+                        "start": 4,
+                        "end": 8
+                      },
+                      "answer": [
+                        {
+                          "blockId": "old-key",
+                          "start": 15,
+                          "end": 17
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "questionType": "fill_in_the_blank",
+              "sourceLabel": "2",
+              "question": [
+                {
+                  "blockId": "s2",
+                  "start": 3,
+                  "end": 14
+                }
+              ],
+              "answer": [
+                {
+                  "blockId": "old-key2",
+                  "start": 3,
+                  "end": 5
+                }
+              ],
+              "analysis": [],
+              "knowledgePoints": [],
+              "children": [],
+              "blanks": [
+                {
+                  "marker": {
+                    "blockId": "s2",
+                    "start": 9,
+                    "end": 13
+                  },
+                  "answer": [
+                    {
+                      "blockId": "old-key2",
+                      "start": 3,
+                      "end": 5
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "questionType": "short_answer",
+          "question": [
+            {
+              "blockId": "heading",
+              "start": 0,
+              "end": 10
+            },
+            {
+              "blockId": "diagram",
+              "start": 0,
+              "end": 1
+            }
+          ],
+          "answer": [],
+          "analysis": [],
+          "knowledgePoints": [],
+          "children": [
+            {
+              "questionType": "short_answer",
+              "sourceLabel": "2",
+              "question": [
+                {
+                  "blockId": "q2",
+                  "start": 2,
+                  "end": 9
+                }
+              ],
+              "answer": [
+                {
+                  "blockId": "key",
+                  "start": 6,
+                  "end": 8
+                }
+              ],
+              "analysis": [],
+              "knowledgePoints": [],
+              "children": []
+            },
+            {
+              "questionType": "short_answer",
+              "sourceLabel": "3",
+              "question": [
+                {
+                  "blockId": "q3",
+                  "start": 2,
+                  "end": 11
+                }
+              ],
+              "answer": [
+                {
+                  "blockId": "key",
+                  "start": 14,
+                  "end": 16
+                }
+              ],
+              "analysis": [],
+              "knowledgePoints": [],
+              "children": []
+            }
+          ]
+        }
+      ],
+      "preview": {
+        "parserVersion": "word-import/v1",
+        "questions": [
+          {
+            "id": "wi-902adf7b3b57424ed0c44b1383f46b625d75ebf2b5cf19deb9b2ab825ef0f095",
+            "question_index": 1,
+            "question_type": "short_answer",
+            "question": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "完成下面的填空。"
+                    }
+                  ]
+                }
+              ]
+            },
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "analysis": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "cognitive_schema": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "has_answer": false,
+            "sub_problems": [
+              {
+                "id": "wi-8e840cea382a074296f56d25343620f1f7e2124765a2233bafaf12c1e3e046f6",
+                "question_index": 1,
+                "question_type": "short_answer",
+                "question": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "根据诗句内容填空。"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "answer": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "analysis": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "cognitive_schema": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "has_answer": false,
+                "sub_problems": [
+                  {
+                    "id": "wi-123f525933d34ef9c3d3e670eac26123d0dc58f64978251a740def32f7fd6961",
+                    "question_index": 1,
+                    "question_type": "fill_in_the_blank",
+                    "question": {
+                      "type": "doc",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "作者是"
+                            },
+                            {
+                              "type": "quizBlank",
+                              "attrs": {
+                                "blankId": "wi-ddb5be64bfd4a3b37324fb547a6c6d046e67121d60572b812ab3d7c888e3af12",
+                                "blankIndex": 1
+                              }
+                            },
+                            {
+                              "type": "text",
+                              "text": "。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "answer": [],
+                    "analysis": {
+                      "type": "doc",
+                      "content": [
+                        {
+                          "type": "paragraph"
+                        }
+                      ]
+                    },
+                    "cognitive_schema": {
+                      "type": "doc",
+                      "content": [
+                        {
+                          "type": "paragraph"
+                        }
+                      ]
+                    },
+                    "has_answer": true,
+                    "sub_problems": [],
+                    "blanks": [
+                      {
+                        "id": "wi-ddb5be64bfd4a3b37324fb547a6c6d046e67121d60572b812ab3d7c888e3af12",
+                        "blank_index": 1,
+                        "answer": {
+                          "type": "doc",
+                          "content": [
+                            {
+                              "type": "paragraph",
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "text": "白居易"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "wi-7cf9b2a1fe15c7254dce4e8be46ebf1e629f92cada7910b1a709018c9c109650",
+                    "question_index": 2,
+                    "question_type": "fill_in_the_blank",
+                    "question": {
+                      "type": "doc",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "采用了"
+                            },
+                            {
+                              "type": "quizBlank",
+                              "attrs": {
+                                "blankId": "wi-fa42a60eff46be4df747d740207b6e741a2397cf635b737de893236b4cbf20d4",
+                                "blankIndex": 1
+                              }
+                            },
+                            {
+                              "type": "text",
+                              "text": "。"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "answer": [],
+                    "analysis": {
+                      "type": "doc",
+                      "content": [
+                        {
+                          "type": "paragraph"
+                        }
+                      ]
+                    },
+                    "cognitive_schema": {
+                      "type": "doc",
+                      "content": [
+                        {
+                          "type": "paragraph"
+                        }
+                      ]
+                    },
+                    "has_answer": true,
+                    "sub_problems": [],
+                    "blanks": [
+                      {
+                        "id": "wi-fa42a60eff46be4df747d740207b6e741a2397cf635b737de893236b4cbf20d4",
+                        "blank_index": 1,
+                        "answer": {
+                          "type": "doc",
+                          "content": [
+                            {
+                              "type": "paragraph",
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "text": "比喻"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "wi-0c98830dca2c18cf151494674dc27bed2774299726ab6c07f2dec2e95f10d420",
+                "question_index": 2,
+                "question_type": "fill_in_the_blank",
+                "question": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "诗人的心情是"
+                        },
+                        {
+                          "type": "quizBlank",
+                          "attrs": {
+                            "blankId": "wi-0e3678951cfba2d58a5661ab995961d2d6be6bec5dffd567397baa5046042cb5",
+                            "blankIndex": 1
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "。"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "answer": [],
+                "analysis": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "cognitive_schema": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "has_answer": true,
+                "sub_problems": [],
+                "blanks": [
+                  {
+                    "id": "wi-0e3678951cfba2d58a5661ab995961d2d6be6bec5dffd567397baa5046042cb5",
+                    "blank_index": 1,
+                    "answer": {
+                      "type": "doc",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "快乐"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "wi-fa1efce663d57388fddde678a358f41f3eb22c6f1bb0e56c8fa5c49fdabfd769",
+            "question_index": 2,
+            "question_type": "short_answer",
+            "question": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "根据下图，完成练习。"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "image",
+                      "attrs": {
+                        "sourceMediaId": "diagram"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "analysis": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "cognitive_schema": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "has_answer": false,
+            "sub_problems": [
+              {
+                "id": "wi-5a26a626fe78ca7895d33efb4461228ff0cf5e30d0da68128c10098443c48328",
+                "question_index": 1,
+                "question_type": "short_answer",
+                "question": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "小鸟住在哪里？"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "answer": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "山里"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "analysis": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "cognitive_schema": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "has_answer": true,
+                "sub_problems": []
+              },
+              {
+                "id": "wi-7109dbc566d046e94545766343cd9807b5eb54d85243d663a82b04e519fa5387",
+                "question_index": 2,
+                "question_type": "short_answer",
+                "question": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "小鸟什么时候唱歌？"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "answer": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "清晨"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "analysis": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "cognitive_schema": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph"
+                    }
+                  ]
+                },
+                "has_answer": true,
+                "sub_problems": []
+              }
+            ]
+          }
+        ],
+        "diagnostics": [
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-902adf7b3b57424ed0c44b1383f46b625d75ebf2b5cf19deb9b2ab825ef0f095"
+          },
+          {
+            "code": "word-import.missing-answer",
+            "severity": "warning",
+            "questionId": "wi-902adf7b3b57424ed0c44b1383f46b625d75ebf2b5cf19deb9b2ab825ef0f095"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-8e840cea382a074296f56d25343620f1f7e2124765a2233bafaf12c1e3e046f6"
+          },
+          {
+            "code": "word-import.missing-answer",
+            "severity": "warning",
+            "questionId": "wi-8e840cea382a074296f56d25343620f1f7e2124765a2233bafaf12c1e3e046f6"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-123f525933d34ef9c3d3e670eac26123d0dc58f64978251a740def32f7fd6961"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-7cf9b2a1fe15c7254dce4e8be46ebf1e629f92cada7910b1a709018c9c109650"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-0c98830dca2c18cf151494674dc27bed2774299726ab6c07f2dec2e95f10d420"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-fa1efce663d57388fddde678a358f41f3eb22c6f1bb0e56c8fa5c49fdabfd769"
+          },
+          {
+            "code": "word-import.missing-answer",
+            "severity": "warning",
+            "questionId": "wi-fa1efce663d57388fddde678a358f41f3eb22c6f1bb0e56c8fa5c49fdabfd769"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-5a26a626fe78ca7895d33efb4461228ff0cf5e30d0da68128c10098443c48328"
+          },
+          {
+            "code": "word-import.missing-points",
+            "severity": "warning",
+            "questionId": "wi-7109dbc566d046e94545766343cd9807b5eb54d85243d663a82b04e519fa5387"
+          },
+          {
+            "code": "word-import.check-question-boundary",
+            "severity": "warning",
+            "blockId": "heading"
+          }
+        ],
+        "sources": {
+          "wi-902adf7b3b57424ed0c44b1383f46b625d75ebf2b5cf19deb9b2ab825ef0f095": {
+            "blockIds": ["old"],
+            "sourceLabel": "1",
+            "sourceRanges": [
+              {
+                "blockId": "old",
+                "start": 2,
+                "end": 10
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old",
+                    "start": 2,
+                    "end": 10
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          },
+          "wi-8e840cea382a074296f56d25343620f1f7e2124765a2233bafaf12c1e3e046f6": {
+            "blockIds": ["s1"],
+            "sourceLabel": "1",
+            "sourceRanges": [
+              {
+                "blockId": "s1",
+                "start": 3,
+                "end": 12
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "s1",
+                    "start": 3,
+                    "end": 12
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          },
+          "wi-123f525933d34ef9c3d3e670eac26123d0dc58f64978251a740def32f7fd6961": {
+            "blockIds": ["c1"],
+            "sourceLabel": "①",
+            "sourceRanges": [
+              {
+                "blockId": "c1",
+                "start": 1,
+                "end": 9
+              },
+              {
+                "blockId": "old-key",
+                "start": 7,
+                "end": 10
+              },
+              {
+                "blockId": "c1",
+                "start": 4,
+                "end": 8
+              },
+              {
+                "blockId": "old-key",
+                "start": 7,
+                "end": 10
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "c1",
+                    "start": 1,
+                    "end": 9
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 7,
+                    "end": 10
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-ddb5be64bfd4a3b37324fb547a6c6d046e67121d60572b812ab3d7c888e3af12",
+                  "part": "marker"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "c1",
+                    "start": 4,
+                    "end": 8
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-ddb5be64bfd4a3b37324fb547a6c6d046e67121d60572b812ab3d7c888e3af12",
+                  "part": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 7,
+                    "end": 10
+                  }
+                ]
+              }
+            ]
+          },
+          "wi-7cf9b2a1fe15c7254dce4e8be46ebf1e629f92cada7910b1a709018c9c109650": {
+            "blockIds": ["c2"],
+            "sourceLabel": "②",
+            "sourceRanges": [
+              {
+                "blockId": "c2",
+                "start": 1,
+                "end": 9
+              },
+              {
+                "blockId": "old-key",
+                "start": 15,
+                "end": 17
+              },
+              {
+                "blockId": "c2",
+                "start": 4,
+                "end": 8
+              },
+              {
+                "blockId": "old-key",
+                "start": 15,
+                "end": 17
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "c2",
+                    "start": 1,
+                    "end": 9
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 15,
+                    "end": 17
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-fa42a60eff46be4df747d740207b6e741a2397cf635b737de893236b4cbf20d4",
+                  "part": "marker"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "c2",
+                    "start": 4,
+                    "end": 8
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-fa42a60eff46be4df747d740207b6e741a2397cf635b737de893236b4cbf20d4",
+                  "part": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key",
+                    "start": 15,
+                    "end": 17
+                  }
+                ]
+              }
+            ]
+          },
+          "wi-0c98830dca2c18cf151494674dc27bed2774299726ab6c07f2dec2e95f10d420": {
+            "blockIds": ["s2"],
+            "sourceLabel": "2",
+            "sourceRanges": [
+              {
+                "blockId": "s2",
+                "start": 3,
+                "end": 14
+              },
+              {
+                "blockId": "old-key2",
+                "start": 3,
+                "end": 5
+              },
+              {
+                "blockId": "s2",
+                "start": 9,
+                "end": 13
+              },
+              {
+                "blockId": "old-key2",
+                "start": 3,
+                "end": 5
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "s2",
+                    "start": 3,
+                    "end": 14
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key2",
+                    "start": 3,
+                    "end": 5
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-0e3678951cfba2d58a5661ab995961d2d6be6bec5dffd567397baa5046042cb5",
+                  "part": "marker"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "s2",
+                    "start": 9,
+                    "end": 13
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "blanks",
+                  "blankId": "wi-0e3678951cfba2d58a5661ab995961d2d6be6bec5dffd567397baa5046042cb5",
+                  "part": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "old-key2",
+                    "start": 3,
+                    "end": 5
+                  }
+                ]
+              }
+            ]
+          },
+          "wi-fa1efce663d57388fddde678a358f41f3eb22c6f1bb0e56c8fa5c49fdabfd769": {
+            "blockIds": ["heading", "diagram"],
+            "sourceRanges": [
+              {
+                "blockId": "heading",
+                "start": 0,
+                "end": 10
+              },
+              {
+                "blockId": "diagram",
+                "start": 0,
+                "end": 1
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "heading",
+                    "start": 0,
+                    "end": 10
+                  },
+                  {
+                    "blockId": "diagram",
+                    "start": 0,
+                    "end": 1
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          },
+          "wi-5a26a626fe78ca7895d33efb4461228ff0cf5e30d0da68128c10098443c48328": {
+            "blockIds": ["q2"],
+            "sourceLabel": "2",
+            "sourceRanges": [
+              {
+                "blockId": "q2",
+                "start": 2,
+                "end": 9
+              },
+              {
+                "blockId": "key",
+                "start": 6,
+                "end": 8
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "q2",
+                    "start": 2,
+                    "end": 9
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "key",
+                    "start": 6,
+                    "end": 8
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          },
+          "wi-7109dbc566d046e94545766343cd9807b5eb54d85243d663a82b04e519fa5387": {
+            "blockIds": ["q3"],
+            "sourceLabel": "3",
+            "sourceRanges": [
+              {
+                "blockId": "q3",
+                "start": 2,
+                "end": 11
+              },
+              {
+                "blockId": "key",
+                "start": 14,
+                "end": 16
+              }
+            ],
+            "fields": [
+              {
+                "field": {
+                  "kind": "question"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "q3",
+                    "start": 2,
+                    "end": 11
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "answer"
+                },
+                "sourceRanges": [
+                  {
+                    "blockId": "key",
+                    "start": 14,
+                    "end": 16
+                  }
+                ]
+              },
+              {
+                "field": {
+                  "kind": "analysis"
+                },
+                "sourceRanges": []
+              },
+              {
+                "field": {
+                  "kind": "points"
+                },
+                "sourceRanges": []
+              }
+            ]
+          }
+        },
+        "diagnosticVersion": "word-import-diagnostics/v1",
+        "fieldDiagnostics": [
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-902adf7b3b57424ed0c44b1383f46b625d75ebf2b5cf19deb9b2ab825ef0f095%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-902adf7b3b57424ed0c44b1383f46b625d75ebf2b5cf19deb9b2ab825ef0f095",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-8e840cea382a074296f56d25343620f1f7e2124765a2233bafaf12c1e3e046f6%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-8e840cea382a074296f56d25343620f1f7e2124765a2233bafaf12c1e3e046f6",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-123f525933d34ef9c3d3e670eac26123d0dc58f64978251a740def32f7fd6961%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-123f525933d34ef9c3d3e670eac26123d0dc58f64978251a740def32f7fd6961",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-7cf9b2a1fe15c7254dce4e8be46ebf1e629f92cada7910b1a709018c9c109650%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-7cf9b2a1fe15c7254dce4e8be46ebf1e629f92cada7910b1a709018c9c109650",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-0c98830dca2c18cf151494674dc27bed2774299726ab6c07f2dec2e95f10d420%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-0c98830dca2c18cf151494674dc27bed2774299726ab6c07f2dec2e95f10d420",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-fa1efce663d57388fddde678a358f41f3eb22c6f1bb0e56c8fa5c49fdabfd769%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-fa1efce663d57388fddde678a358f41f3eb22c6f1bb0e56c8fa5c49fdabfd769",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-5a26a626fe78ca7895d33efb4461228ff0cf5e30d0da68128c10098443c48328%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-5a26a626fe78ca7895d33efb4461228ff0cf5e30d0da68128c10098443c48328",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22word-import.missing-points%22%2C%7B%22field%22%3A%7B%22kind%22%3A%22points%22%7D%2C%22kind%22%3A%22field%22%2C%22questionId%22%3A%22wi-7109dbc566d046e94545766343cd9807b5eb54d85243d663a82b04e519fa5387%22%7D%2C%5B%5D%5D",
+            "code": "word-import.missing-points",
+            "severity": "error",
+            "phase": "validate",
+            "target": {
+              "kind": "field",
+              "questionId": "wi-7109dbc566d046e94545766343cd9807b5eb54d85243d663a82b04e519fa5387",
+              "field": {
+                "kind": "points"
+              }
+            },
+            "blocksApply": true,
+            "recovery": "none",
+            "sourceRanges": [],
+            "params": {}
+          },
+          {
+            "id": "wid:%5B%22legacy%22%2C0%2C%22word-import.check-question-boundary%22%2Cnull%2C%22heading%22%5D",
+            "code": "word-import.check-question-boundary",
+            "severity": "warning",
+            "phase": "parse",
+            "target": {
+              "kind": "unresolved",
+              "itemId": "wid:%5B%22legacy%22%2C0%2C%22word-import.check-question-boundary%22%2Cnull%2C%22heading%22%5D"
+            },
+            "blocksApply": false,
+            "recovery": "none",
+            "sourceRanges": [
+              {
+                "blockId": "heading"
+              }
+            ],
+            "params": {
+              "sourceUnavailable": false
+            }
+          }
+        ],
+        "unresolvedItems": [
+          {
+            "id": "wid:%5B%22legacy%22%2C0%2C%22word-import.check-question-boundary%22%2Cnull%2C%22heading%22%5D",
+            "kind": "unassigned",
+            "code": "word-import.check-question-boundary",
+            "sourceRanges": [
+              {
+                "blockId": "heading"
+              }
+            ]
+          }
+        ],
+        "sourceExcerpts": [
+          {
+            "range": {
+              "blockId": "heading",
+              "start": 0,
+              "end": 10
+            },
+            "text": "根据下图，完成练习。",
+            "excerptTruncated": false
+          }
+        ],
+        "diagnosticsTruncated": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,3244 @@
+{
+  "schemaVersion": "v1",
+  "references": [
+    {
+      "id": "source.pastel-language-reference-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.pastel-language-reference-v1"],
+      "source": {
+        "summary": "粉彩（布局与视觉语言参考）; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.history-general-reference-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.history-general-reference-v1"],
+      "source": {
+        "summary": "历史通用（结构与色彩关系参考）; source=source.history-general-reference-v1; sha256=c1cc37ef175ccf22b2a2b981903166414951fa425c6b73e6e0fb61f6122bd897",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.math-cartoon-reference-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.math-cartoon-reference-v1"],
+      "source": {
+        "summary": "数学卡通 PPT（教学结构参考）; source=source.math-cartoon-reference-v1; sha256=de4ddf6ccb6adba150cbfd00a1fa32d204974eb99c83f69ad36abc5ef418bc1a",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.cute-general-reference-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.cute-general-reference-v1"],
+      "source": {
+        "summary": "可爱（目录与总结结构参考）; source=source.cute-general-reference-v1; sha256=966066bad565584c1240de2135614747da29d5d05816db33ca094fcff547785d",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.green-illustration-reference-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.green-illustration-reference-v1"],
+      "source": {
+        "summary": "绿色插画（场景色彩与留白参考）; source=source.green-illustration-reference-v1; sha256=4e2c07fbc502dc142c1bcaf74d072f707b36c4353cdbf05c4900f9e95c4bf170",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.green-cute-reference-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.green-cute-reference-v1"],
+      "source": {
+        "summary": "绿色卡通可爱（教学信息结构参考）; source=source.green-cute-reference-v1; sha256=05a0ca04c9cabee1cbf8daeb789b8e4cd0cdf747f4e85b093e64664ad8c78453",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.pink-chinese-reference-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.pink-chinese-reference-v1"],
+      "source": {
+        "summary": "粉色中国风（编辑式图文参考）; source=source.pink-chinese-reference-v1; sha256=589592397f9ccfbcf7317fccb3c3190c123f91cea8f86ad8e3a91f6d2fbe9a82",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.red-chinese-reference-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.red-chinese-reference-v1"],
+      "source": {
+        "summary": "红色中国风（章节与研究结构参考）; source=source.red-chinese-reference-v1; sha256=6e8bcadea5a554347121762ada2f6fcdfb6075988d0b74cae1b46b6ec5b04436",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.blue-chinese-reference-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.blue-chinese-reference-v1"],
+      "source": {
+        "summary": "蓝色中国风（章节徽章与图片组参考）; source=source.blue-chinese-reference-v1; sha256=a3b084a90ca7e7dfa0589cb0679d5f5641bbf11ac99d1ab0504d2413cef6ee5b",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.green-chinese-reference-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.green-chinese-reference-v1"],
+      "source": {
+        "summary": "绿色中国风（教学总结结构参考）; source=source.green-chinese-reference-v1; sha256=8607a57341c645accf4615625025127e61f7f3cb6c6a9cb39b0d795f4d6b70f0",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.poetry-reference-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.poetry-reference-v1"],
+      "source": {
+        "summary": "诗歌通用（时间线与四象限参考）; source=source.poetry-reference-v1; sha256=e9e999720352868297697056248fffc044dd8fa5e170531e5fd7adafd7384dd3",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.ink-chinese-reference-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.ink-chinese-reference-v1"],
+      "source": {
+        "summary": "水墨中国风（清淡教学结构参考）; source=source.ink-chinese-reference-v1; sha256=e83449b6f35632cdb29348ec96d69870cd62b4cf4f60efef5b13b26b14c28af0",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.tao-yuanming-reference-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.tao-yuanming-reference-v1"],
+      "source": {
+        "summary": "陶渊明（古典叙事结构参考）; source=source.tao-yuanming-reference-v1; sha256=b55be988ede88559524173038c3e9fed1d606fbcb5689790862dc0be1465fefd",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.circle-circumference-1ppt-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.circle-circumference-1ppt-v1"],
+      "source": {
+        "summary": "圆的周长（1PPT 教学结构参考）; source=source.circle-circumference-1ppt-v1; sha256=9e4d67f2d1d0f0b6db80dbeedd43b9e27f642bdc55d37aa764139a9172859c02",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.circle-area-1ppt-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.circle-area-1ppt-v1"],
+      "source": {
+        "summary": "圆的面积（二）（1PPT 教学结构参考）; source=source.circle-area-1ppt-v1; sha256=c10ed8ee7d14e01f63391ea56fcaa28385cff0b0068400204536611d29623efb",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.percent-application-1ppt-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.percent-application-1ppt-v1"],
+      "source": {
+        "summary": "百分数的应用（二）（1PPT 教学结构参考）; source=source.percent-application-1ppt-v1; sha256=28b67ace00751d0db6c0cf8c52d811e7f5e7c04558ed7892bee8d7f20d1daa40",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source-percentage-rate-1ppt-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source-percentage-rate-1ppt-v1"],
+      "source": {
+        "summary": "成数（1PPT 教学结构参考）; source=source-percentage-rate-1ppt-v1; sha256=9ea5719b891f1aeefd8a8ad400f70c0ec81bf2a94d146283c33cd85474be735b",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.vector-concept-1ppt-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.vector-concept-1ppt-v1"],
+      "source": {
+        "summary": "平面向量的概念（高密度讲义结构参考）; source=source.vector-concept-1ppt-v1; sha256=b85900112be7a9727bedab3a5fc99d56a2602bf7acf963a699b650433c9cbe64",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.social-screenshot-pdf-batch-1-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.social-screenshot-pdf-batch-1-v1"],
+      "source": {
+        "summary": "第一批图片 PPT（社交媒体截图 PDF）; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.social-screenshot-pdf-batch-2-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.social-screenshot-pdf-batch-2-v1"],
+      "source": {
+        "summary": "第二批图片 PPT（社交媒体截图 PDF）; source=source.social-screenshot-pdf-batch-2-v1; sha256=c84f932f873043a3bf727980dae8ab98a88e7128413257ad75ddbfb04a794a37",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.social-screenshot-pdf-batch-3-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.social-screenshot-pdf-batch-3-v1"],
+      "source": {
+        "summary": "第二批参考课件 2（截图 PDF）; source=source.social-screenshot-pdf-batch-3-v1; sha256=657a6bf835bd4459219d3063019ab61711946f1dd412d41d046e408a11a7a034",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.social-screenshot-pdf-batch-4-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.social-screenshot-pdf-batch-4-v1"],
+      "source": {
+        "summary": "第二批参考课件 3（截图 PDF）; source=source.social-screenshot-pdf-batch-4-v1; sha256=480a4dc59c5dfae424792f74d966bfed71b8ff554785c28cc1d67c6d80eb40d7",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.social-screenshot-pdf-batch-5-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.social-screenshot-pdf-batch-5-v1"],
+      "source": {
+        "summary": "第二批参考课件 1（截图 PDF）; source=source.social-screenshot-pdf-batch-5-v1; sha256=29fe25f542c1c828b4d70f39c7d0e12425ba3feb134446235ef32f38ccf293d7",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "source.open-kimi-ppt-skill-v1",
+      "consumers": ["reference-audit"],
+      "projection": { "markdown": true, "runtime": false, "generation": false },
+      "capability": ["provenance"],
+      "verificationCaseIds": ["registry-contract:source.open-kimi-ppt-skill-v1"],
+      "source": {
+        "summary": "open-kimi-ppt-skill 1.1.1（抽象视觉规律参考）; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.narrative-hero-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.narrative-hero-v1"],
+      "source": {
+        "summary": "叙事区 + 主视觉; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "1,15",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.index-staggered-path-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.index-staggered-path-v1"],
+      "source": {
+        "summary": "索引轨 + 错位路径; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "2",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.chapter-side-field-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.chapter-side-field-v1"],
+      "source": {
+        "summary": "侧色域 + 章节标题; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "3,6,9,12",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.three-peer-regions-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.three-peer-regions-v1"],
+      "source": {
+        "summary": "三等分同级区域; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "4,11",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.quote-evidence-axis-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.quote-evidence-axis-v1"],
+      "source": {
+        "summary": "核心引文 + 证据轴; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "5",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.center-four-direction-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.center-four-direction-v1"],
+      "source": {
+        "summary": "中心焦点 + 四向证据; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "7",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.explanation-evidence-wall-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.explanation-evidence-wall-v1"],
+      "source": {
+        "summary": "解释轨 + 非对称证据墙; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "8",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.stacked-aggregate-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.stacked-aggregate-v1"],
+      "source": {
+        "summary": "层叠解释 + 汇总视觉; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "10",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.central-spine-alternating-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.central-spine-alternating-v1"],
+      "source": {
+        "summary": "中央脊柱 + 交替总结; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "13",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.question-three-tasks-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.question-three-tasks-v1"],
+      "source": {
+        "summary": "问题横幅 + 三任务; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "14",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.agenda-four-grid-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.agenda-four-grid-v1"],
+      "source": {
+        "summary": "四项目录矩阵; source=source.math-cartoon-reference-v1; sha256=de4ddf6ccb6adba150cbfd00a1fa32d204974eb99c83f69ad36abc5ef418bc1a",
+        "version": "1",
+        "pageRange": "2",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.section-emblem-centered-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.section-emblem-centered-v1"],
+      "source": {
+        "summary": "中心徽章章节页; source=source.blue-chinese-reference-v1; sha256=a3b084a90ca7e7dfa0589cb0679d5f5641bbf11ac99d1ab0504d2413cef6ee5b",
+        "version": "1",
+        "pageRange": "3,7,11",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.text-image-balanced-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.text-image-balanced-v1"],
+      "source": {
+        "summary": "主图与解释对分; source=source.history-general-reference-v1; sha256=c1cc37ef175ccf22b2a2b981903166414951fa425c6b73e6e0fb61f6122bd897",
+        "version": "1",
+        "pageRange": "7",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.banner-media-three-notes-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.banner-media-three-notes-v1"],
+      "source": {
+        "summary": "横幅主图 + 三证据; source=source.pink-chinese-reference-v1; sha256=589592397f9ccfbcf7317fccb3c3190c123f91cea8f86ad8e3a91f6d2fbe9a82",
+        "version": "1",
+        "pageRange": "5",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.chart-commentary-rail-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.chart-commentary-rail-v1"],
+      "source": {
+        "summary": "图表 + 解释栏; source=source.history-general-reference-v1; sha256=c1cc37ef175ccf22b2a2b981903166414951fa425c6b73e6e0fb61f6122bd897",
+        "version": "1",
+        "pageRange": "8",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.horizontal-timeline-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.horizontal-timeline-v1"],
+      "source": {
+        "summary": "横向时间线; source=source.poetry-reference-v1; sha256=e9e999720352868297697056248fffc044dd8fa5e170531e5fd7adafd7384dd3",
+        "version": "1",
+        "pageRange": "5",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.problem-workspace-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.problem-workspace-v1"],
+      "source": {
+        "summary": "单题大画布; source=source.circle-area-1ppt-v1; sha256=c10ed8ee7d14e01f63391ea56fcaa28385cff0b0068400204536611d29623efb",
+        "version": "1",
+        "pageRange": "6,8,9,10",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.example-method-practice-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.example-method-practice-v1"],
+      "source": {
+        "summary": "例题 + 方法 + 练习; source=source.circle-circumference-1ppt-v1; sha256=9e4d67f2d1d0f0b6db80dbeedd43b9e27f642bdc55d37aa764139a9172859c02",
+        "version": "1",
+        "pageRange": "2,3,5,6,7",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.vertical-numbered-list-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.vertical-numbered-list-v1"],
+      "source": {
+        "summary": "纵向编号清单; source=source.green-chinese-reference-v1; sha256=8607a57341c645accf4615625025127e61f7f3cb6c6a9cb39b0d795f4d6b70f0",
+        "version": "1",
+        "pageRange": "17",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.image-strip-analysis-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.image-strip-analysis-v1"],
+      "source": {
+        "summary": "图片条带 + 分析区; source=source.red-chinese-reference-v1; sha256=6e8bcadea5a554347121762ada2f6fcdfb6075988d0b74cae1b46b6ec5b04436",
+        "version": "1",
+        "pageRange": "12",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.four-task-columns-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.four-task-columns-v1"],
+      "source": {
+        "summary": "说明区 + 四任务列; source=source.cute-general-reference-v1; sha256=966066bad565584c1240de2135614747da29d5d05816db33ca094fcff547785d",
+        "version": "1",
+        "pageRange": "17",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.quote-analysis-two-tier-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.quote-analysis-two-tier-v1"],
+      "source": {
+        "summary": "引文 + 两层分析; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "9",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.comparison-two-columns-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.comparison-two-columns-v1"],
+      "source": {
+        "summary": "问题引导的左右对照; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "5",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.split-steps-evidence-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.split-steps-evidence-v1"],
+      "source": {
+        "summary": "步骤轨 + 证据区; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "18",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.summary-dual-card-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.summary-dual-card-v1"],
+      "source": {
+        "summary": "双层总结卡; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "33",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.section-banner-anchor-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.section-banner-anchor-v1"],
+      "source": {
+        "summary": "图形锚点 + 横向标题带; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "20",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.hub-three-branches-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.hub-three-branches-v1"],
+      "source": {
+        "summary": "左侧主概念 + 三分支; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "10",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.native-table-full-width-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory", "table-capable"],
+      "verificationCaseIds": ["registry-contract:layout.native-table-full-width-v1"],
+      "source": {
+        "summary": "整页数据对照表; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "13,16",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.data-table-question-rail-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory", "table-capable"],
+      "verificationCaseIds": ["registry-contract:layout.data-table-question-rail-v1"],
+      "source": {
+        "summary": "数据表 + 右侧问题栏; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "17",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.table-insight-band-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory", "table-capable"],
+      "verificationCaseIds": ["registry-contract:layout.table-insight-band-v1"],
+      "source": {
+        "summary": "数据表 + 底部结论带; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "13",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.native-table-progression-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory", "table-capable"],
+      "verificationCaseIds": ["registry-contract:layout.native-table-progression-v1"],
+      "source": {
+        "summary": "横向进阶矩阵表; source=source.social-screenshot-pdf-batch-2-v1; sha256=c84f932f873043a3bf727980dae8ab98a88e7128413257ad75ddbfb04a794a37",
+        "version": "1",
+        "pageRange": "17",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.worked-structure-explanation-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.worked-structure-explanation-v1"],
+      "source": {
+        "summary": "推导主体 + 侧栏解释; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "27",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.annotated-passage-glosses-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.annotated-passage-glosses-v1"],
+      "source": {
+        "summary": "正文批注 + 释义带; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "6",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.summary-quote-frame-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.summary-quote-frame-v1"],
+      "source": {
+        "summary": "小结主体 + 右侧引文框; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "23",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.assignment-dual-track-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.assignment-dual-track-v1"],
+      "source": {
+        "summary": "双轨作业布置; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "23",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.media-four-fact-grid-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.media-four-fact-grid-v1"],
+      "source": {
+        "summary": "主图 + 四事实格; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "32",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.quote-two-evidence-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.quote-two-evidence-v1"],
+      "source": {
+        "summary": "中心问题 + 双证据; source=source.social-screenshot-pdf-batch-2-v1; sha256=c84f932f873043a3bf727980dae8ab98a88e7128413257ad75ddbfb04a794a37",
+        "version": "1",
+        "pageRange": "5",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.dual-reading-panels-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.dual-reading-panels-v1"],
+      "source": {
+        "summary": "上下双阅读面板; source=source.social-screenshot-pdf-batch-2-v1; sha256=c84f932f873043a3bf727980dae8ab98a88e7128413257ad75ddbfb04a794a37",
+        "version": "1",
+        "pageRange": "3",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.radial-six-evidence-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.radial-six-evidence-v1"],
+      "source": {
+        "summary": "中心概念 + 六项证据; source=source.social-screenshot-pdf-batch-2-v1; sha256=c84f932f873043a3bf727980dae8ab98a88e7128413257ad75ddbfb04a794a37",
+        "version": "1",
+        "pageRange": "8",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.five-method-columns-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.five-method-columns-v1"],
+      "source": {
+        "summary": "五方法列 + 结论带; source=source.social-screenshot-pdf-batch-2-v1; sha256=c84f932f873043a3bf727980dae8ab98a88e7128413257ad75ddbfb04a794a37",
+        "version": "1",
+        "pageRange": "25",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.paired-problem-solution-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.paired-problem-solution-v1"],
+      "source": {
+        "summary": "成对问题与方案; source=source.social-screenshot-pdf-batch-2-v1; sha256=c84f932f873043a3bf727980dae8ab98a88e7128413257ad75ddbfb04a794a37",
+        "version": "1",
+        "pageRange": "20",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.five-wooden-tag-sequence-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.five-wooden-tag-sequence-v1"],
+      "source": {
+        "summary": "五木牌词语序列 + 双任务区; source=source.social-screenshot-pdf-batch-3-v1; sha256=657a6bf835bd4459219d3063019ab61711946f1dd412d41d046e408a11a7a034",
+        "version": "1",
+        "pageRange": "43",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.media-analysis-over-reflection-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.media-analysis-over-reflection-v1"],
+      "source": {
+        "summary": "图文分析 + 下层反思; source=source.social-screenshot-pdf-batch-4-v1; sha256=480a4dc59c5dfae424792f74d966bfed71b8ff554785c28cc1d67c6d80eb40d7",
+        "version": "1",
+        "pageRange": "2",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.map-cover-title-left-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.map-cover-title-left-v1"],
+      "source": {
+        "summary": "地图插画封面 + 左侧标题; source=source.social-screenshot-pdf-batch-5-v1; sha256=29fe25f542c1c828b4d70f39c7d0e12425ba3feb134446235ef32f38ccf293d7",
+        "version": "1",
+        "pageRange": "3",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.photo-cover-dark-text-panel-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.photo-cover-dark-text-panel-v1"],
+      "source": {
+        "summary": "全幅照片 + 深色文本区; source=source.social-screenshot-pdf-batch-5-v1; sha256=29fe25f542c1c828b4d70f39c7d0e12425ba3feb134446235ef32f38ccf293d7",
+        "version": "1",
+        "pageRange": "14",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.poster-cover-framed-center-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.poster-cover-framed-center-v1"],
+      "source": {
+        "summary": "居中画框式封面; source=source.social-screenshot-pdf-batch-5-v1; sha256=29fe25f542c1c828b4d70f39c7d0e12425ba3feb134446235ef32f38ccf293d7",
+        "version": "1",
+        "pageRange": "19",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.consulting-evidence-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory", "table-capable"],
+      "verificationCaseIds": ["registry-contract:layout.consulting-evidence-v1"],
+      "source": {
+        "summary": "咨询结论与证据侧栏; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "3",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.opinion-action-split-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.opinion-action-split-v1"],
+      "source": {
+        "summary": "观点与行动对分; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "3",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.semantic-heatmap-matrix-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory", "table-capable"],
+      "verificationCaseIds": ["registry-contract:layout.semantic-heatmap-matrix-v1"],
+      "source": {
+        "summary": "语义热力矩阵; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "10",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.central-operating-model-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.central-operating-model-v1"],
+      "source": {
+        "summary": "中心运行模型; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "26",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.decision-gates-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.decision-gates-v1"],
+      "source": {
+        "summary": "四阶段决策门; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "3",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.editorial-evidence-collage-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.editorial-evidence-collage-v1"],
+      "source": {
+        "summary": "编辑式证据拼贴; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "20",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.formula-derivation-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.formula-derivation-v1"],
+      "source": {
+        "summary": "公式推导与解释边界; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "27",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.progressive-focus-build-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.progressive-focus-build-v1"],
+      "source": {
+        "summary": "渐进聚焦讲解; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "26",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.academic-navigation-footer-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.academic-navigation-footer-v1"],
+      "source": {
+        "summary": "学术正文与导航页脚; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "26",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.editorial-index-rules-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.editorial-index-rules-v1"],
+      "source": {
+        "summary": "编辑式规则目录; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "20",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.product-hero-split-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.product-hero-split-v1"],
+      "source": {
+        "summary": "产品主视觉对分; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "43,61",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.viewpoint-metric-ledger-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.viewpoint-metric-ledger-v1"],
+      "source": {
+        "summary": "观点与指标账本; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "44,62",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.media-assisted-agenda-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.media-assisted-agenda-v1"],
+      "source": {
+        "summary": "图片辅助目录; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "45",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.full-bleed-section-transition-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.full-bleed-section-transition-v1"],
+      "source": {
+        "summary": "全幅章节过渡; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "46,70",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.full-bleed-image-evidence-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.full-bleed-image-evidence-v1"],
+      "source": {
+        "summary": "全幅图片证据页; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "47,71",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.half-image-metric-rail-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.half-image-metric-rail-v1"],
+      "source": {
+        "summary": "半屏图片与指标条; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "48,63",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.specification-table-product-aside-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory", "table-capable"],
+      "verificationCaseIds": ["registry-contract:layout.specification-table-product-aside-v1"],
+      "source": {
+        "summary": "规格表与产品侧栏; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "49,64",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.dual-plan-pricing-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.dual-plan-pricing-v1"],
+      "source": {
+        "summary": "双套餐价格比较; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "50,65",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.dual-image-feature-compare-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.dual-image-feature-compare-v1"],
+      "source": {
+        "summary": "双图功能对照; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "51,66",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.technical-layers-explainer-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.technical-layers-explainer-v1"],
+      "source": {
+        "summary": "技术分层与说明侧栏; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "52,67",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.scene-capability-metric-band-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.scene-capability-metric-band-v1"],
+      "source": {
+        "summary": "场景图上的能力指标带; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "53,68",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.engineering-architecture-hierarchy-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.engineering-architecture-hierarchy-v1"],
+      "source": {
+        "summary": "工程架构层级; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "54",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.risk-matrix-recommendation-band-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory", "table-capable"],
+      "verificationCaseIds": ["registry-contract:layout.risk-matrix-recommendation-band-v1"],
+      "source": {
+        "summary": "风险矩阵与建议带; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "55",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.research-method-evidence-sequence-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.research-method-evidence-sequence-v1"],
+      "source": {
+        "summary": "研究方法到证据序列; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "56",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.map-region-annotation-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.map-region-annotation-v1"],
+      "source": {
+        "summary": "地图与区域标注; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "57",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.timeline-evidence-annotations-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.timeline-evidence-annotations-v1"],
+      "source": {
+        "summary": "时间线与证据注释; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "58",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.newspaper-multicolumn-summary-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.newspaper-multicolumn-summary-v1"],
+      "source": {
+        "summary": "报刊式多栏摘要; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "59",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.portfolio-mosaic-title-rail-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.portfolio-mosaic-title-rail-v1"],
+      "source": {
+        "summary": "作品集拼图与标题栏; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "60",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.pull-quote-image-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory"],
+      "verificationCaseIds": ["registry-contract:layout.pull-quote-image-v1"],
+      "source": {
+        "summary": "大引语与主图; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "69",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "layout.management-variance-action-v1",
+      "consumers": ["outline-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["layout-advisory", "table-capable"],
+      "verificationCaseIds": ["registry-contract:layout.management-variance-action-v1"],
+      "source": {
+        "summary": "管理差异与行动栏; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "72,75",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.title-short-underline-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.title-short-underline-v1"],
+      "source": {
+        "summary": "标题 + 短下划线; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "1,5,8,10,14,15",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.chapter-number-anchor-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.chapter-number-anchor-v1"],
+      "source": {
+        "summary": "章节数字锚点; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "3,6,9,12",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.notched-emphasis-frame-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.notched-emphasis-frame-v1"],
+      "source": {
+        "summary": "缺口强调框; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "5,14",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.node-path-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.node-path-v1"],
+      "source": {
+        "summary": "节点路径; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "2,13",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.standard-crop-group-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.standard-crop-group-v1"],
+      "source": {
+        "summary": "标准裁切组; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "4,8,11,14",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.side-color-rail-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.side-color-rail-v1"],
+      "source": {
+        "summary": "侧色轨; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "3,6,9,12",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.asymmetric-split-field-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.asymmetric-split-field-v1"],
+      "source": {
+        "summary": "非对称双色域; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "1,8,15",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.offset-divider-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.offset-divider-v1"],
+      "source": {
+        "summary": "错位分隔关系; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "5,10,13",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.section-label-pill-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.section-label-pill-v1"],
+      "source": {
+        "summary": "章节标签胶囊; source=source.math-cartoon-reference-v1; sha256=de4ddf6ccb6adba150cbfd00a1fa32d204974eb99c83f69ad36abc5ef418bc1a",
+        "version": "1",
+        "pageRange": "3,6,11,16",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.timeline-four-nodes-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.timeline-four-nodes-v1"],
+      "source": {
+        "summary": "四节点时间轴; source=source.poetry-reference-v1; sha256=e9e999720352868297697056248fffc044dd8fa5e170531e5fd7adafd7384dd3",
+        "version": "1",
+        "pageRange": "5",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.vertical-four-anchors-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.vertical-four-anchors-v1"],
+      "source": {
+        "summary": "纵向四编号锚点; source=source.green-chinese-reference-v1; sha256=8607a57341c645accf4615625025127e61f7f3cb6c6a9cb39b0d795f4d6b70f0",
+        "version": "1",
+        "pageRange": "17",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.bracketed-callout-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.bracketed-callout-v1"],
+      "source": {
+        "summary": "开口括号强调框; source=source.circle-area-1ppt-v1; sha256=c10ed8ee7d14e01f63391ea56fcaa28385cff0b0068400204536611d29623efb",
+        "version": "1",
+        "pageRange": "3,4,9,10",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.dual-label-divider-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.dual-label-divider-v1"],
+      "source": {
+        "summary": "双标签分隔线; source=source.history-general-reference-v1; sha256=c1cc37ef175ccf22b2a2b981903166414951fa425c6b73e6e0fb61f6122bd897",
+        "version": "1",
+        "pageRange": "14,17",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.media-caption-band-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.media-caption-band-v1"],
+      "source": {
+        "summary": "图片标题带; source=source.history-general-reference-v1; sha256=c1cc37ef175ccf22b2a2b981903166414951fa425c6b73e6e0fb61f6122bd897",
+        "version": "1",
+        "pageRange": "11,16",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.corner-accent-pair-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.corner-accent-pair-v1"],
+      "source": {
+        "summary": "对角角标; source=source.cute-general-reference-v1; sha256=966066bad565584c1240de2135614747da29d5d05816db33ca094fcff547785d",
+        "version": "1",
+        "pageRange": "4,5,6,8,9,10",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.chart-commentary-separator-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.chart-commentary-separator-v1"],
+      "source": {
+        "summary": "图表解释分界; source=source.history-general-reference-v1; sha256=c1cc37ef175ccf22b2a2b981903166414951fa425c6b73e6e0fb61f6122bd897",
+        "version": "1",
+        "pageRange": "8",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.inline-gloss-tag-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.inline-gloss-tag-v1"],
+      "source": {
+        "summary": "贴近词句的释义签; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "6",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.paired-verdict-bracket-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.paired-verdict-bracket-v1"],
+      "source": {
+        "summary": "正反判断括号组; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "16",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.radial-six-spokes-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.radial-six-spokes-v1"],
+      "source": {
+        "summary": "六分支放射连接器; source=source.social-screenshot-pdf-batch-2-v1; sha256=c84f932f873043a3bf727980dae8ab98a88e7128413257ad75ddbfb04a794a37",
+        "version": "1",
+        "pageRange": "8",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.five-method-tabs-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.five-method-tabs-v1"],
+      "source": {
+        "summary": "五项方法标签组; source=source.social-screenshot-pdf-batch-2-v1; sha256=c84f932f873043a3bf727980dae8ab98a88e7128413257ad75ddbfb04a794a37",
+        "version": "1",
+        "pageRange": "25",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.five-hanging-tags-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.five-hanging-tags-v1"],
+      "source": {
+        "summary": "五项悬挂木牌组; source=source.social-screenshot-pdf-batch-3-v1; sha256=657a6bf835bd4459219d3063019ab61711946f1dd412d41d046e408a11a7a034",
+        "version": "1",
+        "pageRange": "43",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.left-dark-cover-panel-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.left-dark-cover-panel-v1"],
+      "source": {
+        "summary": "封面左侧深色信息板; source=source.social-screenshot-pdf-batch-5-v1; sha256=29fe25f542c1c828b4d70f39c7d0e12425ba3feb134446235ef32f38ccf293d7",
+        "version": "1",
+        "pageRange": "14",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.insight-band-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.insight-band-v1"],
+      "source": {
+        "summary": "全宽结论带; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "3",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.evidence-aside-stack-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.evidence-aside-stack-v1"],
+      "source": {
+        "summary": "证据侧栏堆栈; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "3",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.ordered-action-stack-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.ordered-action-stack-v1"],
+      "source": {
+        "summary": "编号行动清单; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "3",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.flat-metric-strip-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.flat-metric-strip-v1"],
+      "source": {
+        "summary": "扁平指标条; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "10",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.stage-ribbon-focus-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.stage-ribbon-focus-v1"],
+      "source": {
+        "summary": "单阶段聚焦带; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "3,26",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.heatmap-four-level-key-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.heatmap-four-level-key-v1"],
+      "source": {
+        "summary": "四级热力图例; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "10",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.central-model-four-links-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.central-model-four-links-v1"],
+      "source": {
+        "summary": "中心模型四向连接器; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "26",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.formula-annotation-panel-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.formula-annotation-panel-v1"],
+      "source": {
+        "summary": "公式与注释面板; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "27",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.academic-dot-navigation-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.academic-dot-navigation-v1"],
+      "source": {
+        "summary": "学术圆点导航页脚; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "26",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.editorial-index-row-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.editorial-index-row-v1"],
+      "source": {
+        "summary": "编辑式目录行; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "20",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.brand-rule-metadata-header-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.brand-rule-metadata-header-v1"],
+      "source": {
+        "summary": "顶部品牌短线与元信息; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "6,17,45",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.page-number-progress-rail-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.page-number-progress-rail-v1"],
+      "source": {
+        "summary": "页码与章节进度轨; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "11,24,59",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.giant-number-metric-row-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.giant-number-metric-row-v1"],
+      "source": {
+        "summary": "巨型数字指标行; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "44,48,53",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.label-description-metric-row-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.label-description-metric-row-v1"],
+      "source": {
+        "summary": "左标签右说明指标行; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "44,62",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.image-dark-reading-overlay-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.image-dark-reading-overlay-v1"],
+      "source": {
+        "summary": "图片暗部可读遮罩; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "46,47,53",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.edge-reading-fade-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.edge-reading-fade-v1"],
+      "source": {
+        "summary": "边缘递减可读区; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "47,53,69",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.vertical-specification-ledger-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.vertical-specification-ledger-v1"],
+      "source": {
+        "summary": "垂直规格账本; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "49,64",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.dual-price-comparator-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.dual-price-comparator-v1"],
+      "source": {
+        "summary": "双价格比较器; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "50,65",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.source-footnote-band-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.source-footnote-band-v1"],
+      "source": {
+        "summary": "来源脚注带; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "8,14,56",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.image-callout-leader-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.image-callout-leader-v1"],
+      "source": {
+        "summary": "图像注释引线; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "51,57,69",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.map-location-marker-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.map-location-marker-v1"],
+      "source": {
+        "summary": "地图定位标记; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "57",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.layered-architecture-connectors-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.layered-architecture-connectors-v1"],
+      "source": {
+        "summary": "分层架构连接器; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "52,54,67",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.risk-quadrant-axes-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.risk-quadrant-axes-v1"],
+      "source": {
+        "summary": "风险象限轴; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "55",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.timeline-node-track-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.timeline-node-track-v1"],
+      "source": {
+        "summary": "时间线节点轨; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "58",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.ranking-delta-bars-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.ranking-delta-bars-v1"],
+      "source": {
+        "summary": "排名条与差值标记; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "44,57,72",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.editorial-column-rule-system-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.editorial-column-rule-system-v1"],
+      "source": {
+        "summary": "编辑式栏线系统; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "18,23,59",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.pull-quote-mark-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.pull-quote-mark-v1"],
+      "source": {
+        "summary": "引语标记; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "19,59,69",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.chapter-line-dot-navigation-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.chapter-line-dot-navigation-v1"],
+      "source": {
+        "summary": "圆点线段章节导航; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "16,24,45",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.asymmetric-media-collage-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.asymmetric-media-collage-v1"],
+      "source": {
+        "summary": "不等宽图文拼贴; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "20,60",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "component.single-highlight-status-band-v1",
+      "consumers": ["html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["component-advisory"],
+      "verificationCaseIds": ["registry-contract:component.single-highlight-status-band-v1"],
+      "source": {
+        "summary": "单一高亮状态带; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "21,56,72",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "mask.quatrefoil-v1",
+      "consumers": ["asset-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["mask-advisory"],
+      "verificationCaseIds": ["registry-contract:mask.quatrefoil-v1"],
+      "source": {
+        "summary": "四叶形图片蒙版; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "4",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "mask.circle-v1",
+      "consumers": ["asset-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["mask-advisory"],
+      "verificationCaseIds": ["registry-contract:mask.circle-v1"],
+      "source": {
+        "summary": "圆形图片蒙版; source=source.poetry-reference-v1; sha256=e9e999720352868297697056248fffc044dd8fa5e170531e5fd7adafd7384dd3",
+        "version": "1",
+        "pageRange": "6,9,16",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "mask.arch-window-v1",
+      "consumers": ["asset-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["mask-advisory"],
+      "verificationCaseIds": ["registry-contract:mask.arch-window-v1"],
+      "source": {
+        "summary": "拱窗图片蒙版; source=source.red-chinese-reference-v1; sha256=6e8bcadea5a554347121762ada2f6fcdfb6075988d0b74cae1b46b6ec5b04436",
+        "version": "1",
+        "pageRange": "13,14",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "mask.ticket-v1",
+      "consumers": ["asset-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["mask-advisory"],
+      "verificationCaseIds": ["registry-contract:mask.ticket-v1"],
+      "source": {
+        "summary": "票券图片蒙版; source=source.cute-general-reference-v1; sha256=966066bad565584c1240de2135614747da29d5d05816db33ca094fcff547785d",
+        "version": "1",
+        "pageRange": "4,8,10",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "mask.soft-wave-frame-v1",
+      "consumers": ["asset-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["mask-advisory"],
+      "verificationCaseIds": ["registry-contract:mask.soft-wave-frame-v1"],
+      "source": {
+        "summary": "柔和波浪图片蒙版; source=source.green-illustration-reference-v1; sha256=4e2c07fbc502dc142c1bcaf74d072f707b36c4353cdbf05c4900f9e95c4bf170",
+        "version": "1",
+        "pageRange": "4,7,8,11,12",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "mask.ogee-plaque-v1",
+      "consumers": ["asset-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["mask-advisory"],
+      "verificationCaseIds": ["registry-contract:mask.ogee-plaque-v1"],
+      "source": {
+        "summary": "对称牌匾形图片蒙版; source=source.blue-chinese-reference-v1; sha256=a3b084a90ca7e7dfa0589cb0679d5f5641bbf11ac99d1ab0504d2413cef6ee5b",
+        "version": "1",
+        "pageRange": "6",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "mask.hanging-tag-v1",
+      "consumers": ["asset-planning", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["mask-advisory"],
+      "verificationCaseIds": ["registry-contract:mask.hanging-tag-v1"],
+      "source": {
+        "summary": "悬挂标签图片蒙版; source=source.social-screenshot-pdf-batch-3-v1; sha256=657a6bf835bd4459219d3063019ab61711946f1dd412d41d046e408a11a7a034",
+        "version": "1",
+        "pageRange": "43",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.warm-ivory-blush-sage-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.warm-ivory-blush-sage-v1"],
+      "source": {
+        "summary": "暖象牙・粉・鼠尾草; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "1,2,3,6,9,12,15",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.cobalt-mist-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.cobalt-mist-v1"],
+      "source": {
+        "summary": "钴蓝薄雾; source=source.blue-chinese-reference-v1; sha256=a3b084a90ca7e7dfa0589cb0679d5f5641bbf11ac99d1ab0504d2413cef6ee5b",
+        "version": "1",
+        "pageRange": "1,2,3,7,11,15",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.cinnabar-parchment-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.cinnabar-parchment-v1"],
+      "source": {
+        "summary": "朱砂宣纸; source=source.red-chinese-reference-v1; sha256=6e8bcadea5a554347121762ada2f6fcdfb6075988d0b74cae1b46b6ec5b04436",
+        "version": "1",
+        "pageRange": "1,2,3,7,11,15,19",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.lotus-jade-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.lotus-jade-v1"],
+      "source": {
+        "summary": "荷花青玉; source=source.green-chinese-reference-v1; sha256=8607a57341c645accf4615625025127e61f7f3cb6c6a9cb39b0d795f4d6b70f0",
+        "version": "1",
+        "pageRange": "1,2,3,8,12,16,20",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.sunny-mint-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.sunny-mint-v1"],
+      "source": {
+        "summary": "阳光薄荷; source=source.math-cartoon-reference-v1; sha256=de4ddf6ccb6adba150cbfd00a1fa32d204974eb99c83f69ad36abc5ef418bc1a",
+        "version": "1",
+        "pageRange": "1,2,3,8,12,16,20",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.forest-storybook-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.forest-storybook-v1"],
+      "source": {
+        "summary": "森林绘本; source=source.green-illustration-reference-v1; sha256=4e2c07fbc502dc142c1bcaf74d072f707b36c4353cdbf05c4900f9e95c4bf170",
+        "version": "1",
+        "pageRange": "1,2,3,7,11,15",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.winter-ink-paper-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.winter-ink-paper-v1"],
+      "source": {
+        "summary": "冬日蓝灰纸感; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "35",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.lab-blue-signal-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.lab-blue-signal-v1"],
+      "source": {
+        "summary": "实验蓝 + 信号黄红; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "20",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.muted-sage-parchment-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.muted-sage-parchment-v1"],
+      "source": {
+        "summary": "灰绿宣纸; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "19",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.horse-paper-teal-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.horse-paper-teal-v1"],
+      "source": {
+        "summary": "马文化纸张青棕; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "40",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.brown-ink-parchment-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.brown-ink-parchment-v1"],
+      "source": {
+        "summary": "棕墨宣纸; source=source.social-screenshot-pdf-batch-2-v1; sha256=c84f932f873043a3bf727980dae8ab98a88e7128413257ad75ddbfb04a794a37",
+        "version": "1",
+        "pageRange": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.documentary-ink-red-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.documentary-ink-red-v1"],
+      "source": {
+        "summary": "纪实水墨红绿强调; source=source.social-screenshot-pdf-batch-2-v1; sha256=c84f932f873043a3bf727980dae8ab98a88e7128413257ad75ddbfb04a794a37",
+        "version": "1",
+        "pageRange": "12",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.classroom-teal-orange-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.classroom-teal-orange-v1"],
+      "source": {
+        "summary": "课堂青橙; source=source.social-screenshot-pdf-batch-2-v1; sha256=c84f932f873043a3bf727980dae8ab98a88e7128413257ad75ddbfb04a794a37",
+        "version": "1",
+        "pageRange": "20",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.autumn-rain-sage-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.autumn-rain-sage-v1"],
+      "source": {
+        "summary": "秋雨灰绿与暖纸; source=source.social-screenshot-pdf-batch-4-v1; sha256=480a4dc59c5dfae424792f74d966bfed71b8ff554785c28cc1d67c6d80eb40d7",
+        "version": "1",
+        "pageRange": "2",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.map-sea-forest-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.map-sea-forest-v1"],
+      "source": {
+        "summary": "地图海蓝与森林绿; source=source.social-screenshot-pdf-batch-5-v1; sha256=29fe25f542c1c828b4d70f39c7d0e12425ba3feb134446235ef32f38ccf293d7",
+        "version": "1",
+        "pageRange": "3",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.rural-photo-deep-green-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.rural-photo-deep-green-v1"],
+      "source": {
+        "summary": "乡村照片深绿; source=source.social-screenshot-pdf-batch-5-v1; sha256=29fe25f542c1c828b4d70f39c7d0e12425ba3feb134446235ef32f38ccf293d7",
+        "version": "1",
+        "pageRange": "14",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.newsletter-signal-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.newsletter-signal-v1"],
+      "source": {
+        "summary": "简报黄粉与信号色; source=source.social-screenshot-pdf-batch-5-v1; sha256=29fe25f542c1c828b4d70f39c7d0e12425ba3feb134446235ef32f38ccf293d7",
+        "version": "1",
+        "pageRange": "19",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.pine-strategy-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.pine-strategy-v1"],
+      "source": {
+        "summary": "战略松绿; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "3",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.lead-quarterly-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.lead-quarterly-v1"],
+      "source": {
+        "summary": "铅灰季报; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "10",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.teal-academic-defense-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.teal-academic-defense-v1"],
+      "source": {
+        "summary": "学术青绿; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "26",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.silk-editorial-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.silk-editorial-v1"],
+      "source": {
+        "summary": "丝绸编辑; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "20",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.data-night-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.data-night-v1"],
+      "source": {
+        "summary": "深色数据; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "30",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.blue-line-courseware-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.blue-line-courseware-v1"],
+      "source": {
+        "summary": "蓝线课件; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.deep-blue-atlas-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.deep-blue-atlas-v1"],
+      "source": {
+        "summary": "深蓝图谱; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "2",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.paper-white-courseware-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.paper-white-courseware-v1"],
+      "source": {
+        "summary": "纸白课程; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "3",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.pastel-derivation-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.pastel-derivation-v1"],
+      "source": {
+        "summary": "柔彩推导; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "4",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.wine-red-data-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.wine-red-data-v1"],
+      "source": {
+        "summary": "酒红数据; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "6",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.apricot-white-brief-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.apricot-white-brief-v1"],
+      "source": {
+        "summary": "杏白简报; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "7",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.indigo-due-diligence-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.indigo-due-diligence-v1"],
+      "source": {
+        "summary": "靛蓝尽调; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "8",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.marine-blue-research-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.marine-blue-research-v1"],
+      "source": {
+        "summary": "海蓝研究; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "9",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.moss-green-transformation-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.moss-green-transformation-v1"],
+      "source": {
+        "summary": "苔绿转型; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "10",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.red-black-growth-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.red-black-growth-v1"],
+      "source": {
+        "summary": "红黑增长; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "12",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.black-gold-ledger-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.black-gold-ledger-v1"],
+      "source": {
+        "summary": "黑金账册; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "13",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.ebony-ledger-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.ebony-ledger-v1"],
+      "source": {
+        "summary": "乌木账册; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "14",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.honey-orange-memo-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.honey-orange-memo-v1"],
+      "source": {
+        "summary": "蜂蜜橙备忘; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "15",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.lake-blue-memo-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.lake-blue-memo-v1"],
+      "source": {
+        "summary": "湖蓝备忘; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "16",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.prospect-annual-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.prospect-annual-v1"],
+      "source": {
+        "summary": "荧绿展望年报; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "17",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.rice-paper-annual-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.rice-paper-annual-v1"],
+      "source": {
+        "summary": "米纸年报; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "18",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.aqua-charity-report-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.aqua-charity-report-v1"],
+      "source": {
+        "summary": "水蓝公益报告; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "19",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.cream-collage-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.cream-collage-v1"],
+      "source": {
+        "summary": "奶油拼贴; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "20",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.pine-soot-pictorial-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.pine-soot-pictorial-v1"],
+      "source": {
+        "summary": "松烟画报; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "21",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.silver-gray-luxury-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.silver-gray-luxury-v1"],
+      "source": {
+        "summary": "银灰奢华杂志; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "23",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.travel-green-handbook-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.travel-green-handbook-v1"],
+      "source": {
+        "summary": "旅行绿手册; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "24",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.blue-flame-brand-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.blue-flame-brand-v1"],
+      "source": {
+        "summary": "蓝焰品牌; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "25",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.electric-violet-business-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.electric-violet-business-v1"],
+      "source": {
+        "summary": "电光紫商务; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "26",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.moon-white-imagery-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.moon-white-imagery-v1"],
+      "source": {
+        "summary": "月白影像; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "27",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.sky-blue-wayfinding-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.sky-blue-wayfinding-v1"],
+      "source": {
+        "summary": "天蓝导视; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "28",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.warm-clay-works-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.warm-clay-works-v1"],
+      "source": {
+        "summary": "暖陶作品集; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "29",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.warm-jade-annual-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.warm-jade-annual-v1"],
+      "source": {
+        "summary": "暖玉年报; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "30",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.dusk-violet-consulting-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.dusk-violet-consulting-v1"],
+      "source": {
+        "summary": "暮紫咨询; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "31",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.map-strategy-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.map-strategy-v1"],
+      "source": {
+        "summary": "地图战略; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "32",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.ink-green-market-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.ink-green-market-v1"],
+      "source": {
+        "summary": "墨绿市场趋势; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "34",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.orange-tech-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.orange-tech-v1"],
+      "source": {
+        "summary": "橙色科技; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "35",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.mist-blue-travelogue-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.mist-blue-travelogue-v1"],
+      "source": {
+        "summary": "雾蓝游记; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "36",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.color-stripes-documentary-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.color-stripes-documentary-v1"],
+      "source": {
+        "summary": "彩条纪实; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "37",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.red-white-business-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.red-white-business-v1"],
+      "source": {
+        "summary": "红白商务; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "38",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.gold-orange-type-journal-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.gold-orange-type-journal-v1"],
+      "source": {
+        "summary": "金橙字体期刊; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "39",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.fresh-brand-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.fresh-brand-v1"],
+      "source": {
+        "summary": "清新品宣; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "40",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "palette.pink-purple-diagnosis-v1",
+      "consumers": ["deck-design", "html-layout"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["palette-advisory"],
+      "verificationCaseIds": ["registry-contract:palette.pink-purple-diagnosis-v1"],
+      "source": {
+        "summary": "粉紫诊断; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "41",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.soft-editorial-botanical-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.soft-editorial-botanical-v1"],
+      "source": {
+        "summary": "柔和书刊植物感; source=source.pastel-language-reference-v1; sha256=6a66a489c5e7e709bfb01dc0452d2e906d14bb4ad1b15f0cee88bbd812535131",
+        "version": "1",
+        "pageRange": "1,2,3,6,9,12,15",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.school-editorial-flat-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.school-editorial-flat-v1"],
+      "source": {
+        "summary": "校园编辑式扁平插画; source=source.math-cartoon-reference-v1; sha256=de4ddf6ccb6adba150cbfd00a1fa32d204974eb99c83f69ad36abc5ef418bc1a",
+        "version": "1",
+        "pageRange": "1,3,7,11,15,19",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.storybook-meadow-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.storybook-meadow-v1"],
+      "source": {
+        "summary": "柔和绘本自然场景; source=source.green-illustration-reference-v1; sha256=4e2c07fbc502dc142c1bcaf74d072f707b36c4353cdbf05c4900f9e95c4bf170",
+        "version": "1",
+        "pageRange": "1,3,7,11,15",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.modern-mineral-landscape-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.modern-mineral-landscape-v1"],
+      "source": {
+        "summary": "现代矿物色山景; source=source.poetry-reference-v1; sha256=e9e999720352868297697056248fffc044dd8fa5e170531e5fd7adafd7384dd3",
+        "version": "1",
+        "pageRange": "1,4,8,12,18",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.botanical-paper-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.botanical-paper-v1"],
+      "source": {
+        "summary": "植物纸本编辑插画; source=source.green-chinese-reference-v1; sha256=8607a57341c645accf4615625025127e61f7f3cb6c6a9cb39b0d795f4d6b70f0",
+        "version": "1",
+        "pageRange": "1,4,8,12,16,20",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.soft-winter-ink-landscape-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.soft-winter-ink-landscape-v1"],
+      "source": {
+        "summary": "柔和冬日水墨景物; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "35",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.clean-lab-diagram-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.clean-lab-diagram-v1"],
+      "source": {
+        "summary": "清洁实验图解; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "27",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.archival-literati-editorial-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.archival-literati-editorial-v1"],
+      "source": {
+        "summary": "文人档案编辑感; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "24",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.educational-map-cutpaper-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.educational-map-cutpaper-v1"],
+      "source": {
+        "summary": "教育地图剪纸感; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "32",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.horse-culture-paper-collage-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.horse-culture-paper-collage-v1"],
+      "source": {
+        "summary": "马文化纸张拼贴; source=source.social-screenshot-pdf-batch-1-v1; sha256=9989b0c2eee249d17713413b2ac7ef5a01dab745d01f5370fa594df609a52369",
+        "version": "1",
+        "pageRange": "40",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.brown-ink-mountain-editorial-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.brown-ink-mountain-editorial-v1"],
+      "source": {
+        "summary": "棕墨山水编辑感; source=source.social-screenshot-pdf-batch-2-v1; sha256=c84f932f873043a3bf727980dae8ab98a88e7128413257ad75ddbfb04a794a37",
+        "version": "1",
+        "pageRange": "1",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.documentary-ink-engraving-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.documentary-ink-engraving-v1"],
+      "source": {
+        "summary": "纪实水墨版画感; source=source.social-screenshot-pdf-batch-2-v1; sha256=c84f932f873043a3bf727980dae8ab98a88e7128413257ad75ddbfb04a794a37",
+        "version": "1",
+        "pageRange": "12",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.wooden-tag-study-collage-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.wooden-tag-study-collage-v1"],
+      "source": {
+        "summary": "木牌与纸本学习拼贴; source=source.social-screenshot-pdf-batch-3-v1; sha256=657a6bf835bd4459219d3063019ab61711946f1dd412d41d046e408a11a7a034",
+        "version": "1",
+        "pageRange": "43",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.friendly-map-editorial-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.friendly-map-editorial-v1"],
+      "source": {
+        "summary": "友好地图编辑插画; source=source.social-screenshot-pdf-batch-5-v1; sha256=29fe25f542c1c828b4d70f39c7d0e12425ba3feb134446235ef32f38ccf293d7",
+        "version": "1",
+        "pageRange": "3",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.childrens-pastel-storybook-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.childrens-pastel-storybook-v1"],
+      "source": {
+        "summary": "低龄粉彩绘本插画; source=source.social-screenshot-pdf-batch-5-v1; sha256=29fe25f542c1c828b4d70f39c7d0e12425ba3feb134446235ef32f38ccf293d7",
+        "version": "1",
+        "pageRange": "4",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.cinematic-heritage-landscape-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.cinematic-heritage-landscape-v1"],
+      "source": {
+        "summary": "文化遗产电影感景观; source=source.social-screenshot-pdf-batch-5-v1; sha256=29fe25f542c1c828b4d70f39c7d0e12425ba3feb134446235ef32f38ccf293d7",
+        "version": "1",
+        "pageRange": "13",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.bold-handdrawn-editorial-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.bold-handdrawn-editorial-v1"],
+      "source": {
+        "summary": "高饱和手绘编辑封面; source=source.social-screenshot-pdf-batch-5-v1; sha256=29fe25f542c1c828b4d70f39c7d0e12425ba3feb134446235ef32f38ccf293d7",
+        "version": "1",
+        "pageRange": "19",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.strategy-evidence-editorial-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.strategy-evidence-editorial-v1"],
+      "source": {
+        "summary": "战略证据编辑图; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "3,10",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.academic-schematic-linework-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.academic-schematic-linework-v1"],
+      "source": {
+        "summary": "学术示意线稿; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "26,27",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.silk-paper-editorial-collage-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.silk-paper-editorial-collage-v1"],
+      "source": {
+        "summary": "丝绸纸张编辑拼贴; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "20",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.dark-data-luminous-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.dark-data-luminous-v1"],
+      "source": {
+        "summary": "深色数据微光图解; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "30",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.product-studio-cutaway-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.product-studio-cutaway-v1"],
+      "source": {
+        "summary": "产品棚拍与结构切面; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "43,49,61,64",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.contextual-product-documentary-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.contextual-product-documentary-v1"],
+      "source": {
+        "summary": "产品场景纪实; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "47,48,53,68,71",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.engineering-blueprint-exploded-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.engineering-blueprint-exploded-v1"],
+      "source": {
+        "summary": "工程蓝图分解图; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "52,54,67",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.financial-ledger-editorial-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.financial-ledger-editorial-v1"],
+      "source": {
+        "summary": "财务账册编辑图; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "13,14,15,16,17,18",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.atlas-map-direct-label-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.atlas-map-direct-label-v1"],
+      "source": {
+        "summary": "图谱地图直标; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "2,32,57",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.type-led-magazine-editorial-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.type-led-magazine-editorial-v1"],
+      "source": {
+        "summary": "字体主导杂志编辑图; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "22,23,39,59",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.monochrome-luxury-material-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.monochrome-luxury-material-v1"],
+      "source": {
+        "summary": "单色奢华材质摄影; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "13,23",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.human-impact-documentary-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.human-impact-documentary-v1"],
+      "source": {
+        "summary": "公益人文纪实; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "19",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.travel-field-guide-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.travel-field-guide-v1"],
+      "source": {
+        "summary": "旅行田野手册; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "24,28,36",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.material-portfolio-study-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.material-portfolio-study-v1"],
+      "source": {
+        "summary": "材料作品集研究图; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "29,60",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.clinical-research-annotation-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.clinical-research-annotation-v1"],
+      "source": {
+        "summary": "临床研究批注图; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "6,41,56",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    },
+    {
+      "id": "image-style.brand-light-sculpture-v1",
+      "consumers": ["asset-planning", "image-generation"],
+      "projection": { "markdown": true, "runtime": false, "generation": true },
+      "capability": ["image-style-advisory"],
+      "verificationCaseIds": ["registry-contract:image-style.brand-light-sculpture-v1"],
+      "source": {
+        "summary": "品牌光线雕塑; source=source.open-kimi-ppt-skill-v1; sha256=37387d211d8c3a277cef5b89a236589140f9d45f110a3bdd956b987cdfcc88c9",
+        "version": "1",
+        "pageRange": "25,26,40",
+        "extractionBoundary": "rights=reference_only; permitted=layout-structure,common-geometry,palette-relationships,image-style-abstraction; forbidden=source-artwork,source-pixels,source-copy,source-fonts,source-logos,source-masters"
+      }
+    }
+  ]
+}

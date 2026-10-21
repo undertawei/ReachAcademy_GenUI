@@ -1,0 +1,470 @@
+{
+  "description": "简答：空作答（无可见内容且无附件）判 0 分；否则交给 AI，即使与参考答案逐字相同。",
+  "cases": [
+    {
+      "name": "non-empty answer goes to AI",
+      "question": {
+        "question_type": "short_answer",
+        "has_answer": true,
+        "points": 10,
+        "answer": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "证据链"
+                }
+              ]
+            }
+          ]
+        },
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "rich_text",
+        "document": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "因为有证据"
+                }
+              ]
+            }
+          ]
+        },
+        "attachments": []
+      },
+      "expected": {
+        "mode": "AI_REQUIRED",
+        "maxScore": 10
+      }
+    },
+    {
+      "name": "exact reference text still goes to AI",
+      "question": {
+        "question_type": "short_answer",
+        "has_answer": true,
+        "points": 10,
+        "answer": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "证据链"
+                }
+              ]
+            }
+          ]
+        },
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "rich_text",
+        "document": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "证据链"
+                }
+              ]
+            }
+          ]
+        },
+        "attachments": []
+      },
+      "expected": {
+        "mode": "AI_REQUIRED",
+        "maxScore": 10
+      }
+    },
+    {
+      "name": "empty document earns zero",
+      "question": {
+        "question_type": "short_answer",
+        "has_answer": true,
+        "points": 10,
+        "answer": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "证据链"
+                }
+              ]
+            }
+          ]
+        },
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "rich_text",
+        "document": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "attachments": []
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "whitespace-only answer earns zero",
+      "question": {
+        "question_type": "short_answer",
+        "has_answer": true,
+        "points": 10,
+        "answer": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "证据链"
+                }
+              ]
+            }
+          ]
+        },
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "rich_text",
+        "document": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": " 　\t "
+                }
+              ]
+            }
+          ]
+        },
+        "attachments": []
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "attachment-only answer goes to AI",
+      "question": {
+        "question_type": "short_answer",
+        "has_answer": true,
+        "points": 10,
+        "answer": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "证据链"
+                }
+              ]
+            }
+          ]
+        },
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "rich_text",
+        "document": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "attachments": [
+          {
+            "contentType": "image/png",
+            "name": "work.png",
+            "objectKey": "answers/work.png",
+            "order": 0,
+            "sizeBytes": 1024
+          }
+        ]
+      },
+      "expected": {
+        "mode": "AI_REQUIRED",
+        "maxScore": 10
+      }
+    },
+    {
+      "name": "inline-image-only answer goes to AI",
+      "question": {
+        "question_type": "short_answer",
+        "has_answer": true,
+        "points": 10,
+        "answer": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "证据链"
+                }
+              ]
+            }
+          ]
+        },
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "rich_text",
+        "document": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "image",
+                  "attrs": {
+                    "objectKey": "answers/inline.png"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "attachments": []
+      },
+      "expected": {
+        "mode": "AI_REQUIRED",
+        "maxScore": 10
+      }
+    },
+    {
+      "name": "selection response is the wrong kind",
+      "question": {
+        "question_type": "short_answer",
+        "has_answer": true,
+        "points": 10,
+        "answer": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "证据链"
+                }
+              ]
+            }
+          ]
+        },
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["A"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "missing response earns zero",
+      "question": {
+        "question_type": "short_answer",
+        "has_answer": true,
+        "points": 10,
+        "answer": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "证据链"
+                }
+              ]
+            }
+          ]
+        },
+        "sub_problems": []
+      },
+      "response": null,
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "points=0 is unscored",
+      "question": {
+        "question_type": "short_answer",
+        "has_answer": true,
+        "points": 0,
+        "answer": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "证据链"
+                }
+              ]
+            }
+          ]
+        },
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "rich_text",
+        "document": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "证据链"
+                }
+              ]
+            }
+          ]
+        },
+        "attachments": []
+      },
+      "expected": {
+        "mode": "UNSCORED"
+      }
+    },
+    {
+      "name": "has_answer=false short answer still goes to AI",
+      "question": {
+        "question_type": "short_answer",
+        "has_answer": false,
+        "points": 10,
+        "answer": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "证据链"
+                }
+              ]
+            }
+          ]
+        },
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "rich_text",
+        "document": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "证据链"
+                }
+              ]
+            }
+          ]
+        },
+        "attachments": []
+      },
+      "expected": {
+        "mode": "AI_REQUIRED",
+        "maxScore": 10
+      }
+    },
+    {
+      "name": "has_answer=false empty short answer scores zero without AI",
+      "question": {
+        "question_type": "short_answer",
+        "has_answer": false,
+        "points": 10,
+        "answer": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "证据链"
+                }
+              ]
+            }
+          ]
+        },
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "rich_text",
+        "document": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "attachments": []
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    }
+  ]
+}

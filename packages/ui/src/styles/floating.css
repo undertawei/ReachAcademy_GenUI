@@ -1,0 +1,137 @@
+/*
+ * 共享浮层面板（规范 03 §3.4）与 Tooltip / Popover（§3.14），动效见 04 §3.7。
+ * Select、MultiSelect、DatePicker、DropdownMenu 的面板都加 .rx-floating-panel，外观与进出场一致。
+ * 定位（position/left/top/max-height/min-width）与 z-index 由 JS 以内联样式给出。
+ */
+
+.rx-floating-panel {
+  box-sizing: border-box;
+  overflow: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-md);
+  background: var(--reachany-color-surface);
+  padding: var(--reachany-space-1);
+  color: var(--reachany-color-text);
+  font-family: var(--reachany-font-sans);
+  font-size: var(--rx-control-font-size);
+  box-shadow: var(--reachany-shadow-overlay);
+  scrollbar-width: thin;
+  scrollbar-color: var(--reachany-color-border) transparent;
+  transform-origin: top center;
+  animation: rx-float-in-down var(--reachany-motion-duration-fast)
+    var(--reachany-motion-easing-enter) backwards;
+}
+
+.rx-floating-panel:focus {
+  outline: none;
+}
+
+.rx-floating-panel[data-side='top'] {
+  transform-origin: bottom center;
+  animation-name: rx-float-in-up;
+}
+
+.rx-floating-panel[data-state='closed'] {
+  opacity: 0;
+  pointer-events: none;
+  animation: rx-float-out 120ms var(--reachany-motion-easing-exit) backwards;
+}
+
+.rx-popover {
+  padding: var(--reachany-space-3) var(--reachany-space-4);
+}
+
+[data-rx-popover-tone='warning'],
+[data-rx-popover-anchor-tone='warning'] {
+  --rx-joined-accent: var(--reachany-color-warning);
+  --rx-joined-soft: var(--reachany-color-warning-soft);
+}
+[data-rx-popover-tone='purple'],
+[data-rx-popover-anchor-tone='purple'] {
+  --rx-joined-accent: var(--reachany-color-purple);
+  --rx-joined-soft: var(--reachany-color-purple-soft);
+}
+[data-rx-popover-tone='category-2'],
+[data-rx-popover-anchor-tone='category-2'] {
+  --rx-joined-accent: var(--reachany-color-category-2);
+  --rx-joined-soft: var(--reachany-color-category-2-soft);
+}
+.rx-popover[data-rx-popover-tone] {
+  background: var(--rx-joined-soft);
+  border-color: var(--rx-joined-accent);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+[data-rx-popover-anchor-tone]:not([hidden]) {
+  border-color: var(--rx-joined-accent);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  box-shadow: inset 0 0 0 1px var(--rx-joined-accent);
+}
+.rx-popover[data-rx-popover-tone] [data-save-deadline] {
+  background: var(--reachany-color-primary);
+  color: var(--reachany-color-surface);
+}
+
+/* —— Tooltip —— */
+.rx-tooltip {
+  box-sizing: border-box;
+  max-width: 240px;
+  border-radius: var(--reachany-radius-sm);
+  background: var(--reachany-color-ink);
+  padding: var(--reachany-space-1) var(--reachany-space-2);
+  color: var(--reachany-color-primary-contrast);
+  font-family: var(--reachany-font-sans);
+  font-size: var(--reachany-text-caption);
+  font-weight: 400;
+  line-height: var(--reachany-text-caption-line-height);
+  overflow-wrap: anywhere;
+  pointer-events: none;
+  animation: rx-fade-in 120ms var(--reachany-motion-easing-standard) backwards;
+}
+
+.rx-tooltip[data-state='closed'] {
+  opacity: 0;
+  animation: rx-fade-out var(--reachany-motion-duration-instant) var(--reachany-motion-easing-exit)
+    backwards;
+}
+
+.rx-tooltip-arrow {
+  position: absolute;
+  left: calc(50% - 3px);
+  width: 6px;
+  height: 6px;
+  background: inherit;
+  transform: rotate(45deg);
+}
+
+.rx-tooltip[data-side='top'] .rx-tooltip-arrow {
+  bottom: -3px;
+}
+
+.rx-tooltip[data-side='bottom'] .rx-tooltip-arrow {
+  top: -3px;
+}
+
+.rx-tooltip:is([data-side='left'], [data-side='right']) .rx-tooltip-arrow {
+  top: calc(50% - 3px);
+}
+
+.rx-tooltip[data-side='left'] .rx-tooltip-arrow {
+  right: -3px;
+  left: auto;
+}
+
+.rx-tooltip[data-side='right'] .rx-tooltip-arrow {
+  left: -3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rx-floating-panel,
+  .rx-floating-panel[data-state='closed'],
+  .rx-tooltip,
+  .rx-tooltip[data-state='closed'] {
+    animation: none;
+  }
+}

@@ -1,0 +1,59 @@
+.rx-virtual-tree {
+  position: relative;
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-anchor: none;
+}
+
+.rx-virtual-tree-content {
+  position: relative;
+  min-width: 0;
+}
+
+.rx-virtual-tree-row {
+  position: absolute;
+  inset-inline: 0;
+  box-sizing: border-box;
+}
+
+.rx-virtual-tree-row[data-dragging] {
+  opacity: 0.56;
+}
+
+.rx-virtual-tree-target {
+  position: absolute;
+  inset-inline-start: calc(var(--rx-tree-depth) * var(--reachany-space-6));
+  inset-inline-end: 0;
+  z-index: var(--reachany-z-sticky);
+  border-top: var(--reachany-radius-xs) solid var(--reachany-color-primary);
+  pointer-events: none;
+}
+
+.rx-virtual-tree-target[data-zone='inside'] {
+  box-sizing: border-box;
+  border: var(--reachany-radius-xs) dashed var(--reachany-color-primary);
+  border-radius: var(--reachany-radius-md);
+  background: var(--reachany-color-primary-soft);
+  opacity: 0.56;
+}
+
+.rx-virtual-tree-preview {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  z-index: var(--reachany-z-toast);
+  width: max-content;
+  max-width: min(80vw, calc(var(--reachany-space-10) * 10));
+  box-sizing: border-box;
+  margin: var(--reachany-space-3);
+  border: thin solid var(--reachany-color-border-warm);
+  border-radius: var(--reachany-radius-md);
+  background: var(--reachany-color-surface);
+  padding: var(--reachany-space-3) var(--reachany-space-4);
+  overflow: hidden;
+  color: var(--reachany-color-text);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-shadow: var(--reachany-shadow-raised);
+  pointer-events: none;
+}

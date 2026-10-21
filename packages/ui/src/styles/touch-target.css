@@ -1,0 +1,41 @@
+/* 显式响应式触控能力：服务端首帧即可生效，不改变未启用控件的尺寸。 */
+@media (max-width: 1023px) {
+  :is(
+    .rx-pagination-button,
+    .rx-pagination-size,
+    .rx-pagination-size-option
+  )[data-touch-target='responsive'] {
+    --rx-control-height: var(--reachany-space-10);
+    --rx-option-height: var(--reachany-space-10);
+
+    min-width: var(--reachany-space-10);
+    min-height: var(--reachany-space-10);
+  }
+
+  :is(.rx-button, .rx-icon-button, .rx-input, .rx-select).rx-sized[data-touch-target='responsive'] {
+    --rx-control-height: var(--reachany-space-10);
+    --rx-min-target: var(--reachany-space-10);
+
+    min-width: var(--reachany-space-10);
+    min-height: var(--reachany-space-10);
+  }
+
+  .rx-select[data-touch-target='responsive'] .rx-select-clear {
+    right: 0;
+    width: var(--reachany-space-10);
+    height: var(--reachany-space-10);
+  }
+
+  .rx-select[data-touch-target='responsive'][data-clearable] .rx-select-trigger {
+    padding-right: var(--reachany-space-10);
+  }
+
+  :is(.rx-select-panel, .rx-select-listbox)[data-touch-target='responsive'] {
+    --rx-option-height: var(--reachany-space-10);
+  }
+
+  .rx-select-panel[data-touch-target='responsive'] .rx-select-retry {
+    min-width: var(--reachany-space-10);
+    min-height: var(--reachany-space-10);
+  }
+}

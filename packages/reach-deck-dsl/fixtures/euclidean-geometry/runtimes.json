@@ -1,0 +1,32 @@
+[
+  {
+    "id": "2d-runtime-pass",
+    "kitId": "euclidean-geometry-2d",
+    "runtime": { "id": "geometry-euclidean-2d", "version": "1.0.0" },
+    "expected": { "accepted": true }
+  },
+  {
+    "id": "3d-runtime-pass",
+    "kitId": "euclidean-geometry-3d",
+    "runtime": { "id": "geometry-euclidean-3d", "version": "1.0.0" },
+    "expected": { "accepted": true }
+  },
+  {
+    "id": "unknown-runtime",
+    "kitId": "euclidean-geometry-2d",
+    "runtime": { "id": "geometry-unknown", "version": "1.0.0" },
+    "expected": { "accepted": false, "errorCode": "unknown_runtime" }
+  },
+  {
+    "id": "wrong-runtime-version",
+    "kitId": "euclidean-geometry-2d",
+    "runtime": { "id": "geometry-euclidean-2d", "version": "2.0.0" },
+    "expected": { "accepted": false, "errorCode": "runtime_mismatch" }
+  },
+  {
+    "id": "wrong-runtime-dimension",
+    "kitId": "euclidean-geometry-2d",
+    "runtime": { "id": "geometry-euclidean-3d", "version": "1.0.0" },
+    "expected": { "accepted": false, "errorCode": "runtime_mismatch" }
+  }
+]

@@ -1,0 +1,7 @@
+[submodule "services/openedx-platform"]
+	path = services/openedx-platform
+	url = https://github.com/openedx/openedx-platform
+[submodule "services/openmaic"]
+	path = services/openmaic
+	url = https://github.com/ReachAny/OpenMAIC
+	branch = reachany/main

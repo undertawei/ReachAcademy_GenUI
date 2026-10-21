@@ -1,0 +1,40 @@
+.rx-course-catalog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  grid-column: 1 / -1;
+  align-items: center;
+  gap: var(--reachany-space-1);
+  width: 100%;
+  min-width: 0;
+}
+.rx-course-catalog-filters > .rx-select {
+  flex: 0 0 auto;
+  max-width: 100%;
+  --rx-control-height: var(--reachany-space-8);
+}
+.rx-course-catalog-filters .rx-select-trigger {
+  gap: var(--reachany-space-1);
+  height: auto;
+  padding-inline: var(--reachany-space-1);
+}
+.rx-course-catalog-filters .rx-select-value {
+  overflow: visible;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
+}
+.rx-course-catalog-filters .rx-select-clear {
+  right: var(--reachany-space-1);
+  width: var(--reachany-space-4);
+}
+.rx-course-catalog-filter-search {
+  flex: 1 0 calc(var(--reachany-side-panel-width) / 4);
+  min-width: 0;
+  max-width: var(--reachany-side-panel-width);
+  margin-inline-start: auto;
+}
+.rx-course-catalog-filter-search > * {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+}

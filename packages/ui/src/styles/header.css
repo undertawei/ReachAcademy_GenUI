@@ -1,0 +1,550 @@
+/*
+ * RoleHeader（规范 02 §2）：60px、header 色底、无阴影无底边、左右 40px；
+ * 字标 REACH 800 / ACADEMY 300、23px、字距 1.5px；导航右对齐、间距 34、15px 白字，
+ * 默认字重 350（80% 不透明度），当前页 700；铃铛 20、头像 34，两者之间 34。
+ */
+
+html[data-reachany-role-header-collapsed='true'] body {
+  --rx-role-header-effective-height: 0px;
+}
+
+.rx-role-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--reachany-z-header);
+  display: flex;
+  box-sizing: border-box;
+  height: var(--reachany-header-height);
+  min-height: var(--reachany-header-height);
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--reachany-header-nav-gap);
+  padding: 0 var(--reachany-header-padding-inline);
+  background: var(--reachany-color-header);
+  color: var(--reachany-color-primary-contrast);
+  font-family: var(--reachany-font-sans);
+}
+
+.rx-role-header[data-role-header-collapsible='true'] {
+  max-height: var(--rx-role-header-expanded-height, var(--reachany-header-height));
+  transition:
+    max-height var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    min-height var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    opacity var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    transform var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+html[data-reachany-role-header-collapsed='true']
+  .rx-role-header[data-role-header-collapsible='true'] {
+  height: 0;
+  max-height: 0;
+  min-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-100%);
+  visibility: hidden;
+}
+
+/* —— 字标 —— */
+.rx-role-header-brand {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  column-gap: 0.35em;
+  border-radius: var(--reachany-radius-sm);
+  color: var(--reachany-color-primary-contrast);
+  font-family: var(--reachany-font-brand);
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.rx-role-header-brand span {
+  font-weight: 300;
+}
+
+.rx-role-header-brand-mark {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  margin-right: 4px;
+}
+
+.rx-role-header-brand:focus-visible {
+  outline: 2px solid var(--reachany-color-primary-contrast);
+  outline-offset: 4px;
+}
+
+/* —— 导航与右侧操作 —— */
+.rx-role-header-content {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--reachany-header-nav-gap);
+}
+
+.rx-role-header-menu-panel {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+}
+
+.rx-role-header-actions {
+  display: flex;
+  min-width: 0;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--reachany-space-3);
+}
+
+.rx-role-header-menu-trigger {
+  display: none;
+}
+
+.rx-role-header-nav {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: var(--reachany-header-nav-gap);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.rx-role-header-nav::-webkit-scrollbar {
+  display: none;
+}
+
+/* 行盒锁死：20 + 20 + 20 = 60px，正好等于页头高度；交回 line-height: normal 会被字体度量撑高 1px。 */
+.rx-role-header-nav-link {
+  flex: 0 0 auto;
+  padding: 20px 0;
+  color: color-mix(in srgb, var(--reachany-color-primary-contrast) 80%, transparent);
+  font-size: var(--reachany-text-body-lg);
+  font-weight: 350;
+  line-height: 20px;
+  text-decoration: none;
+  transition: color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+.rx-role-header-nav-link:hover,
+.rx-role-header-nav-link-current {
+  color: var(--reachany-color-primary-contrast);
+}
+
+.rx-role-header-nav-link-current {
+  font-weight: 700;
+}
+
+.rx-role-header-nav-link:focus-visible {
+  border-radius: var(--reachany-radius-sm);
+  outline: 2px solid var(--reachany-color-primary-contrast);
+  outline-offset: -14px;
+}
+
+/* 右侧的图标操作（铃铛等）：20px 图标、34×34 点击区，未读时右上角 6px 朱砂红点。 */
+.rx-role-header-action {
+  position: relative;
+  display: inline-grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 0;
+  border-radius: var(--reachany-radius-pill);
+  background: transparent;
+  color: var(--reachany-color-primary-contrast);
+  cursor: pointer;
+  transition: background-color var(--reachany-motion-duration-fast)
+    var(--reachany-motion-easing-standard);
+}
+
+.rx-role-header-action:hover {
+  background: color-mix(in srgb, var(--reachany-color-primary-contrast) 12%, transparent);
+}
+
+.rx-role-header-action:focus-visible {
+  outline: 2px solid var(--reachany-color-primary-contrast);
+  outline-offset: 2px;
+}
+
+.rx-role-header-action svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.5;
+}
+
+.rx-role-header-dot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-primary);
+  box-shadow: 0 0 0 1.5px var(--reachany-color-header);
+}
+
+.rx-role-header-profile {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--reachany-space-3);
+}
+
+/* —— 折叠 / 恢复 —— */
+.rx-role-header-collapse,
+.rx-role-header-restore {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 0;
+  border-radius: var(--reachany-radius-pill);
+  background: transparent;
+  color: var(--reachany-color-primary-contrast);
+  cursor: pointer;
+}
+
+.rx-role-header-collapse:hover {
+  background: color-mix(in srgb, var(--reachany-color-primary-contrast) 12%, transparent);
+}
+
+.rx-role-header-collapse:focus-visible,
+.rx-role-header-restore:focus-visible {
+  outline: 2px solid var(--reachany-color-primary-contrast);
+  outline-offset: 2px;
+}
+
+.rx-role-header-restore-zone {
+  position: fixed;
+  z-index: var(--reachany-z-header);
+  top: 0;
+  right: 0;
+  left: 0;
+  display: none;
+  height: 12px;
+  justify-content: center;
+}
+
+html[data-reachany-role-header-collapsed='true'] .rx-role-header-restore-zone {
+  display: flex;
+}
+
+.rx-role-header-restore {
+  width: 44px;
+  height: 44px;
+  background: var(--reachany-color-header);
+  box-shadow: var(--reachany-shadow-raised);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-110%);
+  transition:
+    opacity var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    transform var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+.rx-role-header-restore-zone:hover .rx-role-header-restore,
+.rx-role-header-restore-zone:focus-within .rx-role-header-restore {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(8px);
+}
+
+/* —— 头像与个人信息浮层 —— */
+.rx-role-header-avatar,
+.rx-role-header-profile-avatar {
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-category-1);
+  color: var(--reachany-color-primary-contrast);
+  font-family: var(--reachany-font-sans);
+  font-weight: 600;
+}
+
+.rx-role-header-avatar {
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  font-size: var(--reachany-text-body);
+}
+
+.rx-role-header-avatar:focus-visible {
+  outline: 2px solid var(--reachany-color-primary-contrast);
+  outline-offset: 2px;
+}
+
+.rx-role-header-popover {
+  position: absolute;
+  z-index: var(--reachany-z-dropdown);
+  top: calc(100% + 13px);
+  right: 0;
+  width: 18rem;
+  box-sizing: border-box;
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-md);
+  background: var(--reachany-color-surface);
+  padding: var(--reachany-space-4);
+  color: var(--reachany-color-text);
+  box-shadow: var(--reachany-shadow-overlay);
+  animation: rx-float-in-down var(--reachany-motion-duration-fast)
+    var(--reachany-motion-easing-enter) backwards;
+}
+
+.rx-role-header-popover[hidden] {
+  display: none;
+}
+
+.rx-role-header-profile-heading {
+  display: flex;
+  align-items: center;
+  gap: var(--reachany-space-3);
+  border-bottom: 1px solid var(--reachany-color-border);
+  padding-bottom: var(--reachany-space-4);
+}
+
+.rx-role-header-profile-heading p,
+.rx-role-header-profile-heading strong {
+  display: block;
+  margin: 0;
+}
+
+.rx-role-header-profile-heading p {
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+}
+
+.rx-role-header-profile-heading strong {
+  max-width: 12rem;
+  overflow: hidden;
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-body);
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rx-role-header-profile-avatar {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+}
+
+.rx-role-header-profile-items {
+  display: grid;
+  gap: var(--reachany-space-3);
+  margin: var(--reachany-space-3) 0 0;
+}
+
+.rx-role-header-profile-items > div {
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+  gap: var(--reachany-space-3);
+  font-size: var(--reachany-text-caption);
+}
+
+.rx-role-header-profile-items dt {
+  color: var(--reachany-color-text-secondary);
+}
+
+.rx-role-header-profile-items dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--reachany-color-text);
+  font-weight: 500;
+  text-align: right;
+}
+
+.rx-role-header-profile-actions {
+  display: grid;
+  gap: var(--reachany-space-2);
+  border-top: 1px solid var(--reachany-color-border);
+  margin-top: var(--reachany-space-4);
+  padding-top: var(--reachany-space-3);
+}
+
+/* 退出登录与修改密码同形：default 描边按钮样式、整行。 */
+.rx-role-header-sign-out,
+.rx-password-dialog-trigger {
+  display: flex;
+  width: 100%;
+  height: 36px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  gap: var(--reachany-space-2);
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-md);
+  background: var(--reachany-color-surface);
+  padding: 0 var(--reachany-space-3);
+  color: var(--reachany-color-text);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--reachany-text-body);
+  font-weight: 500;
+  transition:
+    background-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    border-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+.rx-role-header-sign-out:hover,
+.rx-password-dialog-trigger:hover {
+  border-color: var(--reachany-color-text-tertiary);
+  background: var(--reachany-color-surface-muted);
+}
+
+.rx-role-header-sign-out:focus-visible,
+.rx-password-dialog-trigger:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+:is(.rx-role-header-sign-out, .rx-password-dialog-trigger) svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.5;
+}
+
+/* —— 窄屏：导航折叠为菜单（JS 在宽度不足或 < 1024 时加 .rx-role-header-responsive）—— */
+.rx-role-header-responsive {
+  gap: var(--reachany-space-3);
+  padding-inline: var(--reachany-space-4);
+}
+
+.rx-role-header-responsive .rx-role-header-brand {
+  margin-right: auto;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.rx-role-header-responsive .rx-role-header-brand-mark {
+  width: 24px;
+  height: 24px;
+}
+
+.rx-role-header-responsive .rx-role-header-menu-trigger {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  order: 1;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--reachany-color-primary-contrast) 28%, transparent);
+  border-radius: var(--reachany-radius-md);
+  background: transparent;
+  color: var(--reachany-color-primary-contrast);
+  cursor: pointer;
+}
+
+.rx-role-header-responsive .rx-role-header-menu-trigger:hover {
+  background: color-mix(in srgb, var(--reachany-color-primary-contrast) 12%, transparent);
+}
+
+.rx-role-header-responsive .rx-role-header-menu-trigger:focus-visible {
+  outline: 2px solid var(--reachany-color-primary-contrast);
+  outline-offset: 2px;
+}
+
+.rx-role-header-responsive .rx-role-header-content {
+  flex: 0 1 auto;
+  order: 2;
+  gap: var(--reachany-space-3);
+}
+
+.rx-role-header-responsive .rx-role-header-menu-panel {
+  position: absolute;
+  z-index: var(--reachany-z-dropdown);
+  top: 100%;
+  right: 0;
+  left: 0;
+  display: none;
+  max-height: calc(100dvh - var(--reachany-header-height));
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: stretch;
+  overflow-y: auto;
+  border-top: 1px solid color-mix(in srgb, var(--reachany-color-primary-contrast) 18%, transparent);
+  background: var(--reachany-color-header);
+  padding: var(--reachany-space-3) var(--reachany-space-4) var(--reachany-space-4);
+  box-shadow: var(--reachany-shadow-overlay);
+}
+
+.rx-role-header-responsive .rx-role-header-menu-panel[data-open='true'] {
+  display: flex;
+}
+
+.rx-role-header-responsive .rx-role-header-nav {
+  width: 100%;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--reachany-space-1);
+}
+
+.rx-role-header-responsive .rx-role-header-nav-link {
+  border-left: 3px solid transparent;
+  border-radius: var(--reachany-radius-md);
+  padding: 10px var(--reachany-space-3);
+}
+
+.rx-role-header-responsive .rx-role-header-nav-link:hover {
+  background: color-mix(in srgb, var(--reachany-color-primary-contrast) 10%, transparent);
+}
+
+.rx-role-header-responsive .rx-role-header-nav-link-current {
+  border-left-color: var(--reachany-color-primary-contrast);
+  background: color-mix(in srgb, var(--reachany-color-primary-contrast) 14%, transparent);
+}
+
+/* 不能设 overflow：横向滚动会让 overflow-y 一并计算为 auto，裁掉机构、端切换等绝对定位下拉。
+   窄宽度改由机构切换器自身收缩让出空间。 */
+.rx-role-header-responsive .rx-role-header-actions {
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+@media (max-width: 720px) {
+  .rx-role-header-responsive .rx-role-header-brand {
+    display: none;
+  }
+
+  .rx-role-header-responsive .rx-role-header-menu-trigger {
+    order: 0;
+  }
+
+  .rx-role-header-responsive .rx-role-header-content {
+    margin-left: auto;
+  }
+}
+
+/* 触屏没有悬停：折叠后常显恢复按钮。 */
+@media (hover: none), (pointer: coarse), (max-width: 720px) {
+  html[data-reachany-role-header-collapsed='true'] .rx-role-header-restore {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rx-role-header[data-role-header-collapsible='true'],
+  .rx-role-header-restore {
+    transition-duration: 0.01ms;
+  }
+
+  .rx-role-header-popover {
+    animation: none;
+  }
+}
+
+.rx-role-header-action-icon {
+  display: inline-grid;
+  place-items: center;
+}

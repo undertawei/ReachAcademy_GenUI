@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "decksmith-replay-case/v1",
+  "id": "wp2-interactive-edit-reads-contract-then-commits",
+  "teacherCase": 6,
+  "summary": "GenUI 小补丁：同一回合读互动合同与完整 HTML，下一回合补丁并提交，回合数与预加载时相同。",
+  "provenance": {
+    "kind": "synthetic-reconstruction",
+    "observedOn": "2026-10-09",
+    "notes": "WP2 按需合同的典型编辑流程，合成内容。"
+  },
+  "document": "energy-lesson.json",
+  "request": {
+    "prompt": "把滑块标签改成“电压 U（伏特）”",
+    "pageId": "55555555-5555-4555-8555-555555555555:page-3",
+    "promptContractVersion": "decksmith-prompt/v2"
+  },
+  "capturedWith": {
+    "toolParameterSha256": {
+      "check_and_commit_interactive_page": "c5494e1b7831d5948d141ae82f152bc588e0c5183c2ea5527901d7acb0073a21",
+      "edit_interactive_html": "2464aefd322afeb748059023ca2560e4b9d82219706b3c85f98c38aa431dd1e0",
+      "read_interactive_authoring_contract": "8243f0af367f188a376f2c17b5eabe872a2f7a979813e0d4e2be6d594c2aa259",
+      "read_interactive_html": "b8d470c9a9a1180ec503cf3fcb5bdbe40efcfd9b4cc898098fed76b53cca1653"
+    }
+  },
+  "transcript": [
+    {
+      "toolCalls": [
+        {
+          "id": "interactive-contract",
+          "name": "read_interactive_authoring_contract",
+          "arguments": {}
+        },
+        {
+          "id": "read",
+          "name": "read_interactive_html",
+          "arguments": {
+            "pageId": "55555555-5555-4555-8555-555555555555:page-3"
+          }
+        }
+      ],
+      "usage": {
+        "input": 6300,
+        "output": 60
+      }
+    },
+    {
+      "toolCalls": [
+        {
+          "id": "edit",
+          "name": "edit_interactive_html",
+          "arguments": {
+            "pageId": "55555555-5555-4555-8555-555555555555:page-3",
+            "edits": [
+              {
+                "oldText": "<label>电压 U <input",
+                "newText": "<label>电压 U（伏特） <input"
+              }
+            ]
+          }
+        },
+        {
+          "id": "commit",
+          "name": "check_and_commit_interactive_page",
+          "arguments": {
+            "pageId": "55555555-5555-4555-8555-555555555555:page-3"
+          }
+        }
+      ],
+      "usage": {
+        "input": 15800,
+        "output": 120
+      }
+    },
+    {
+      "text": "已把滑块标签改成“电压 U（伏特）”，其余交互不变。",
+      "usage": {
+        "input": 16300,
+        "output": 50
+      }
+    }
+  ],
+  "expect": {
+    "changed": true,
+    "outcome": {
+      "mutationStatus": "proposal",
+      "toolErrorCount": 0
+    },
+    "modelTurns": 3,
+    "toolResults": [
+      {
+        "callId": "interactive-contract",
+        "isError": false,
+        "includes": [
+          "Interactive authoring and validation contract:",
+          "EDITING TOOL OUTPUT ADAPTER"
+        ]
+      },
+      {
+        "callId": "edit",
+        "isError": false
+      },
+      {
+        "callId": "commit",
+        "isError": false,
+        "includes": ["\"committed\":true"]
+      }
+    ],
+    "userPromptIncludes": ["The current page is an Interactive (GenUI) page"],
+    "userPromptExcludes": ["Interactive authoring and validation contract:"]
+  }
+}

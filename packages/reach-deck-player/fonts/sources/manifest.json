@@ -1,0 +1,125 @@
+{
+  "version": "reach-fonts/2026-08-04",
+  "files": [
+    {
+      "file": "AlibabaPuHuiTi-3-55-RegularL3.ttf",
+      "family": "Alibaba PuHuiTi 3.0",
+      "fontVersion": "3.00",
+      "license": "Alibaba PuHuiTi 3 official free-commercial-use terms; not OFL",
+      "licenseFile": "licenses/ALIBABA-PUHUITI-3-NOTICE.md",
+      "upstream": "https://fonts.alibabadesign.com/AlibabaPuHuiTi-3/AlibabaPuHuiTi-3-55-RegularL3.zip"
+    },
+    {
+      "file": "Anton-Regular-2.ttf",
+      "family": "Anton",
+      "fontVersion": "2.000",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "licenses/OFL-1.1.txt",
+      "upstream": "https://github.com/google/fonts/tree/main/ofl/anton"
+    },
+    {
+      "file": "carlito.ttf",
+      "family": "Carlito",
+      "fontVersion": "1.103",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "licenses/OFL-1.1.txt",
+      "upstream": "https://github.com/googlefonts/carlito"
+    },
+    {
+      "file": "ComicNeue-Regular.otf",
+      "family": "Comic Neue",
+      "fontVersion": "2.003",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "licenses/OFL-1.1.txt",
+      "upstream": "https://github.com/crozynski/comicneue"
+    },
+    {
+      "file": "EBGaramond.otf",
+      "family": "EB Garamond",
+      "fontVersion": "000.010",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "licenses/OFL-1.1.txt",
+      "upstream": "https://github.com/georgd/EB-Garamond"
+    },
+    {
+      "file": "LiberationSans-Regular-4.ttf",
+      "family": "Liberation Sans",
+      "fontVersion": "1.05",
+      "license": "GNU GPL 2.0 with Liberation font and physical-product exceptions",
+      "licenseFile": "licenses/LIBERATION-GPL-2.0-WITH-EXCEPTIONS.txt",
+      "upstream": "https://releases.pagure.org/liberation-fonts/"
+    },
+    {
+      "file": "LiberationSerif-Regular-4.ttf",
+      "family": "Liberation Serif",
+      "fontVersion": "1.04",
+      "license": "GNU GPL 2.0 with Liberation font and physical-product exceptions",
+      "licenseFile": "licenses/LIBERATION-GPL-2.0-WITH-EXCEPTIONS.txt",
+      "upstream": "https://releases.pagure.org/liberation-fonts/"
+    },
+    {
+      "file": "LXGWWenKai-Regular.ttf",
+      "family": "LXGW WenKai",
+      "fontVersion": "1.522",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "licenses/OFL-1.1.txt",
+      "upstream": "https://github.com/lxgw/LxgwWenKai"
+    },
+    {
+      "file": "Montserrat-Regular-8.otf",
+      "family": "Montserrat",
+      "fontVersion": "4.000",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "licenses/OFL-1.1.txt",
+      "upstream": "https://github.com/JulietaUla/Montserrat"
+    },
+    {
+      "file": "osifont.ttf",
+      "family": "osifont",
+      "fontVersion": "0.1.20221020",
+      "license": "GNU GPL 3.0 with font exception",
+      "licenseFile": "licenses/OSIFONT-GPL-3.0-WITH-FONT-EXCEPTION.txt",
+      "upstream": "https://github.com/hikikomori82/osifont/tree/2e9aa86a8a09b044e08c00f5a4a2505dc3ca9f6e"
+    },
+    {
+      "file": "SourceHanSans-VF.ttf",
+      "family": "Source Han Sans VF",
+      "fontVersion": "2.005",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "licenses/OFL-1.1.txt",
+      "upstream": "https://github.com/adobe-fonts/source-han-sans"
+    },
+    {
+      "file": "SourceHanSerifSC-Regular.otf",
+      "family": "Source Han Serif SC",
+      "fontVersion": "2.003",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "licenses/OFL-1.1.txt",
+      "upstream": "https://github.com/adobe-fonts/source-han-serif"
+    },
+    {
+      "file": "STIX Two Math.otf",
+      "family": "STIX Two Math",
+      "fontVersion": "2.02 b142",
+      "license": "SIL Open Font License 1.1 with STIX reserved-name notice",
+      "licenseFile": "licenses/STIX-OFL-1.1.txt",
+      "upstream": "https://github.com/stipub/stixfonts/tree/master/archive/STIXv2.0.2"
+    },
+    {
+      "file": "tex-gyre-adventor.regular.otf",
+      "family": "TeX Gyre Adventor",
+      "fontVersion": "2.003",
+      "license": "GUST Font License 1.0",
+      "licenseFile": "licenses/GUST-FONT-LICENSE.txt",
+      "upstream": "https://www.gust.org.pl/projects/e-foundry/tex-gyre"
+    },
+    {
+      "file": "ZhuqueFangsong-Regular.ttf",
+      "family": "Zhuque Fangsong (technical preview)",
+      "fontVersion": "0.212",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "licenses/OFL-1.1.txt",
+      "upstream": "https://github.com/TrionesType/zhuque"
+    }
+  ]
+}

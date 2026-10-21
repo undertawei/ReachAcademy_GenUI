@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "decksmith-replay-case/v1",
+  "id": "case3-open-ended-choice-rejected",
+  "teacherCase": 3,
+  "summary": "选择题设 has_answer=false 被拒并给出具体诊断；模型改成简答题后插入成功（当前计为部分完成）。",
+  "provenance": {
+    "kind": "synthetic-reconstruction",
+    "observedOn": "2026-10-08",
+    "notes": "重建自\"带标答/失败一次\"反馈中的自纠路径。"
+  },
+  "document": "energy-lesson.json",
+  "request": {
+    "prompt": "在这一页后面加一道无标答的课中互动题：你更喜欢哪种电池？",
+    "pageId": "55555555-5555-4555-8555-555555555555:page-2",
+    "promptContractVersion": "decksmith-prompt/v2"
+  },
+  "capturedWith": {
+    "toolParameterSha256": {
+      "insert_quiz_page": "cb69f98ac4051cb9b07d221ffbbee0cc7e1a74e9c227b33ca16ad50d189f56e7",
+      "read_quiz_authoring_contract": "8243f0af367f188a376f2c17b5eabe872a2f7a979813e0d4e2be6d594c2aa259"
+    }
+  },
+  "transcript": [
+    {
+      "toolCalls": [
+        {
+          "id": "contract",
+          "name": "read_quiz_authoring_contract",
+          "arguments": {}
+        },
+        {
+          "id": "choice",
+          "name": "insert_quiz_page",
+          "arguments": {
+            "sceneJson": {
+              "$json": {
+                "title": "课中互动题",
+                "content": {
+                  "questions": [
+                    {
+                      "question_type": "single_choice",
+                      "question": "你更喜欢哪种电池？",
+                      "analysis": "可以从使用场景比较。",
+                      "has_answer": false,
+                      "options": [
+                        {
+                          "value": "A",
+                          "label": "干电池"
+                        },
+                        {
+                          "value": "B",
+                          "label": "充电电池"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            "position": 3
+          }
+        }
+      ],
+      "usage": {
+        "input": 9000,
+        "output": 300
+      }
+    },
+    {
+      "toolCalls": [
+        {
+          "id": "open",
+          "name": "insert_quiz_page",
+          "arguments": {
+            "sceneJson": {
+              "$json": {
+                "title": "课中互动题",
+                "content": {
+                  "questions": [
+                    {
+                      "question_type": "short_answer",
+                      "question": "你更喜欢哪种电池？说说理由。",
+                      "analysis": "可以从使用场景、成本和环保比较。",
+                      "has_answer": false,
+                      "answer": ""
+                    }
+                  ]
+                }
+              }
+            },
+            "position": 3
+          }
+        }
+      ],
+      "usage": {
+        "input": 13500,
+        "output": 260
+      }
+    },
+    {
+      "text": "选择题不能设为无标准答案，已改为一道无标答的简答题插入到第 3 页。",
+      "usage": {
+        "input": 14000,
+        "output": 70
+      }
+    }
+  ],
+  "expect": {
+    "changed": true,
+    "outcome": {
+      "mutationStatus": "partial",
+      "toolErrorCount": 1
+    },
+    "modelTurns": 3,
+    "toolResults": [
+      {
+        "callId": "choice",
+        "isError": true,
+        "includes": ["only short_answer may set has_answer false"]
+      },
+      {
+        "callId": "open",
+        "isError": false
+      }
+    ]
+  }
+}

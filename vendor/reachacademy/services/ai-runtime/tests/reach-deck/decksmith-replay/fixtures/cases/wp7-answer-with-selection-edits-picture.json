@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "decksmith-replay-case/v1",
+  "id": "wp7-answer-with-selection-edits-picture",
+  "teacherCase": 2,
+  "summary": "结构化提问（WP7）：教师点选候选\"一节干电池\"作答（带选区与 answersQuestionId），下一轮模型输入接上问题与候选，直接用 edit_native_image 改这张图。",
+  "provenance": {
+    "kind": "synthetic-reconstruction",
+    "observedOn": "2026-10-09",
+    "notes": "多轮案例：上一轮复用 wp7-ambiguous-picture-asks-teacher 的回放结果，教师点选左边的干电池图。"
+  },
+  "document": "energy-lesson.json",
+  "followsCase": {
+    "id": "wp7-ambiguous-picture-asks-teacher",
+    "proposalOutcome": "pending",
+    "answersQuestion": true
+  },
+  "request": {
+    "prompt": "选这个：image \"一节干电池\"",
+    "pageId": "55555555-5555-4555-8555-555555555555:page-2",
+    "selectedElementIds": ["p2-dry"],
+    "promptContractVersion": "decksmith-prompt/v3"
+  },
+  "capturedWith": {
+    "toolParameterSha256": {
+      "edit_native_image": "3b8aa274296f297ad73564b94bfc4cc96626f8e578f4741d49d17243f919cfda"
+    }
+  },
+  "transcript": [
+    {
+      "toolCalls": [
+        {
+          "id": "edit-dry",
+          "name": "edit_native_image",
+          "arguments": {
+            "pageId": "55555555-5555-4555-8555-555555555555:page-2",
+            "elementId": "p2-dry",
+            "instruction": "把图中的一节干电池换成一块正在充电的充电电池，其他内容保持不变"
+          }
+        }
+      ],
+      "usage": {
+        "input": 8900,
+        "output": 110
+      }
+    },
+    {
+      "text": "已参考原图把左边的干电池换成正在充电的充电电池，整体构图沿用原图，但细节可能略有不同，请检查后再采用。",
+      "usage": {
+        "input": 9400,
+        "output": 80
+      }
+    }
+  ],
+  "services": {
+    "imageEdit": [
+      {
+        "image": "edited-hero.png"
+      }
+    ]
+  },
+  "expect": {
+    "changed": true,
+    "outcome": {
+      "mutationStatus": "proposal",
+      "toolErrorCount": 0
+    },
+    "modelTurns": 2,
+    "toolResults": [
+      {
+        "callId": "edit-dry",
+        "isError": false,
+        "includes": ["\"targetId\":\"p2-dry\""]
+      }
+    ],
+    "userPromptIncludes": [
+      "Teacher: 把这张图里的电池换成充电电池",
+      "Decksmith: 这一页有两张图，我先确认要改哪一张。",
+      "Question asked to the teacher [dq_",
+      "(expects select-element): 这一页有两张电池图，要把哪一张换成充电电池？",
+      "Options: 左边的一节干电池 | 右边的一块锂电池",
+      "Candidates: p2-dry: image \"一节干电池\" (page 55555555-5555-4555-8555-555555555555:page-2, revision 1); p2-rechargeable: image \"一块锂电池\"",
+      "This teacher message answers your earlier question [dq_",
+      "The teacher selected these element ids on the current page: p2-dry.",
+      "Teacher request: 选这个：image \"一节干电池\""
+    ],
+    "serviceCalls": {
+      "imageEdit": 1,
+      "imageGenerate": 0
+    }
+  }
+}

@@ -1,0 +1,15 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office">
+  <body>
+    <p>
+      Before
+      <img
+        src="https://example.invalid/private.png"
+        srcset="file:///tmp/a.png"
+        alt='A "diagram" &lt;one&gt;'
+        onerror="alert(1)"
+      />
+      after
+    </p>
+    <p><img src="data:image/png;base64,AAAA" alt="" /></p>
+  </body>
+</html>

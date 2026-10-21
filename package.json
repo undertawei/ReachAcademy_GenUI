@@ -1,0 +1,46 @@
+{
+  "name": "reachacademy-genui-workbench",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "prepare:geometry": "node scripts/build-geometry.mjs",
+    "predev": "pnpm prepare:geometry",
+    "dev": "tsx --tsconfig tsconfig.runtime.json apps/workbench/server/index.ts",
+    "build": "pnpm prepare:geometry && vite build --config vite.config.ts",
+    "start": "tsx --tsconfig tsconfig.runtime.json apps/workbench/server/index.ts --production",
+    "typecheck": "tsc --noEmit",
+    "test": "pnpm prepare:geometry && vitest run --config vitest.config.ts",
+    "verify:sources": "node scripts/verify-sources.mjs",
+    "format": "prettier --write README.md docs/*.md apps/workbench/server apps/workbench/shared apps/workbench/src scripts package.json tsconfig*.json vite.config.ts vitest.config.ts"
+  },
+  "dependencies": {
+    "@reachany/reach-deck-dsl": "workspace:*",
+    "@reachany/reach-deck-geometry": "workspace:*",
+    "@reachany/reach-deck-player": "workspace:*",
+    "@reachany/importer": "workspace:*",
+    "@noble/hashes": "1.8.0",
+    "acorn": "8.16.0",
+    "dotenv": "16.6.1",
+    "esbuild": "0.27.7",
+    "happy-dom": "20.11.1",
+    "parse5": "7.3.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "4.7.0",
+    "prettier": "^3.0.0",
+    "tsx": "4.20.6",
+    "typescript": "^5.0.0",
+    "vite": "6.4.1",
+    "vitest": "3.2.4"
+  }
+}

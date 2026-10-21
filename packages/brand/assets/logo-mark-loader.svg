@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="250 250 580 580">
+  <style>
+    path {
+      fill: none;
+      stroke: #ed0501;
+      stroke-dasharray: var(--l) 20000px;
+      stroke-dashoffset: calc(-1 * var(--o));
+      stroke-width: 62.5;
+      animation: var(--a) 3100ms infinite;
+    }
+    @keyframes spin-top {
+      0% {
+        stroke-dasharray: 216.45px 20000px;
+        stroke-dashoffset: -31.25px;
+        animation-timing-function: cubic-bezier(0.333, 0, 0.667, 0.333);
+      }
+
+      16.129% {
+        stroke-dasharray: 232.00px 20000px;
+        stroke-dashoffset: -993.38px;
+        animation-timing-function: linear;
+      }
+
+      22.043% {
+        stroke-dasharray: 218.00px 20000px;
+        stroke-dashoffset: -1724.34px;
+        animation-timing-function: linear;
+      }
+
+      27.957% {
+        stroke-dasharray: 240.00px 20000px;
+        stroke-dashoffset: -2419.31px;
+        animation-timing-function: linear;
+      }
+
+      33.871% {
+        stroke-dasharray: 216.00px 20000px;
+        stroke-dashoffset: -3160.27px;
+        animation-timing-function: linear;
+      }
+
+      39.785% {
+        stroke-dasharray: 236.00px 20000px;
+        stroke-dashoffset: -3857.23px;
+        animation-timing-function: linear;
+      }
+
+      45.699% {
+        stroke-dasharray: 222.00px 20000px;
+        stroke-dashoffset: -4588.20px;
+        animation-timing-function: linear;
+      }
+
+      51.613% {
+        stroke-dasharray: 238.00px 20000px;
+        stroke-dashoffset: -5289.16px;
+        animation-timing-function: cubic-bezier(0.333, 1, 0.667, 1);
+      }
+
+      77.419%,
+      100% {
+        stroke-dasharray: 216.45px 20000px;
+        stroke-dashoffset: -6353.57px;
+      }
+    }
+
+    @keyframes spin-corner {
+      0% {
+        stroke-dasharray: 565.71px 20000px;
+        stroke-dashoffset: -729.43px;
+        animation-timing-function: cubic-bezier(0.333, 0, 0.667, 0.333);
+      }
+
+      16.129% {
+        stroke-dasharray: 900.00px 20000px;
+        stroke-dashoffset: -1372.82px;
+        animation-timing-function: linear;
+      }
+
+      22.043% {
+        stroke-dasharray: 690.00px 20000px;
+        stroke-dashoffset: -2299.78px;
+        animation-timing-function: linear;
+      }
+
+      27.957% {
+        stroke-dasharray: 940.00px 20000px;
+        stroke-dashoffset: -2766.75px;
+        animation-timing-function: linear;
+      }
+
+      33.871% {
+        stroke-dasharray: 640.00px 20000px;
+        stroke-dashoffset: -3783.71px;
+        animation-timing-function: linear;
+      }
+
+      39.785% {
+        stroke-dasharray: 830.00px 20000px;
+        stroke-dashoffset: -4310.67px;
+        animation-timing-function: linear;
+      }
+
+      45.699% {
+        stroke-dasharray: 710.00px 20000px;
+        stroke-dashoffset: -5147.64px;
+        animation-timing-function: linear;
+      }
+
+      51.613% {
+        stroke-dasharray: 880.00px 20000px;
+        stroke-dashoffset: -5694.60px;
+        animation-timing-function: cubic-bezier(0.333, 1, 0.667, 1);
+      }
+
+      77.419%,
+      100% {
+        stroke-dasharray: 565.71px 20000px;
+        stroke-dashoffset: -7051.75px;
+      }
+    }
+
+    @keyframes spin-side {
+      0% {
+        stroke-dasharray: 225.37px 20000px;
+        stroke-dashoffset: -1850.83px;
+        animation-timing-function: cubic-bezier(0.333, 0, 0.667, 0.333);
+      }
+
+      16.129% {
+        stroke-dasharray: 420.00px 20000px;
+        stroke-dashoffset: -2633.88px;
+        animation-timing-function: linear;
+      }
+
+      22.043% {
+        stroke-dasharray: 660.00px 20000px;
+        stroke-dashoffset: -3110.84px;
+        animation-timing-function: linear;
+      }
+
+      27.957% {
+        stroke-dasharray: 370.00px 20000px;
+        stroke-dashoffset: -4117.81px;
+        animation-timing-function: linear;
+      }
+
+      33.871% {
+        stroke-dasharray: 610.00px 20000px;
+        stroke-dashoffset: -4594.77px;
+        animation-timing-function: linear;
+      }
+
+      39.785% {
+        stroke-dasharray: 450.00px 20000px;
+        stroke-dashoffset: -5471.73px;
+        animation-timing-function: linear;
+      }
+
+      45.699% {
+        stroke-dasharray: 690.00px 20000px;
+        stroke-dashoffset: -5948.70px;
+        animation-timing-function: linear;
+      }
+
+      51.613% {
+        stroke-dasharray: 500.00px 20000px;
+        stroke-dashoffset: -6855.66px;
+        animation-timing-function: cubic-bezier(0.333, 1, 0.667, 1);
+      }
+
+      77.419%,
+      100% {
+        stroke-dasharray: 225.37px 20000px;
+        stroke-dashoffset: -8173.15px;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      path {
+        animation: none;
+      }
+    }
+  </style>
+  <g transform="scale(1 0.96048)">
+    <path style="--o:31.25px;--l:216.45px;--a:spin-top" d="M281.26 294.11H798.76V830.33H281.26V294.11H798.76V830.33H281.26V294.11H798.76V830.33H281.26V294.11H798.76V830.33H281.26V294.11H798.76V830.33H281.26V294.11"/>
+    <path style="--o:729.43px;--l:565.71px;--a:spin-corner" d="M281.26 294.11H798.76V830.33H281.26V294.11H798.76V830.33H281.26V294.11H798.76V830.33H281.26V294.11H798.76V830.33H281.26V294.11H798.76V830.33H281.26V294.11"/>
+    <path style="--o:1850.83px;--l:225.37px;--a:spin-side" d="M281.26 294.11H798.76V830.33H281.26V294.11H798.76V830.33H281.26V294.11H798.76V830.33H281.26V294.11H798.76V830.33H281.26V294.11H798.76V830.33H281.26V294.11"/>
+  </g>
+</svg>

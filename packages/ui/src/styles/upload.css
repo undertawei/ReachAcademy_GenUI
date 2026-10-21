@@ -1,0 +1,513 @@
+/* Dropzone、ImageUpload、FileList、UploadChooser（规范 03 §3.29）。 */
+
+/* —— Dropzone —— */
+.rx-dropzone {
+  --rx-dropzone-border: var(--reachany-color-border);
+
+  display: flex;
+  box-sizing: border-box;
+  min-height: 140px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--reachany-space-1);
+  border: 1px dashed var(--rx-dropzone-border);
+  border-radius: var(--reachany-radius-card);
+  background: var(--reachany-color-surface-warm);
+  padding: var(--reachany-space-6) var(--reachany-space-4);
+  color: var(--reachany-color-text-secondary);
+  cursor: pointer;
+  font-family: var(--reachany-font-sans);
+  text-align: center;
+  transition:
+    border-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    background-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+.rx-dropzone[data-tone='primary'] {
+  --rx-dropzone-border: color-mix(in srgb, var(--reachany-color-primary) 60%, transparent);
+}
+
+.rx-dropzone:hover:not([data-disabled]) {
+  border-color: var(--reachany-color-primary);
+}
+
+.rx-dropzone:focus-visible {
+  border-color: var(--reachany-color-primary);
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-dropzone[data-state='active'] {
+  border-style: solid;
+  border-color: var(--reachany-color-primary);
+  background: var(--reachany-color-primary-soft);
+}
+
+.rx-dropzone[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.56;
+}
+
+.rx-dropzone-icon {
+  display: inline-flex;
+  margin-bottom: var(--reachany-space-1);
+  color: var(--reachany-color-text-tertiary);
+}
+
+.rx-dropzone-icon > svg {
+  width: 32px;
+  height: 32px;
+  stroke-width: 1.5;
+}
+
+.rx-dropzone[data-state='active'] .rx-dropzone-icon {
+  color: var(--reachany-color-primary);
+}
+
+.rx-dropzone-title {
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-body);
+  font-weight: 500;
+  line-height: var(--reachany-text-body-line-height);
+}
+
+.rx-dropzone-description {
+  max-width: 44ch;
+  color: var(--reachany-color-text-tertiary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+/* —— ImageUpload —— */
+.rx-image-upload {
+  display: grid;
+  min-width: 0;
+  gap: var(--reachany-space-2);
+  font-family: var(--reachany-font-sans);
+}
+
+.rx-image-upload-header {
+  display: flex;
+  min-height: var(--rx-control-height);
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--reachany-space-2);
+}
+
+.rx-image-upload-heading {
+  color: var(--reachany-color-text);
+  font-size: var(--rx-label-font-size);
+  font-weight: 500;
+}
+
+.rx-image-upload-frame,
+.rx-image-upload-dropzone {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: var(--reachany-radius-card);
+}
+
+.rx-image-upload-frame {
+  background: var(--reachany-color-surface-muted);
+}
+
+.rx-image-upload-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rx-image-upload-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--reachany-space-3);
+  background: color-mix(in srgb, var(--reachany-color-ink) 50%, transparent);
+  opacity: 0;
+  transition: opacity var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+.rx-image-upload-frame:hover .rx-image-upload-overlay,
+.rx-image-upload-overlay:focus-within {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .rx-image-upload-overlay {
+    opacity: 1;
+    background: transparent;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: var(--reachany-space-2);
+  }
+}
+
+.rx-image-upload-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    var(--reachany-color-neutral-1) 20%,
+    var(--reachany-color-surface-subtle) 40%,
+    var(--reachany-color-neutral-1) 60%
+  );
+  background-size: 200% 100%;
+  animation: rx-shimmer calc(var(--reachany-motion-duration-slow) * 3)
+    var(--reachany-motion-easing-standard) infinite;
+}
+
+.rx-image-upload-generating {
+  position: absolute;
+  inset: auto 0 0;
+  padding: var(--reachany-space-3) var(--reachany-space-4);
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  text-align: center;
+}
+
+/* 灯箱：全屏遮罩 + 居中大图。 */
+.rx-lightbox {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--reachany-color-overlay);
+  padding: var(--reachany-space-10);
+  animation: rx-fade-in var(--reachany-motion-duration-moderate) var(--reachany-motion-easing-enter)
+    backwards;
+}
+
+.rx-lightbox[data-state='closed'] {
+  opacity: 0;
+  pointer-events: none;
+  animation: rx-fade-out var(--reachany-motion-duration-fast) var(--reachany-motion-easing-exit)
+    backwards;
+}
+
+.rx-lightbox:focus {
+  outline: none;
+}
+
+.rx-lightbox-content {
+  position: relative;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.rx-lightbox-image {
+  display: block;
+  max-width: min(1200px, 100%);
+  max-height: calc(100vh - 2 * var(--reachany-space-10));
+  border-radius: var(--reachany-radius-md);
+  object-fit: contain;
+  box-shadow: var(--reachany-shadow-overlay);
+}
+
+.rx-lightbox-close {
+  position: absolute;
+  top: var(--reachany-space-2);
+  right: var(--reachany-space-2);
+}
+
+/* —— FileList —— */
+.rx-file-list {
+  display: grid;
+  min-width: 0;
+  gap: var(--reachany-space-2);
+  font-family: var(--reachany-font-sans);
+}
+
+.rx-file-list-header {
+  display: flex;
+  min-height: var(--rx-control-height);
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--reachany-space-2);
+}
+
+.rx-file-list-title {
+  color: var(--reachany-color-text);
+  font-size: var(--rx-label-font-size);
+  font-weight: 500;
+}
+
+.rx-file-list-items {
+  display: grid;
+  gap: var(--reachany-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rx-file-list-row {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  height: 30px;
+  min-width: 0;
+  align-items: center;
+  gap: var(--reachany-space-2);
+  overflow: hidden;
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-md);
+  background: var(--reachany-color-surface);
+  padding: 0 0 0 var(--reachany-space-3);
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-caption);
+}
+
+.rx-file-list-row[data-state='failed'] {
+  border-color: var(--reachany-color-danger-border);
+}
+
+.rx-file-list-main {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: var(--reachany-space-1);
+}
+
+.rx-file-list-index,
+.rx-file-list-separator,
+.rx-file-list-size {
+  flex: 0 0 auto;
+  color: var(--reachany-color-text-secondary);
+}
+
+.rx-file-list-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rx-file-list-status {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--reachany-color-text-secondary);
+}
+
+.rx-file-list-row[data-state='pending'] .rx-file-list-status {
+  color: var(--reachany-color-success-text);
+}
+
+.rx-file-list-row[data-state='failed'] .rx-file-list-status {
+  color: var(--reachany-color-danger-text);
+}
+
+/* 上传中：行底部的细进度条。 */
+.rx-file-list-progress {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  overflow: hidden;
+  background: var(--reachany-color-track);
+}
+
+.rx-file-list-progress-bar {
+  display: block;
+  height: 100%;
+  background: var(--reachany-color-primary);
+  transform-origin: left center;
+  transition: transform var(--reachany-motion-duration-slow) var(--reachany-motion-easing-standard);
+}
+
+.rx-file-list-actions {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  padding-right: 1px;
+}
+
+.rx-file-list-footer {
+  color: var(--reachany-color-text-tertiary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+/* 附件列表与预览 */
+.rx-attachment-row {
+  height: auto;
+  min-height: calc(var(--reachany-space-6) + var(--reachany-space-1));
+  flex-wrap: wrap;
+  overflow: visible;
+  padding-block: var(--reachany-space-1);
+  padding-inline-end: var(--reachany-space-3);
+}
+
+.rx-attachment-icon {
+  width: var(--reachany-space-4);
+  height: var(--reachany-space-4);
+  flex: 0 0 auto;
+  color: var(--reachany-color-icon);
+}
+
+.rx-attachment-name {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-align: start;
+}
+
+.rx-attachment-name:hover {
+  color: var(--reachany-color-primary);
+  text-decoration: underline;
+}
+
+.rx-attachment-name:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-attachment-name:disabled,
+.rx-attachment-name[aria-disabled='true'] {
+  color: var(--reachany-color-text-tertiary);
+  cursor: wait;
+}
+
+.rx-attachment-preview {
+  display: flex;
+  min-width: 0;
+  height: min(
+    var(--reachany-attachment-preview-height),
+    var(--reachany-attachment-preview-max-height)
+  );
+  align-items: center;
+  justify-content: center;
+  background: var(--reachany-color-surface-muted);
+}
+
+.rx-attachment-preview-media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  border: 0;
+  object-fit: contain;
+}
+
+.rx-attachment-preview audio {
+  max-width: 100%;
+}
+
+.rx-attachment-preview-state {
+  display: flex;
+  max-width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--reachany-space-3);
+  padding: var(--reachany-space-4);
+  color: var(--reachany-color-text-secondary);
+  text-align: center;
+}
+
+.rx-attachment-preview-state > svg {
+  width: var(--reachany-space-10);
+  height: var(--reachany-space-10);
+}
+
+.rx-attachment-preview-filename {
+  overflow-wrap: anywhere;
+}
+
+.rx-attachment-navigation {
+  display: flex;
+  margin-inline-end: auto;
+}
+
+.rx-attachment-preview-dialog .rx-dialog-footer {
+  flex-wrap: wrap;
+}
+
+/* —— UploadChooser —— */
+.rx-upload-chooser {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--reachany-space-3);
+  font-family: var(--reachany-font-sans);
+}
+
+@media (max-width: 480px) {
+  .rx-upload-chooser {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.rx-upload-chooser-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--reachany-space-2);
+  border: 1px dashed color-mix(in srgb, var(--reachany-color-primary) 60%, transparent);
+  border-radius: var(--reachany-radius-card);
+  background: var(--reachany-color-surface-warm);
+  padding: var(--reachany-space-5) var(--reachany-space-4);
+  text-align: center;
+}
+
+.rx-upload-chooser-card[data-disabled] {
+  opacity: 0.56;
+}
+
+.rx-upload-chooser-icon {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-primary-soft);
+  color: var(--reachany-color-primary);
+}
+
+.rx-upload-chooser-icon > svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 1.5;
+}
+
+.rx-upload-chooser-title {
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-body);
+  font-weight: 600;
+}
+
+.rx-upload-chooser-description {
+  flex: 1 1 auto;
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rx-dropzone,
+  .rx-image-upload-overlay,
+  .rx-file-list-progress-bar {
+    transition: none;
+  }
+
+  .rx-image-upload-skeleton,
+  .rx-lightbox,
+  .rx-lightbox[data-state='closed'] {
+    animation: none;
+  }
+}

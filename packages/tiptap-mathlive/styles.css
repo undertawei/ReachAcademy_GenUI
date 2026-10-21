@@ -1,0 +1,94 @@
+@import 'katex/dist/katex.min.css';
+@import 'mathlive/fonts.css';
+
+.reachany-mathlive-node {
+  --mathlive-control-size: 1.75rem;
+  letter-spacing: normal;
+  box-sizing: border-box;
+  max-width: 100%;
+  position: relative;
+}
+
+.reachany-mathlive-node.is-inline {
+  display: inline-flex;
+  margin-inline: 0.08em;
+  vertical-align: -0.12em;
+}
+
+.reachany-mathlive-node.is-block {
+  display: block;
+  margin-block: 0.6rem;
+  text-align: center;
+}
+
+.reachany-mathlive-node.is-editable:not(.is-active) {
+  border-radius: 0.25rem;
+  cursor: text;
+}
+
+.reachany-mathlive-node.is-editable:not(.is-active):hover,
+.reachany-mathlive-node.is-editable:not(.is-active):focus-visible {
+  box-shadow: 0 0 0 2px color-mix(in srgb, currentcolor 22%, transparent);
+  outline: none;
+}
+
+.reachany-mathlive-static[hidden] {
+  display: none;
+}
+
+.reachany-mathlive-node.is-block > .reachany-mathlive-static > .katex-display {
+  margin: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.reachany-mathlive-field {
+  --caret-color: currentcolor;
+  --contains-highlight-background-color: color-mix(in srgb, currentcolor 12%, transparent);
+  --keyboard-zindex: 100000;
+  background: color-mix(in srgb, Canvas 96%, transparent);
+  border: 1px solid color-mix(in srgb, currentcolor 34%, transparent);
+  border-radius: 0.35rem;
+  color: inherit;
+  font-size: inherit;
+  min-width: 3.25rem;
+  overflow: visible;
+  padding: 0.15em 0.35em;
+}
+
+.reachany-mathlive-node.is-block > .reachany-mathlive-field {
+  display: inline-block;
+  min-width: min(18rem, calc(100% - 5rem));
+  text-align: start;
+}
+
+.reachany-mathlive-field::part(container) {
+  overflow: visible;
+}
+
+.reachany-mathlive-field::part(virtual-keyboard-toggle),
+.reachany-mathlive-field::part(menu-toggle) {
+  align-items: center;
+  background: Canvas;
+  border: 1px solid color-mix(in srgb, currentcolor 25%, transparent);
+  border-radius: 999px;
+  box-shadow: 0 0.2rem 0.65rem rgb(0 0 0 / 18%);
+  display: flex;
+  height: var(--mathlive-control-size);
+  justify-content: center;
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  visibility: visible;
+  width: var(--mathlive-control-size);
+  z-index: 2;
+}
+
+.reachany-mathlive-field::part(virtual-keyboard-toggle) {
+  inset-inline-end: calc(-1 * var(--mathlive-control-size) - 0.35rem);
+}
+
+.reachany-mathlive-field::part(menu-toggle) {
+  inset-inline-end: calc(-2 * var(--mathlive-control-size) - 0.6rem);
+}

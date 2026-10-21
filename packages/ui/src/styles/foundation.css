@@ -1,0 +1,311 @@
+/*
+ * 共享组件的基础层：角色密度、尺寸刻度、焦点环、滚动容器与通用关键帧。
+ * 规范：docs/wiki/frontend/03-components.md §1.4、02-layout-and-scrolling.md §4–5、04-motion.md。
+ * 只引用 --reachany-* token；这里定义的 --rx-* 是组件内部变量，业务代码不要直接依赖。
+ */
+
+/* —— 角色密度（规范 06 §2.2）：未标注时按紧凑处理 —— */
+:root,
+[data-density='compact'] {
+  --rx-control-height: 32px;
+  --rx-control-font-size: var(--reachany-text-body);
+  --rx-control-radius: var(--reachany-radius-sm);
+  --rx-control-padding-inline: var(--reachany-space-3);
+  --rx-control-icon-size: 16px;
+  --rx-field-font-size: var(--reachany-text-caption);
+  --rx-option-height: 32px;
+  --rx-check-size: 16px;
+  --rx-chip-height: 24px;
+  --rx-label-font-size: var(--reachany-text-body);
+  --rx-body-font-size: var(--reachany-text-body);
+  --rx-min-target: 24px;
+}
+
+[data-density='comfortable'] {
+  --rx-control-height: 36px;
+  --rx-control-font-size: var(--reachany-text-body);
+  --rx-control-radius: var(--reachany-radius-md);
+  --rx-control-padding-inline: var(--reachany-space-4);
+  --rx-control-icon-size: 16px;
+  --rx-field-font-size: var(--reachany-text-body);
+  --rx-option-height: 36px;
+  --rx-check-size: 20px;
+  --rx-chip-height: 28px;
+  --rx-label-font-size: var(--reachany-text-body);
+  --rx-body-font-size: var(--reachany-text-body-lg);
+  --rx-min-target: 40px;
+}
+
+/* —— 显式尺寸（规范 03 §1.4）：组件带 .rx-sized 且写 data-size 时覆盖密度默认值 —— */
+.rx-sized[data-size='sm'] {
+  --rx-control-height: 28px;
+  --rx-control-font-size: var(--reachany-text-caption);
+  --rx-control-radius: var(--reachany-radius-sm);
+  --rx-control-padding-inline: var(--reachany-space-3);
+  --rx-control-icon-size: 14px;
+  --rx-field-font-size: var(--reachany-text-caption);
+  --rx-option-height: 28px;
+  --rx-chip-height: 24px;
+}
+
+.rx-sized[data-size='md'] {
+  --rx-control-height: 32px;
+  --rx-control-font-size: var(--reachany-text-body);
+  --rx-control-radius: var(--reachany-radius-sm);
+  --rx-control-padding-inline: var(--reachany-space-3);
+  --rx-control-icon-size: 16px;
+  --rx-field-font-size: var(--reachany-text-caption);
+  --rx-option-height: 32px;
+  --rx-chip-height: 24px;
+}
+
+.rx-sized[data-size='lg'] {
+  --rx-control-height: 36px;
+  --rx-control-font-size: var(--reachany-text-body);
+  --rx-control-radius: var(--reachany-radius-md);
+  --rx-control-padding-inline: var(--reachany-space-4);
+  --rx-control-icon-size: 16px;
+  --rx-field-font-size: var(--reachany-text-body);
+  --rx-option-height: 36px;
+  --rx-chip-height: 28px;
+}
+
+.rx-sized[data-size='xl'] {
+  --rx-control-height: 40px;
+  --rx-control-font-size: var(--reachany-text-body);
+  --rx-control-radius: var(--reachany-radius-md);
+  --rx-control-padding-inline: var(--reachany-space-5);
+  --rx-control-icon-size: 16px;
+  --rx-field-font-size: var(--reachany-text-body);
+  --rx-option-height: 36px;
+  --rx-chip-height: 28px;
+}
+
+/* —— 通用工具类 —— */
+.rx-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+
+/* 焦点环（规范 03 §1.3）：primary 描边 + shadow-focus，立即出现不做渐变。 */
+.rx-focus-ring:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-numeric {
+  font-family: var(--reachany-font-numeric);
+  font-variant-numeric: tabular-nums;
+}
+
+.rx-serif {
+  font-family: var(--reachany-font-serif);
+}
+
+/* —— 滚动容器（规范 02 §4–5）：细滚动条，悬停或滚动中才显形 —— */
+.rx-scroll,
+.rx-scroll-x,
+.rx-scroll-y {
+  min-width: 0;
+  min-height: 0;
+  overscroll-behavior: contain;
+  scrollbar-color: transparent transparent;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  transition: scrollbar-color var(--reachany-motion-duration-fast)
+    var(--reachany-motion-easing-standard);
+}
+
+/*
+ * ScrollArea 自身是定位容器：子树里绝对定位的元素（如读屏专用的 rx-visually-hidden）以它为包含块，
+ * 留在滚动裁切之内；否则会以视口为包含块、越过裁切把 body 撑出滚动条（违反 02 §4 S1）。
+ * 需要 absolute/fixed 定位的滚动区请在外层包一层定位元素，不要覆盖本规则。
+ */
+.rx-scroll-area {
+  position: relative;
+}
+
+.rx-scroll {
+  overflow: auto;
+}
+
+.rx-scroll-y {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.rx-scroll-x {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-gutter: auto;
+}
+
+:is(.rx-scroll, .rx-scroll-x, .rx-scroll-y):is(:hover, :focus-within, [data-scrolling]) {
+  scrollbar-color: var(--reachany-color-border) transparent;
+}
+
+@supports not (scrollbar-color: auto) {
+  :is(.rx-scroll, .rx-scroll-x, .rx-scroll-y)::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  :is(.rx-scroll, .rx-scroll-x, .rx-scroll-y)::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  :is(.rx-scroll, .rx-scroll-x, .rx-scroll-y)::-webkit-scrollbar-thumb {
+    border-radius: var(--reachany-radius-pill);
+    background: transparent;
+  }
+
+  :is(.rx-scroll, .rx-scroll-x, .rx-scroll-y):is(
+      :hover,
+      [data-scrolling]
+    )::-webkit-scrollbar-thumb {
+    background: var(--reachany-color-border);
+  }
+
+  :is(.rx-scroll, .rx-scroll-x, .rx-scroll-y)::-webkit-scrollbar-thumb:hover {
+    background: var(--reachany-color-text-tertiary);
+  }
+}
+
+/* 只用于有其他溢出提示（渐隐遮罩、箭头）的横向条带。 */
+.rx-scroll-hidden {
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.rx-scroll-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* 横向溢出两端 16px 渐隐（规范 02 S5）；ScrollArea 根据滚动位置写 data-overflow-start/end。 */
+.rx-scroll-fade[data-overflow-start] {
+  mask-image: linear-gradient(to right, transparent, #000 16px);
+}
+
+.rx-scroll-fade[data-overflow-end] {
+  mask-image: linear-gradient(to left, transparent, #000 16px);
+}
+
+.rx-scroll-fade[data-overflow-start][data-overflow-end] {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 16px,
+    #000 calc(100% - 16px),
+    transparent
+  );
+}
+
+/* —— 通用关键帧（规范 04 §6：集中定义，前缀 rx-）——
+ * 含 transform 的动画一律 animation-fill-mode: backwards（tools/css-animation-fill-mode.test.mjs）。
+ * 离场动画只写 from（静止态），终态由 [data-state='closed'] 的静态样式给出，避免 forwards。 */
+@keyframes rx-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes rx-fade-out {
+  from {
+    opacity: 1;
+  }
+}
+
+@keyframes rx-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--reachany-motion-distance-md)) scale(0.96);
+  }
+}
+
+@keyframes rx-pop-out {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rx-float-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(calc(var(--reachany-motion-distance-sm) * -1)) scale(0.98);
+  }
+}
+
+@keyframes rx-float-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--reachany-motion-distance-sm)) scale(0.98);
+  }
+}
+
+@keyframes rx-float-out {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rx-slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes rx-slide-out-right {
+  from {
+    transform: none;
+  }
+}
+
+@keyframes rx-slide-in-up {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes rx-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--reachany-motion-distance-md));
+  }
+}
+
+@keyframes rx-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rx-shimmer {
+  from {
+    background-position: 180% 0;
+  }
+  to {
+    background-position: -20% 0;
+  }
+}
+
+@keyframes rx-indeterminate {
+  from {
+    transform: translateX(-110%);
+  }
+  to {
+    transform: translateX(260%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.rx-scroll, .rx-scroll-x, .rx-scroll-y) {
+    transition: none;
+  }
+}

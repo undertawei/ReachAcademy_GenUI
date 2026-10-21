@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "decksmith-replay-case/v1",
+  "id": "case6-genui-bad-event-manifest",
+  "teacherCase": 6,
+  "summary": "GenUI 提交的事件声明缺 delivery：返回点名 \"u_changed\" 的诊断、页面不提交；模型重交失败后必须解释。",
+  "provenance": {
+    "kind": "synthetic-reconstruction",
+    "observedOn": "2026-10-08",
+    "notes": "重建自\"校验只报 invalid runtimePolicy、模型三次原样重交后放弃且不解释\"的反馈。"
+  },
+  "document": "energy-lesson.json",
+  "request": {
+    "prompt": "这一页拖动滑块时记录电压变化",
+    "pageId": "55555555-5555-4555-8555-555555555555:page-3",
+    "promptContractVersion": "decksmith-prompt/v2"
+  },
+  "capturedWith": {
+    "toolParameterSha256": {
+      "check_and_commit_interactive_page": "c5494e1b7831d5948d141ae82f152bc588e0c5183c2ea5527901d7acb0073a21",
+      "read_interactive_authoring_contract": "8243f0af367f188a376f2c17b5eabe872a2f7a979813e0d4e2be6d594c2aa259",
+      "read_interactive_html": "b8d470c9a9a1180ec503cf3fcb5bdbe40efcfd9b4cc898098fed76b53cca1653"
+    }
+  },
+  "transcript": [
+    {
+      "toolCalls": [
+        {
+          "id": "interactive-contract",
+          "name": "read_interactive_authoring_contract",
+          "arguments": {}
+        },
+        {
+          "id": "read",
+          "name": "read_interactive_html",
+          "arguments": {
+            "pageId": "55555555-5555-4555-8555-555555555555:page-3"
+          }
+        }
+      ],
+      "usage": {
+        "input": 15200,
+        "output": 40
+      }
+    },
+    {
+      "toolCalls": [
+        {
+          "id": "commit-1",
+          "name": "check_and_commit_interactive_page",
+          "arguments": {
+            "pageId": "55555555-5555-4555-8555-555555555555:page-3",
+            "eventManifestJson": {
+              "$json": {
+                "schemaVersion": "reach-interactive-event-manifest/v1",
+                "events": [
+                  {
+                    "name": "u_changed",
+                    "eventVersion": 1,
+                    "meaning": "学生调节了电压",
+                    "payloadFields": []
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "usage": {
+        "input": 15900,
+        "output": 120
+      }
+    },
+    {
+      "toolCalls": [
+        {
+          "id": "commit-2",
+          "name": "check_and_commit_interactive_page",
+          "arguments": {
+            "pageId": "55555555-5555-4555-8555-555555555555:page-3",
+            "eventManifestJson": {
+              "$json": {
+                "schemaVersion": "reach-interactive-event-manifest/v1",
+                "events": [
+                  {
+                    "name": "u_changed",
+                    "eventVersion": 1,
+                    "meaning": "学生调节了电压",
+                    "payloadFields": []
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "usage": {
+        "input": 16200,
+        "output": 120
+      }
+    },
+    {
+      "text": "没有提交成功：事件声明 u_changed 缺少 delivery（推送方式）字段，页面保持原样。请确认是否需要记录电压变化，我再补全声明。",
+      "usage": {
+        "input": 16500,
+        "output": 90
+      }
+    }
+  ],
+  "expect": {
+    "changed": false,
+    "outcome": {
+      "mutationStatus": "none",
+      "toolErrorCount": 0
+    },
+    "modelTurns": 4,
+    "toolResults": [
+      {
+        "callId": "interactive-contract",
+        "isError": false,
+        "includes": [
+          "Interactive authoring and validation contract:",
+          "EDITING TOOL OUTPUT ADAPTER"
+        ]
+      },
+      {
+        "callId": "commit-1",
+        "isError": false,
+        "includes": [
+          "\"committed\":false",
+          "invalid Interactive event declaration \\\"u_changed\\\""
+        ]
+      },
+      {
+        "callId": "commit-2",
+        "isError": false,
+        "includes": ["\"committed\":false"]
+      }
+    ],
+    "userPromptIncludes": ["The current page is an Interactive (GenUI) page"],
+    "userPromptExcludes": [
+      "Interactive coding context is enabled",
+      "Interactive authoring and validation contract:"
+    ]
+  }
+}

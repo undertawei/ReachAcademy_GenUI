@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "decksmith-replay-case/v1",
+  "id": "case2-unselected-ambiguous-picture",
+  "teacherCase": 2,
+  "summary": "未选中、页面有两张图时说\"这张图\"：不猜目标，不改文档，列出候选请教师点选。",
+  "provenance": {
+    "kind": "synthetic-reconstruction",
+    "observedOn": "2026-10-08",
+    "notes": "重建自\"愣头青\"反馈：两张电池图，教师未选中任何元素。"
+  },
+  "document": "energy-lesson.json",
+  "request": {
+    "prompt": "把这张图里的电池换成充电电池",
+    "pageId": "55555555-5555-4555-8555-555555555555:page-2",
+    "promptContractVersion": "decksmith-prompt/v2"
+  },
+  "capturedWith": {
+    "toolParameterSha256": {
+      "read_page": "addc5cc0fbe51d9e1d3f7c87c1d9f1b544aee6ae53dad5c0e1efabb7ee785297"
+    }
+  },
+  "transcript": [
+    {
+      "toolCalls": [
+        {
+          "id": "read",
+          "name": "read_page",
+          "arguments": {
+            "pageId": "55555555-5555-4555-8555-555555555555:page-2"
+          }
+        }
+      ],
+      "usage": {
+        "input": 7300,
+        "output": 40
+      }
+    },
+    {
+      "text": "这一页有两张图：左边是“一节干电池”，右边是“一块锂电池”。请告诉我要改哪一张，或在页面上点选那张图后再发一次。",
+      "usage": {
+        "input": 8600,
+        "output": 90
+      }
+    }
+  ],
+  "expect": {
+    "changed": false,
+    "outcome": {
+      "mutationStatus": "none",
+      "toolErrorCount": 0
+    },
+    "modelTurns": 2,
+    "toolResults": [
+      {
+        "callId": "read",
+        "isError": false,
+        "includes": ["一节干电池", "一块锂电池"]
+      }
+    ],
+    "userPromptExcludes": ["The teacher selected these element ids"],
+    "serviceCalls": {
+      "imageEdit": 0,
+      "imageGenerate": 0
+    }
+  }
+}

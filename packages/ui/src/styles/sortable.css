@@ -1,0 +1,130 @@
+/* Sortable 拖拽排序（规范 03 §3.23，动效 04 §3.10）。
+ * 占位选用「原位置 border-warm 虚线框」：它同时说明了被拖项的尺寸，横纵两个方向都适用。 */
+
+.rx-sortable {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rx-sortable[data-orientation='horizontal'] {
+  display: flex;
+}
+
+.rx-sortable-item {
+  position: relative;
+}
+
+/* 拿起时阴影加深：用伪元素透明度过渡，不逐帧动画 box-shadow（规范 04 §5）。 */
+.rx-sortable-item::after {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--reachany-radius-md);
+  box-shadow: var(--reachany-shadow-raised);
+  content: '';
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+/* 指针拖拽时其余项让位、落位动画（standard 200ms）；只在拖拽/落位期间开启，避免提交顺序时反向过渡。 */
+.rx-sortable:is([data-state='dragging'], [data-state='dropping']) > .rx-sortable-item,
+.rx-sortable-item[data-flip] {
+  transition: transform 200ms var(--reachany-motion-easing-standard);
+}
+
+.rx-sortable-item:is([data-state='dragging'], [data-state='dropping'], [data-state='lifted']) {
+  z-index: var(--reachany-z-sticky);
+  border-radius: var(--reachany-radius-md);
+  background: var(--reachany-color-surface);
+}
+
+.rx-sortable-item:is(
+    [data-state='dragging'],
+    [data-state='dropping'],
+    [data-state='lifted']
+  )::after {
+  opacity: 1;
+}
+
+/* 被拖项跟随指针，不能有 transform 过渡。 */
+.rx-sortable[data-state='dragging'] > .rx-sortable-item[data-state='dragging'] {
+  cursor: grabbing;
+  transition: none;
+  user-select: none;
+}
+
+.rx-sortable-item[data-state='lifted'] {
+  transform: scale(1.01);
+  transition: transform var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+.rx-sortable-placeholder {
+  box-sizing: border-box;
+  border: 1px dashed var(--reachany-color-border-warm);
+  border-radius: var(--reachany-radius-md);
+  background: var(--reachany-color-surface-warm);
+  pointer-events: none;
+  transition: transform 200ms var(--reachany-motion-easing-standard);
+}
+
+.rx-sortable-handle {
+  display: inline-flex;
+  min-width: var(--rx-min-target);
+  min-height: var(--rx-min-target);
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--reachany-radius-sm);
+  background: transparent;
+  padding: 0;
+  color: var(--reachany-color-text-tertiary);
+  cursor: grab;
+  touch-action: none;
+  transition:
+    background-color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard),
+    color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard);
+}
+
+.rx-sortable-handle > svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.5;
+}
+
+.rx-sortable-handle:hover:not(:disabled) {
+  background: var(--reachany-color-surface-muted);
+  color: var(--reachany-color-text-secondary);
+}
+
+.rx-sortable-handle:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-sortable-handle:is([data-state='dragging'], [data-state='lifted']) {
+  color: var(--reachany-color-primary);
+  cursor: grabbing;
+}
+
+.rx-sortable-handle:disabled {
+  cursor: not-allowed;
+  opacity: 0.56;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rx-sortable:is([data-state='dragging'], [data-state='dropping']) > .rx-sortable-item,
+  .rx-sortable-item[data-flip],
+  .rx-sortable-item[data-state='lifted'],
+  .rx-sortable-item::after,
+  .rx-sortable-placeholder,
+  .rx-sortable-handle {
+    transition: none;
+  }
+
+  .rx-sortable-item[data-state='lifted'] {
+    transform: none;
+  }
+}

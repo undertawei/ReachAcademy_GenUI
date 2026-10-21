@@ -1,0 +1,457 @@
+/* Input、Textarea、NumberInput、SearchInput、PasswordInput、FormField、CopyButton（规范 03 §3.1–3.3）。
+ * 动效：输入框焦点描边 instant、焦点环立即出现；错误文字从上方 distance-sm 淡入 fast，不抖动（04 §3.11）。 */
+
+/* —— 输入外框（Input / Textarea / NumberInput / SearchInput / PasswordInput 共用）—— */
+.rx-input {
+  --rx-input-bg: var(--reachany-color-surface);
+  --rx-input-border: var(--reachany-color-border);
+  --rx-input-shadow: var(--reachany-shadow-field);
+
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  height: var(--rx-control-height);
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--reachany-space-2);
+  padding: 0 var(--reachany-space-3);
+  border: 1px solid var(--rx-input-border);
+  border-radius: var(--rx-control-radius);
+  /* outlined 显式用 surface 白底：放在暖白（surface-warm）弹窗与区块里依然是白底（规范 03 §3.2）。 */
+  background: var(--rx-input-bg);
+  box-shadow: var(--rx-input-shadow);
+  color: var(--reachany-color-text);
+  cursor: text;
+  font-family: inherit;
+  font-size: var(--rx-field-font-size);
+  line-height: normal;
+  transition:
+    border-color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard),
+    background-color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard);
+}
+
+.rx-input[data-variant='filled'] {
+  --rx-input-bg: var(--reachany-color-surface-muted);
+  --rx-input-border: transparent;
+  --rx-input-shadow: none;
+}
+
+.rx-input:hover {
+  --rx-input-border: var(--reachany-color-text-tertiary);
+}
+
+/* 焦点：描边 primary + shadow-focus，立即出现；filled 聚焦时底色变 surface。 */
+.rx-input:focus-within {
+  --rx-input-bg: var(--reachany-color-surface);
+  --rx-input-border: var(--reachany-color-primary);
+  --rx-input-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-input[data-invalid] {
+  --rx-input-border: var(--reachany-color-danger);
+}
+
+.rx-input[data-invalid]:focus-within {
+  --rx-input-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-input[data-disabled] {
+  --rx-input-bg: var(--reachany-color-surface-muted);
+  --rx-input-border: var(--reachany-color-border-subtle);
+  --rx-input-shadow: none;
+
+  color: var(--reachany-color-text-tertiary);
+  cursor: not-allowed;
+}
+
+.rx-input[data-variant='filled'][data-disabled] {
+  --rx-input-border: transparent;
+}
+
+/* 只读：去掉描边与底色；键盘聚焦时仍保留焦点环。 */
+.rx-input[data-readonly] {
+  --rx-input-bg: transparent;
+  --rx-input-border: transparent;
+  --rx-input-shadow: none;
+
+  cursor: default;
+}
+
+.rx-input[data-readonly]:focus-within {
+  --rx-input-bg: transparent;
+  --rx-input-border: transparent;
+  --rx-input-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-input-control {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  appearance: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  outline: none;
+  text-overflow: ellipsis;
+}
+
+.rx-input-control::placeholder,
+.rx-textarea-control::placeholder {
+  color: var(--reachany-color-text-tertiary);
+  opacity: 1;
+}
+
+.rx-input-control:disabled,
+.rx-textarea-control:disabled {
+  color: inherit;
+  cursor: not-allowed;
+  -webkit-text-fill-color: currentcolor;
+}
+
+.rx-input-control:read-only,
+.rx-textarea-control:read-only {
+  cursor: default;
+}
+
+/* 浏览器自动填充的底色改回外框底色。 */
+.rx-input-control:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 100px var(--rx-input-bg) inset;
+  -webkit-text-fill-color: var(--reachany-color-text);
+}
+
+/* 原生 search 类型自带的清除叉与装饰：由组件自己的清除按钮代替。 */
+.rx-input-control::-webkit-search-cancel-button,
+.rx-input-control::-webkit-search-decoration {
+  appearance: none;
+}
+
+/* 前后缀：16px 图标，距边 12（外框内边距）。 */
+.rx-input-affix {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--reachany-space-1);
+  color: var(--reachany-color-text-tertiary);
+  white-space: nowrap;
+}
+
+.rx-input-affix > svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  stroke-width: 1.5;
+}
+
+/* 行内小图标按钮（清除、密码显隐）：24px 点击区，图标 14px，视觉上贴近 12px 边距。 */
+.rx-icon-button.rx-input-action {
+  --rx-control-height: 24px;
+  --rx-control-icon-size: 14px;
+
+  --rx-button-fg: var(--reachany-color-text-tertiary);
+  --rx-button-fg-hover: var(--reachany-color-text);
+
+  margin-inline: calc(var(--reachany-space-1) * -1);
+  border-radius: var(--reachany-radius-sm);
+}
+
+/* 清除按钮只在有值且悬停/聚焦时显形（规范 03 §3.2）。 */
+.rx-input-clear {
+  visibility: hidden;
+}
+
+.rx-input:is(:hover, :focus-within) .rx-input-clear {
+  visibility: visible;
+}
+
+/* —— SearchInput：高 36、圆角 lg —— */
+.rx-input.rx-search-input {
+  border-radius: var(--reachany-radius-lg);
+}
+
+.rx-input.rx-search-input:not([data-size]) {
+  --rx-control-height: 36px;
+  --rx-field-font-size: var(--reachany-text-body);
+}
+
+/* —— Textarea —— */
+.rx-input.rx-textarea {
+  height: auto;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 0;
+}
+
+.rx-textarea-control {
+  display: block;
+  width: 100%;
+  min-height: calc(var(--rx-control-height) - 2px);
+  box-sizing: border-box;
+  margin: 0;
+  padding: var(--reachany-space-2) var(--reachany-space-3);
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: 1.5;
+  outline: none;
+  resize: vertical;
+  scrollbar-color: var(--reachany-color-border) transparent;
+  scrollbar-width: thin;
+}
+
+.rx-textarea:is([data-autosize], [data-disabled], [data-readonly]) .rx-textarea-control {
+  resize: none;
+}
+
+.rx-textarea-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 var(--reachany-space-3) var(--reachany-space-1);
+  cursor: default;
+}
+
+.rx-textarea-count {
+  color: var(--reachany-color-text-tertiary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+.rx-textarea-count[data-over-limit] {
+  color: var(--reachany-color-danger);
+}
+
+/* —— NumberInput：步进箭头在框内右侧，单位与范围提示在框外 —— */
+.rx-number-input {
+  display: inline-flex;
+  max-width: 100%;
+  min-width: 0;
+  align-items: center;
+  gap: var(--reachany-space-2);
+  vertical-align: middle;
+}
+
+.rx-input.rx-number-input-box {
+  width: auto;
+  min-width: 64px;
+  flex: 1 1 120px;
+  padding-inline-end: 0;
+}
+
+.rx-number-input-box .rx-input-control {
+  font-variant-numeric: tabular-nums;
+}
+
+.rx-number-input-box .rx-input-suffix {
+  align-self: stretch;
+}
+
+.rx-number-input-steppers {
+  display: flex;
+  width: 24px;
+  align-self: stretch;
+  flex-direction: column;
+  justify-content: center;
+  border-inline-start: 1px solid var(--reachany-color-border-subtle);
+}
+
+.rx-number-input-step {
+  display: grid;
+  width: 100%;
+  height: min(14px, 50%);
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: var(--reachany-radius-xs);
+  background: transparent;
+  color: var(--reachany-color-text-tertiary);
+  cursor: pointer;
+  transition:
+    background-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+.rx-number-input-step > svg {
+  width: 12px;
+  height: 12px;
+  stroke-width: 1.5;
+}
+
+.rx-number-input-step:hover:not(:disabled) {
+  background: var(--reachany-color-surface-muted);
+  color: var(--reachany-color-text);
+}
+
+.rx-number-input-step:disabled {
+  color: var(--reachany-color-border);
+  cursor: not-allowed;
+}
+
+.rx-number-input-unit {
+  flex: 0 0 auto;
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--rx-field-font-size);
+  white-space: nowrap;
+}
+
+.rx-number-input-hint {
+  min-width: 0;
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+/* —— FormField：标签（上）→ 控件 → 帮助/错误（下）—— */
+.rx-form-field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.rx-form-field-label {
+  display: block;
+  margin-bottom: var(--reachany-space-2);
+  color: var(--reachany-color-text);
+  font-size: var(--rx-label-font-size);
+  font-weight: 500;
+  line-height: var(--reachany-text-body-line-height);
+}
+
+.rx-form-field[data-disabled] .rx-form-field-label {
+  color: var(--reachany-color-text-tertiary);
+}
+
+.rx-form-field-required {
+  margin-inline-start: var(--reachany-space-1);
+  color: var(--reachany-color-primary);
+}
+
+.rx-form-field-help,
+.rx-form-field-error {
+  margin: var(--reachany-space-1) 0 0;
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+.rx-form-field-help {
+  color: var(--reachany-color-text-secondary);
+}
+
+.rx-form-field-error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--reachany-space-1);
+  color: var(--reachany-color-danger);
+  animation: rx-field-error-in var(--reachany-motion-duration-fast)
+    var(--reachany-motion-easing-enter) backwards;
+}
+
+.rx-form-field-error-icon {
+  width: 12px;
+  height: 12px;
+  flex: 0 0 auto;
+  margin-top: calc((var(--reachany-text-caption-line-height) - 12px) / 2);
+  stroke-width: 1.5;
+}
+
+@keyframes rx-field-error-in {
+  from {
+    opacity: 0;
+    transform: translateY(calc(var(--reachany-motion-distance-sm) * -1));
+  }
+}
+
+/* 两列栅格（列间距 16）；容器窄于两列各 240px 时自动变单列。子元素写 data-span="full" 占满一行。 */
+.rx-form-grid {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, max(240px, calc((100% - var(--reachany-space-4)) / 2))), 1fr)
+  );
+  gap: var(--reachany-space-4);
+}
+
+.rx-form-grid > [data-span='full'] {
+  grid-column: 1 / -1;
+}
+
+/* 表单分组：subtitle 标题，组内字段间距 16，组间距 24。 */
+.rx-form-section {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--reachany-space-4);
+}
+
+.rx-form-section + .rx-form-section {
+  margin-top: var(--reachany-space-6);
+}
+
+.rx-form-section-title {
+  margin: 0;
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-subtitle);
+  font-weight: var(--reachany-text-subtitle-weight);
+  line-height: var(--reachany-text-subtitle-line-height);
+}
+
+.rx-form-section-description {
+  margin: var(--reachany-space-1) 0 0;
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+/* —— CopyButton：复制图标 12–14px，成功后变勾 1.5s —— */
+.rx-copy-button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  vertical-align: middle;
+}
+
+.rx-copy-button .rx-icon-button {
+  --rx-control-icon-size: 14px;
+}
+
+.rx-copy-button .rx-icon-button.rx-sized[data-size='sm'] {
+  --rx-control-icon-size: 12px;
+}
+
+.rx-copy-button[data-state='copied'] .rx-icon-button {
+  --rx-button-fg: var(--reachany-color-success-text);
+  --rx-button-fg-hover: var(--reachany-color-success-text);
+}
+
+.rx-copy-button-check {
+  animation: rx-copy-check-in var(--reachany-motion-duration-fast)
+    var(--reachany-motion-easing-emphasized) backwards;
+}
+
+@keyframes rx-copy-check-in {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rx-input,
+  .rx-number-input-step {
+    transition: none;
+  }
+
+  .rx-form-field-error,
+  .rx-copy-button-check {
+    animation: none;
+  }
+}

@@ -1,0 +1,385 @@
+/* 应用壳与页面骨架（规范 02 §2–3、§6、§8）。 */
+
+body {
+  /* Header 折叠后变为 0（见 header.css）；确需引用 Header 高度时用这个变量，不要手算。 */
+  --rx-role-header-effective-height: var(--reachany-header-height);
+}
+
+/* —— 应用壳：采用 AppViewport 的应用，html/body 永不滚动（规范 02 S1）—— */
+html:has(.rx-app-viewport),
+html:has(.rx-app-viewport) body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.rx-app-viewport {
+  display: flex;
+  height: 100dvh;
+  flex-direction: column;
+  background: var(--reachany-color-canvas);
+  color: var(--reachany-color-text);
+  font-family: var(--reachany-font-sans);
+}
+
+.rx-app-main {
+  position: relative;
+  display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.rx-app-main:focus {
+  outline: none;
+}
+
+/* —— 页面根 —— */
+.rx-page {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.rx-page-content {
+  min-height: 0;
+  flex: 1 1 auto;
+}
+
+.rx-page-content-inner {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: calc(var(--reachany-content-max-width) + 2 * var(--reachany-page-padding-inline));
+  margin: 0 auto;
+  padding: 0 var(--reachany-page-padding-inline) var(--reachany-space-6);
+}
+
+/* —— 页头 —— */
+.rx-page-header {
+  display: flex;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--reachany-space-4);
+  margin-bottom: var(--reachany-space-6);
+}
+
+/* 作为 PageLayout 的固定页头时带页面边距（上下 32/24）。 */
+.rx-page > .rx-page-header {
+  margin: 0;
+  padding: var(--reachany-space-8) var(--reachany-page-padding-inline) var(--reachany-space-6);
+}
+
+.rx-page-header-text {
+  display: grid;
+  min-width: 0;
+  gap: var(--reachany-space-1);
+}
+
+.rx-page-header-title {
+  margin: 0;
+  color: var(--reachany-color-text);
+  font-family: var(--reachany-font-serif);
+  font-size: var(--reachany-text-title-xl);
+  font-weight: var(--reachany-text-title-xl-weight);
+  line-height: var(--reachany-text-title-xl-line-height);
+}
+
+.rx-page-header[data-size='lg'] .rx-page-header-title {
+  font-family: var(--reachany-font-sans);
+  font-size: var(--reachany-text-title-lg);
+  line-height: var(--reachany-text-title-lg-line-height);
+}
+
+.rx-page > .rx-page-header[data-size='md'] {
+  padding-block: var(--reachany-space-5);
+}
+
+.rx-page-header[data-size='md'] .rx-page-header-title {
+  font-family: var(--reachany-font-sans);
+  font-size: var(--reachany-text-title-md);
+  line-height: var(--reachany-text-title-md-line-height);
+}
+
+.rx-page-header-description {
+  margin: 0;
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-body-sm);
+  line-height: var(--reachany-text-body-sm-line-height);
+}
+
+.rx-page-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--reachany-space-3);
+}
+
+/* —— 分栏：各列独立滚动 —— */
+.rx-page-columns {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 auto;
+}
+
+.rx-page-columns[data-padded='true'] {
+  gap: var(--reachany-space-5);
+  padding: 0 var(--reachany-page-padding-inline) var(--reachany-space-5);
+}
+
+.rx-page-column {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+}
+
+.rx-page-column[data-width='auto'] {
+  flex: 1 1 auto;
+}
+
+.rx-page-column[data-width='side-nav'] {
+  width: var(--reachany-side-nav-width);
+  flex: 0 0 auto;
+}
+
+.rx-page-column[data-width='overview'] {
+  width: var(--reachany-overview-column-width);
+  flex: 0 0 auto;
+}
+
+.rx-page-column[data-width='side-panel'] {
+  width: var(--reachany-side-panel-width);
+  flex: 0 0 auto;
+}
+
+.rx-page-column-scroll {
+  min-height: 0;
+  flex: 1 1 auto;
+}
+
+/* —— 卡片栅格（T1）—— */
+.rx-card-grid {
+  display: grid;
+  gap: var(--reachany-space-5);
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--rx-card-grid-min, 320px), 100%), 1fr));
+}
+
+/* —— 返回条 —— */
+.rx-back-bar {
+  display: flex;
+  box-sizing: border-box;
+  min-height: var(--reachany-back-bar-height);
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--reachany-space-3);
+  padding: 0 var(--reachany-page-padding-inline);
+}
+
+.rx-back-bar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--reachany-space-2);
+  border: 0;
+  border-radius: var(--reachany-radius-sm);
+  background: none;
+  padding: var(--reachany-space-1) 0;
+  color: var(--reachany-color-text-secondary);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--reachany-text-body);
+  text-decoration: none;
+  transition: color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+.rx-back-bar-link:hover {
+  color: var(--reachany-color-text);
+}
+
+.rx-back-bar-link:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-back-bar-icon {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.5;
+}
+
+.rx-back-bar-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--reachany-color-border);
+}
+
+.rx-back-bar-title {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-subtitle);
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rx-back-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--reachany-space-3);
+  margin-left: auto;
+}
+
+/* —— 向导底部操作栏（T3）—— */
+.rx-action-footer {
+  display: flex;
+  box-sizing: border-box;
+  min-height: var(--reachany-action-footer-height);
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--reachany-space-6);
+  border-radius: var(--reachany-radius-xl) var(--reachany-radius-xl) 0 0;
+  background: var(--reachany-color-header);
+  padding: 0 var(--reachany-page-padding-inline);
+  color: var(--reachany-color-primary-contrast);
+}
+
+.rx-action-footer-hint {
+  min-width: 0;
+  color: color-mix(in srgb, var(--reachany-color-primary-contrast) 70%, transparent);
+  font-size: var(--reachany-text-caption);
+}
+
+.rx-action-footer-actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--reachany-space-3);
+}
+
+/* —— 第一期 AppShell / NavRail（无 app 使用；新页面用 AppViewport + SideNav）—— */
+.rx-app-shell {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 16rem minmax(0, 1fr);
+  background: var(--reachany-color-canvas);
+  color: var(--reachany-color-text);
+  font-family: var(--reachany-font-sans);
+}
+
+.rx-app-shell-main {
+  min-width: 0;
+  padding: var(--reachany-space-8);
+}
+
+.rx-nav-rail {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  gap: var(--reachany-space-5);
+  border-right: 1px solid var(--reachany-color-border);
+  background: var(--reachany-color-surface);
+  padding: var(--reachany-space-5);
+}
+
+.rx-nav-rail-header {
+  display: flex;
+  min-height: 40px;
+  align-items: center;
+  color: var(--reachany-color-text);
+  font-weight: 700;
+}
+
+.rx-nav-rail-list {
+  display: grid;
+  gap: 2px;
+}
+
+.rx-nav-rail-footer {
+  margin-top: auto;
+}
+
+.rx-nav-rail-link {
+  display: flex;
+  min-height: 36px;
+  align-items: center;
+  gap: var(--reachany-space-3);
+  border-radius: var(--reachany-radius-md);
+  padding: 0 var(--reachany-space-3);
+  color: var(--reachany-color-text-secondary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.rx-nav-rail-link:hover {
+  background: var(--reachany-color-surface-muted);
+  color: var(--reachany-color-text);
+}
+
+.rx-nav-rail-button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+
+.rx-nav-rail-link-current {
+  background: var(--reachany-color-primary-soft-strong);
+  color: var(--reachany-color-primary-text-on-soft);
+}
+
+.rx-nav-rail-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  stroke-width: 1.5;
+}
+
+.rx-nav-rail-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .rx-app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .rx-nav-rail {
+    min-height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--reachany-color-border);
+  }
+
+  .rx-app-shell-main {
+    padding: var(--reachany-space-4);
+  }
+
+  .rx-page-header {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .rx-page-header-actions {
+    justify-content: flex-start;
+  }
+}
+
+/* 学生端平板（< 1024）：单列，右侧面板改为抽屉（规范 02 §6）。 */
+@media (max-width: 1023px) {
+  .rx-page-columns[data-padded='true'] {
+    flex-direction: column;
+  }
+
+  .rx-page-column:is([data-width='overview'], [data-width='side-panel']) {
+    width: auto;
+  }
+}

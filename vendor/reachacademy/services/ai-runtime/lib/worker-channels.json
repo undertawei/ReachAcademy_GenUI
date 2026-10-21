@@ -1,0 +1,110 @@
+{
+  "teacher-word-import-fast": {
+    "key": "teacher-word-import-fast",
+    "queueName": "ai-runtime-teacher-word-import-fast-v1",
+    "queueSlot": "teacher-word-import-fast",
+    "workloadClass": "document-parsing",
+    "concurrencyEnv": "AI_RUNTIME_WORD_IMPORT_FAST_CONCURRENCY",
+    "defaultConcurrency": 2,
+    "group": "feedforward"
+  },
+  "teacher-word-import-smart": {
+    "key": "teacher-word-import-smart",
+    "queueName": "ai-runtime-teacher-word-import-smart-v1",
+    "queueSlot": "teacher-word-import-smart",
+    "workloadClass": "document-parsing-model",
+    "concurrencyEnv": "AI_RUNTIME_WORD_IMPORT_SMART_CONCURRENCY",
+    "defaultConcurrency": 1,
+    "group": "feedforward"
+  },
+  "student-tutor": {
+    "key": "student-tutor",
+    "queueName": "ai-runtime-student-tutor-runs-v1",
+    "queueSlot": "student-tutor",
+    "workloadClass": "interactive-model",
+    "concurrencyEnv": "AI_RUNTIME_TUTOR_CONCURRENCY",
+    "defaultConcurrency": 4,
+    "group": "tutor"
+  },
+  "student-quiz-feedforward": {
+    "key": "student-quiz-feedforward",
+    "queueName": "ai-runtime-student-quiz-feedforward-runs-v2",
+    "queueSlot": "student-quiz-feedforward-v2",
+    "workloadClass": "batch-media",
+    "concurrencyEnv": "AI_RUNTIME_QUIZ_FEEDFORWARD_CONCURRENCY",
+    "defaultConcurrency": 2,
+    "group": "feedforward"
+  },
+  "student-srl-feedforward": {
+    "key": "student-srl-feedforward",
+    "queueName": "ai-runtime-student-srl-feedforward-runs-v2",
+    "queueSlot": "student-srl-feedforward-v2",
+    "workloadClass": "batch-media",
+    "concurrencyEnv": "AI_RUNTIME_SRL_FEEDFORWARD_CONCURRENCY",
+    "defaultConcurrency": 2,
+    "group": "feedforward"
+  },
+  "student-group-collaboration-review": {
+    "key": "student-group-collaboration-review",
+    "queueName": "ai-runtime-student-group-collaboration-review-runs-v2",
+    "queueSlot": "student-group-collaboration-review-v2",
+    "workloadClass": "batch-media",
+    "concurrencyEnv": "AI_RUNTIME_GROUP_COLLABORATION_REVIEW_CONCURRENCY",
+    "defaultConcurrency": 2,
+    "group": "feedforward"
+  },
+  "student-spaced-review-grading": {
+    "key": "student-spaced-review-grading",
+    "queueName": "ai-runtime-student-spaced-review-grading-runs-v2",
+    "queueSlot": "student-spaced-review-grading-v2",
+    "workloadClass": "batch-media",
+    "concurrencyEnv": "AI_RUNTIME_SPACED_REVIEW_GRADING_CONCURRENCY",
+    "defaultConcurrency": 2,
+    "group": "feedforward"
+  },
+  "student-reach-deck-grading": {
+    "key": "student-reach-deck-grading",
+    "queueName": "ai-runtime-student-reach-deck-grading-runs-v1",
+    "queueSlot": "student-reach-deck-grading",
+    "workloadClass": "batch-media",
+    "concurrencyEnv": "AI_RUNTIME_REACH_DECK_GRADING_CONCURRENCY",
+    "defaultConcurrency": 2,
+    "group": "feedforward"
+  },
+  "course-video-processing": {
+    "key": "course-video-processing",
+    "queueName": "ai-runtime-course-video-processing-runs-v1",
+    "queueSlot": "video-processing",
+    "workloadClass": "batch-media",
+    "concurrencyEnv": "AI_RUNTIME_VIDEO_PROCESSING_CONCURRENCY",
+    "defaultConcurrency": 1,
+    "group": "video-processing"
+  },
+  "teacher-deck": {
+    "key": "teacher-deck",
+    "queueName": "ai-runtime-teacher-deck-jobs-v1",
+    "queueSlot": "teacher-deck",
+    "workloadClass": "courseware-generation",
+    "concurrencyEnv": "AI_RUNTIME_TEACHER_DECK_CONCURRENCY",
+    "defaultConcurrency": 2,
+    "group": "deck"
+  },
+  "teacher-deck-speech-preview": {
+    "key": "teacher-deck-speech-preview",
+    "queueName": "ai-runtime-teacher-deck-speech-preview-v1",
+    "queueSlot": "teacher-deck-speech-preview",
+    "workloadClass": "interactive-speech",
+    "concurrencyEnv": "AI_RUNTIME_TEACHER_DECK_SPEECH_PREVIEW_CONCURRENCY",
+    "defaultConcurrency": 2,
+    "group": "deck"
+  },
+  "teacher-lesson-prep": {
+    "key": "teacher-lesson-prep",
+    "queueName": "ai-runtime-teacher-lesson-prep-jobs-v1",
+    "queueSlot": "teacher-lesson-prep",
+    "workloadClass": "courseware-generation",
+    "concurrencyEnv": "AI_RUNTIME_TEACHER_LESSON_PREP_CONCURRENCY",
+    "defaultConcurrency": 1,
+    "group": "deck"
+  }
+}

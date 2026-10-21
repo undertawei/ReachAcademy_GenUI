@@ -1,0 +1,281 @@
+/* Button / IconButton（规范 03 §3.1，动效 04 §3.1）。 */
+
+.rx-button,
+.rx-icon-button {
+  --rx-button-bg: var(--reachany-color-surface);
+  --rx-button-bg-hover: var(--reachany-color-surface-muted);
+  --rx-button-bg-active: var(--rx-button-bg-hover);
+  --rx-button-border: var(--reachany-color-border);
+  --rx-button-border-hover: var(--reachany-color-text-tertiary);
+  --rx-button-fg: var(--reachany-color-text);
+  --rx-button-fg-hover: var(--rx-button-fg);
+
+  position: relative;
+  display: inline-flex;
+  height: var(--rx-control-height);
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--rx-button-border);
+  border-radius: var(--rx-control-radius);
+  background: var(--rx-button-bg);
+  color: var(--rx-button-fg);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--rx-control-font-size);
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    border-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    transform var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.rx-button {
+  min-width: 64px;
+  gap: var(--reachany-space-1);
+  padding: 0 var(--rx-control-padding-inline);
+}
+
+.rx-button-block {
+  width: 100%;
+}
+
+.rx-icon-button {
+  width: var(--rx-control-height);
+  min-width: var(--rx-control-height);
+  padding: 0;
+}
+
+:is(.rx-button, .rx-icon-button):hover:not(:disabled):not([aria-disabled='true']) {
+  border-color: var(--rx-button-border-hover);
+  background: var(--rx-button-bg-hover);
+  color: var(--rx-button-fg-hover);
+}
+
+:is(.rx-button, .rx-icon-button):active:not(:disabled):not([aria-disabled='true']) {
+  background: var(--rx-button-bg-active);
+  transform: scale(0.98);
+}
+
+:is(.rx-button, .rx-icon-button):focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+:is(.rx-button, .rx-icon-button):disabled,
+:is(.rx-button, .rx-icon-button)[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+:is(.rx-button, .rx-icon-button)[data-loading='true'] {
+  cursor: progress;
+  opacity: 1;
+}
+
+/* —— 变体 ——
+ * 同时匹配 data-variant 与 .rx-button-<variant> 类：存量页面里手写的
+ * `className="rx-button rx-button-primary"`（含 <Link>）不经过 Button 组件，也要保持外观。 */
+:is(.rx-button, .rx-icon-button):is([data-variant='primary'], .rx-button-primary) {
+  --rx-button-bg: var(--reachany-color-primary);
+  --rx-button-bg-hover: var(--reachany-color-primary-hover);
+  --rx-button-bg-active: var(--reachany-color-primary-active);
+  --rx-button-border: transparent;
+  --rx-button-border-hover: transparent;
+  --rx-button-fg: var(--reachany-color-primary-contrast);
+}
+
+:is(.rx-button, .rx-icon-button):is([data-variant='ink'], .rx-button-ink) {
+  --rx-button-bg: var(--reachany-color-ink);
+  --rx-button-bg-hover: var(--reachany-color-ink-hover);
+  --rx-button-border: transparent;
+  --rx-button-border-hover: transparent;
+  --rx-button-fg: var(--reachany-color-primary-contrast);
+}
+
+:is(.rx-button, .rx-icon-button):is([data-variant='accent'], .rx-button-accent) {
+  --rx-button-bg: var(--reachany-color-accent);
+  --rx-button-bg-hover: var(--reachany-color-accent-hover);
+  --rx-button-border: transparent;
+  --rx-button-border-hover: transparent;
+  --rx-button-fg: var(--reachany-color-accent-contrast);
+}
+
+:is(.rx-button, .rx-icon-button):is(
+  [data-variant='outline'],
+  [data-variant='danger'],
+  .rx-button-outline,
+  .rx-button-danger
+) {
+  --rx-button-bg-hover: var(--reachany-color-primary-soft);
+  --rx-button-border: var(--reachany-color-primary);
+  --rx-button-border-hover: var(--reachany-color-primary);
+  --rx-button-fg: var(--reachany-color-primary);
+}
+
+.rx-button:is([data-variant='danger'], .rx-button-danger) {
+  --rx-button-fg: var(--reachany-color-danger-text);
+  --rx-button-border: var(--reachany-color-danger);
+  --rx-button-border-hover: var(--reachany-color-danger);
+  --rx-button-bg-hover: var(--reachany-color-danger-soft);
+}
+
+:is(.rx-button, .rx-icon-button):is([data-variant='ghost'], .rx-button-ghost) {
+  --rx-button-bg: transparent;
+  --rx-button-border: transparent;
+  --rx-button-border-hover: transparent;
+  --rx-button-fg: var(--reachany-color-text-secondary);
+  --rx-button-fg-hover: var(--reachany-color-text);
+}
+
+:is(.rx-button, .rx-icon-button)[data-variant='inverse'] {
+  --rx-button-bg: transparent;
+  --rx-button-bg-hover: color-mix(in srgb, var(--reachany-color-primary-contrast) 12%, transparent);
+  --rx-button-border: var(--reachany-color-primary-contrast);
+  --rx-button-border-hover: var(--reachany-color-primary-contrast);
+  --rx-button-fg: var(--reachany-color-primary-contrast);
+}
+
+.rx-button[data-variant='link'] {
+  --rx-button-bg: transparent;
+  --rx-button-bg-hover: transparent;
+  --rx-button-border: transparent;
+  --rx-button-border-hover: transparent;
+  --rx-button-fg: var(--reachany-color-primary);
+  --rx-button-fg-hover: var(--reachany-color-primary-hover);
+
+  height: auto;
+  min-width: 0;
+  padding: 0;
+}
+
+.rx-button[data-variant='link']:hover:not(:disabled) .rx-button-label {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.rx-button[data-variant='link']:active:not(:disabled) {
+  transform: none;
+}
+
+/* A visual action hint within an interactive card; the card owns the touch target. */
+.rx-button[data-compact-hint='true'] {
+  height: var(--reachany-space-5);
+  min-width: 0;
+  padding-inline: var(--reachany-space-2);
+  font-size: var(--reachany-text-caption);
+}
+
+/* —— 内容与加载态：内容层与加载层叠放在同一格，按钮宽度不跳动 —— */
+.rx-button-stack {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.rx-button-content,
+.rx-button-loading,
+.rx-button-success {
+  display: inline-flex;
+  grid-area: 1 / 1;
+  align-items: center;
+  justify-content: center;
+  gap: var(--reachany-space-1);
+}
+
+.rx-button[data-state='loading'] .rx-button-content,
+.rx-button[data-state='success'] .rx-button-content {
+  visibility: hidden;
+}
+
+.rx-button-icon,
+.rx-icon-button-icon {
+  display: inline-grid;
+  place-items: center;
+}
+
+:is(.rx-button-icon, .rx-icon-button-icon) > svg {
+  width: var(--rx-control-icon-size);
+  height: var(--rx-control-icon-size);
+  stroke-width: 1.5;
+}
+
+/*
+ * 加载层的图标位（规范 03 §3.1：加载期间按钮宽度锁定不跳）。
+ * - 有 iconStart：iconStart 与 Spinner 叠在同一格，进入 busy 即占位；超过 150ms 后（JS 写 data-spinner）
+ *   Spinner 显形并替换 iconStart，显形时淡入 fast。
+ * - 无 iconStart：150ms 前加载层只有文字，与静止态同宽；Spinner 出现时插在文字前，加载层左右各收回
+ *   「Spinner + 间距」的一半，对叠放网格的宽度贡献不变，Spinner 落进按钮内边距里。
+ */
+.rx-button-loading[data-inserted-spinner='true'] {
+  margin-inline: calc((var(--reachany-feedback-spinner-sm) + var(--reachany-space-1)) / -2);
+}
+
+.rx-button-loading-icon {
+  display: inline-grid;
+  place-items: center;
+}
+
+.rx-button-loading-icon > * {
+  grid-area: 1 / 1;
+}
+
+.rx-button-loading-icon-rest {
+  display: inline-grid;
+  place-items: center;
+}
+
+.rx-button-loading-icon-rest > svg {
+  width: var(--rx-control-icon-size);
+  height: var(--rx-control-icon-size);
+  stroke-width: 1.5;
+}
+
+.rx-button-loading-icon .rx-spinner {
+  visibility: hidden;
+  animation: none;
+}
+
+.rx-button-loading-icon[data-spinner='true'] .rx-button-loading-icon-rest {
+  visibility: hidden;
+}
+
+.rx-button-loading-icon[data-spinner='true'] .rx-spinner {
+  visibility: visible;
+  animation:
+    rx-fade-in var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard) backwards,
+    rx-spin var(--rx-spinner-period, 800ms) linear infinite;
+}
+
+.rx-button-success-icon {
+  animation: rx-button-success var(--reachany-motion-duration-fast)
+    var(--reachany-motion-easing-emphasized) backwards;
+}
+
+@keyframes rx-button-success {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.rx-button, .rx-icon-button):active:not(:disabled) {
+    transform: none;
+  }
+
+  .rx-button-success-icon {
+    animation: none;
+  }
+
+  /* 静止的 Spinner 仍有 aria-busy 与加载文案表达状态（规范 04 §4）。 */
+  .rx-button-loading-icon[data-spinner='true'] .rx-spinner {
+    animation: none;
+  }
+}

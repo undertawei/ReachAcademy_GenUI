@@ -1,0 +1,631 @@
+{
+  "description": "选词填空：逐空比对按比例给分；candidate_pool_repeatable 不为 true 时，同一候选第二次起判错。",
+  "cases": [
+    {
+      "name": "all blanks right",
+      "question": {
+        "question_type": "fill_with_candidates",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "options": [
+          {
+            "value": "apple"
+          },
+          {
+            "value": "pear"
+          },
+          {
+            "value": "plum"
+          }
+        ],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["apple"]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["pear"]
+          }
+        ],
+        "candidate_pool_repeatable": false
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "selection",
+              "values": ["apple"]
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "selection",
+              "values": ["pear"]
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 10,
+        "maxScore": 10,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "one blank right earns half",
+      "question": {
+        "question_type": "fill_with_candidates",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "options": [
+          {
+            "value": "apple"
+          },
+          {
+            "value": "pear"
+          },
+          {
+            "value": "plum"
+          }
+        ],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["apple"]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["pear"]
+          }
+        ],
+        "candidate_pool_repeatable": false
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "selection",
+              "values": ["apple"]
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "selection",
+              "values": ["plum"]
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 5,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "non-repeatable pool rejects the second use",
+      "question": {
+        "question_type": "fill_with_candidates",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "options": [
+          {
+            "value": "apple"
+          },
+          {
+            "value": "pear"
+          },
+          {
+            "value": "plum"
+          }
+        ],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["apple"]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["apple"]
+          }
+        ],
+        "candidate_pool_repeatable": false
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "selection",
+              "values": ["apple"]
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "selection",
+              "values": ["apple"]
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 5,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "second use is wrong even when the first use was wrong",
+      "question": {
+        "question_type": "fill_with_candidates",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "options": [
+          {
+            "value": "apple"
+          },
+          {
+            "value": "pear"
+          },
+          {
+            "value": "plum"
+          }
+        ],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["apple"]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["pear"]
+          }
+        ],
+        "candidate_pool_repeatable": false
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "selection",
+              "values": ["pear"]
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "selection",
+              "values": ["pear"]
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "repeatable pool accepts reuse",
+      "question": {
+        "question_type": "fill_with_candidates",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "options": [
+          {
+            "value": "apple"
+          },
+          {
+            "value": "pear"
+          },
+          {
+            "value": "plum"
+          }
+        ],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["apple"]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["apple"]
+          }
+        ],
+        "candidate_pool_repeatable": true
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "selection",
+              "values": ["apple"]
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "selection",
+              "values": ["apple"]
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 10,
+        "maxScore": 10,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "missing candidate_pool_repeatable defaults to non-repeatable",
+      "question": {
+        "question_type": "fill_with_candidates",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "options": [
+          {
+            "value": "apple"
+          },
+          {
+            "value": "pear"
+          },
+          {
+            "value": "plum"
+          }
+        ],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["apple"]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["apple"]
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "selection",
+              "values": ["apple"]
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "selection",
+              "values": ["apple"]
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 5,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "blanks without id fall back to positional ids",
+      "question": {
+        "question_type": "fill_with_candidates",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "options": [
+          {
+            "value": "apple"
+          },
+          {
+            "value": "pear"
+          },
+          {
+            "value": "plum"
+          }
+        ],
+        "blanks": [
+          {
+            "blank_index": 1,
+            "answer": ["apple"]
+          },
+          {
+            "blank_index": 2,
+            "answer": ["pear"]
+          }
+        ],
+        "candidate_pool_repeatable": false
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "blank-1",
+            "answer": {
+              "kind": "selection",
+              "values": ["apple"]
+            }
+          },
+          {
+            "blankId": "blank-2",
+            "answer": {
+              "kind": "selection",
+              "values": ["pear"]
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 10,
+        "maxScore": 10,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "rich-text response is the wrong kind",
+      "question": {
+        "question_type": "fill_with_candidates",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "options": [
+          {
+            "value": "apple"
+          },
+          {
+            "value": "pear"
+          },
+          {
+            "value": "plum"
+          }
+        ],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["apple"]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["pear"]
+          }
+        ],
+        "candidate_pool_repeatable": false
+      },
+      "response": {
+        "kind": "rich_text",
+        "document": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "apple"
+                }
+              ]
+            }
+          ]
+        },
+        "attachments": []
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "missing response earns zero",
+      "question": {
+        "question_type": "fill_with_candidates",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "options": [
+          {
+            "value": "apple"
+          },
+          {
+            "value": "pear"
+          },
+          {
+            "value": "plum"
+          }
+        ],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["apple"]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["pear"]
+          }
+        ],
+        "candidate_pool_repeatable": false
+      },
+      "response": null,
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "has_answer=false is unscored",
+      "question": {
+        "question_type": "fill_with_candidates",
+        "has_answer": false,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "options": [
+          {
+            "value": "apple"
+          },
+          {
+            "value": "pear"
+          },
+          {
+            "value": "plum"
+          }
+        ],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["apple"]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["pear"]
+          }
+        ],
+        "candidate_pool_repeatable": false
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "selection",
+              "values": ["apple"]
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "UNSCORED"
+      }
+    },
+    {
+      "name": "padded blank selections still count as one pool use",
+      "question": {
+        "question_type": "fill_with_candidates",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "options": [
+          {
+            "value": "apple"
+          },
+          {
+            "value": "pear"
+          },
+          {
+            "value": "plum"
+          }
+        ],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["apple"]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["pear"]
+          }
+        ],
+        "candidate_pool_repeatable": false
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "selection",
+              "values": ["apple "]
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "selection",
+              "values": [" apple"]
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 5,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    }
+  ]
+}

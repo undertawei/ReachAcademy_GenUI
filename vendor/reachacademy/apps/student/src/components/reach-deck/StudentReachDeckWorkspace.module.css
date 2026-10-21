@@ -1,0 +1,598 @@
+/*
+ * Deck 学习页（规范 02 T4）：播放列 + 右侧共享 SidePanel（AI 对话 / 讲稿 / 大纲）。
+ * 整页固定视口：工作台铺满 StudentLearningPage 给出的定高，自身与播放列都用 overflow:clip
+ * （不形成滚动容器，程序化滚动也带不动外层）；纵向滚动只发生在题目舞台、讲稿、大纲与
+ * Tutor 消息区内部。
+ */
+.workspace {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: clip;
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-card);
+  background: var(--reachany-color-surface);
+}
+
+.playerColumn {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  overflow: clip;
+  background: var(--reachany-color-surface);
+  padding: var(--reachany-space-3);
+}
+
+/* 跳页被拒时的原因提示（role=status）：浮在播放列顶部，空时不占位、不挡操作。 */
+.pageBlockNotice {
+  position: absolute;
+  z-index: var(--reachany-z-sticky);
+  top: var(--reachany-space-4);
+  left: 50%;
+  max-width: calc(100% - var(--reachany-space-8));
+  margin: 0;
+  border-radius: var(--reachany-radius-md);
+  background: var(--reachany-color-warning-soft);
+  box-shadow: var(--reachany-shadow-raised);
+  color: var(--reachany-color-warning-text);
+  font-size: var(--reachany-text-body-sm);
+  line-height: var(--reachany-text-body-sm-line-height);
+  padding: var(--reachany-space-2) var(--reachany-space-3);
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.pageBlockNotice:empty {
+  display: none;
+}
+
+.playerContainer {
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 auto;
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.playerContainer > * {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+}
+
+/* 幻灯片按 16:9 在剩余高度内拟合宽度；窄播放器时让时间轴换行。 */
+.playerColumn [data-student-native-player-shell] {
+  /* 播放器内部（原生幻灯片元素等）的层级不外溢，上浮笔记列表与编辑画布始终在其之上。 */
+  isolation: isolate;
+}
+
+/*
+ * 播放器布局（参考模课）：所有页型的 shell 都铺满播放列，播放器是「内容区 1fr + 底部 auto」。
+ * 字幕（仅幻灯片）与控制条沉在底部、位置固定，换页时只有中间的内容区在变：
+ *   幻灯片：舞台里的原生页包装节点改成纵向 flex，渲染器占剩余高度并把 16:9 视口居中，
+ *           视口宽度由宿主测量后通过共享播放器 nativeSlideMaxWidth 传入；字幕与时间轴排在其下。
+ *   题目 / GenUI：舞台占 1fr，翻页控制条是播放器的第二行。
+ * 播放器外框不再有深色底：只有幻灯片视口（或题目舞台）是带描边的圆角卡片，其余直接在白底上。
+ */
+.playerColumn [data-student-native-player-shell] > [data-student-player-frame] {
+  display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+/*
+ * 保存状态点：贴在播放器右上角外侧（落在播放列内边距里，不压内容），不占任何文字行。
+ * 橙色 = 正在保存 / 收尾完成，绿色 = 已保存；文字只给读屏与悬停提示。
+ */
+.playerColumn [data-student-sync-indicator] {
+  position: absolute;
+  z-index: var(--reachany-z-sticky);
+  top: calc(-1 * (var(--reachany-space-2) + var(--reachany-space-1) / 2));
+  right: 0;
+  width: var(--reachany-space-2);
+  height: var(--reachany-space-2);
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-success);
+}
+
+.playerColumn [data-student-sync-indicator='saving'] {
+  background: var(--reachany-color-orange);
+}
+
+.futureGate {
+  display: grid;
+  min-height: 0;
+  flex: 1 1 auto;
+  align-content: center;
+  justify-items: center;
+  gap: var(--reachany-space-4);
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-card);
+  background: var(--reachany-color-surface);
+  padding: var(--reachany-space-8);
+  text-align: center;
+}
+
+.gateIcon {
+  color: var(--reachany-color-primary);
+}
+
+.gateTitle {
+  margin: 0;
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-subtitle);
+  font-weight: var(--reachany-text-subtitle-weight);
+}
+
+.gateDescription {
+  max-width: calc(var(--reachany-space-1) * 112);
+  margin: var(--reachany-space-2) 0 0;
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-body-sm);
+  line-height: var(--reachany-text-body-sm-line-height);
+}
+
+/* —— 右栏：共享 SidePanel（宽 400 / 1280–1439 为 360 / 收起 56，由 brand token 决定）—— */
+.sideTabs {
+  display: flex;
+  min-height: 0;
+  flex: 0 0 auto;
+}
+
+.sidePanel {
+  height: 100%;
+}
+
+.sideTabList {
+  width: 100%;
+}
+
+/* 面板内容区由 SidePanel 提供定高；各页签自己管理滚动（Tutor 消息区、讲稿、大纲列表）。 */
+.sideTabPanel {
+  height: 100%;
+  min-height: 0;
+}
+
+.sideTabPanel[hidden] {
+  display: none;
+}
+
+/*
+ * Tutor 面板收紧（只在 Deck 右栏）：输入区去掉白底分隔条，
+ * 输入框直接落在消息区同色底上，只剩一层描边；空输入框从 72px 降到两行高。
+ * 输入框下是「内容由 AI 生成」小字（参考模课），贴着面板底边，只留 4px。
+ */
+.sideTabPanel [data-directed-tutor] > :last-child {
+  gap: var(--reachany-space-1);
+  border-top: 0;
+  background: var(--reachany-color-surface-muted);
+  padding: 0 var(--reachany-space-2) var(--reachany-space-1);
+}
+
+.sideTabPanel [data-tutor-composer-footnote] {
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+.sideTabPanel [data-directed-tutor] :global(.tiptap) {
+  min-height: calc(var(--reachany-space-1) * 12);
+}
+
+/* SidePanel 已有左描边，Tutor 原有的左描边去掉避免双线。 */
+.sideTabPanel :global(.reach-tutor-ordinary) > aside,
+.sideTabPanel :global(.reach-tutor-ordinary) > section {
+  border-left: 0;
+}
+
+/* —— 当前页讲稿 —— */
+.currentScript {
+  display: flex;
+  box-sizing: border-box;
+  height: 100%;
+  min-height: 0;
+  flex-direction: column;
+  margin: 0;
+  overflow: clip;
+}
+
+.currentScriptHeader {
+  display: grid;
+  flex: 0 0 auto;
+  gap: var(--reachany-space-2);
+  padding: var(--reachany-space-4) var(--reachany-space-4) var(--reachany-space-3);
+}
+
+.currentScriptScroll {
+  min-height: 0;
+  flex: 1 1 auto;
+  overscroll-behavior: contain;
+  padding: var(--reachany-space-1) var(--reachany-space-4) var(--reachany-space-4);
+  scrollbar-gutter: stable;
+}
+
+.currentScriptScroll:focus-visible {
+  outline: calc(var(--reachany-space-1) / 2) solid var(--reachany-color-primary);
+  outline-offset: calc(var(--reachany-space-1) / -2);
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.currentScriptTitle {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-subtitle);
+  font-weight: var(--reachany-text-subtitle-weight);
+  line-height: var(--reachany-text-subtitle-line-height);
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.currentScriptStatus {
+  display: flex;
+  align-items: center;
+  gap: var(--reachany-space-1);
+  color: var(--reachany-color-primary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+.currentScriptStatus[data-active='false'] {
+  visibility: hidden;
+}
+
+.currentScriptStatus svg {
+  width: var(--reachany-space-4);
+  height: var(--reachany-space-4);
+  flex: 0 0 auto;
+}
+
+.currentScriptBody,
+.currentScriptEmpty {
+  margin: 0;
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-body);
+  line-height: var(--reachany-text-body-line-height);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.currentScriptEmpty {
+  color: var(--reachany-color-text-secondary);
+}
+
+.currentScriptSegment[data-script-segment] {
+  border-inline-start: calc(var(--reachany-space-1) / 2) solid transparent;
+  padding-inline-start: var(--reachany-space-1);
+  box-decoration-break: clone;
+}
+
+.currentScriptSegment[aria-current='true'] {
+  border-inline-start-color: var(--reachany-color-primary);
+  border-radius: var(--reachany-radius-sm);
+  background: var(--reachany-color-primary-soft);
+  color: var(--reachany-color-primary);
+}
+
+/* —— 大纲 —— */
+.outline {
+  display: grid;
+  box-sizing: border-box;
+  height: 100%;
+  align-content: start;
+  gap: var(--reachany-space-2);
+  margin: 0;
+  overscroll-behavior: contain;
+  padding: var(--reachany-space-3);
+  scrollbar-gutter: stable;
+  list-style: none;
+}
+
+.outlineEntry {
+  --outline-item-background: var(--reachany-color-surface);
+
+  position: relative;
+}
+
+.outlineEntry:has(.outlineItem:hover:not([aria-disabled='true'])) {
+  --outline-item-background: var(--reachany-color-surface-warm);
+}
+
+.outlineEntry:has(.outlineItem[aria-current='page']) {
+  --outline-item-background: var(--reachany-color-primary-soft);
+}
+
+/*
+ * 讲稿被截断时的「更多」：叠在讲稿第二行末尾（条目右下角内边距内），左侧渐隐到条目底色，
+ * 与跳页按钮是兄弟节点，点它只开弹窗不跳页。
+ */
+.outlineMore {
+  position: absolute;
+  right: calc(var(--reachany-space-2) + 1px);
+  bottom: calc(var(--reachany-space-2) + 1px);
+  border: 0;
+  border-radius: var(--reachany-radius-sm);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--outline-item-background) var(--reachany-space-6)
+  );
+  color: var(--reachany-color-primary);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--reachany-text-caption);
+  font-weight: 500;
+  line-height: var(--reachany-text-caption-line-height);
+  padding: 0 0 0 var(--reachany-space-8);
+}
+
+.outlineMore:hover {
+  color: var(--reachany-color-primary-hover);
+  text-decoration: underline;
+}
+
+.outlineMore:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.scriptDialogBody {
+  margin: 0;
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-body);
+  line-height: var(--reachany-text-body-line-height);
+  white-space: pre-line;
+}
+
+.outlineItem {
+  display: grid;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: start;
+  gap: var(--reachany-space-3);
+  /* 缩略图高 64px = 标题一行 + 间距 + 讲稿两行，条目等高，「更多」正好压在讲稿第二行末尾。 */
+  grid-template-columns: calc(var(--reachany-space-1) * 16 * 16 / 9) minmax(0, 1fr);
+  border: 1px solid transparent;
+  border-radius: var(--reachany-radius-md);
+  background: transparent;
+  color: var(--reachany-color-text);
+  cursor: pointer;
+  font: inherit;
+  padding: var(--reachany-space-2);
+  text-align: left;
+  transition: background-color var(--reachany-motion-duration-fast)
+    var(--reachany-motion-easing-standard);
+}
+
+.outlineItem:hover:not([aria-disabled='true']) {
+  background: var(--reachany-color-surface-warm);
+}
+
+.outlineItem:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.outlineItem[aria-current='page'] {
+  border-color: var(--reachany-color-primary);
+  background: var(--reachany-color-primary-soft);
+}
+
+.outlineItem[aria-disabled='true'] {
+  cursor: not-allowed;
+}
+
+/* 未学到的页：不渲染缩略图，缩略图位置是「锁 + 未学习」占位；标题与讲稿弱化（规范 01 §9）。 */
+.outlineItem[data-page-status='locked'] .outlineTitle,
+.outlineItem[data-page-status='locked'] .outlineScript {
+  color: var(--reachany-color-text-tertiary);
+}
+
+.thumbnail[data-not-learned='true'] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--reachany-space-1);
+  border-style: dashed;
+  background: var(--reachany-color-surface-muted);
+  color: var(--reachany-color-text-tertiary);
+}
+
+.notLearnedLabel {
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+.outlineBody {
+  display: grid;
+  min-width: 0;
+  align-content: start;
+  gap: var(--reachany-space-1);
+}
+
+.outlineTitle {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: var(--reachany-text-body-sm);
+  font-weight: 600;
+  line-height: var(--reachany-text-body-sm-line-height);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.outlineScript {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+  white-space: pre-line;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.outlineScript[data-empty='true'] {
+  color: var(--reachany-color-text-tertiary);
+}
+
+.thumbnailFrame {
+  position: relative;
+  display: grid;
+}
+
+.pageStatusBadge {
+  position: absolute;
+  top: var(--reachany-space-1);
+  right: var(--reachany-space-1);
+  display: inline-flex;
+  width: var(--reachany-space-5);
+  height: var(--reachany-space-5);
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--reachany-radius-pill);
+}
+
+.pageStatusBadge[data-status='completed'] {
+  background: var(--reachany-color-success-strong);
+  color: var(--reachany-color-primary-contrast);
+}
+
+.thumbnail {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  place-content: center;
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-sm);
+  background: var(--reachany-color-surface-warm);
+}
+
+/* Native slide stages are absolutely positioned inside their viewport. Fill the
+ * thumbnail's definite aspect-ratio box so the renderer's percentage viewport
+ * has a non-zero containing block (the default grid intrinsic sizing otherwise
+ * collapses the renderer to 0×0). */
+.thumbnail > [data-native-v2-slide-renderer] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.thumbnailType {
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-surface);
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+  padding: 0 var(--reachany-space-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .outlineItem {
+    transition: none;
+  }
+}
+
+/* —— 最后一页「完成学习」后的恭喜弹窗（StudentReachDeckCompletionDialog） —— */
+/* 恭喜态：标题只给读屏，头部只剩关闭按钮；去掉头尾分隔线，内容与按钮居中。 */
+.completionDialog :global(.rx-dialog-header) {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.completionDialog :global(.rx-dialog-body) {
+  padding-top: 0;
+}
+
+.completionDialog :global(.rx-dialog-footer) {
+  justify-content: center;
+  border-top: 0;
+  padding-top: var(--reachany-space-2);
+}
+
+.completion {
+  display: grid;
+  justify-items: center;
+  gap: var(--reachany-space-2);
+  padding: 0 0 var(--reachany-space-2);
+  text-align: center;
+}
+
+.completionIcon {
+  display: inline-flex;
+  width: calc(var(--reachany-space-1) * 16);
+  height: calc(var(--reachany-space-1) * 16);
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--reachany-space-2);
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-accent-soft);
+  color: var(--reachany-color-accent-text);
+  /* 规范 04「完成一个学习模块：状态图标弹出」：等弹窗入场后弹出，回弹缓动；含 transform 只用 backwards。 */
+  animation: global(rx-toast-icon-pop) var(--reachany-motion-duration-moderate)
+    var(--reachany-motion-easing-emphasized) var(--reachany-motion-duration-fast) backwards;
+}
+
+.completionIcon > svg {
+  width: var(--reachany-space-8);
+  height: var(--reachany-space-8);
+}
+
+.completionTitle {
+  margin: 0;
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-title-md);
+  font-weight: var(--reachany-text-title-md-weight);
+  line-height: var(--reachany-text-title-md-line-height);
+}
+
+.completionDescription,
+.completionNote {
+  margin: 0;
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-body);
+  line-height: var(--reachany-text-body-line-height);
+}
+
+.completionNote {
+  color: var(--reachany-color-warning-text);
+  font-size: var(--reachany-text-body-sm);
+}
+
+.completionNext {
+  display: flex;
+  max-width: 100%;
+  box-sizing: border-box;
+  align-items: baseline;
+  gap: var(--reachany-space-2);
+  margin: var(--reachany-space-2) 0 0;
+  border-radius: var(--reachany-radius-md);
+  background: var(--reachany-color-surface-warm);
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-body-sm);
+  padding: var(--reachany-space-2) var(--reachany-space-3);
+}
+
+.completionNext > strong {
+  overflow: hidden;
+  min-width: 0;
+  color: var(--reachany-color-text);
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .completionIcon {
+    animation: none;
+  }
+}

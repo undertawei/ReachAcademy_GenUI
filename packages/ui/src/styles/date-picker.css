@@ -1,0 +1,424 @@
+/* DatePicker、DateRangePicker、TimePicker、DateTimePicker（规范 03 §3.30）。
+ * 面板外观与进出场复用 .rx-floating-panel（floating.css）。 */
+
+/* —— 触发器：外观同 Input —— */
+.rx-date-field {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  min-width: 0;
+  font-family: var(--reachany-font-sans);
+}
+
+.rx-date-field-trigger {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--rx-control-height);
+  min-width: 0;
+  align-items: center;
+  gap: var(--reachany-space-2);
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--rx-control-radius);
+  background: var(--reachany-color-surface);
+  padding: 0 var(--rx-control-padding-inline);
+  color: var(--reachany-color-text);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--rx-control-font-size);
+  text-align: left;
+  box-shadow: var(--reachany-shadow-field);
+  transition:
+    border-color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard),
+    box-shadow var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard);
+}
+
+.rx-date-field-trigger[data-clearable] {
+  padding-right: calc(
+    var(--rx-control-padding-inline) + var(--rx-control-icon-size) + var(--reachany-space-2)
+  );
+}
+
+.rx-date-field-trigger:hover:not(:disabled) {
+  border-color: var(--reachany-color-text-tertiary);
+}
+
+.rx-date-field-trigger:focus-visible,
+.rx-date-field[data-state='open'] .rx-date-field-trigger {
+  border-color: var(--reachany-color-primary);
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-date-field[data-invalid] .rx-date-field-trigger {
+  border-color: var(--reachany-color-danger);
+}
+
+.rx-date-field-trigger:disabled {
+  background: var(--reachany-color-surface-muted);
+  color: var(--reachany-color-text-tertiary);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.rx-date-field[data-readonly] .rx-date-field-trigger {
+  background: var(--reachany-color-surface-muted);
+  cursor: default;
+}
+
+.rx-date-field-value,
+.rx-date-field-placeholder {
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rx-date-field-value {
+  font-variant-numeric: tabular-nums;
+}
+
+.rx-date-field-placeholder {
+  color: var(--reachany-color-text-tertiary);
+}
+
+.rx-date-field-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  color: var(--reachany-color-text-tertiary);
+}
+
+.rx-date-field-icon > svg,
+.rx-date-field-clear > svg {
+  width: var(--rx-control-icon-size);
+  height: var(--rx-control-icon-size);
+}
+
+.rx-date-field-clear {
+  position: absolute;
+  top: 50%;
+  right: calc(
+    var(--rx-control-padding-inline) + var(--rx-control-icon-size) + var(--reachany-space-1)
+  );
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--reachany-radius-pill);
+  background: transparent;
+  padding: 0;
+  color: var(--reachany-color-text-tertiary);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition:
+    background-color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard),
+    color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard);
+}
+
+.rx-date-field-clear:hover {
+  background: var(--reachany-color-surface-muted);
+  color: var(--reachany-color-text);
+}
+
+.rx-date-field-clear:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+/* 展示态胶囊（日期范围）：surface-muted 底 + 左侧日历图标。 */
+.rx-date-field[data-variant='pill'] {
+  width: auto;
+  max-width: 100%;
+}
+
+.rx-date-field[data-variant='pill'] .rx-date-field-trigger {
+  width: auto;
+  max-width: 100%;
+  border-color: transparent;
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-surface-muted);
+  box-shadow: none;
+}
+
+.rx-date-field[data-variant='pill'] .rx-date-field-icon {
+  order: -1;
+  color: var(--reachany-color-text-secondary);
+}
+
+.rx-date-field[data-variant='pill'] .rx-date-field-trigger:focus-visible,
+.rx-date-field[data-variant='pill'][data-state='open'] .rx-date-field-trigger {
+  border-color: var(--reachany-color-primary);
+}
+
+/* —— 面板 —— */
+.rx-date-panel {
+  display: flex;
+  max-height: none;
+  align-items: stretch;
+  padding: var(--reachany-space-3);
+}
+
+.rx-time-panel {
+  padding: var(--reachany-space-1);
+}
+
+.rx-calendar {
+  display: grid;
+  width: 280px;
+  gap: var(--reachany-space-2);
+}
+
+.rx-calendar-header {
+  display: flex;
+  align-items: center;
+  gap: var(--reachany-space-1);
+}
+
+.rx-calendar-title {
+  flex: 1 1 auto;
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-body);
+  font-weight: 600;
+  text-align: center;
+}
+
+.rx-calendar-grid-region {
+  position: relative;
+}
+
+.rx-calendar-grid {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.rx-calendar-weekday {
+  height: 28px;
+  padding: 0;
+  color: var(--reachany-color-text-tertiary);
+  font-size: var(--reachany-text-caption);
+  font-weight: 400;
+  text-align: center;
+}
+
+.rx-calendar-day {
+  --rx-day-size: 32px;
+
+  position: relative;
+  height: 36px;
+  padding: 0;
+  color: var(--reachany-color-text);
+  cursor: pointer;
+  font-size: var(--reachany-text-body);
+  text-align: center;
+}
+
+.rx-calendar-day:focus {
+  outline: none;
+}
+
+.rx-calendar-day-label {
+  position: relative;
+  z-index: var(--reachany-z-base);
+  display: inline-flex;
+  width: var(--rx-day-size);
+  height: var(--rx-day-size);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: var(--reachany-radius-pill);
+  transition:
+    background-color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard),
+    color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard);
+}
+
+.rx-calendar-day-marker {
+  position: absolute;
+  inset-inline-end: 0;
+  bottom: 0;
+  display: inline-flex;
+  width: var(--reachany-space-3);
+  height: var(--reachany-space-3);
+  pointer-events: none;
+}
+
+.rx-calendar-day-marker svg {
+  width: 100%;
+  height: 100%;
+}
+
+.rx-calendar-day[data-detail] {
+  height: calc(var(--rx-day-size) + var(--reachany-space-4));
+}
+
+.rx-calendar-day-detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--reachany-space-1);
+  font-size: var(--reachany-text-micro);
+  line-height: var(--reachany-text-micro-line-height);
+}
+
+.rx-calendar-day-detail .rx-calendar-day-marker {
+  position: static;
+  flex: none;
+}
+
+.rx-calendar-day:hover:not([data-disabled]) .rx-calendar-day-label {
+  background: var(--reachany-color-surface-muted);
+}
+
+.rx-calendar-day[data-outside] {
+  color: var(--reachany-color-text-tertiary);
+}
+
+.rx-calendar-day[data-today] .rx-calendar-day-label {
+  border-color: var(--reachany-color-primary);
+}
+
+.rx-calendar-day[data-state='selected'] .rx-calendar-day-label {
+  border-color: var(--reachany-color-primary);
+  background: var(--reachany-color-primary);
+  color: var(--reachany-color-primary-contrast);
+}
+
+.rx-calendar-day:focus-visible .rx-calendar-day-label {
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-calendar-day[data-disabled] {
+  color: var(--reachany-color-text-tertiary);
+  cursor: not-allowed;
+}
+
+/* 区间：中间日期 primary-soft 底色带，两端实心圆。 */
+.rx-calendar-day[data-in-range]::before,
+.rx-calendar-day[data-range-start]:not([data-range-end])::before,
+.rx-calendar-day[data-range-end]:not([data-range-start])::before {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  bottom: 2px;
+  left: 0;
+  background: var(--reachany-color-primary-soft);
+  content: '';
+}
+
+.rx-calendar-day[data-range-start]::before {
+  left: 50%;
+}
+
+.rx-calendar-day[data-range-end]::before {
+  right: 50%;
+}
+
+.rx-calendar-day[data-in-range] {
+  color: var(--reachany-color-primary-text-on-soft);
+}
+
+/* 高亮区间（常驻月历的「当前周」）：整段 primary-soft 底带，两端圆角，不改变选中态。 */
+.rx-calendar-day[data-highlight]::before {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  bottom: 2px;
+  left: 0;
+  background: var(--reachany-color-primary-soft);
+  content: '';
+}
+
+.rx-calendar-day:is([data-highlight='start'], [data-highlight='single'])::before {
+  border-top-left-radius: var(--reachany-radius-pill);
+  border-bottom-left-radius: var(--reachany-radius-pill);
+}
+
+.rx-calendar-day:is([data-highlight='end'], [data-highlight='single'])::before {
+  border-top-right-radius: var(--reachany-radius-pill);
+  border-bottom-right-radius: var(--reachany-radius-pill);
+}
+
+/* —— 常驻月历（DateCalendar）：嵌在页面里，宽 240，父级更窄时随之收缩 —— */
+.rx-date-calendar {
+  box-sizing: border-box;
+  width: 240px;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.rx-date-calendar .rx-calendar {
+  width: 100%;
+}
+
+.rx-date-calendar .rx-calendar-day {
+  --rx-day-size: 28px;
+
+  height: 32px;
+}
+
+/* —— 时间列表 —— */
+.rx-time-list {
+  box-sizing: border-box;
+  width: 112px;
+  max-height: 280px;
+  padding: var(--reachany-space-1);
+}
+
+.rx-time-list:focus {
+  outline: none;
+}
+
+.rx-time-list:focus-visible {
+  border-radius: var(--reachany-radius-sm);
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-time-option {
+  display: flex;
+  height: var(--rx-option-height);
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--reachany-radius-sm);
+  color: var(--reachany-color-text);
+  cursor: pointer;
+  font-size: var(--rx-control-font-size);
+}
+
+.rx-time-option:hover:not([data-disabled]),
+.rx-time-option[data-active] {
+  background: var(--reachany-color-surface-muted);
+}
+
+.rx-time-option[data-state='selected'] {
+  background: var(--reachany-color-primary-soft);
+  color: var(--reachany-color-primary-text-on-soft);
+  font-weight: 600;
+}
+
+.rx-time-option[data-disabled] {
+  color: var(--reachany-color-text-tertiary);
+  cursor: not-allowed;
+}
+
+/* 日期时间：左侧月历、右侧时间列，高度与月历对齐。 */
+.rx-date-time-panel {
+  gap: var(--reachany-space-3);
+}
+
+.rx-date-time-list {
+  max-height: 300px;
+  border-left: 1px solid var(--reachany-color-border);
+  padding-left: var(--reachany-space-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rx-date-field-trigger,
+  .rx-date-field-clear,
+  .rx-calendar-day-label {
+    transition: none;
+  }
+}

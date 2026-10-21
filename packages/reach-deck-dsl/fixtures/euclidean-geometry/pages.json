@@ -1,0 +1,63 @@
+[
+  {
+    "id": "mixed-light-heavy-pass",
+    "markers": [
+      { "kitId": "euclidean-geometry-2d", "bytes": 1000 },
+      { "kitId": "solid-3d", "bytes": 1000 }
+    ],
+    "expected": { "accepted": true }
+  },
+  {
+    "id": "new-heavy-old-heavy-reject",
+    "markers": [
+      { "kitId": "euclidean-geometry-3d", "bytes": 1000 },
+      { "kitId": "geo-map", "bytes": 1000 }
+    ],
+    "expected": { "accepted": false, "errorCode": "page_heavy_exceeded" }
+  },
+  {
+    "id": "old-mixed-heavy-reject",
+    "markers": [
+      { "kitId": "solid-3d", "bytes": 1000 },
+      { "kitId": "molecule-3d", "bytes": 1000 }
+    ],
+    "expected": { "accepted": false, "errorCode": "page_heavy_exceeded" }
+  },
+  {
+    "id": "four-full-markers-pass",
+    "markers": [
+      { "kitId": "euclidean-geometry-2d", "bytes": 65536 },
+      { "kitId": "euclidean-geometry-2d", "bytes": 65536 },
+      { "kitId": "euclidean-geometry-2d", "bytes": 65536 },
+      { "kitId": "euclidean-geometry-2d", "bytes": 65536 }
+    ],
+    "expected": { "accepted": true }
+  },
+  {
+    "id": "five-markers-reject",
+    "markers": [
+      { "kitId": "euclidean-geometry-2d", "bytes": 1 },
+      { "kitId": "euclidean-geometry-2d", "bytes": 1 },
+      { "kitId": "euclidean-geometry-2d", "bytes": 1 },
+      { "kitId": "euclidean-geometry-2d", "bytes": 1 },
+      { "kitId": "euclidean-geometry-2d", "bytes": 1 }
+    ],
+    "expected": { "accepted": false, "errorCode": "page_markers_exceeded" }
+  },
+  {
+    "id": "aggregate-bytes-first",
+    "markers": [
+      { "kitId": "euclidean-geometry-2d", "bytes": 61440 },
+      { "kitId": "euclidean-geometry-2d", "bytes": 61440 },
+      { "kitId": "euclidean-geometry-2d", "bytes": 61440 },
+      { "kitId": "euclidean-geometry-2d", "bytes": 61440 },
+      { "kitId": "euclidean-geometry-2d", "bytes": 61440 }
+    ],
+    "expected": { "accepted": false, "errorCode": "page_bytes_exceeded" }
+  },
+  {
+    "id": "single-marker-bytes-reject",
+    "markers": [{ "kitId": "euclidean-geometry-2d", "bytes": 65537 }],
+    "expected": { "accepted": false, "errorCode": "marker_bytes_exceeded" }
+  }
+]

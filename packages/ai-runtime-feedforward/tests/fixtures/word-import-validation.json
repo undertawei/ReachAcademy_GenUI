@@ -1,0 +1,3401 @@
+{
+  "schemaVersion": 1,
+  "description": "Raw native questions; compare unique diagnostic codes. Java and TypeScript consume identical cases. Private wordImportItemId is removed before native persistence.",
+  "cases": [
+    {
+      "name": "valid-single_choice",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": []
+    },
+    {
+      "name": "valid-multiple_choice",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "multiple_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": []
+    },
+    {
+      "name": "valid-short_answer",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "short_answer",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Answer"
+                  }
+                ]
+              }
+            ]
+          },
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": []
+        }
+      ],
+      "expectedCodes": []
+    },
+    {
+      "name": "valid-fill_in_the_blank",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "fill_in_the_blank",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Complete "
+                  },
+                  {
+                    "type": "quizBlank",
+                    "attrs": {
+                      "blankId": "b1",
+                      "blankIndex": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": [],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "blanks": [
+            {
+              "id": "b1",
+              "blank_index": 1,
+              "answer": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Answer"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": []
+    },
+    {
+      "name": "valid-cloze",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "cloze",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Complete "
+                  },
+                  {
+                    "type": "quizBlank",
+                    "attrs": {
+                      "blankId": "b1",
+                      "blankIndex": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": [],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "blanks": [
+            {
+              "id": "b1",
+              "blank_index": 1,
+              "answer": ["A"],
+              "candidates": [
+                {
+                  "value": "A",
+                  "wordImportItemId": "option-a",
+                  "label": {
+                    "type": "doc",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "First"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "value": "B",
+                  "wordImportItemId": "option-b",
+                  "label": {
+                    "type": "doc",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Second"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "expectedCodes": []
+    },
+    {
+      "name": "valid-fill_with_candidates",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "fill_with_candidates",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Complete "
+                  },
+                  {
+                    "type": "quizBlank",
+                    "attrs": {
+                      "blankId": "b1",
+                      "blankIndex": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": [],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "blanks": [
+            {
+              "id": "b1",
+              "blank_index": 1,
+              "answer": ["A"]
+            }
+          ],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "candidate_pool_repeatable": false
+        }
+      ],
+      "expectedCodes": []
+    },
+    {
+      "name": "valid-zero-points",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": []
+    },
+    {
+      "name": "valid-absent-original-answer",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": [],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": false,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": []
+    },
+    {
+      "name": "invalid-points",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": -1,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.invalid-points"]
+    },
+    {
+      "name": "string-points",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": "2",
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.invalid-points"]
+    },
+    {
+      "name": "missing-points",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.missing-points"]
+    },
+    {
+      "name": "empty-stem",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.empty-question"]
+    },
+    {
+      "name": "unsupported-type",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "invented",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": [],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": false,
+          "sub_problems": []
+        }
+      ],
+      "expectedCodes": ["word-import.unsupported-question-type"]
+    },
+    {
+      "name": "invalid-choice-answer",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["Z"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.invalid-answer-reference"]
+    },
+    {
+      "name": "multiple-single-answer",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A", "B"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.single-answer-count"]
+    },
+    {
+      "name": "duplicate-choice-answer",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "multiple_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A", "A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.invalid-answer-reference"]
+    },
+    {
+      "name": "has-answer-inconsistent",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": false,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.has-answer-mismatch"]
+    },
+    {
+      "name": "missing-options",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": []
+        }
+      ],
+      "expectedCodes": ["word-import.missing-options", "word-import.invalid-answer-reference"]
+    },
+    {
+      "name": "empty-option",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": []
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.empty-option"]
+    },
+    {
+      "name": "duplicate-label",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "A",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.invalid-options"]
+    },
+    {
+      "name": "choice-leftover-blanks",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "blanks": []
+        }
+      ],
+      "expectedCodes": ["word-import.unexpected-blanks"]
+    },
+    {
+      "name": "short-answer-leftover-options",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "short_answer",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Answer"
+                  }
+                ]
+              }
+            ]
+          },
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.unexpected-options"]
+    },
+    {
+      "name": "choice-leftover-policy",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "candidate_pool_repeatable": false
+        }
+      ],
+      "expectedCodes": ["word-import.unexpected-pool-policy"]
+    },
+    {
+      "name": "missing-policy",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "fill_with_candidates",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Complete "
+                  },
+                  {
+                    "type": "quizBlank",
+                    "attrs": {
+                      "blankId": "b1",
+                      "blankIndex": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": [],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "blanks": [
+            {
+              "id": "b1",
+              "blank_index": 1,
+              "answer": ["A"]
+            }
+          ],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.missing-pool-policy"]
+    },
+    {
+      "name": "shared-multiple-answer",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "fill_with_candidates",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Complete "
+                  },
+                  {
+                    "type": "quizBlank",
+                    "attrs": {
+                      "blankId": "b1",
+                      "blankIndex": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": [],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "blanks": [
+            {
+              "id": "b1",
+              "blank_index": 1,
+              "answer": ["A", "B"]
+            }
+          ],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "candidate_pool_repeatable": false
+        }
+      ],
+      "expectedCodes": ["word-import.blank-answer-count"]
+    },
+    {
+      "name": "valid-cloze-multiple-answer",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "cloze",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Complete "
+                  },
+                  {
+                    "type": "quizBlank",
+                    "attrs": {
+                      "blankId": "b1",
+                      "blankIndex": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": [],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "blanks": [
+            {
+              "id": "b1",
+              "blank_index": 1,
+              "answer": ["A", "B"],
+              "candidates": [
+                {
+                  "value": "A",
+                  "wordImportItemId": "option-a",
+                  "label": {
+                    "type": "doc",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "First"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "value": "B",
+                  "wordImportItemId": "option-b",
+                  "label": {
+                    "type": "doc",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Second"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "expectedCodes": []
+    },
+    {
+      "name": "cloze-unknown-answer",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "cloze",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Complete "
+                  },
+                  {
+                    "type": "quizBlank",
+                    "attrs": {
+                      "blankId": "b1",
+                      "blankIndex": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": [],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "blanks": [
+            {
+              "id": "b1",
+              "blank_index": 1,
+              "answer": ["Z"],
+              "candidates": [
+                {
+                  "value": "A",
+                  "wordImportItemId": "option-a",
+                  "label": {
+                    "type": "doc",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "First"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "value": "B",
+                  "wordImportItemId": "option-b",
+                  "label": {
+                    "type": "doc",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Second"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.invalid-answer-reference"]
+    },
+    {
+      "name": "mismatched-blank-id",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "fill_in_the_blank",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Complete "
+                  },
+                  {
+                    "type": "quizBlank",
+                    "attrs": {
+                      "blankId": "b1",
+                      "blankIndex": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": [],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "blanks": [
+            {
+              "id": "changed",
+              "blank_index": 1,
+              "answer": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Answer"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.invalid-blank-identity"]
+    },
+    {
+      "name": "free-blank-wrong-answer-type",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "fill_in_the_blank",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Complete "
+                  },
+                  {
+                    "type": "quizBlank",
+                    "attrs": {
+                      "blankId": "b1",
+                      "blankIndex": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": [],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": false,
+          "sub_problems": [],
+          "blanks": [
+            {
+              "id": "b1",
+              "blank_index": 1,
+              "answer": []
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.invalid-answer"]
+    },
+    {
+      "name": "unexpected-local-pool",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "fill_with_candidates",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Complete "
+                  },
+                  {
+                    "type": "quizBlank",
+                    "attrs": {
+                      "blankId": "b1",
+                      "blankIndex": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": [],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "blanks": [
+            {
+              "id": "b1",
+              "blank_index": 1,
+              "answer": ["A"],
+              "candidates": [
+                {
+                  "value": "A",
+                  "wordImportItemId": "option-a",
+                  "label": {
+                    "type": "doc",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "First"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "value": "B",
+                  "wordImportItemId": "option-b",
+                  "label": {
+                    "type": "doc",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Second"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "candidate_pool_repeatable": false
+        }
+      ],
+      "expectedCodes": ["word-import.unexpected-blank-pool"]
+    },
+    {
+      "name": "unexpected-root-pool",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "cloze",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Complete "
+                  },
+                  {
+                    "type": "quizBlank",
+                    "attrs": {
+                      "blankId": "b1",
+                      "blankIndex": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": [],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "blanks": [
+            {
+              "id": "b1",
+              "blank_index": 1,
+              "answer": ["A"],
+              "candidates": [
+                {
+                  "value": "A",
+                  "wordImportItemId": "option-a",
+                  "label": {
+                    "type": "doc",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "First"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "value": "B",
+                  "wordImportItemId": "option-b",
+                  "label": {
+                    "type": "doc",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Second"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.cloze-root-pool"]
+    },
+    {
+      "name": "unsupported-analysis",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "unsupported"
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.invalid-rich-text"]
+    },
+    {
+      "name": "valid-parent-material-from-child",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "short_answer",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "answer": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Answer"
+                  }
+                ]
+              }
+            ]
+          },
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [
+            {
+              "id": "child",
+              "question_type": "single_choice",
+              "question": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Synthetic question"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "answer": ["A"],
+              "analysis": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": []
+                  }
+                ]
+              },
+              "points": 0.5,
+              "has_answer": true,
+              "sub_problems": [],
+              "options": [
+                {
+                  "value": "A",
+                  "wordImportItemId": "option-a",
+                  "label": {
+                    "type": "doc",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "First"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "value": "B",
+                  "wordImportItemId": "option-b",
+                  "label": {
+                    "type": "doc",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Second"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "expectedCodes": []
+    },
+    {
+      "name": "shared-reused-answer",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "fill_with_candidates",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Complete "
+                  },
+                  {
+                    "type": "quizBlank",
+                    "attrs": {
+                      "blankId": "b1",
+                      "blankIndex": 1
+                    }
+                  },
+                  {
+                    "type": "quizBlank",
+                    "attrs": {
+                      "blankId": "b2",
+                      "blankIndex": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": [],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "blanks": [
+            {
+              "id": "b1",
+              "blank_index": 1,
+              "answer": ["A"]
+            },
+            {
+              "id": "b2",
+              "blank_index": 2,
+              "answer": ["A"]
+            }
+          ],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "candidate_pool_repeatable": false
+        }
+      ],
+      "expectedCodes": ["word-import.reused-pool-answer"]
+    },
+    {
+      "name": "valid-shared-repeat",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "fill_with_candidates",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Complete "
+                  },
+                  {
+                    "type": "quizBlank",
+                    "attrs": {
+                      "blankId": "b1",
+                      "blankIndex": 1
+                    }
+                  },
+                  {
+                    "type": "quizBlank",
+                    "attrs": {
+                      "blankId": "b2",
+                      "blankIndex": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": [],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "blanks": [
+            {
+              "id": "b1",
+              "blank_index": 1,
+              "answer": ["A"]
+            },
+            {
+              "id": "b2",
+              "blank_index": 2,
+              "answer": ["A"]
+            }
+          ],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "candidate_pool_repeatable": true
+        }
+      ],
+      "expectedCodes": []
+    },
+    {
+      "name": "missing-question-id",
+      "questions": [
+        {
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.invalid-question"]
+    },
+    {
+      "name": "blank-question-id",
+      "questions": [
+        {
+          "id": "  ",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.invalid-question"]
+    },
+    {
+      "name": "duplicate-question-id",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.invalid-question"]
+    },
+    {
+      "name": "invalid-children",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": {},
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.invalid-children"]
+    },
+    {
+      "name": "invalid-stem-rich-text",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "bad",
+            "content": [
+              {
+                "type": "text",
+                "text": "Present"
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.invalid-rich-text"]
+    },
+    {
+      "name": "missing-blanks",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "fill_in_the_blank",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Complete "
+                  },
+                  {
+                    "type": "quizBlank",
+                    "attrs": {
+                      "blankId": "b1",
+                      "blankIndex": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": [],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": false,
+          "sub_problems": []
+        }
+      ],
+      "expectedCodes": ["word-import.missing-blanks", "word-import.missing-blank-reference"]
+    },
+    {
+      "name": "choice-inline-blank",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "single_choice",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Synthetic question"
+                  },
+                  {
+                    "type": "quizBlank",
+                    "attrs": {
+                      "blankId": "b1",
+                      "blankIndex": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "options": [
+            {
+              "value": "A",
+              "wordImportItemId": "option-a",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "First"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "value": "B",
+              "wordImportItemId": "option-b",
+              "label": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Second"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.unexpected-blanks"]
+    },
+    {
+      "name": "fill-nonempty-root-answer",
+      "questions": [
+        {
+          "id": "q1",
+          "question_type": "fill_in_the_blank",
+          "question": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Complete "
+                  },
+                  {
+                    "type": "quizBlank",
+                    "attrs": {
+                      "blankId": "b1",
+                      "blankIndex": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "answer": ["A"],
+          "analysis": {
+            "type": "doc",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": []
+              }
+            ]
+          },
+          "points": 0.5,
+          "has_answer": true,
+          "sub_problems": [],
+          "blanks": [
+            {
+              "id": "b1",
+              "blank_index": 1,
+              "answer": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Answer"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCodes": ["word-import.invalid-answer"]
+    }
+  ]
+}

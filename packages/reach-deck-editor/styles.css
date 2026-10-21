@@ -1,0 +1,5759 @@
+@import '@reachany/tiptap-mathlive/styles.css';
+
+.reach-deck-editor .reachany-mathlive-node.is-block,
+.reach-deck-editor .reachany-mathlive-node.is-block > .reachany-mathlive-static,
+.reach-deck-editor .reachany-mathlive-node.is-block > .reachany-mathlive-static > .katex-display,
+.reach-deck-editor .reachany-mathlive-node.is-block > .reachany-mathlive-field {
+  overflow-x: visible;
+  overflow-y: visible;
+}
+
+.reach-deck-editor {
+  --reach-deck-editor-border: #ded8d4;
+  --reach-deck-editor-ink: #30272d;
+  --reach-deck-editor-muted: #776d73;
+  --reach-deck-editor-soft: #f5f2ef;
+  --reach-deck-editor-page-rail-bg: #f7f4f2;
+  --reach-deck-editor-accent: #f45f22;
+  color: var(--reach-deck-editor-ink);
+  display: grid;
+  gap: 0.75rem;
+  grid-template-rows: minmax(0, 1fr);
+  height: 100%;
+  min-height: 32rem;
+  min-width: 0;
+  position: relative;
+}
+
+.reach-deck-editor__controls {
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  height: 100%;
+  margin: 0;
+  min-height: 0;
+  min-width: 0;
+  padding: 0;
+}
+
+.reach-deck-editor
+  button:not(
+    :where(.rx-button, .rx-icon-button, .rx-attachment-name, .rx-select-trigger, .rx-select-option)
+  ),
+.reach-deck-editor input,
+.reach-deck-editor select,
+.reach-deck-editor textarea {
+  font: inherit;
+}
+
+.reach-deck-editor
+  button:not(
+    :where(.rx-button, .rx-icon-button, .rx-attachment-name, .rx-select-trigger, .rx-select-option)
+  ) {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--reach-deck-editor-border);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 0.35rem;
+  justify-content: center;
+  min-height: 2.35rem;
+  padding: 0.45rem 0.7rem;
+}
+
+.reach-deck-editor
+  button:not(
+    :where(.rx-button, .rx-icon-button, .rx-attachment-name, .rx-select-trigger, .rx-select-option)
+  ):disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.reach-deck-editor
+  button:not(
+    :where(.rx-button, .rx-icon-button, .rx-attachment-name, .rx-select-trigger, .rx-select-option)
+  ):focus-visible,
+.reach-deck-editor input:focus-visible,
+.reach-deck-editor select:focus-visible,
+.reach-deck-editor textarea:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--reach-deck-editor-accent) 35%, transparent);
+  outline-offset: 2px;
+}
+
+.reach-deck-editor input,
+.reach-deck-editor select,
+.reach-deck-editor textarea {
+  border: 1px solid #b9c8d8;
+  border-radius: 0.45rem;
+  box-sizing: border-box;
+  min-height: 2.4rem;
+  padding: 0.5rem 0.6rem;
+  width: 100%;
+}
+
+.reach-deck-editor textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+.reach-deck-editor__property {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.reach-deck-editor__property > span {
+  color: var(--reach-deck-editor-muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.reach-deck-editor__actions,
+.reach-deck-editor__panel-heading {
+  align-items: center;
+  display: flex;
+  gap: 0.45rem;
+}
+
+.reach-deck-editor__actions button:last-child {
+  background: #5e3853;
+  border-color: #5e3853;
+  color: #fff;
+}
+
+.reach-deck-editor__status {
+  background: #eef6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 0.55rem;
+  margin: 0;
+  padding: 0.6rem 0.8rem;
+}
+
+.reach-deck-editor__workspace {
+  --reach-deck-editor-page-rail-width: clamp(8.75rem, 14vw, 10rem);
+  --reach-deck-editor-page-list-row-height: minmax(8rem, 14rem);
+  --reach-deck-editor-right-panel-width: clamp(18rem, 25vw, 21rem);
+  --reach-deck-editor-right-panel-row-height: clamp(15rem, 40dvh, 22rem);
+
+  align-items: stretch;
+  background: #e8e5e2;
+  display: grid;
+  flex: 1;
+  gap: 0;
+  grid-template-areas:
+    'rail-header canvas decksmith'
+    'pages canvas decksmith';
+  grid-template-columns:
+    var(--reach-deck-editor-page-rail-width) minmax(0, 1fr)
+    var(--reach-deck-editor-right-panel-width);
+  grid-template-rows: auto minmax(0, 1fr);
+  min-height: 0;
+  overflow: hidden;
+  transition:
+    grid-template-columns var(--reachany-motion-duration-moderate)
+      var(--reachany-motion-easing-standard),
+    grid-template-rows var(--reachany-motion-duration-moderate)
+      var(--reachany-motion-easing-standard);
+}
+
+.reach-deck-regeneration,
+.reach-deck-regeneration fieldset {
+  display: grid;
+  gap: var(--reachany-space-3);
+  min-width: 0;
+}
+
+.reach-deck-regeneration fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.reach-deck-regeneration legend {
+  color: var(--reachany-color-text);
+  padding-block-end: var(--reachany-space-3);
+}
+
+.reach-deck-editor__workspace[data-page-rail-collapsed] {
+  --reach-deck-editor-page-rail-width: var(--reachany-side-panel-collapsed-width);
+  --reach-deck-editor-page-list-row-height: 0;
+}
+
+.reach-deck-editor__workspace[data-right-panel-collapsed] {
+  --reach-deck-editor-right-panel-width: var(--reachany-side-panel-collapsed-width);
+  --reach-deck-editor-right-panel-row-height: 3rem;
+}
+
+.reach-deck-editor__pages {
+  grid-area: pages;
+}
+
+.reach-deck-editor__page-rail-header {
+  grid-area: rail-header;
+}
+
+.reach-deck-editor__preview {
+  grid-area: canvas;
+}
+
+.reach-deck-editor__properties {
+  grid-area: decksmith;
+}
+
+.reach-deck-editor__pages,
+.reach-deck-editor__properties {
+  background: #fff;
+  border: 0;
+  border-radius: 0;
+  box-sizing: border-box;
+  min-width: 0;
+  padding: 0.75rem;
+}
+
+.reach-deck-editor__page-rail-header {
+  align-items: center;
+  background: var(--reach-deck-editor-page-rail-bg);
+  border-bottom: 1px solid var(--reach-deck-editor-border);
+  border-right: 1px solid var(--reach-deck-editor-border);
+  box-sizing: border-box;
+  display: grid;
+  gap: 0.25rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  min-width: 0;
+  padding: 0.4rem 0.5rem;
+}
+
+.reach-deck-editor__page-rail-header-content {
+  min-width: 0;
+  opacity: 1;
+  overflow: hidden;
+  transition:
+    opacity 140ms ease,
+    transform 180ms ease;
+}
+
+.reach-deck-editor__page-rail-title {
+  color: var(--reachany-color-text-secondary);
+  display: block;
+  font-size: var(--reachany-text-caption);
+  font-weight: var(--reachany-text-control-weight);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 收起后表头铺满整条竖栏，只剩居中的展开按钮。 */
+.reach-deck-editor__workspace[data-page-rail-collapsed] .reach-deck-editor__page-rail-header {
+  align-content: start;
+  gap: 0;
+  grid-row: 1 / 3;
+  grid-template-columns: 0 auto;
+  justify-content: center;
+}
+
+/* 用 .reach-deck-editor 前缀压过通用 button 规则的 padding/min-height，
+   否则 2rem 宽的按钮被 0.7rem 内边距挤到只剩几像素，箭头会被横向压扁。 */
+.reach-deck-editor .reach-deck-editor__sidebar-toggle {
+  align-items: center;
+  align-self: center;
+  background: #fff;
+  border: 1px solid var(--reach-deck-editor-border);
+  border-radius: 0.45rem;
+  box-sizing: border-box;
+  color: #6f6570;
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 2rem;
+  justify-content: center;
+  min-height: 0;
+  padding: 0;
+  width: 2rem;
+}
+
+.reach-deck-editor__sidebar-toggle:hover,
+.reach-deck-editor__sidebar-toggle:focus-visible {
+  border-color: #bfaeb7;
+  color: var(--reach-deck-editor-accent);
+}
+
+.reach-deck-editor__sidebar-toggle svg {
+  flex: 0 0 auto;
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reach-deck-editor__workspace[data-page-rail-collapsed]
+  .reach-deck-editor__page-rail-header-content {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-0.5rem);
+  visibility: hidden;
+}
+
+.reach-deck-editor__workspace[data-page-rail-collapsed] .reach-deck-editor__page-rail-toggle svg {
+  transform: rotate(180deg);
+}
+
+.reach-deck-editor__pages {
+  background: var(--reach-deck-editor-page-rail-bg);
+  border-right: 1px solid var(--reach-deck-editor-border);
+  min-height: 0;
+  overflow: auto;
+  padding: 0.5rem;
+  position: relative;
+  transition:
+    opacity 140ms ease,
+    padding 220ms ease,
+    transform 180ms ease;
+}
+
+.reach-deck-editor__workspace[data-page-rail-collapsed] .reach-deck-editor__pages {
+  opacity: 0;
+  padding-inline: 0;
+  pointer-events: none;
+  transform: translateX(-0.75rem);
+  visibility: hidden;
+}
+
+.reach-deck-editor__panel-heading {
+  justify-content: space-between;
+}
+
+.reach-deck-editor__panel-heading button {
+  min-height: 2rem;
+  padding: 0.25rem 0.45rem;
+}
+
+.reach-deck-editor__add-element {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  justify-content: flex-end;
+}
+
+.reach-deck-editor__add-element button {
+  min-height: 1.9rem;
+  padding: 0.2rem 0.4rem;
+}
+
+.reach-deck-editor__pages ol {
+  display: grid;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.reach-deck-editor__right-panel-header {
+  align-items: center;
+  background: #f7f4f5;
+  border-bottom: 1px solid var(--reach-deck-editor-border);
+  display: grid;
+  gap: 0.25rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 0.4rem;
+}
+
+/* 宿主命令条与面板动作各占整行；页签与收起按钮共用一行，收起按钮在最右。 */
+.reach-deck-editor__right-panel-header > .reach-deck-editor__workspace-command-bar,
+.reach-deck-editor__right-panel-header > .reach-deck-editor__right-panel-action {
+  grid-column: 1 / -1;
+}
+
+.reach-deck-editor__properties[data-collapsed] .reach-deck-editor__right-panel-header {
+  gap: 0;
+  grid-template-columns: 0 auto;
+  justify-content: center;
+}
+
+/* 竖条里展开按钮贴顶，与左侧页面栏的展开按钮同高。 */
+.reach-deck-editor
+  .reach-deck-editor__properties[data-collapsed]
+  .reach-deck-editor__right-panel-toggle {
+  align-self: start;
+}
+
+.reach-deck-editor__properties[data-collapsed] .reach-deck-editor__right-panel-action {
+  display: none;
+}
+
+.reach-deck-editor__right-panel-header-content {
+  min-width: 0;
+  opacity: 1;
+  overflow: hidden;
+  transition:
+    opacity 140ms ease,
+    transform 180ms ease;
+}
+
+.reach-deck-editor__properties[data-collapsed] .reach-deck-editor__right-panel-header-content,
+.reach-deck-editor__properties[data-collapsed] .reach-deck-editor__right-panel {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(0.75rem);
+  visibility: hidden;
+}
+
+.reach-deck-editor__properties[data-collapsed] .reach-deck-editor__workspace-command-bar {
+  display: none;
+}
+
+.reach-deck-editor__properties[data-collapsed] .reach-deck-editor__right-panel-toggle svg {
+  transform: rotate(180deg);
+}
+
+.reach-deck-editor__pages li {
+  border: 0;
+  border-radius: 0.7rem;
+  display: grid;
+  gap: 0;
+  padding: 0;
+  position: relative;
+}
+
+.reach-deck-editor__pages li[data-dragging] {
+  opacity: 0.45;
+}
+
+.reach-deck-editor__pages li[data-drag-over]::before {
+  background: var(--reach-deck-editor-accent);
+  border-radius: 999px;
+  content: '';
+  height: 3px;
+  left: 0.35rem;
+  position: absolute;
+  right: 0.35rem;
+  top: 0;
+}
+
+.reach-deck-editor__pages li > [data-page-card] {
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  cursor: grab;
+  display: grid;
+  grid-template-columns: 1.45rem minmax(0, 1fr);
+  min-width: 0;
+  min-height: 2.75rem;
+  padding: 0.25rem;
+  position: relative;
+  text-align: left;
+}
+
+.reach-deck-editor__pages li > [data-page-card] small {
+  color: var(--reach-deck-editor-muted);
+  text-transform: uppercase;
+}
+
+.reach-deck-editor__pages li > [data-page-card][aria-current='page'] {
+  background: #fff5ef;
+  border-color: #f6a47f;
+  box-shadow: 0 0 0 2px rgb(244 95 34 / 12%);
+}
+
+.reach-deck-editor__pages li > [data-page-card][aria-selected='true'] {
+  background: #fff5ef;
+  border-color: #f6a47f;
+}
+
+.reach-deck-editor__pages li > [data-page-card][aria-current='page'][aria-selected='true'] {
+  box-shadow: 0 0 0 2px rgb(244 95 34 / 18%);
+}
+
+.reach-deck-editor__page-marquee {
+  background: rgb(37 99 235 / 12%);
+  border: 1px solid #2563eb;
+  box-sizing: border-box;
+  pointer-events: none;
+  position: fixed;
+  z-index: 4;
+}
+
+.reach-deck-editor__page-copy {
+  display: grid;
+  min-width: 0;
+}
+
+/* 页面菜单只承载页面自身操作；结构新增/导入由插入位置菜单承载。 */
+.reach-deck-editor__page-menu {
+  inset: auto;
+  margin: 0;
+  overflow: visible;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid var(--reach-deck-editor-border);
+  border-radius: 0.5rem;
+  box-shadow: 0 12px 28px rgb(50 36 45 / 18%);
+  display: grid;
+  gap: 0.125rem;
+  width: 208px;
+  max-width: calc(100vw - 16px);
+  padding: 0.25rem;
+  position: fixed;
+  z-index: 40;
+}
+
+.reach-deck-editor .reach-deck-editor__page-menu button {
+  align-items: center;
+  border-color: transparent;
+  display: flex;
+  border-radius: 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  line-height: 1.4;
+  min-height: 2rem;
+  padding: 0.25rem 0.5rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.reach-deck-editor__page-menu button svg {
+  flex-shrink: 0;
+}
+
+.reach-deck-editor .reach-deck-editor__add-first-page {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  min-height: 2.75rem;
+  width: 100%;
+}
+
+.reach-deck-editor .reach-deck-editor__insertion-gap {
+  align-items: center;
+  align-self: center;
+  background: var(--reach-deck-editor-page-rail-bg);
+  border: 0;
+  border-radius: 0;
+  color: var(--reach-deck-editor-accent);
+  display: flex;
+  height: 1.125rem;
+  justify-content: center;
+  min-height: 1.125rem;
+  min-width: 2.75rem;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  z-index: 3;
+}
+
+.reach-deck-editor__insertion-gap::before {
+  content: '';
+  inset: -0.8125rem 0;
+  position: absolute;
+}
+
+.reach-deck-editor__insertion-gap::after {
+  background: currentcolor;
+  border-radius: 999px;
+  content: '';
+  height: 2px;
+  left: 0.3rem;
+  opacity: 0;
+  position: absolute;
+  right: 0.3rem;
+}
+
+.reach-deck-editor__insertion-gap svg {
+  background: #f7f4f2;
+  border-radius: 999px;
+  opacity: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.reach-deck-editor__insertion-gap:hover::after,
+.reach-deck-editor__insertion-gap:focus-visible::after,
+.reach-deck-editor__insertion-gap:hover svg,
+.reach-deck-editor__insertion-gap:focus-visible svg {
+  opacity: 1;
+}
+
+.reach-deck-editor__insertion-gap:focus-visible {
+  outline: 2px solid var(--reach-deck-editor-accent);
+  outline-offset: 1px;
+}
+
+.reach-deck-editor__page-menu-submenu-trigger {
+  position: relative;
+}
+
+.reach-deck-editor__page-menu-submenu-trigger > button {
+  width: 100%;
+}
+
+.reach-deck-editor__page-menu-submenu-trigger > button > span {
+  flex: 1;
+  text-align: left;
+}
+
+.reach-deck-editor__page-submenu {
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid var(--reach-deck-editor-border);
+  border-radius: 0.5rem;
+  box-shadow: 0 12px 28px rgb(50 36 45 / 18%);
+  display: grid;
+  gap: 0.15rem;
+  left: calc(100% + 0.25rem);
+  width: 176px;
+  padding: 0.25rem;
+  position: absolute;
+  top: -0.25rem;
+}
+
+.reach-deck-editor__page-menu[data-submenu-side='left'] .reach-deck-editor__page-submenu {
+  left: auto;
+  right: calc(100% + 0.25rem);
+}
+
+.reach-deck-editor__page-menu[data-submenu-side='below'] {
+  max-height: calc(100vh - 16px);
+  overflow-y: auto;
+}
+
+.reach-deck-editor__page-menu[data-submenu-side='below'] .reach-deck-editor__page-submenu {
+  box-shadow: none;
+  margin-top: 0.125rem;
+  position: static;
+  width: 100%;
+}
+
+.reach-deck-editor__page-menu[data-submenu-side='below']
+  .reach-deck-editor__page-menu-submenu-trigger
+  > button
+  > svg:last-child {
+  transform: rotate(90deg);
+}
+
+.reach-deck-editor__page-menu[data-submenu-side='left']
+  .reach-deck-editor__page-menu-submenu-trigger
+  > button
+  > svg:last-child {
+  transform: rotate(180deg);
+}
+
+/*
+ * 画布 + 时间轴纵向排布用 flex 而非 grid：stage 是 cqw 用的 inline-size 查询容器，
+ * 内在尺寸计算时内容贡献为 0，grid 的 auto 行会把可用高度摊分导致画布溢出压住时间轴；
+ * 块/flex 布局的 auto 高度按最终布局取内容高度，不受该限制，超出部分交给滚动。
+ */
+.reach-deck-editor__preview {
+  align-items: center;
+  background:
+    linear-gradient(90deg, rgb(94 56 83 / 4%) 1px, transparent 1px),
+    linear-gradient(0deg, rgb(94 56 83 / 4%) 1px, transparent 1px), #e8e5e2;
+  background-size: 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-height: 0;
+  min-width: 0;
+  /* 预览区不出现纵向滚动：画布按剩余高度等比缩放，时间轴超高走自身内部滚动。 */
+  overflow: hidden;
+  padding: clamp(0.6rem, 1vw, 1rem);
+  position: relative;
+}
+
+/* 生成中遮罩:盖住整个画布区,页面锁定期间既提示进度也阻断误操作。 */
+.reach-deck-editor__generating-overlay {
+  align-content: center;
+  background: rgb(242 239 236 / 82%);
+  backdrop-filter: blur(3px);
+  display: grid;
+  gap: 0.9rem;
+  inset: 0;
+  justify-items: center;
+  position: absolute;
+  z-index: 30;
+}
+
+.reach-deck-editor__generating-overlay p {
+  color: #5e3853;
+  font-size: 0.95rem;
+  font-weight: 750;
+  margin: 0;
+}
+
+.reach-deck-editor__generating-overlay[data-failed] {
+  color: #b42318;
+}
+
+.reach-deck-editor__generating-overlay p.reach-deck-editor__generating-hint {
+  color: #5e3853;
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.55;
+  max-width: 28rem;
+  text-align: center;
+}
+
+.reach-deck-editor__generating-overlay[data-failed] button {
+  align-items: center;
+  background: #fff;
+  border-color: #d59a81;
+  color: #a94725;
+  display: inline-flex;
+  gap: 0.35rem;
+}
+
+.reach-deck-editor__generating-spinner {
+  animation: reach-deck-editor-generating-spin 0.9s linear infinite;
+  border: 3px solid rgb(94 56 83 / 18%);
+  border-radius: 50%;
+  border-top-color: var(--reach-deck-editor-accent);
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+@keyframes reach-deck-editor-generating-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 画布右上角页级动作。 */
+.reach-deck-editor__canvas-corner {
+  display: grid;
+  gap: 0.4rem;
+  justify-items: end;
+  position: absolute;
+  right: 0.9rem;
+  top: 0.7rem;
+  z-index: 40;
+}
+
+.reach-deck-editor__canvas-corner-actions {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* 首行：宿主批次入口 + "重新生成本页"，同行等高。 */
+.reach-deck-editor__canvas-corner-row {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.4rem;
+}
+
+.reach-deck-editor__canvas-corner-actions > button,
+.reach-deck-editor__canvas-corner-row > button,
+.reach-deck-editor__canvas-corner-actions .reach-deck-editor__document-history button {
+  background: #fff;
+  border-color: #d8cec6;
+  color: #5f4c56;
+  font-weight: 750;
+}
+
+.reach-deck-editor__canvas-corner-actions > button,
+.reach-deck-editor__canvas-corner-row > button {
+  gap: 0.3rem;
+  min-height: 2.1rem;
+  padding: 0.3rem 0.55rem;
+}
+
+.reach-deck-editor__canvas-corner-actions > button:hover:not(:disabled),
+.reach-deck-editor__canvas-corner-row > button:hover:not(:disabled),
+.reach-deck-editor__canvas-corner-actions
+  .reach-deck-editor__document-history
+  button:hover:not(:disabled) {
+  background: #fff5ef;
+  border-color: #d59a81;
+  color: #a94725;
+}
+
+.reach-deck-editor__document-history {
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 0.2rem;
+}
+
+.reach-deck-editor__document-history button {
+  height: 1.75rem;
+  justify-content: center;
+  min-height: 1.75rem;
+  padding: 0;
+  width: 1.75rem;
+}
+
+.reach-deck-editor__preview > .reach-deck-player,
+.reach-deck-editor__preview > .reach-deck-timeline,
+.reach-deck-editor__preview > .reach-deck-editor__quiz-canvas {
+  flex-shrink: 0;
+  max-width: 72rem;
+  width: 100%;
+}
+
+.reach-deck-editor__preview > .reach-deck-editor__player-stack {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  max-width: 72rem;
+  position: relative;
+  width: 100%;
+}
+
+.reach-deck-editor__geometry-mode-overlay {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: flex-end;
+  padding: 0 0 0.4rem;
+}
+
+.reach-deck-editor__geometry-mode {
+  background: #ece8e5;
+  border: 1px solid var(--reach-deck-editor-border);
+  border-radius: 0.4rem;
+  display: inline-grid;
+  gap: 0.15rem;
+  grid-template-columns: repeat(2, minmax(3.75rem, 1fr));
+  padding: 0.15rem;
+}
+
+.reach-deck-editor .reach-deck-editor__geometry-mode button {
+  background: transparent;
+  border: 0;
+  border-radius: 0.25rem;
+  min-height: 1.75rem;
+  padding: 0.2rem 0.55rem;
+}
+
+.reach-deck-editor .reach-deck-editor__geometry-mode button[aria-pressed='true'] {
+  background: #fff;
+  box-shadow: 0 1px 3px rgb(48 39 45 / 15%);
+  color: #5e3853;
+  font-weight: 700;
+}
+
+.reach-deck-editor__geometry-authoring {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.reach-deck-editor__geometry-authoring fieldset {
+  border: 0;
+  border-top: 1px solid var(--reach-deck-editor-border);
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  min-width: 0;
+  padding: 0.65rem 0 0;
+}
+
+.reach-deck-editor__geometry-authoring legend,
+.reach-deck-editor__geometry-check-grid > strong,
+.reach-deck-editor__geometry-parameters > strong,
+.reach-deck-editor__geometry-limits > strong {
+  color: #554a51;
+  font-size: 0.72rem;
+  font-weight: 750;
+  padding: 0;
+}
+
+.reach-deck-editor__geometry-authoring label {
+  display: grid;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.reach-deck-editor__geometry-authoring label > span {
+  color: var(--reach-deck-editor-muted);
+  font-size: 0.7rem;
+  font-weight: 650;
+}
+
+.reach-deck-editor__geometry-color {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.reach-deck-editor__geometry-color > span {
+  color: var(--reach-deck-editor-muted);
+  font-size: 0.7rem;
+  font-weight: 650;
+}
+
+.reach-deck-editor__geometry-swatches {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.reach-deck-editor .reach-deck-editor__geometry-swatches button {
+  background: var(--geometry-swatch);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #bdb4af;
+  height: 1.35rem;
+  min-height: 1.35rem;
+  padding: 0;
+  width: 1.35rem;
+}
+
+.reach-deck-editor .reach-deck-editor__geometry-swatches button[aria-pressed='true'] {
+  box-shadow: 0 0 0 2px #5e3853;
+}
+
+.reach-deck-editor__geometry-swatches button[data-color-token='ink'] {
+  --geometry-swatch: #30272d;
+}
+
+.reach-deck-editor__geometry-swatches button[data-color-token='muted'] {
+  --geometry-swatch: #8b7f86;
+}
+
+.reach-deck-editor__geometry-swatches button[data-color-token='accent'] {
+  --geometry-swatch: #e9572d;
+}
+
+.reach-deck-editor__geometry-swatches button[data-color-token='success'] {
+  --geometry-swatch: #2c7a59;
+}
+
+.reach-deck-editor__geometry-swatches button[data-color-token='warning'] {
+  --geometry-swatch: #bd7a1d;
+}
+
+.reach-deck-editor__geometry-authoring input,
+.reach-deck-editor__geometry-authoring select {
+  min-height: 2rem;
+  width: 100%;
+}
+
+.reach-deck-editor__geometry-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.reach-deck-editor__geometry-actions button,
+.reach-deck-editor__geometry-authoring fieldset > button {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.35rem;
+  justify-content: center;
+}
+
+.reach-deck-editor__geometry-check-grid,
+.reach-deck-editor__geometry-parameters,
+.reach-deck-editor__geometry-limits {
+  display: grid;
+  gap: 0.35rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.reach-deck-editor__geometry-check-grid > strong,
+.reach-deck-editor__geometry-parameters > strong,
+.reach-deck-editor__geometry-limits > strong {
+  grid-column: 1 / -1;
+}
+
+.reach-deck-editor__geometry-authoring .reach-deck-editor__geometry-check {
+  align-items: center;
+  display: grid;
+  gap: 0.4rem;
+  grid-template-columns: 1rem minmax(0, 1fr);
+}
+
+.reach-deck-editor__geometry-check input {
+  min-height: 1rem;
+  width: 1rem;
+}
+
+.reach-deck-editor__geometry-parameter {
+  border-bottom: 1px solid #ece7e3;
+  display: grid;
+  gap: 0.35rem;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding-bottom: 0.5rem;
+}
+
+.reach-deck-editor__geometry-parameter > .reach-deck-editor__geometry-check {
+  grid-column: 1 / -1;
+}
+
+.reach-deck-editor__geometry-notice,
+.reach-deck-editor__geometry-error {
+  border-left: 3px solid #bd7a1d;
+  color: #62554c;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  margin: 0;
+  padding: 0.35rem 0.5rem;
+}
+
+.reach-deck-editor__geometry-error {
+  border-left-color: #b42318;
+  color: #8f261f;
+}
+
+.reach-deck-editor__player-layer {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  transition: opacity 160ms ease-out;
+  width: 100%;
+}
+
+.reach-deck-editor__player-stack[data-previewing] > .reach-deck-editor__player-layer {
+  opacity: 0.18;
+}
+
+.reach-deck-editor__player-preview-layer {
+  animation: reach-deck-editor-preview-fade-in 160ms ease-out both;
+  display: flex;
+  inset: 0;
+  min-height: 0;
+  min-width: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+/*
+ * 可编辑测验页不走 player-stack：按住预览层直接作为预览区子元素覆盖在测验画布上，
+ * 继承预览区内边距使内容框与画布对齐；画布保持挂载（不丢富文本编辑状态），只淡出。
+ */
+.reach-deck-editor__preview > .reach-deck-editor__player-preview-layer {
+  box-sizing: border-box;
+  justify-content: center;
+  overflow: hidden;
+  padding: inherit;
+}
+
+.reach-deck-editor__preview > .reach-deck-editor__player-preview-layer > .reach-deck-player {
+  flex: 1 1 auto;
+  max-width: 72rem;
+  min-height: 0;
+}
+
+.reach-deck-editor__preview
+  > .reach-deck-editor__quiz-canvas:has(+ .reach-deck-editor__player-preview-layer) {
+  opacity: 0.18;
+}
+
+@keyframes reach-deck-editor-preview-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.reach-deck-editor__preview > .reach-deck-player {
+  box-shadow: 0 24px 70px rgb(51 37 47 / 20%);
+}
+
+.reach-deck-editor__preview
+  > .reach-deck-editor__player-stack
+  > .reach-deck-editor__player-layer
+  > .reach-deck-player {
+  box-shadow: 0 24px 70px rgb(51 37 47 / 20%);
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+}
+
+/* Interactive scenes use the editor's available canvas height. Standalone players retain the
+   shared package defaults, while both live and assistant-preview layers override them here. */
+.reach-deck-editor__preview > .reach-deck-player[data-scene-type='interactive'],
+.reach-deck-editor__preview
+  > .reach-deck-editor__player-stack
+  > .reach-deck-editor__player-layer
+  > .reach-deck-player[data-scene-type='interactive'],
+.reach-deck-editor__preview
+  > .reach-deck-editor__player-stack
+  > .reach-deck-editor__player-preview-layer
+  > .reach-deck-player[data-scene-type='interactive'] {
+  --reach-deck-interactive-height: 100%;
+  --reach-deck-interactive-min-height: 0;
+
+  display: grid;
+  flex: 1 1 auto;
+  grid-template-rows: minmax(0, 1fr);
+  height: 100%;
+  min-height: 0;
+}
+
+.reach-deck-editor__preview
+  .reach-deck-player[data-scene-type='interactive']
+  > .reach-deck-player__stage,
+.reach-deck-editor__preview
+  .reach-deck-player[data-scene-type='interactive']
+  > .reach-deck-player__stage
+  > [data-interactive-page-id],
+.reach-deck-editor__preview
+  .reach-deck-player[data-scene-type='interactive']
+  .interactive-scene-player-shell,
+.reach-deck-editor__preview
+  .reach-deck-player[data-scene-type='interactive']
+  .interactive-scene-player {
+  height: 100%;
+  min-height: 0;
+}
+
+.reach-deck-editor__preview
+  .reach-deck-player[data-scene-type='interactive']
+  > .reach-deck-player__stage {
+  box-sizing: border-box;
+}
+
+/*
+ * slide 画布自适应：player 占满预览区剩余高度并成为双轴查询容器（size），
+ * stage 用 min(100cqw, 100cqh × 16/9) 在宽高约束下取最大 16:9 尺寸——
+ * 时间轴展开/收起（grid 行过渡）连续改变剩余高度时，画布随之等比缓动缩放。
+ * 阴影随 stage 走（player 此时是透明的占位容器）。
+ */
+.reach-deck-editor__preview > .reach-deck-player[data-scene-type='slide'] {
+  box-shadow: none;
+  container-type: size;
+  display: grid;
+  flex: 1 1 auto;
+  min-height: 0;
+  place-items: center;
+}
+
+.reach-deck-editor__preview
+  > .reach-deck-editor__player-stack
+  > .reach-deck-editor__player-layer
+  > .reach-deck-player[data-scene-type='slide'],
+.reach-deck-editor__preview
+  > .reach-deck-editor__player-stack
+  > .reach-deck-editor__player-preview-layer
+  > .reach-deck-player[data-scene-type='slide'] {
+  box-shadow: none;
+  container-type: size;
+  display: grid;
+  flex: 1 1 auto;
+  min-height: 0;
+  place-items: center;
+}
+
+.reach-deck-editor__preview
+  > .reach-deck-player[data-scene-type='slide']
+  > .reach-deck-player__stage {
+  box-shadow: 0 24px 70px rgb(51 37 47 / 20%);
+  /* stage 仍是 cqw 文字缩放用的 inline-size 查询容器，宽度由外层 size 容器算出。 */
+  container-type: inline-size;
+  display: grid;
+  height: auto;
+  min-height: 0;
+  place-items: center;
+  position: relative;
+  width: min(100cqw, calc(100cqh * 16 / 9));
+}
+
+.reach-deck-editor__preview
+  > .reach-deck-editor__player-stack
+  > .reach-deck-editor__player-layer
+  > .reach-deck-player[data-scene-type='slide']
+  > .reach-deck-player__stage,
+.reach-deck-editor__preview
+  > .reach-deck-editor__player-stack
+  > .reach-deck-editor__player-preview-layer
+  > .reach-deck-player[data-scene-type='slide']
+  > .reach-deck-player__stage {
+  box-shadow: 0 24px 70px rgb(51 37 47 / 20%);
+  container-type: inline-size;
+  display: grid;
+  height: auto;
+  min-height: 0;
+  place-items: center;
+  position: relative;
+  width: min(100cqw, calc(100cqh * 16 / 9));
+}
+
+/*
+ * 字幕条占独立空间（画布下方固定高度条，不压幻灯片内容）：有字幕条时先从可用
+ * 高度里扣掉它的固定高度，剩余部分再取最大 16:9 推导画布宽度，保证画布 + 字幕
+ * 总高不超出预览区。字幕条高度见播放器的 --reach-deck-caption-height。
+ */
+.reach-deck-editor__preview
+  > .reach-deck-player[data-scene-type='slide']
+  > .reach-deck-player__stage:has(.voice-caption-strip),
+.reach-deck-editor__preview
+  > .reach-deck-editor__player-stack
+  > .reach-deck-editor__player-layer
+  > .reach-deck-player[data-scene-type='slide']
+  > .reach-deck-player__stage:has(.voice-caption-strip),
+.reach-deck-editor__preview
+  > .reach-deck-editor__player-stack
+  > .reach-deck-editor__player-preview-layer
+  > .reach-deck-player[data-scene-type='slide']
+  > .reach-deck-player__stage:has(.voice-caption-strip) {
+  width: min(100cqw, calc((100cqh - var(--reach-deck-caption-height)) * 16 / 9));
+}
+
+.reach-deck-editor__preview > .reach-deck-player[data-scene-type='slide'] .player-frame {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
+
+.reach-deck-editor__preview
+  > .reach-deck-editor__player-stack
+  .reach-deck-player[data-scene-type='slide']
+  .player-frame {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
+
+.reach-deck-editor__quiz-canvas {
+  background: #fff;
+  border-radius: 0.8rem;
+  box-shadow: 0 24px 70px rgb(51 37 47 / 14%);
+  box-sizing: border-box;
+  display: grid;
+  gap: 1rem;
+  height: 100%;
+  min-height: 0;
+  max-width: 72rem;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 1.1rem;
+  width: 100%;
+}
+
+.reach-deck-editor__quiz-canvas > header,
+.reach-deck-editor__quiz-question-heading {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+
+.reach-deck-editor__quiz-header-actions,
+.reach-deck-editor__quiz-pagination {
+  align-items: center;
+  display: flex;
+  gap: 0.45rem;
+}
+
+.reach-deck-editor__quiz-pagination {
+  background: #f7f4f2;
+  border: 1px solid var(--reach-deck-editor-border);
+  border-radius: 0.55rem;
+  padding: 0.2rem;
+}
+
+.reach-deck-editor__quiz-pagination button {
+  background: transparent;
+  border: 0;
+  min-height: 1.9rem;
+  padding: 0.2rem;
+  width: 1.9rem;
+}
+
+.reach-deck-editor__quiz-pagination span {
+  color: var(--reach-deck-editor-muted);
+  font-size: 0.75rem;
+  font-weight: 900;
+  min-width: 3rem;
+  text-align: center;
+}
+
+.reach-deck-editor__quiz-canvas > header span {
+  color: var(--reach-deck-editor-accent);
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.reach-deck-editor__quiz-questions,
+.reach-deck-editor__quiz-question {
+  display: grid;
+  gap: 1rem;
+}
+
+.reach-deck-editor__quiz-question {
+  border: 1px solid var(--reach-deck-editor-border);
+  border-radius: 0.75rem;
+  min-width: 0;
+  padding: 1rem;
+}
+
+.reach-deck-editor__quiz-question-heading {
+  border-bottom: 1px solid var(--reach-deck-editor-border);
+  padding-bottom: 0.8rem;
+}
+
+.reach-deck-editor__quiz-question-heading label,
+.reach-deck-editor__quiz-question-type {
+  align-items: center;
+  color: var(--reach-deck-editor-muted);
+  display: flex;
+  font-size: 0.75rem;
+  font-weight: 800;
+  gap: 0.4rem;
+}
+
+.reach-deck-editor__quiz-question-type .rx-select {
+  min-width: 8.5rem;
+}
+
+.reach-deck-editor__quiz-question-type .rx-select-trigger {
+  background: #fcf9f6;
+  border-color: var(--reach-deck-editor-border);
+  border-radius: 0.45rem;
+  min-height: 2rem;
+}
+
+.reach-deck-editor__quiz-question-heading input {
+  width: 5rem;
+}
+
+.reach-deck-editor__quiz-rich-field {
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.reach-deck-editor__quiz-rich-field > span,
+.reach-deck-editor__quiz-options > strong {
+  color: #5e3853;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.reach-deck-editor__quiz-rich-field .reach-deck-editor__rich-text {
+  min-width: 0;
+}
+
+/* 行内图片只在测验字段里存在；幻灯片文本框与讲稿的 schema 里没有 image 节点。 */
+.reach-deck-editor__quiz-rich-field .reach-deck-editor__rich-text-image {
+  border-radius: 0.4rem;
+  display: block;
+  height: auto;
+  margin: 0.45rem 0;
+  max-height: 18rem;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.reach-deck-editor__quiz-rich-field .reach-deck-editor__rich-text-image.is-selected {
+  outline: 2px solid #8c4953;
+  outline-offset: 2px;
+}
+
+/* 展示地址还没换签到位：空 src 的 <img> 会渲染成破图图标，先占位。 */
+.reach-deck-editor__quiz-rich-field .reach-deck-editor__rich-text-image[data-pending] {
+  background: #f6f1f3;
+  border: 1px dashed #cbbfc5;
+  box-sizing: border-box;
+  min-height: 4rem;
+  min-width: 6rem;
+}
+
+.reach-deck-editor__rich-text-image-status {
+  color: #8c4953;
+  font-size: 0.72rem;
+  margin: 0.25rem 0 0;
+}
+
+/* 表格与标题只出现在测验字段（`surface="document"`）；幻灯片文本框的 schema 没有这些节点。 */
+.reach-deck-editor__quiz-rich-field .reach-deck-editor__rich-text-surface table {
+  border-collapse: collapse;
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+.reach-deck-editor__quiz-rich-field .reach-deck-editor__rich-text-surface td,
+.reach-deck-editor__quiz-rich-field .reach-deck-editor__rich-text-surface th {
+  border: 1px solid #ded5da;
+  padding: 0.35rem 0.5rem;
+  vertical-align: top;
+}
+
+.reach-deck-editor__quiz-rich-field .reach-deck-editor__rich-text-surface th {
+  background: #f6f1f3;
+}
+
+.reach-deck-editor__quiz-rich-field
+  .reach-deck-editor__rich-text-surface
+  :is(h1, h2, h3, h4, h5, h6) {
+  font-weight: 700;
+  margin: 0.5rem 0 0.25rem;
+}
+
+.reach-deck-editor__quiz-options {
+  border: 0;
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+}
+
+.reach-deck-editor__quiz-options > legend {
+  color: #5e3853;
+  font-size: 0.78rem;
+  font-weight: 900;
+  padding: 0;
+}
+
+.reach-deck-editor__quiz-blank {
+  background: #f4e7ea;
+  border-radius: 0.25rem;
+  color: #8c4953;
+  font-family: ui-monospace, monospace;
+  font-weight: 700;
+  padding-inline: 0.25rem;
+}
+
+.reach-deck-editor__quiz-blank-answers {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.reach-deck-editor__quiz-blank-answers > section {
+  border: 1px solid #e3dde0;
+  border-radius: 0.65rem;
+  display: grid;
+  gap: 0.6rem;
+  padding: 0.75rem;
+}
+
+.reach-deck-editor__quiz-options > div {
+  align-items: start;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 2.6rem minmax(0, 1fr) auto;
+}
+
+.reach-deck-editor__quiz-option-value {
+  display: grid;
+  gap: 0.25rem;
+  justify-items: center;
+}
+
+.reach-deck-editor__quiz-option-value > span {
+  background: #f5eee9;
+  border-radius: 50%;
+  display: grid;
+  font-size: 0.72rem;
+  font-weight: 900;
+  height: 2rem;
+  place-items: center;
+  width: 2rem;
+}
+
+.reach-deck-editor__quiz-option-value > label {
+  align-items: center;
+  color: var(--reach-deck-editor-muted);
+  display: flex;
+  font-size: 0.62rem;
+  gap: 0.2rem;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.reach-deck-editor__quiz-option-value input[type='checkbox'] {
+  accent-color: #8c4953;
+  height: 0.9rem;
+  margin: 0;
+  min-height: 0;
+  padding: 0;
+  width: 0.9rem;
+}
+
+.reach-deck-editor__quiz-answer-toggle,
+.reach-deck-editor__quiz-reference-answer label {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.reach-deck-editor__quiz-answer-toggle input,
+.reach-deck-editor__quiz-reference-answer input {
+  min-height: auto;
+  width: auto;
+}
+
+.reach-deck-editor__quiz-learning-fence {
+  background: #fff9f5;
+  border: 1px solid #ddced7;
+  border-radius: 0.5rem;
+  display: grid;
+  gap: 0.65rem;
+  padding: 0.85rem;
+}
+
+.reach-deck-editor__quiz-properties {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.reach-deck-editor__quiz-properties .reach-deck-editor__property .rx-select,
+.reach-deck-editor__quiz-properties .reach-deck-editor__property .rx-select-trigger {
+  width: 100%;
+}
+
+.reach-deck-editor__property-checkbox {
+  align-items: center;
+  color: #5e3853;
+  display: flex;
+  font-size: 0.75rem;
+  font-weight: 800;
+  gap: 0.5rem;
+}
+
+.reach-deck-editor__property-checkbox input {
+  accent-color: var(--reach-deck-editor-accent);
+  min-height: auto;
+  width: auto;
+}
+
+.reach-deck-editor__property-label {
+  color: #5e3853;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.reach-deck-editor__quiz-learning-fence .reach-deck-editor__rich-text {
+  min-width: 0;
+}
+
+.reach-deck-editor__quiz-learning-fence .reach-deck-editor__rich-text-surface {
+  min-height: 7.25rem;
+}
+
+.reach-deck-editor__quiz-learning-fence small {
+  color: var(--reach-deck-editor-muted);
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.reach-deck-editor__quiz-option-rich-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.reach-deck-editor__quiz-option-rich-text .text-element__paragraph {
+  margin: 0;
+}
+
+.reach-deck-editor__quiz-reference-answer {
+  border: 1px solid var(--reach-deck-editor-border);
+  border-radius: 0.55rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  padding: 0.8rem;
+}
+
+.reach-deck-editor__properties {
+  align-content: stretch;
+  border-left: 1px solid var(--reach-deck-editor-border);
+  display: grid;
+  gap: 0;
+  grid-template-rows: auto minmax(0, 1fr);
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.reach-deck-editor__right-tabs {
+  background: #f7f4f5;
+  display: grid;
+  gap: 0.15rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 0.3rem;
+}
+
+/* 属性页里的"媒体"格式条：只在 slide 页出现，结构与文字/对象格式条一致。
+   叠加两个类名压过下方 rich-text-toolbar 的 8 列网格。 */
+.reach-deck-editor__property-stack
+  .reach-deck-editor__rich-text-toolbar.reach-deck-editor__media-toolbar {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.reach-deck-editor__media-action {
+  display: contents;
+}
+
+.reach-deck-editor .reach-deck-editor__media-action button {
+  align-items: center;
+  background: #fff;
+  border-color: var(--reach-deck-editor-border);
+  color: #5f555c;
+  display: inline-flex;
+  gap: 0.3rem;
+  justify-content: center;
+  min-height: 1.9rem;
+  white-space: nowrap;
+}
+
+.reach-deck-editor .reach-deck-editor__media-action button svg {
+  flex: 0 0 auto;
+}
+
+.reach-deck-editor .reach-deck-editor__media-action button[data-uploading] {
+  background: #fff1ea;
+  border-color: #df9b7d;
+  color: #a94725;
+}
+
+.reach-deck-editor__media-error {
+  color: #b42318;
+  font-size: 0.72rem;
+  margin: 0;
+}
+
+.reach-deck-editor__right-panel-action {
+  border-top: 1px solid var(--reach-deck-editor-border);
+  padding: 0.4rem 0.45rem;
+}
+
+.reach-deck-editor__right-panel-action > * {
+  width: 100%;
+}
+
+.reach-deck-editor .reach-deck-editor__right-tabs button {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.45rem;
+  color: #6f6570;
+  font-size: 0.68rem;
+  font-weight: 700;
+  min-height: 1.75rem;
+  padding: 0.2rem 0.25rem;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.reach-deck-editor__right-tabs button[aria-selected='true'] {
+  background: #fff;
+  border-color: var(--reach-deck-editor-border);
+  color: var(--reach-deck-editor-accent);
+}
+
+.reach-deck-editor__right-panel {
+  animation: reach-deck-editor-right-panel-enter 0.16s ease-out;
+  box-sizing: border-box;
+  min-height: 0;
+  overflow: auto;
+  padding: 0.6rem;
+  transition:
+    opacity 140ms ease,
+    transform 180ms ease;
+}
+
+@keyframes reach-deck-editor-right-panel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.2rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reach-deck-editor__right-panel[hidden] {
+  display: none;
+}
+
+.reach-deck-editor__right-panel > .reach-deck-editor__inspector-toolbar {
+  align-items: stretch;
+  display: grid;
+  height: auto;
+  overflow: visible;
+}
+
+/* 右侧属性页按功能分组纵向展开，不复用画布顶部工具条的单行滚动布局。 */
+.reach-deck-editor__right-panel > .reach-deck-editor__property-stack {
+  align-content: start;
+  background: transparent;
+  border: 0;
+  display: grid;
+  gap: 0.55rem;
+  grid-template-columns: minmax(0, 1fr);
+  padding: 0;
+}
+
+.reach-deck-editor__property-stack > .reach-deck-editor__toolbar-scope {
+  justify-self: start;
+}
+
+.reach-deck-editor .reach-deck-editor__property-stack button,
+.reach-deck-editor .reach-deck-editor__property-stack input,
+.reach-deck-editor .reach-deck-editor__property-stack select {
+  font-size: 0.68rem;
+}
+
+.reach-deck-editor__property-stack > .reach-deck-editor__interactive-toolbar-field {
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr) auto;
+  width: 100%;
+}
+
+.reach-deck-editor__property-stack > .reach-deck-editor__interactive-toolbar-field select,
+.reach-deck-editor__property-stack
+  > .reach-deck-editor__interactive-toolbar-field
+  input[type='number'] {
+  max-width: none;
+  width: 100%;
+}
+
+.reach-deck-editor__property-stack > .reach-deck-editor__interactive-toolbar-check {
+  box-sizing: border-box;
+  justify-content: flex-start;
+  white-space: normal;
+  width: 100%;
+}
+
+.reach-deck-editor__property-stack .reach-deck-editor__rich-text-toolbar {
+  background: #f7f4f5;
+  border: 1px solid var(--reach-deck-editor-border);
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  display: grid;
+  gap: 0.25rem;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  max-width: 100%;
+  padding: 0.45rem;
+  width: 100%;
+}
+
+.reach-deck-editor__property-stack
+  .reach-deck-editor__rich-text-toolbar
+  > .reach-deck-editor__toolbar-scope {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+
+.reach-deck-editor__property-stack .reach-deck-editor__rich-text-divider {
+  display: none;
+}
+
+.reach-deck-editor__property-stack .reach-deck-editor__rich-text-field {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+.reach-deck-editor__property-stack .reach-deck-editor__rich-text-field select,
+.reach-deck-editor__property-stack .reach-deck-editor__rich-text-field .rx-select {
+  min-width: 0;
+  width: 100%;
+}
+
+.reach-deck-editor
+  .reach-deck-editor__property-stack
+  .reach-deck-editor__rich-text-field
+  .rx-select-trigger {
+  box-sizing: border-box;
+  font-size: 0.68rem;
+  justify-content: space-between;
+  min-height: 1.9rem;
+  padding: 0 0.5rem;
+  width: 100%;
+}
+
+.reach-deck-editor__property-stack .reach-deck-editor__rich-text-button {
+  max-width: none;
+  padding-inline: 0.2rem;
+  width: 100%;
+}
+
+.reach-deck-editor__property-stack .reach-deck-editor__rich-text-color {
+  justify-content: center;
+  min-height: 1.6rem;
+}
+
+.reach-deck-editor__property-stack .reach-deck-editor__object-toolbar {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.reach-deck-editor__property-stack
+  .reach-deck-editor__object-toolbar
+  .reach-deck-editor__rich-text-field {
+  grid-column: span 2;
+}
+
+.reach-deck-editor__property-stack
+  .reach-deck-editor__object-toolbar
+  .reach-deck-editor__rich-text-field
+  select {
+  min-width: 0;
+  width: 100%;
+}
+
+.reach-deck-editor__property-stack > .reach-deck-editor__canvas-actions {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.reach-deck-editor__property-stack > .reach-deck-editor__canvas-actions button {
+  width: 100%;
+}
+
+.reach-deck-editor__right-panel .reach-deck-editor__toolbar-slot {
+  display: grid;
+  gap: 0.55rem;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.reach-deck-editor__text-spacing {
+  background: #f7f4f5;
+  border: 1px solid var(--reach-deck-editor-border);
+  border-radius: 0.5rem;
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  min-width: 0;
+  padding: 0.45rem;
+}
+
+.reach-deck-editor__text-spacing legend {
+  color: var(--reach-deck-editor-muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0 0.2rem;
+}
+
+.reach-deck-editor__text-spacing-row {
+  align-items: center;
+  display: grid;
+  gap: 0.35rem;
+  grid-template-columns: 3.2rem minmax(0, 1fr) 4.8rem;
+  min-width: 0;
+}
+
+.reach-deck-editor__text-spacing-row > span:first-child {
+  color: #6f6570;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.reach-deck-editor__text-spacing-row select,
+.reach-deck-editor__text-spacing-number input {
+  box-sizing: border-box;
+  min-height: 1.9rem;
+  min-width: 0;
+  width: 100%;
+}
+
+.reach-deck-editor__text-spacing-number {
+  align-items: center;
+  display: grid;
+  gap: 0.2rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  min-width: 0;
+}
+
+.reach-deck-editor__text-spacing-number.is-wide {
+  grid-column: 2 / -1;
+}
+
+.reach-deck-editor__text-spacing-number > span {
+  color: var(--reach-deck-editor-muted);
+  font-size: 0.65rem;
+  min-width: 1rem;
+}
+
+.reach-deck-editor__animation-properties {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.reach-deck-editor__animation-section {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.reach-deck-editor__animation-section-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.reach-deck-editor__animation-section-header > span,
+.reach-deck-editor__animation-section-label,
+.reach-deck-editor__animation-field > span {
+  color: var(--reach-deck-editor-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.reach-deck-editor .reach-deck-editor__animation-preview {
+  background: var(--reachany-color-surface);
+  border-color: var(--reach-deck-editor-border);
+  color: #5f4c56;
+  font-size: 0.68rem;
+  font-weight: 600;
+  gap: 0.25rem;
+  min-height: 1.5rem;
+  padding: 0.1rem 0.5rem;
+}
+
+.reach-deck-editor .reach-deck-editor__animation-preview:hover:not(:disabled) {
+  border-color: #d59a81;
+  color: #a94725;
+}
+
+/* 5 列外网格：进入组独占一行；强调/退出两组同行，内层列宽与外层一致，磁贴上下对齐。 */
+.reach-deck-editor__animation-effects {
+  column-gap: 0.35rem;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  row-gap: 0.5rem;
+}
+
+.reach-deck-editor__animation-effect-group[data-group='entrance'] {
+  grid-column: 1 / -1;
+}
+
+.reach-deck-editor__animation-effect-group[data-group='emphasis'] {
+  grid-column: span 2;
+}
+
+.reach-deck-editor__animation-effect-group[data-group='exit'] {
+  grid-column: span 3;
+}
+
+.reach-deck-editor__animation-effect-group[data-group='emphasis']
+  .reach-deck-editor__animation-tiles {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.reach-deck-editor__animation-effect-group[data-group='exit'] .reach-deck-editor__animation-tiles {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.reach-deck-editor__animation-effect-group {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.reach-deck-editor__animation-group-label {
+  color: var(--reachany-color-text-tertiary);
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+
+/* 磁贴网格：进入组 5 个一行，强调/退出各 1 个沿用同一列宽，视觉上对齐。 */
+.reach-deck-editor__animation-tiles {
+  display: grid;
+  gap: 0.35rem;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.reach-deck-editor__animation-tiles.is-easing {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/*
+ * 凸起磁贴：浅色渐变 + 底部投影 + 顶部高光；选中项凹陷：内阴影、底色加深、图标与文字取强调色。
+ * 加 .reach-deck-editor 前缀压过编辑器通用按钮规则。
+ */
+.reach-deck-editor .reach-deck-editor__animation-tile {
+  align-content: center;
+  background: linear-gradient(
+    180deg,
+    var(--reachany-color-surface) 0%,
+    var(--reachany-color-surface-subtle) 100%
+  );
+  border: 1px solid var(--reach-deck-editor-border);
+  border-radius: 0.55rem;
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 90%) inset,
+    0 1px 2px rgb(75 51 62 / 14%),
+    0 2px 4px rgb(75 51 62 / 6%);
+  color: #5f4c56;
+  display: grid;
+  gap: 0.2rem;
+  justify-items: center;
+  min-height: 3.35rem;
+  min-width: 0;
+  padding: 0.4rem 0.15rem 0.3rem;
+  transition:
+    background-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    box-shadow var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    transform var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+.reach-deck-editor .reach-deck-editor__animation-tile > span {
+  font-size: 0.66rem;
+  font-weight: 600;
+  line-height: 1.2;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reach-deck-editor
+  .reach-deck-editor__animation-tile:hover:not(:disabled):not([aria-checked='true']) {
+  border-color: #d59a81;
+  color: #a94725;
+  transform: translateY(-1px);
+}
+
+.reach-deck-editor .reach-deck-editor__animation-tile:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.reach-deck-editor .reach-deck-editor__animation-tile[aria-checked='true'] {
+  background: var(--reachany-color-surface-warm);
+  border-color: #d59a81;
+  box-shadow:
+    inset 0 2px 4px rgb(75 51 62 / 20%),
+    inset 0 1px 1px rgb(75 51 62 / 14%);
+  color: var(--reach-deck-editor-accent);
+  transform: translateY(1px);
+}
+
+/* 组色点缀：进入绿、强调琥珀、退出红，与 PowerPoint 动画库的分组色一致。 */
+.reach-deck-editor__animation-effect-group[data-group='entrance']
+  .reach-deck-editor__animation-tile:not([aria-checked='true'])
+  svg {
+  color: var(--reachany-color-success);
+}
+
+.reach-deck-editor__animation-effect-group[data-group='emphasis']
+  .reach-deck-editor__animation-tile:not([aria-checked='true'])
+  svg {
+  color: var(--reachany-color-warning);
+}
+
+.reach-deck-editor__animation-effect-group[data-group='exit']
+  .reach-deck-editor__animation-tile:not([aria-checked='true'])
+  svg {
+  color: var(--reachany-color-danger);
+}
+
+.reach-deck-editor__animation-tile svg .is-axis {
+  stroke: currentColor;
+  stroke-opacity: 0.3;
+  stroke-width: 1.2;
+}
+
+.reach-deck-editor__animation-tile svg .is-curve {
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
+.reach-deck-editor__animation-timing {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.reach-deck-editor__animation-field {
+  display: grid;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+/* 秒数步进框：减号 / 数值 / 单位 / 加号连成一体，凹陷输入区与两侧凸起按钮。 */
+.reach-deck-editor__seconds-field {
+  align-items: stretch;
+  background: var(--reachany-color-surface);
+  border: 1px solid var(--reach-deck-editor-border);
+  border-radius: 0.5rem;
+  box-shadow: inset 0 1px 2px rgb(75 51 62 / 8%);
+  display: flex;
+  height: 1.9rem;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.reach-deck-editor__seconds-field:focus-within {
+  border-color: #d59a81;
+}
+
+.reach-deck-editor .reach-deck-editor__seconds-field button {
+  background: var(--reachany-color-surface-subtle);
+  border: 0;
+  border-radius: 0;
+  color: #5f4c56;
+  flex: 0 0 1.6rem;
+  min-height: 0;
+  padding: 0;
+}
+
+.reach-deck-editor .reach-deck-editor__seconds-field button:first-child {
+  border-right: 1px solid var(--reach-deck-editor-border);
+}
+
+.reach-deck-editor .reach-deck-editor__seconds-field button:last-child {
+  border-left: 1px solid var(--reach-deck-editor-border);
+}
+
+.reach-deck-editor .reach-deck-editor__seconds-field button:hover:not(:disabled) {
+  background: #fff5ef;
+  color: #a94725;
+}
+
+.reach-deck-editor .reach-deck-editor__seconds-field input {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  flex: 1 1 auto;
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  min-height: 0;
+  min-width: 0;
+  padding: 0 0.1rem 0 0.4rem;
+  text-align: right;
+  width: 100%;
+}
+
+.reach-deck-editor .reach-deck-editor__seconds-field input:focus-visible {
+  outline: none;
+}
+
+.reach-deck-editor__seconds-unit {
+  align-self: center;
+  color: var(--reach-deck-editor-muted);
+  font-size: 0.68rem;
+  padding: 0 0.4rem 0 0.15rem;
+}
+
+/* 动画演示中画布显示为可点击结束演示。 */
+.reach-deck-editor__player-layer[data-animation-demo] {
+  cursor: pointer;
+}
+
+.reach-deck-regeneration__hint {
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  margin: 0;
+}
+
+.reach-deck-editor__narration-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  overflow: hidden;
+}
+
+.reach-deck-editor__narration-panel .reach-deck-editor__rich-text {
+  min-width: 0;
+}
+
+.reach-deck-editor__right-panel-empty {
+  color: var(--reach-deck-editor-muted);
+  font-size: 0.78rem;
+  margin: 0;
+}
+
+.reach-deck-editor__narration-status {
+  align-items: center;
+  background: #f8f3ee;
+  border: 1px solid #e4d8d0;
+  border-radius: 0.5rem;
+  color: #5e3853;
+  display: flex;
+  font-size: 0.75rem;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0.5rem 0.6rem;
+}
+
+.reach-deck-editor__narration-status[data-failed] {
+  color: #b42318;
+}
+
+.reach-deck-editor__narration-status .reach-deck-timeline__generation-spinner {
+  border-width: 2px;
+  flex: 0 0 auto;
+  height: 0.8rem;
+  width: 0.8rem;
+}
+
+.reach-deck-editor__interactive-narration-track {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #d8cec6;
+  box-sizing: border-box;
+  color: #5e3853;
+  display: grid;
+  flex: 0 0 4.25rem;
+  gap: 0.65rem;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  height: 4.25rem;
+  max-width: 72rem;
+  padding: 0.55rem 0.75rem;
+  width: 100%;
+}
+
+.reach-deck-editor__interactive-narration-track[data-state='failed'] {
+  border-color: #d7a1a1;
+  color: #9f2d24;
+}
+
+.reach-deck-editor__interactive-narration-track-icon {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  width: 1.25rem;
+}
+
+.reach-deck-editor__interactive-narration-track-icon .reach-deck-timeline__generation-spinner {
+  border-width: 2px;
+  height: 1rem;
+  width: 1rem;
+}
+
+.reach-deck-editor__interactive-narration-track-status {
+  font-size: 0.78rem;
+  font-weight: 700;
+  min-width: 0;
+}
+
+.reach-deck-editor__interactive-narration-track-actions {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.35rem;
+}
+
+.reach-deck-editor__interactive-narration-track-actions > button {
+  align-items: center;
+  background: #fff;
+  border-color: #d8cec6;
+  color: currentColor;
+  display: inline-flex;
+  gap: 0.3rem;
+  justify-content: center;
+  min-height: 2rem;
+  min-width: 2rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.reach-deck-editor__interactive-narration-track-actions > button:not(:has(span)) {
+  padding: 0;
+}
+
+/* 倍速选择跟随同排播放/重播按钮：同高、同描边与圆角、继承字体与配色，禁用时同样半透明，
+   不沿用共享 Select 的表单字段外观。 */
+.reach-deck-editor
+  .reach-deck-editor__interactive-narration-track-actions
+  .reach-deck-editor__interactive-narration-track-rate {
+  --rx-control-height: 2rem;
+  --rx-control-icon-size: 14px;
+  --rx-control-radius: 0.5rem;
+  --rx-select-bg: #fff;
+  --rx-select-border: #d8cec6;
+  --rx-select-border-hover: #d8cec6;
+  --rx-select-fg: currentcolor;
+  --rx-select-shadow: none;
+
+  flex: none;
+  width: auto;
+}
+
+.reach-deck-editor
+  .reach-deck-editor__interactive-narration-track-actions
+  .reach-deck-editor__interactive-narration-track-rate
+  .rx-select-trigger {
+  font: inherit;
+  gap: 0.3rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.reach-deck-editor
+  .reach-deck-editor__interactive-narration-track-actions
+  .reach-deck-editor__interactive-narration-track-rate
+  .rx-select-chevron {
+  color: currentcolor;
+}
+
+.reach-deck-editor
+  .reach-deck-editor__interactive-narration-track-actions
+  .reach-deck-editor__interactive-narration-track-rate[data-disabled] {
+  --rx-select-bg: #fff;
+  --rx-select-fg: currentcolor;
+
+  opacity: 0.45;
+}
+
+.reach-deck-editor__interactive-narration-track audio {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .reach-deck-editor__interactive-narration-track-actions > button span {
+    display: none;
+  }
+
+  .reach-deck-editor__interactive-narration-track-actions > button {
+    padding: 0;
+  }
+}
+
+.reach-deck-editor__inspector-toolbar {
+  align-items: center;
+  background: #f7f4f5;
+  border: 1px solid var(--reach-deck-editor-border);
+  border-radius: 0.5rem;
+  display: flex;
+  gap: 0.4rem;
+  /* 固定行高（scrollbar-gutter 只对纵向滚动条生效）：无论控件高矮还是横向
+     滚动条出现与否，行高恒定，画布不会上下跳。 */
+  flex: 1 1 auto;
+  height: 2.25rem;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.15rem;
+  scrollbar-width: thin;
+}
+
+.reach-deck-editor__workspace-command-bar {
+  align-items: center;
+  display: flex;
+  gap: 0.35rem;
+  min-height: 1.75rem;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 0.05rem;
+  scrollbar-width: thin;
+}
+
+.reach-deck-editor__host-command-bar {
+  min-width: 0;
+  width: 100%;
+}
+
+/* 富文本工具栏插槽：不参与布局，portal 追加的工具栏直接落进本行 flex，
+   且始终排在对象格式条之前。 */
+.reach-deck-editor__toolbar-slot {
+  display: contents;
+}
+
+.reach-deck-editor__inspector-toolbar::-webkit-scrollbar {
+  height: 6px;
+}
+
+.reach-deck-editor__inspector-toolbar::-webkit-scrollbar-thumb {
+  background: #d8d1ce;
+  border-radius: 999px;
+}
+
+.reach-deck-editor__canvas-actions {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0.35rem;
+  margin-left: auto;
+  padding-left: 0.35rem;
+}
+
+/* 作用域标签：区分第一行"文字"与第二行"形状/连接线"的同类颜色控件。 */
+.reach-deck-editor__toolbar-scope {
+  background: #ece5e8;
+  border-radius: 0.3rem;
+  color: #58505a;
+  flex: 0 0 auto;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 0.15rem 0.4rem;
+}
+
+.reach-deck-editor__toolbar-scope.is-placeholder {
+  opacity: 0.68;
+}
+
+.reach-deck-editor__toolbar-field-label {
+  color: #58505a;
+  flex: 0 0 auto;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.reach-deck-editor__interactive-toolbar-field,
+.reach-deck-editor__interactive-toolbar-check {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 0.3rem;
+  margin: 0;
+}
+
+.reach-deck-editor__interactive-toolbar-field select,
+.reach-deck-editor__interactive-toolbar-field input[type='number'] {
+  background: #fff;
+  border: 1px solid var(--reach-deck-editor-border);
+  border-radius: 0.3rem;
+  color: #3f3741;
+  font-size: 0.72rem;
+  min-height: 1.75rem;
+  padding: 0.15rem 0.35rem;
+}
+
+.reach-deck-editor__interactive-toolbar-field select {
+  max-width: 8.5rem;
+}
+
+.reach-deck-editor__interactive-toolbar-field input[type='number'] {
+  width: 5.5rem;
+}
+
+.reach-deck-editor__interactive-duration-unit {
+  color: #58505a;
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.reach-deck-editor__interactive-toolbar-field input[type='number']::placeholder {
+  color: #6f6570;
+  opacity: 1;
+}
+
+.reach-deck-editor__interactive-toolbar-check {
+  border: 1px solid transparent;
+  border-radius: 0.3rem;
+  color: #58505a;
+  cursor: pointer;
+  font-size: 0.72rem;
+  min-height: 1.75rem;
+  padding: 0.15rem 0.35rem;
+  white-space: nowrap;
+}
+
+.reach-deck-editor__interactive-toolbar-check:has(input:focus-visible) {
+  outline: 2px solid #8b5f7c;
+  outline-offset: 1px;
+}
+
+.reach-deck-editor__interactive-toolbar-check input {
+  margin: 0;
+  min-height: auto;
+  width: auto;
+}
+
+/* 占位色块：与真实取色控件同尺寸，保证占位态与激活态等高。 */
+.reach-deck-editor__toolbar-swatch {
+  background: #fff;
+  border: 1px solid var(--reach-deck-editor-border);
+  border-radius: 0.3rem;
+  block-size: 1.25rem;
+  display: block;
+  inline-size: 1.45rem;
+}
+
+/* 对象格式条里的下拉宽度自适应内容，不沿用文字工具栏的字体/字号宽度。 */
+.reach-deck-editor__object-toolbar .reach-deck-editor__rich-text-field select {
+  min-width: 4.5rem;
+}
+
+/* 对象条比文字条小一号：填充/描边按钮文字与色框收窄，不与文字色框抢视觉。 */
+.reach-deck-editor__object-toolbar .reach-deck-editor__rich-text-button {
+  font-size: 0.66rem;
+  min-height: 1.45rem;
+  min-width: 1.45rem;
+}
+
+.reach-deck-editor__object-toolbar .reach-deck-editor__rich-text-color input[type='color'] {
+  block-size: 1.25rem;
+  inline-size: 1.45rem;
+  min-height: 1.25rem;
+  width: 1.45rem;
+}
+
+.reach-deck-editor__rich-text-field input[type='number'] {
+  border: 1px solid var(--reach-deck-editor-border);
+  border-radius: 0.3rem;
+  font-size: 0.72rem;
+  min-height: 1.75rem;
+  padding: 0.15rem 0.25rem;
+  width: 4rem;
+}
+
+.reach-deck-editor__canvas-actions button {
+  min-height: 1.85rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.reach-deck-editor__canvas-actions button:last-child {
+  background: #5e3853;
+  border-color: #5e3853;
+  color: #fff;
+}
+
+/* 富文本编辑：格式工具条 + 可点击编辑的文本面 */
+.reach-deck-editor__rich-text {
+  border: 1px solid var(--reach-deck-editor-border);
+  border-radius: 0.4rem;
+  display: grid;
+  min-width: 22rem;
+  overflow: hidden;
+}
+
+.reach-deck-editor__rich-text-toolbar {
+  align-items: center;
+  background: #f7f4f5;
+  border-bottom: 1px solid var(--reach-deck-editor-border);
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.2rem;
+  padding: 0.3rem;
+  width: max-content;
+}
+
+.reach-deck-editor__rich-text.is-toolbar-on-focus > .reach-deck-editor__rich-text-toolbar {
+  display: none;
+}
+
+.reach-deck-editor__rich-text.is-toolbar-on-focus:focus-within
+  > .reach-deck-editor__rich-text-toolbar {
+  display: flex;
+}
+
+.reach-deck-editor .reach-deck-editor__rich-text-button {
+  align-items: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.3rem;
+  color: #58505a;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 0.72rem;
+  gap: 0.2rem;
+  justify-content: center;
+  min-height: 1.6rem;
+  min-width: 1.6rem;
+  padding: 0 0.3rem;
+}
+
+.reach-deck-editor__rich-text-button:hover:not(:disabled) {
+  background: #ece5e8;
+}
+
+.reach-deck-editor__rich-text-button[aria-pressed='true'] {
+  background: var(--reach-deck-editor-accent, #8c4953);
+  color: #fff;
+}
+
+.reach-deck-editor__rich-text-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.reach-deck-editor__rich-text-toolbar[data-placeholder='true']
+  .reach-deck-editor__rich-text-button:disabled,
+.reach-deck-editor__rich-text-color.is-placeholder {
+  opacity: 0.68;
+}
+
+.reach-deck-editor__rich-text-divider {
+  background: #d8d1ce;
+  height: 1.1rem;
+  width: 1px;
+}
+
+.reach-deck-editor__rich-text-field select {
+  border: 1px solid var(--reach-deck-editor-border);
+  border-radius: 0.3rem;
+  font-size: 0.72rem;
+  min-height: 1.75rem;
+  padding: 0.15rem 0.25rem;
+  width: auto;
+}
+
+.reach-deck-editor__rich-text-field:first-of-type select {
+  min-width: 7.5rem;
+}
+
+.reach-deck-editor__rich-text-field:last-of-type select {
+  min-width: 5.5rem;
+}
+
+.reach-deck-editor__rich-text-color {
+  align-items: center;
+  color: #58505a;
+  display: inline-flex;
+  gap: 0.15rem;
+}
+
+.reach-deck-editor__rich-text-color input[type='color'] {
+  border: 1px solid var(--reach-deck-editor-border);
+  border-radius: 0.3rem;
+  block-size: 1.5rem;
+  inline-size: 1.7rem;
+  min-height: 1.5rem;
+  padding: 0;
+  width: 1.7rem;
+}
+
+/* 点击即编辑的文本面：像 PowerPoint 的文本框一样直接改字。 */
+.reach-deck-editor__rich-text-surface {
+  background: #fff;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  min-height: 5rem;
+  outline: none;
+  padding: 0.5rem 0.6rem;
+}
+
+.reach-deck-editor__rich-text-surface p {
+  margin: 0 0 0.35rem;
+}
+
+.reach-deck-editor__rich-text-surface p:last-child {
+  margin-bottom: 0;
+}
+
+.reach-deck-editor__rich-text.is-inline {
+  background: rgb(255 255 255 / 8%);
+  border: 0;
+  border-radius: 0.2rem;
+  box-sizing: border-box;
+  height: 100%;
+  min-width: 0;
+  outline: 2px solid var(--reach-deck-editor-accent);
+  outline-offset: 0;
+  overflow: visible;
+  width: 100%;
+}
+
+.reach-deck-editor__rich-text.is-inline > div:last-child,
+.reach-deck-editor__rich-text.is-inline .reach-deck-editor__rich-text-surface {
+  box-sizing: border-box;
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+}
+
+.reach-deck-editor__rich-text.is-inline .reach-deck-editor__rich-text-surface {
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 0;
+}
+
+/* 原生文本框行内编辑：编辑器仍撑满整框（外框/点击区不变），但内容改为
+   继承框架的纵向锚点（top/middle/bottom），字符位置与静态渲染一致，不再吸顶。 */
+[data-native-v2-text-frame] .reach-deck-editor__rich-text.is-inline {
+  display: flex;
+  flex-direction: column;
+  justify-content: inherit;
+}
+
+[data-native-v2-text-frame] .reach-deck-editor__rich-text.is-inline > div:last-child,
+[data-native-v2-text-frame]
+  .reach-deck-editor__rich-text.is-inline
+  .reach-deck-editor__rich-text-surface {
+  height: auto;
+  min-height: 0;
+}
+
+/* PowerPoint 上下标只做基线偏移、不撑高父行盒;浏览器默认 sup/sub 的
+   vertical-align 会扩大行盒,导致导入文本行距漂移(化学式课件最明显)。 */
+[data-native-v2-text-frame] sup,
+[data-native-v2-text-frame] sub {
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+[data-native-v2-text-frame] sup {
+  top: -0.35em;
+}
+
+[data-native-v2-text-frame] sub {
+  top: 0.2em;
+}
+
+/*
+ * Tiptap 只把规范字体名写进 JSON/DOM；编辑态补齐与播放器一致的实际回退栈，
+ * 避免本机没有拉丁名称字体时视觉上退回主题默认字体。
+ */
+.reach-deck-editor__rich-text-surface span[style*='font-family: "Noto Sans"'] {
+  font-family: 'Noto Sans', 'Noto Sans SC', ui-sans-serif, system-ui, sans-serif !important;
+}
+
+.reach-deck-editor__rich-text-surface span[style*='font-family: "Noto Serif"'] {
+  font-family: 'Noto Serif', 'Noto Serif SC', ui-serif, Georgia, serif !important;
+}
+
+.reach-deck-editor__rich-text.is-inline .reach-deck-editor__rich-text-surface p,
+.reach-deck-player .text-element__paragraph {
+  margin: 0;
+}
+
+.reach-deck-player .slide-element[data-text-editing] > .text-element {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+}
+
+/* 剪辑式时间轴：统一坐标内核承载字幕和可扩展的动画子轨。 */
+.reach-deck-timeline {
+  --reach-deck-timeline-ruler-height: 20px;
+  --reach-deck-timeline-track-height: 24px;
+  --reach-deck-timeline-voice-height: 28px;
+  background: #fbf8f4;
+  border: 1px solid #d7cdc5;
+  border-radius: 0.85rem;
+  color: #30272d;
+  min-width: 0;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgb(75 51 62 / 9%);
+}
+
+/* 单行常驻工具头：标题/播放/进度、视图工具与收起开关共用一行。 */
+.reach-deck-timeline__header {
+  background: #fffdf9;
+  padding: 0.2rem 0.4rem;
+}
+
+.reach-deck-timeline__header-row {
+  align-items: center;
+  display: flex;
+  gap: 0.35rem;
+  min-height: 1.75rem;
+}
+
+/* 收起态整个时间轴只剩 header 一行，无需分隔线；展开后由 collapsible 内容自带上边界。 */
+.reach-deck-timeline:not([data-collapsed]) .reach-deck-timeline__header {
+  border-bottom: 1px solid #ded5ce;
+}
+
+/* 标题与视图切换不许被 actions 挤到逐字竖排。 */
+.reach-deck-timeline__title {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.reach-deck-timeline__title,
+.reach-deck-timeline__actions {
+  align-items: center;
+  display: flex;
+  gap: 0.35rem;
+}
+
+.reach-deck-timeline__title > span,
+.reach-deck-timeline__actions > span {
+  color: #796b73;
+  font-size: 0.75rem;
+}
+
+.reach-deck-timeline__actions {
+  flex: 1 1 auto;
+  flex-wrap: nowrap;
+  height: 1.75rem;
+  margin-left: auto;
+  min-height: 1.75rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* 工具头按钮与右侧面板页签同一视觉层级：小号字、紧凑内边距。加 .reach-deck-editor 前缀
+   压过编辑器通用按钮规则（font: inherit / 2.35rem 最小高度），不依赖样式表加载顺序。 */
+.reach-deck-editor .reach-deck-timeline__actions > button,
+.reach-deck-editor .reach-deck-timeline__header-row > button,
+.reach-deck-editor .reach-deck-timeline__title > button,
+.reach-deck-timeline__actions > button,
+.reach-deck-timeline__header-row > button,
+.reach-deck-timeline__title > button {
+  align-items: center;
+  background: #fff;
+  border-color: #d8cec6;
+  border-radius: 0.45rem;
+  box-sizing: border-box;
+  color: #5f4c56;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 0.68rem;
+  font-weight: 600;
+  gap: 0.25rem;
+  height: 1.6rem;
+  line-height: 1;
+  min-height: 1.6rem;
+  padding: 0.15rem 0.45rem;
+  white-space: nowrap;
+}
+
+/* 倍速选择与标题行按钮同高（1.6rem），不撑高收起后的单行 header；
+   字号、描边、圆角、配色与悬停态也跟随相邻工具按钮，不沿用共享 Select 的表单字段外观。 */
+.reach-deck-timeline .reach-deck-timeline__title .reach-deck-timeline__rate {
+  --rx-control-height: 1.6rem;
+  --rx-control-icon-size: 12px;
+  --rx-control-radius: 0.45rem;
+  --rx-field-font-size: 0.68rem;
+  --rx-select-border: #d8cec6;
+  --rx-select-border-hover: #d59a81;
+  --rx-select-fg: #5f4c56;
+  --rx-select-shadow: none;
+
+  flex: none;
+  width: auto;
+}
+
+.reach-deck-timeline .reach-deck-timeline__title .reach-deck-timeline__rate .rx-select-trigger {
+  font-weight: 600;
+  gap: 0.25rem;
+  line-height: 1;
+  padding: 0.15rem 0.45rem;
+}
+
+.reach-deck-timeline .reach-deck-timeline__title .reach-deck-timeline__rate .rx-select-chevron {
+  color: currentcolor;
+}
+
+.reach-deck-timeline
+  .reach-deck-timeline__title
+  .reach-deck-timeline__rate:not([data-disabled])
+  .rx-select-trigger:hover {
+  background: #fff5ef;
+  color: #a94725;
+}
+
+.reach-deck-timeline__title > strong {
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.reach-deck-timeline__actions > button:hover:not(:disabled),
+.reach-deck-timeline__header-row > button:hover:not(:disabled),
+.reach-deck-timeline__title > button:hover:not(:disabled) {
+  background: #fff5ef;
+  border-color: #d59a81;
+  color: #a94725;
+}
+
+/* 播放进度 / 页面时长：常驻标题行，收起播放时也能看到走时。 */
+.reach-deck-timeline__progress {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/*
+ * 收起动画：内容保持挂载，外层 grid 行在 1fr↔0fr 间过渡，时间轴高度随之缓动收放，
+ * 画布（flex 剩余空间 + 容器查询定尺）在同一过渡里连续等比缩放。
+ */
+.reach-deck-timeline__collapsible {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.reach-deck-timeline[data-collapsed] .reach-deck-timeline__collapsible {
+  grid-template-rows: 0fr;
+}
+
+.reach-deck-timeline__collapsible-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* 轨道与讲稿共用固定内容视口，切换时不改变时间轴和上方画布的高度。 */
+.reach-deck-timeline__view-content {
+  max-height: 112px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.reach-deck-timeline__view-content[data-generation] {
+  min-height: 136px;
+  max-height: 136px;
+}
+
+.reach-deck-timeline__separator {
+  background: #ddd3cb;
+  height: 1.25rem;
+  width: 1px;
+}
+
+/* 纵向压缩：轨道行高收紧，超出部分 body 内部滚动，避免时间轴把画布挤没。 */
+.reach-deck-timeline__body {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  min-height: calc(
+    var(--reach-deck-timeline-ruler-height) + var(--reach-deck-timeline-voice-height) +
+      var(--reach-deck-timeline-track-height)
+  );
+}
+
+.reach-deck-timeline__labels {
+  background: #f5f0eb;
+  border-right: 1px solid #ddd3cb;
+  display: grid;
+  grid-auto-rows: var(--reach-deck-timeline-track-height);
+  grid-template-rows: var(--reach-deck-timeline-ruler-height) var(
+      --reach-deck-timeline-voice-height
+    );
+  position: relative;
+  z-index: 3;
+}
+
+.reach-deck-timeline__labels > div {
+  align-items: center;
+  border-bottom: 1px solid #e2d9d2;
+  box-sizing: border-box;
+  display: flex;
+  font-size: 0.7rem;
+  gap: 0.4rem;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0 0.55rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reach-deck-timeline__ruler-label {
+  color: #8a7d84;
+}
+
+.reach-deck-timeline__labels > div > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.reach-deck-editor .reach-deck-timeline__delete-track {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+  margin-left: auto;
+  min-height: 20px;
+  padding: 2px;
+  width: 20px;
+}
+
+.reach-deck-timeline__scroller {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.reach-deck-timeline__canvas {
+  background-color: #fffdfa;
+  background-image: linear-gradient(90deg, rgb(126 99 110 / 10%) 1px, transparent 1px);
+  background-size: var(--timeline-second-width, 72px) 100%;
+  min-height: 100%;
+  position: relative;
+  touch-action: pan-y;
+}
+
+.reach-deck-timeline__ruler,
+.reach-deck-timeline__track {
+  border-bottom: 1px solid #e2d9d2;
+  box-sizing: border-box;
+  height: var(--reach-deck-timeline-track-height);
+  position: relative;
+}
+
+.reach-deck-timeline__ruler {
+  height: var(--reach-deck-timeline-ruler-height);
+}
+
+.reach-deck-timeline__track.is-voice {
+  height: var(--reach-deck-timeline-voice-height);
+}
+
+.reach-deck-timeline__ruler span {
+  color: #8a7d84;
+  font-size: 0.68rem;
+  padding-left: 0.25rem;
+  position: absolute;
+  top: 0.35rem;
+}
+
+.reach-deck-timeline__clip {
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: 0.35rem;
+  bottom: 0.15rem;
+  color: #44353d;
+  display: block;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  text-align: left;
+  text-overflow: ellipsis;
+  top: 0.15rem;
+  touch-action: none;
+  white-space: nowrap;
+}
+
+.reach-deck-timeline__clip.is-voice {
+  background: #dcefe9;
+  border-color: #8ab8aa;
+  color: #245f54;
+}
+
+.reach-deck-timeline__clip.is-animation {
+  background: #eee7f2;
+  border-color: #bba8c5;
+  color: #674f73;
+}
+
+.reach-deck-timeline__clip[data-active] {
+  border-color: #b74720;
+  box-shadow: 0 0 0 2px rgb(183 71 32 / 18%);
+}
+
+/* 孤儿动画（目标元素已删除）：保存不受影响、播放时忽略，标红提示教师处理。 */
+.reach-deck-timeline__clip[data-invalid] {
+  background: var(--reachany-color-danger-soft);
+  border-color: var(--reachany-color-danger);
+  border-style: dashed;
+  color: var(--reachany-color-danger-text);
+}
+
+.reach-deck-timeline__clip[data-invalid] .reach-deck-timeline__clip-move strong {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.15rem;
+}
+
+.reach-deck-editor .reach-deck-timeline__clip-move {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: grab;
+  inset: 0 var(--timeline-handle-width, 6px);
+  min-height: 0;
+  overflow: hidden;
+  padding: 0 3px;
+  position: absolute;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reach-deck-timeline__clip[data-compact] .reach-deck-timeline__clip-move {
+  padding: 0;
+}
+
+.reach-deck-timeline__clip[data-compact] .reach-deck-timeline__clip-move strong {
+  display: none;
+}
+
+.reach-deck-timeline__clip[data-point] {
+  border-radius: 0;
+}
+
+.reach-deck-timeline__clip-move strong {
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.reach-deck-timeline__clip[data-has-description] .reach-deck-timeline__clip-move {
+  align-content: center;
+  display: grid;
+  gap: 0.18rem;
+  padding: 0.3rem 1rem;
+  white-space: normal;
+}
+
+.reach-deck-timeline__clip[data-has-description] .reach-deck-timeline__clip-move strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reach-deck-timeline__clip-move span {
+  display: -webkit-box;
+  font-size: 0.67rem;
+  line-height: 1.25;
+  opacity: 0.9;
+  overflow: hidden;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.reach-deck-timeline__clip-move:focus-visible {
+  outline: 2px solid #b74720;
+  outline-offset: -3px;
+}
+
+/* 讲稿轨单条固定条：整页一条 TTS 音频，文字按时间戳铺进条内；条不可拖不可选，点击透传画布 seek。 */
+.reach-deck-timeline__clip.is-narration-bar {
+  cursor: default;
+  display: block;
+  padding: 0;
+}
+
+.reach-deck-timeline__clip.is-narration-bar > span:not(.sr-only) {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  font-size: 0.7rem;
+  line-height: 1;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  white-space: pre;
+}
+
+/* 讲稿轴上的公式按行内公式渲染：比讲稿字稍大以便辨认分式，高度仍在讲稿条内。 */
+.reach-deck-timeline__clip.is-narration-bar > span.is-formula .katex {
+  font-size: 1.2em;
+  line-height: 1;
+}
+
+.reach-deck-timeline__clip.is-narration-bar > span.is-formula .katex-display {
+  margin: 0;
+}
+
+.reach-deck-timeline__selection-actions {
+  align-items: center;
+  background: #f8f3ee;
+  border-top: 1px solid #ddd3cb;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.35rem 0.6rem;
+}
+
+.reach-deck-timeline__selection-actions button {
+  align-items: center;
+  background: #fff;
+  border-color: #d8cec6;
+  color: #7f1d1d;
+  display: inline-flex;
+  gap: 0.3rem;
+  min-height: 1.8rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.reach-deck-editor .reach-deck-timeline__resize-handle {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  bottom: 0;
+  cursor: ew-resize;
+  display: inline-flex;
+  justify-content: center;
+  min-height: 0;
+  position: absolute;
+  top: 0;
+  opacity: 0.78;
+  padding: 0;
+  width: var(--timeline-handle-width, 6px);
+  z-index: 1;
+}
+
+.reach-deck-editor .reach-deck-timeline__resize-handle:hover,
+.reach-deck-editor .reach-deck-timeline__resize-handle:focus-visible {
+  background: rgb(183 71 32 / 12%);
+  opacity: 1;
+}
+
+.reach-deck-editor .reach-deck-timeline__resize-handle:focus-visible {
+  outline: 1px solid #b74720;
+  outline-offset: -1px;
+}
+
+.reach-deck-editor .reach-deck-timeline__resize-handle svg {
+  filter: none;
+  stroke-width: 2.4;
+}
+
+.reach-deck-timeline__resize-handle > span {
+  background: currentColor;
+  height: 8px;
+  opacity: 0.5;
+  width: 1px;
+}
+
+.reach-deck-timeline__resize-handle.is-start {
+  left: 0;
+}
+
+.reach-deck-timeline__resize-handle.is-end {
+  right: 0;
+}
+
+.reach-deck-timeline__playhead {
+  background: #ff6b35;
+  bottom: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 2px;
+  z-index: 2;
+}
+
+.reach-deck-timeline__playhead::before {
+  background: #ff6b35;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  content: '';
+  height: 0.55rem;
+  left: -0.28rem;
+  position: absolute;
+  top: 0;
+  width: 0.7rem;
+}
+
+.reach-deck-timeline__properties {
+  align-items: end;
+  background: #f8f3ee;
+  border-top: 1px solid #ddd3cb;
+  display: grid;
+  gap: 0.55rem;
+  grid-template-columns: auto repeat(6, minmax(6rem, 1fr)) auto;
+  padding: 0.6rem;
+}
+
+.reach-deck-timeline__properties label {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.reach-deck-timeline__properties label span {
+  color: #796b73;
+  font-size: 0.7rem;
+}
+
+.reach-deck-timeline__properties input,
+.reach-deck-timeline__properties select,
+.reach-deck-timeline__properties textarea {
+  background: #fff;
+  border-color: #d8cec6;
+  color: #4c3e46;
+  min-height: 2rem;
+  padding: 0.3rem 0.4rem;
+}
+
+.reach-deck-timeline__properties .is-wide {
+  grid-column: span 3;
+  margin: 0;
+}
+
+.reach-deck-timeline__narration-hint {
+  color: #8a7d84;
+  font-size: 0.68rem;
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+/* 时间轴双视图切换（轨道 / 讲稿）：分段按钮，aria-pressed 表示当前视图。 */
+.reach-deck-timeline__views {
+  background: #f5f0eb;
+  border: 1px solid #ddd3cb;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  display: inline-flex;
+  gap: 0.15rem;
+  height: 1.75rem;
+  padding: 0.1rem;
+}
+
+.reach-deck-timeline__views button {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 0.38rem;
+  box-sizing: border-box;
+  color: #796b73;
+  display: inline-flex;
+  font-size: 0.74rem;
+  font-weight: 700;
+  gap: 0.28rem;
+  height: 1.45rem;
+  line-height: 1;
+  min-height: 0;
+  padding: 0.1rem 0.5rem;
+  white-space: nowrap;
+}
+
+.reach-deck-timeline__views button:hover {
+  color: #4c3e46;
+}
+
+.reach-deck-timeline__views button[aria-pressed='true'] {
+  background: #fff;
+  box-shadow: 0 1px 3px rgb(75 51 62 / 14%);
+  color: #b74720;
+}
+
+/* 讲稿视图：整页受限富文本编辑器，替换轨道 body 展示。 */
+.reach-deck-timeline__narration-panel {
+  box-sizing: border-box;
+  display: grid;
+  gap: 0.6rem;
+  min-height: 100%;
+  overflow-y: auto;
+  padding: 0.65rem;
+}
+
+.reach-deck-timeline__generation-overlay {
+  align-content: center;
+  background: rgb(251 248 244 / 92%);
+  backdrop-filter: blur(3px);
+  color: #5e3853;
+  display: grid;
+  gap: 0.45rem;
+  inset: 0;
+  justify-items: center;
+  overflow-y: auto;
+  padding: 0.6rem 1rem;
+  position: absolute;
+  text-align: center;
+  z-index: 20;
+}
+
+/* 图标与状态文案同一行，给提示和操作按钮留出高度。 */
+.reach-deck-timeline__generation-heading {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+}
+
+.reach-deck-timeline__generation-heading > svg {
+  flex: none;
+}
+
+.reach-deck-timeline__generation-heading .reach-deck-timeline__generation-spinner {
+  border-width: 2px;
+  height: 1.1rem;
+  width: 1.1rem;
+}
+
+.reach-deck-timeline__generation-actions {
+  align-items: center;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  justify-content: center;
+}
+
+.reach-deck-timeline__generation-overlay[data-manual-review] {
+  background: color-mix(in srgb, #fff7ed 92%, transparent);
+  border-color: #f59e0b;
+}
+
+.reach-deck-timeline__narration-warning {
+  background: var(--reachany-color-warning-soft);
+  border: 1px solid var(--reachany-color-warning);
+  border-radius: 0.5rem;
+  color: var(--reachany-color-warning);
+  font-size: 0.75rem;
+  line-height: 1.45;
+  margin: 0;
+  padding: 0.55rem 0.65rem;
+}
+
+.reach-deck-timeline__generation-overlay[data-failed] {
+  color: #b42318;
+}
+
+.reach-deck-timeline__generation-hint {
+  color: #5e3853;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  margin: 0;
+  max-width: 30rem;
+}
+
+.reach-deck-editor .reach-deck-timeline__generation-overlay button,
+.reach-deck-timeline__generation-overlay button {
+  align-items: center;
+  background: #fff;
+  border-color: #d59a81;
+  color: #a94725;
+  display: inline-flex;
+  font-size: 0.72rem;
+  font-weight: 600;
+  gap: 0.3rem;
+  min-height: 1.75rem;
+  padding: 0.2rem 0.6rem;
+  white-space: nowrap;
+}
+
+.reach-deck-timeline__generation-spinner {
+  animation: reach-deck-editor-generating-spin 0.9s linear infinite;
+  border: 3px solid rgb(94 56 83 / 18%);
+  border-radius: 50%;
+  border-top-color: var(--reach-deck-editor-accent);
+  height: 2rem;
+  width: 2rem;
+}
+
+.reach-deck-timeline__narration-editor {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-height: 0;
+  min-width: 0;
+}
+
+.reach-deck-timeline__narration-header {
+  align-items: center;
+  display: flex;
+  flex: none;
+  font-size: 0.8rem;
+  justify-content: space-between;
+  min-height: 1.8rem;
+}
+
+.reach-deck-timeline__narration-content {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-height: 0;
+  overflow: auto;
+}
+
+.reach-deck-timeline__narration-footer {
+  background: var(--reachany-color-surface);
+  border-top: 1px solid var(--reachany-color-border);
+  display: grid;
+  flex: none;
+  gap: 0.35rem;
+  padding-top: 0.4rem;
+}
+
+.reach-deck-timeline__narration-footer-actions {
+  align-items: center;
+  display: flex;
+  gap: 0.35rem;
+  justify-content: flex-end;
+}
+
+.reach-deck-timeline__narration-preview-control {
+  flex: 0 1 auto;
+  min-width: 0;
+  position: relative;
+}
+
+.reach-deck-timeline__narration-preview-limit {
+  color: var(--reachany-color-muted-text);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+  min-width: 0;
+}
+
+.reach-deck-timeline__narration-preview-tooltip {
+  background: var(--reachany-color-text);
+  border-radius: var(--reachany-radius-sm);
+  bottom: calc(100% + 0.4rem);
+  color: var(--reachany-color-surface);
+  display: none;
+  font-size: 0.68rem;
+  left: 0;
+  line-height: 1.35;
+  max-width: min(11rem, calc(100vw - 1rem));
+  padding: 0.4rem 0.5rem;
+  position: absolute;
+  width: max-content;
+  z-index: 1201;
+}
+
+.reach-deck-timeline__narration-preview-control:hover
+  .reach-deck-timeline__narration-preview-tooltip,
+.reach-deck-timeline__narration-preview-control:focus-within
+  .reach-deck-timeline__narration-preview-tooltip {
+  display: block;
+}
+
+.reach-deck-editor .reach-deck-timeline__narration-footer-actions > button,
+.reach-deck-editor .reach-deck-timeline__narration-preview-control > button,
+.reach-deck-editor .reach-deck-timeline__narration-menu-items button {
+  align-items: center;
+  box-sizing: border-box;
+  display: inline-flex;
+  font-size: 0.66rem;
+  gap: 0.18rem;
+  height: 1.75rem;
+  line-height: 1;
+  min-height: 1.75rem;
+  padding: 0 0.34rem;
+}
+
+.reach-deck-timeline__narration-footer-actions > button {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.reach-deck-timeline__narration-preview-control > button {
+  width: 100%;
+}
+
+.reach-deck-timeline__narration-preview-control > button[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.reach-deck-timeline__narration-footer-actions > button > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reach-deck-timeline__narration-preview-control > button > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reach-deck-timeline__narration-footer-actions > button > svg,
+.reach-deck-timeline__narration-preview-control > button > svg {
+  flex: none;
+}
+
+.reach-deck-editor button.reach-deck-timeline__narration-apply {
+  background: var(--reach-deck-editor-accent, #f45b20);
+  color: white;
+}
+
+.reach-deck-editor button.reach-deck-timeline__narration-apply:hover:not(:disabled) {
+  background: var(--reach-deck-editor-accent, #f45b20);
+  filter: brightness(0.94);
+}
+
+.reach-deck-timeline__narration-menu {
+  flex: none;
+  position: relative;
+}
+
+.reach-deck-timeline__narration-menu summary {
+  align-items: center;
+  border: 1px solid var(--reachany-color-border);
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  height: 1.75rem;
+  justify-content: center;
+  list-style: none;
+  width: 1.75rem;
+}
+
+.reach-deck-timeline__narration-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.reach-deck-timeline__narration-menu-items {
+  background: var(--reachany-color-surface, white);
+  border: 1px solid var(--deck-line, var(--reachany-color-border));
+  border-radius: 6px;
+  color: var(--deck-plum, var(--reachany-color-text));
+  display: grid;
+  box-shadow: 0 6px 20px #0002;
+  max-width: calc(100vw - 16px);
+  padding: 0.35rem;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.2rem);
+  width: max-content;
+  z-index: 30;
+}
+
+.reach-deck-timeline__narration-menu--upward .reach-deck-timeline__narration-menu-items {
+  bottom: calc(100% + 0.2rem);
+  top: auto;
+}
+
+.reach-deck-editor .reach-deck-timeline__narration-menu-items button {
+  background: transparent;
+  border: 0;
+  border-radius: 0.5rem;
+  color: inherit;
+  max-width: 100%;
+  text-align: left;
+  width: 100%;
+}
+
+.reach-deck-editor .reach-deck-timeline__narration-menu-items button:hover:not(:disabled) {
+  background: var(--reachany-color-canvas, #f4f4f4);
+}
+
+.reach-deck-editor
+  .reach-deck-timeline__narration-menu-items
+  .reach-deck-timeline__narration-menu-group-toggle {
+  justify-content: space-between;
+}
+
+.reach-deck-timeline__narration-menu-group-toggle > svg {
+  flex: none;
+  transition: transform var(--reachany-motion-duration-fast, 160ms)
+    var(--reachany-motion-easing-standard, ease);
+}
+
+.reach-deck-timeline__narration-menu-group-toggle[aria-expanded='true'] > svg {
+  transform: rotate(90deg);
+}
+
+.reach-deck-timeline__narration-menu-group {
+  display: grid;
+  padding-inline-start: var(--reachany-space-3, 12px);
+}
+
+.reach-deck-timeline__narration-menu-group[hidden] {
+  display: none;
+}
+
+.reach-deck-timeline__narration-editor .reach-deck-editor__rich-text {
+  background: var(--reachany-color-surface);
+  border: 1px solid var(--reachany-color-border);
+  border-radius: 0.55rem;
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.reach-deck-timeline__narration-editor .reach-deck-editor__rich-text-toolbar {
+  background: var(--reachany-color-surface-warm);
+  border: 0;
+  border-bottom: 1px solid var(--reachany-color-border);
+  border-radius: 0;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  min-height: 1.8rem;
+  overflow-x: hidden;
+  overflow-y: visible;
+  padding: 0.1rem 0.15rem;
+  row-gap: 0.1rem;
+  scrollbar-width: thin;
+  width: 100%;
+}
+
+.reach-deck-timeline__narration-editor .reach-deck-editor__rich-text-button {
+  color: var(--reachany-color-muted-text);
+}
+
+.reach-deck-timeline__narration-editor .reach-deck-editor__rich-text-button:hover:not(:disabled) {
+  background: var(--reachany-color-neutral-1);
+}
+
+.reach-deck-timeline__narration-editor .reach-deck-editor__rich-text-divider {
+  background: var(--reachany-color-border);
+}
+
+.reach-deck-timeline__narration-editor .reach-deck-editor__rich-text > div:last-child {
+  display: flex;
+  flex: 1 1 0;
+  min-height: 0;
+}
+
+.reach-deck-timeline__narration-editor .reach-deck-editor__rich-text-surface {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: auto;
+  padding: 0.65rem 0.75rem;
+}
+
+.reach-deck-timeline__narration-meta,
+.reach-deck-timeline__narration-actions {
+  display: grid;
+  gap: 0.35rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.reach-deck-timeline__narration-meta {
+  color: var(--reachany-color-muted-text);
+  font-size: 0.7rem;
+  justify-content: space-between;
+}
+
+.reach-deck-timeline__narration-actions button {
+  align-items: center;
+  background: var(--reachany-color-surface);
+  border-color: var(--reachany-color-border);
+  color: var(--reachany-color-text);
+  display: inline-flex;
+  font-size: 0.68rem;
+  gap: 0.25rem;
+  min-height: 1.75rem;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0.15rem 0.35rem;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.reach-deck-editor__narration-workspace-action {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.reach-deck-timeline__narration-actions.reach-deck-editor__narration-workspace-action
+  button
+  > span {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.reach-deck-timeline__narration-actions button:only-child {
+  grid-column: 1 / -1;
+}
+
+.reach-deck-timeline__narration-actions button > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reach-deck-timeline__narration-actions button:hover:not(:disabled) {
+  background: var(--reachany-color-surface-warm);
+  border-color: var(--reachany-color-primary);
+  color: var(--reachany-color-action);
+}
+
+.reach-deck-timeline__speech-toolbar {
+  align-items: center;
+  display: flex;
+  flex: 1 1 100%;
+  flex-wrap: wrap;
+  gap: 0.15rem;
+  min-width: 0;
+  width: 100%;
+}
+
+.reach-deck-timeline__speech-command > span {
+  white-space: nowrap;
+}
+
+.reach-deck-timeline__speech-smart-label {
+  display: inline-grid;
+}
+
+.reach-deck-timeline__speech-smart-label > span {
+  grid-area: 1 / 1;
+}
+
+.reach-deck-timeline__speech-smart-size {
+  visibility: hidden;
+}
+
+.reach-deck-timeline__speech-smart-spinner {
+  animation: reach-deck-editor-generating-spin 0.9s linear infinite;
+  flex: none;
+  height: 14px;
+  width: 14px;
+}
+
+.reach-deck-timeline__speech-command[aria-pressed='true'] {
+  background: var(--reachany-color-purple-soft);
+  border-color: color-mix(in srgb, var(--reachany-color-purple) 42%, transparent);
+  color: var(--reachany-color-purple);
+}
+
+.reach-deck-timeline__speech-switch {
+  align-items: center;
+  color: var(--reachany-color-muted-text);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 0.72rem;
+  font-weight: 650;
+  gap: 0.28rem;
+  min-height: 1.6rem;
+  padding: 0 0.15rem;
+  white-space: nowrap;
+}
+
+.reach-deck-timeline__speech-switch input {
+  appearance: none;
+  background: var(--reachany-color-neutral-2);
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-pill);
+  cursor: pointer;
+  height: 0.9rem;
+  margin: 0;
+  min-height: 0.9rem;
+  position: relative;
+  transition:
+    background var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    border-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+  width: 1.55rem;
+}
+
+.reach-deck-timeline__speech-switch input::after {
+  background: var(--reachany-color-surface);
+  border-radius: 50%;
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--reachany-color-player) 24%, transparent);
+  content: '';
+  height: 0.62rem;
+  left: 0.08rem;
+  position: absolute;
+  top: 0.08rem;
+  transition: transform var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+  width: 0.62rem;
+}
+
+.reach-deck-timeline__speech-switch input:checked {
+  background: var(--reachany-color-purple);
+  border-color: var(--reachany-color-purple);
+}
+
+.reach-deck-timeline__speech-switch input:checked::after {
+  transform: translateX(0.64rem);
+}
+
+.reach-deck-timeline__speech-switch input:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--reachany-color-primary) 55%, transparent);
+  outline-offset: 2px;
+}
+
+.reach-deck-timeline__speech-switch:has(input:disabled) {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.reach-deck-timeline__speech-preview {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.reach-deck-timeline__speech-preview-track {
+  align-items: center;
+  display: grid;
+  gap: 0.55rem;
+  grid-template-columns: max-content minmax(0, 1fr);
+  min-width: 0;
+}
+
+.reach-deck-timeline__speech-preview-track + .reach-deck-timeline__speech-preview-track {
+  border-top: 1px solid var(--reachany-color-border);
+  padding-top: 0.45rem;
+}
+
+.reach-deck-timeline__speech-preview-track > span {
+  color: var(--reachany-color-muted-text);
+  font-size: 0.72rem;
+  font-weight: 700;
+  min-width: 4.25rem;
+}
+
+.reach-deck-timeline__speech-preview-track audio {
+  display: block;
+  height: 2rem;
+  min-width: 0;
+  width: 100%;
+}
+
+@media (max-width: 34rem) {
+  .reach-deck-timeline__speech-preview-track {
+    align-items: stretch;
+    gap: 0.25rem;
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.reach-deck-timeline__speech-candidates {
+  display: grid;
+  gap: 0.3rem;
+  list-style: none;
+  margin: 0;
+  max-height: 8rem;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.reach-deck-timeline__speech-candidates li {
+  align-items: center;
+  background: var(--reachany-color-surface);
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-sm);
+  color: var(--reachany-color-text);
+  display: grid;
+  font-size: 0.68rem;
+  gap: 0.3rem;
+  grid-template-columns: minmax(5rem, auto) minmax(0, 1fr) auto auto;
+  min-width: 0;
+  padding: 0.3rem;
+}
+
+.reach-deck-timeline__speech-candidates button {
+  align-items: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--reachany-radius-sm);
+  color: var(--reachany-color-muted-text);
+  display: inline-flex;
+  height: 1.65rem;
+  justify-content: center;
+  padding: 0;
+  width: 1.65rem;
+}
+
+.reach-deck-timeline__speech-candidates button:hover:not(:disabled) {
+  background: var(--reachany-color-neutral-1);
+  color: var(--reachany-color-action);
+}
+
+.reach-deck-timeline__speech-candidates code,
+.reach-deck-timeline__speech-candidates span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reach-deck-speech-dialog {
+  background: var(--reachany-color-surface);
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-md);
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--reachany-color-player) 20%, transparent);
+  color: var(--reachany-color-text);
+  font-family: var(--reachany-font-sans);
+  font-size: 0.75rem;
+  max-height: min(26rem, calc(100dvh - 1rem));
+  overflow: auto;
+  position: fixed;
+  width: min(19rem, calc(100vw - 1rem));
+  z-index: 1200;
+}
+
+.reach-deck-speech-preview-popover {
+  width: min(20rem, calc(100vw - 1rem));
+}
+
+.reach-deck-speech-preview-inline {
+  border-top: 1px solid var(--reachany-color-border);
+  min-width: 0;
+  width: 100%;
+}
+
+.reach-deck-speech-preview-inline .reach-deck-timeline__speech-preview-track {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.reach-deck-speech-preview-inline audio {
+  height: revert;
+}
+
+.reach-deck-speech-preview-popover__body {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.reach-deck-speech-preview-popover__status,
+.reach-deck-speech-preview-popover__error {
+  font-size: 0.7rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.reach-deck-speech-preview-popover__status {
+  color: var(--reachany-color-muted-text);
+}
+
+.reach-deck-speech-preview-popover__error {
+  color: var(--reachany-color-danger, #b42318);
+}
+
+.reach-deck-speech-dialog--phoneme {
+  width: min(30rem, calc(100vw - 1rem));
+}
+
+.reach-deck-speech-dialog__header {
+  align-items: flex-start;
+  border-bottom: 1px solid var(--reachany-color-border);
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  padding: 0.45rem 0.5rem 0.4rem;
+}
+
+.reach-deck-speech-dialog__header h2 {
+  font-size: 0.8rem;
+  font-weight: 750;
+  letter-spacing: 0;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.reach-deck-speech-dialog__header p {
+  color: var(--reachany-color-muted-text);
+  display: -webkit-box;
+  font-size: 0.68rem;
+  line-height: 1.4;
+  margin: 0.25rem 0 0;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.reach-deck-speech-dialog button {
+  align-items: center;
+  background: var(--reachany-color-surface);
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-sm);
+  color: var(--reachany-color-text);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: 0.66rem;
+  gap: 0.18rem;
+  height: 1.75rem;
+  justify-content: center;
+  line-height: 1;
+  min-height: 1.75rem;
+  padding: 0 0.34rem;
+}
+
+.reach-deck-speech-dialog button:hover:not(:disabled) {
+  background: var(--reachany-color-neutral-1);
+}
+
+.reach-deck-speech-dialog button:focus-visible,
+.reach-deck-speech-dialog input:focus-visible,
+.reach-deck-speech-dialog .rx-select-trigger:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--reachany-color-primary) 55%, transparent);
+  outline-offset: 2px;
+}
+
+.reach-deck-speech-dialog button:disabled,
+.reach-deck-speech-dialog input:disabled,
+.reach-deck-speech-dialog .rx-select-trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.reach-deck-speech-dialog__close {
+  flex: 0 0 auto;
+  height: 1.75rem;
+  min-height: 1.75rem;
+  padding: 0 !important;
+  width: 1.75rem;
+}
+
+.reach-deck-speech-dialog form {
+  display: grid;
+  gap: 0.45rem;
+  padding: 0.5rem;
+}
+
+.reach-deck-speech-dialog__field {
+  border: 0;
+  color: var(--reachany-color-text);
+  display: grid;
+  font-size: 0.72rem;
+  font-weight: 700;
+  gap: 0.22rem;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+}
+
+.reach-deck-speech-dialog__field input {
+  background: var(--reachany-color-surface-subtle);
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-sm);
+  box-sizing: border-box;
+  color: var(--reachany-color-text);
+  font: inherit;
+  font-weight: 450;
+  height: 1.75rem;
+  min-width: 0;
+  padding: 0 0.34rem;
+  width: 100%;
+}
+
+.reach-deck-speech-dialog__select .rx-select-trigger {
+  background: var(--reachany-color-surface-subtle);
+  border-color: var(--reachany-color-border);
+  border-radius: var(--reachany-radius-sm);
+  box-sizing: border-box;
+  color: var(--reachany-color-text);
+  font-size: 0.68rem;
+  font-weight: 450;
+  height: 1.75rem;
+  min-height: 1.75rem;
+  padding: 0 0.32rem 0 0.34rem;
+}
+
+.reach-deck-speech-dialog__select-list.rx-select-list[data-portal] {
+  font-size: 0.68rem;
+  z-index: 1250;
+}
+
+.reach-deck-speech-dialog__select-list .rx-select-option {
+  border-radius: var(--reachany-radius-sm);
+  font-size: 0.68rem;
+  padding: 0.25rem 0.4rem;
+}
+
+.reach-deck-speech-dialog__field input[aria-invalid='true'] {
+  border-color: var(--reachany-color-danger);
+}
+
+.reach-deck-speech-dialog__number {
+  align-items: center;
+  display: grid;
+  font-weight: 500;
+  gap: 0.4rem;
+  grid-template-columns: minmax(0, 6rem) auto;
+}
+
+.reach-deck-speech-dialog__segments {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.reach-deck-speech-dialog__segments label {
+  min-width: 0;
+  position: relative;
+}
+
+.reach-deck-speech-dialog__segments input {
+  height: 1px;
+  opacity: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.reach-deck-speech-dialog__segments span {
+  align-items: center;
+  background: var(--reachany-color-surface-subtle);
+  border: 1px solid var(--reachany-color-border);
+  display: flex;
+  font-size: 0.72rem;
+  height: 1.75rem;
+  justify-content: center;
+}
+
+.reach-deck-speech-dialog__segments label:first-child span {
+  border-radius: var(--reachany-radius-sm) 0 0 var(--reachany-radius-sm);
+}
+
+.reach-deck-speech-dialog__segments label:not(:first-child) span {
+  border-left: 0;
+}
+
+.reach-deck-speech-dialog__segments label:last-child span {
+  border-radius: 0 var(--reachany-radius-sm) var(--reachany-radius-sm) 0;
+}
+
+.reach-deck-speech-dialog__segments input:checked + span {
+  background: var(--reachany-color-purple-soft);
+  box-shadow: inset 0 0 0 1px var(--reachany-color-purple);
+  color: var(--reachany-color-purple);
+}
+
+.reach-deck-speech-dialog__segments input:focus-visible + span {
+  outline: 2px solid color-mix(in srgb, var(--reachany-color-primary) 55%, transparent);
+  outline-offset: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.reach-deck-speech-dialog__phoneme-panel {
+  background: var(--reachany-color-surface-subtle);
+  border-bottom: 1px solid var(--reachany-color-border);
+  border-top: 1px solid var(--reachany-color-border);
+  display: grid;
+  gap: 0.4rem;
+  margin: 0 -0.5rem;
+  padding: 0.45rem 0.5rem;
+}
+
+.reach-deck-speech-dialog__phoneme-panel-header {
+  align-items: baseline;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.reach-deck-speech-dialog__phoneme-panel-header strong {
+  flex: 0 0 auto;
+  font-size: 0.76rem;
+}
+
+.reach-deck-speech-dialog__phoneme-panel-header span {
+  color: var(--reachany-color-muted-text);
+  font-size: 0.68rem;
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: right;
+}
+
+.reach-deck-speech-dialog__phoneme-groups {
+  display: grid;
+  gap: 0.35rem;
+  max-height: 9rem;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+.reach-deck-speech-dialog__phoneme-group {
+  align-items: start;
+  display: grid;
+  gap: 0.3rem;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+}
+
+.reach-deck-speech-dialog__phoneme-group > span {
+  color: var(--reachany-color-muted-text);
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.8rem;
+}
+
+.reach-deck-speech-dialog__phoneme-group > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.reach-deck-speech-dialog__phoneme-group button {
+  background: var(--reachany-color-surface);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.66rem;
+  font-weight: 650;
+  line-height: 1;
+  min-height: 1.5rem;
+  min-width: 1.8rem;
+  padding: 0.15rem 0.3rem;
+}
+
+.reach-deck-speech-dialog__phoneme-group button:hover:not(:disabled) {
+  border-color: var(--reachany-color-action);
+  color: var(--reachany-color-action);
+}
+
+.reach-deck-speech-dialog__phoneme-actions {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: flex-end;
+}
+
+.reach-deck-speech-dialog__phoneme-actions button {
+  height: 1.65rem;
+  min-height: 1.65rem;
+  padding: 0;
+  width: 1.65rem;
+}
+
+.reach-deck-speech-dialog__validation {
+  color: var(--reachany-color-danger);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  margin: -0.25rem 0 0;
+}
+
+.reach-deck-speech-dialog__actions {
+  align-items: center;
+  background: var(--reachany-color-surface);
+  border-top: 1px solid var(--reachany-color-border);
+  bottom: 0;
+  display: flex;
+  gap: 0.35rem;
+  margin: 0 -0.5rem -0.5rem;
+  padding: 0.4rem 0.5rem;
+  position: sticky;
+  z-index: 2;
+}
+
+.reach-deck-speech-dialog__action-spacer {
+  flex: 1 1 auto;
+}
+
+.reach-deck-speech-dialog__actions .is-primary {
+  background: var(--reachany-color-action);
+  border-color: var(--reachany-color-action);
+  color: var(--reachany-color-primary-contrast);
+}
+
+.reach-deck-speech-dialog__actions .is-primary:hover:not(:disabled) {
+  background: var(--reachany-color-action-hover);
+}
+
+.reach-deck-speech-dialog__actions .is-danger {
+  border-color: var(--reachany-color-danger-border);
+  color: var(--reachany-color-danger);
+}
+
+@media (max-width: 560px) {
+  .reach-deck-speech-dialog__phoneme-panel-header {
+    align-items: start;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .reach-deck-speech-dialog__phoneme-panel-header span {
+    text-align: left;
+  }
+
+  .reach-deck-speech-dialog__phoneme-group {
+    gap: 0.25rem;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .reach-deck-speech-dialog__phoneme-group > span {
+    line-height: 1.35;
+  }
+}
+
+.reach-deck-editor__rich-text-surface [data-reach-deck-speech-mark] {
+  background: color-mix(in srgb, var(--reachany-color-success) 12%, transparent);
+  border-bottom: 1px solid var(--reachany-color-success-text);
+}
+
+.reach-deck-editor__rich-text-surface:not(.reach-deck-editor__rich-text-surface--show-speech-tags)
+  [data-reach-deck-speech-break]::before {
+  background: color-mix(in srgb, var(--reachany-color-success) 16%, transparent);
+  border: 1px solid var(--reachany-color-success-text);
+  border-radius: 0.2rem;
+  color: var(--reachany-color-success-text);
+  content: 'Ⅱ';
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0.12rem;
+  padding: 0 0.16rem;
+  user-select: none;
+  vertical-align: 0.08rem;
+}
+
+.reach-deck-editor__rich-text-surface:not(.reach-deck-editor__rich-text-surface--show-speech-tags)
+  [data-reach-deck-speech-sound-event]::before {
+  content: '♪';
+}
+
+.reach-deck-editor__rich-text-surface--show-speech-tags [data-reach-deck-speech-mark]::before,
+.reach-deck-editor__rich-text-surface--show-speech-tags [data-reach-deck-speech-mark]::after,
+.reach-deck-editor__rich-text-surface--show-speech-tags [data-reach-deck-speech-break]::before {
+  background: var(--reachany-color-neutral-1);
+  border: 1px solid var(--reachany-color-border);
+  border-radius: 0.2rem;
+  color: var(--reachany-color-text);
+  display: inline-block;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.62rem;
+  line-height: 1.25;
+  margin: 0 0.12rem;
+  max-width: 16rem;
+  overflow: hidden;
+  padding: 0.05rem 0.2rem;
+  text-overflow: ellipsis;
+  vertical-align: 0.08rem;
+  white-space: nowrap;
+}
+
+.reach-deck-editor__rich-text-surface--show-speech-tags [data-reach-deck-speech-mark]::before {
+  content: attr(data-reach-deck-speech-open);
+}
+
+.reach-deck-editor__rich-text-surface--show-speech-tags [data-reach-deck-speech-mark]::after {
+  content: attr(data-reach-deck-speech-close);
+}
+
+.reach-deck-editor__rich-text-surface--show-speech-tags [data-reach-deck-speech-break]::before {
+  content: attr(data-reach-deck-speech-break);
+}
+
+.reach-deck-timeline__narration-error {
+  color: var(--reachany-color-danger);
+  font-size: 0.72rem;
+  margin: 0;
+}
+
+.reach-deck-editor .sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.reach-deck-editor__thumbnail {
+  aspect-ratio: 16 / 9;
+  background: #fff;
+  border: 1px solid #d8d1ce;
+  border-radius: 0.4rem;
+  box-shadow: 0 5px 12px rgb(50 36 45 / 8%);
+  display: block;
+  grid-column: 1 / -1;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.reach-deck-editor__thumbnail.is-quiz,
+.reach-deck-editor__thumbnail.is-interactive {
+  align-items: center;
+  background: linear-gradient(135deg, #5e3853, #8a5b75);
+  color: #fff;
+  display: flex;
+  font-size: 0.68rem;
+  font-weight: 900;
+  justify-content: center;
+}
+
+/* 缩略图元素使用 1600×900 坐标归一化后的百分比布局。
+   cqw 只用于按缩略图宽度缩放文字，不再缩放整块 1600px 舞台。 */
+.reach-deck-editor__thumbnail {
+  container-type: inline-size;
+}
+
+.reach-deck-editor__thumbnail-stage {
+  display: block;
+  inset: 0;
+  position: absolute;
+}
+
+.reach-deck-editor__thumbnail-element {
+  display: block;
+  overflow: hidden;
+  position: absolute;
+}
+
+.reach-deck-editor__thumbnail-element img {
+  height: 100%;
+  width: 100%;
+}
+
+.reach-deck-editor__thumbnail-element.is-video {
+  background: #cec5ca;
+  border-radius: 8px;
+  opacity: 0.75;
+}
+
+.reach-deck-editor__thumbnail-text {
+  color: #2f2730;
+  display: block;
+  font-family: inherit;
+  overflow: hidden;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.reach-deck-editor__thumbnail-text.is-title {
+  font-weight: 800;
+}
+
+.reach-deck-editor__thumbnail-text.is-caption {
+  color: #6f656f;
+}
+
+.reach-deck-editor__page-order {
+  align-self: start;
+  color: #9b9096;
+  font-size: 0.72rem;
+  font-weight: 900;
+  padding-top: 0.12rem;
+  text-align: center;
+}
+
+.reach-deck-editor__page-copy {
+  align-items: center;
+  display: flex;
+  min-width: 0;
+}
+
+.reach-deck-editor__page-copy small {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reach-deck-editor__assistant {
+  --reach-deck-editor-assistant-font-size: clamp(0.6rem, 1.8cqi, 0.74rem);
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  min-height: 0;
+}
+
+.reach-deck-editor__assistant > header {
+  align-items: center;
+  display: flex;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.reach-deck-editor__assistant > header > span {
+  background: linear-gradient(135deg, #f45f22, #ff9b58);
+  border-radius: 0.5rem;
+  color: #fff;
+  display: grid;
+  flex: 0 0 1.9rem;
+  height: 1.9rem;
+  place-items: center;
+  width: 1.9rem;
+}
+
+.reach-deck-editor__assistant-identity {
+  display: grid;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.reach-deck-editor__assistant > header strong {
+  font-size: 0.78rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reach-deck-editor__assistant > header small {
+  color: var(--reach-deck-editor-muted);
+  font-size: 0.64rem;
+  line-height: 1.3;
+}
+
+.reach-deck-editor__assistant-history-actions {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
+  gap: 0.25rem;
+  margin-left: auto;
+}
+
+.reach-deck-editor .reach-deck-editor__assistant-history-actions button {
+  background: #fff8f3;
+  border-color: #e7b89f;
+  box-sizing: border-box;
+  color: #6a3e2c;
+  flex: 0 0 1.7rem;
+  height: 1.7rem;
+  min-height: 1.7rem;
+  padding: 0;
+  width: 1.7rem;
+}
+
+.reach-deck-editor
+  .reach-deck-editor__assistant-history-actions
+  .reach-deck-editor__assistant-clear-conversation {
+  background: #fffafb;
+  border-color: #e5c2c8;
+  color: #9b3345;
+}
+
+.reach-deck-editor__assistant-conversation {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-height: calc(var(--reachany-space-10) * 3);
+  min-width: 0;
+  position: relative;
+}
+
+.reach-deck-editor__assistant-loading-overlay {
+  align-items: center;
+  background: var(--reachany-color-surface);
+  border-radius: var(--reachany-radius-card);
+  color: var(--reachany-color-muted-text);
+  display: flex;
+  flex-direction: column;
+  gap: var(--reachany-space-3);
+  inset: 0;
+  justify-content: center;
+  padding: var(--reachany-space-4);
+  position: absolute;
+  text-align: center;
+  z-index: var(--reachany-z-sticky);
+}
+
+.reach-deck-editor__assistant-messages {
+  align-content: start;
+  background: #faf8f7;
+  border: 1px solid #ebe4e0;
+  border-radius: 0.75rem;
+  display: grid;
+  flex: 1 1 0;
+  gap: 0.45rem;
+  min-height: 0;
+  overflow: auto;
+  padding: 0.5rem;
+}
+
+.reach-deck-editor__assistant-loading {
+  align-items: center;
+  display: inline-flex;
+  gap: var(--reachany-space-2);
+}
+
+.reach-deck-editor__assistant-module-recovery {
+  background: #fff8f3;
+  border: 1px solid #e7b89f;
+  border-radius: 0.65rem;
+  color: #6a3e2c;
+  display: grid;
+  font-size: var(--reach-deck-editor-assistant-font-size);
+  gap: 0.35rem;
+  padding: 0.55rem;
+}
+
+.reach-deck-editor__assistant-module-recovery p {
+  margin: 0;
+}
+
+.reach-deck-editor__assistant-context-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.reach-deck-editor .reach-deck-editor__assistant-context-chips button,
+.reach-deck-editor .reach-deck-editor__assistant-load-older {
+  font-size: var(--reach-deck-editor-assistant-font-size);
+  min-height: 1.7rem;
+  padding: 0.2rem 0.45rem;
+}
+
+.reach-deck-editor__assistant-context-chips button {
+  background: #fff8f3;
+  border-color: #e7b89f;
+  color: #6a3e2c;
+}
+
+.reach-deck-editor__assistant-context-chips .reach-deck-editor__assistant-current-page-chip {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.reach-deck-editor__assistant-current-page-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reach-deck-editor__assistant-current-page-chip svg {
+  flex: 0 0 auto;
+}
+
+.reach-deck-editor__assistant-context-chips
+  .reach-deck-editor__assistant-current-page-chip[data-included='false'] {
+  background: #f7f6f5;
+  border-color: #b9b3b6;
+  border-style: dashed;
+  color: #746d71;
+}
+
+.reach-deck-editor__assistant-message.is-boundary {
+  align-items: center;
+  color: var(--reach-deck-editor-muted);
+  display: flex;
+  justify-self: stretch;
+  max-width: none;
+  padding: 0.15rem 0;
+}
+
+.reach-deck-editor__assistant-boundary {
+  align-items: center;
+  display: flex;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.reach-deck-editor__assistant-boundary::before,
+.reach-deck-editor__assistant-boundary::after {
+  background: #d9cfca;
+  content: '';
+  flex: 1;
+  height: 1px;
+}
+
+.reach-deck-editor__assistant-context-error {
+  color: #b42318;
+  font-size: var(--reach-deck-editor-assistant-font-size);
+  margin: 0;
+}
+
+.reach-deck-editor__assistant-page-picker {
+  background: #fff;
+  border: 1px solid #d9cfca;
+  border-radius: 0.5rem;
+  display: grid;
+  max-height: 9rem;
+  overflow: auto;
+  padding: 0.25rem;
+}
+
+.reach-deck-editor .reach-deck-editor__assistant-page-picker button {
+  background: transparent;
+  border: 0;
+  color: var(--reach-deck-editor-ink);
+  justify-self: stretch;
+  min-height: 1.75rem;
+  padding: 0.25rem 0.4rem;
+  text-align: left;
+}
+
+.reach-deck-editor .reach-deck-editor__assistant-page-picker button[aria-selected='true'] {
+  background: #f8e8df;
+}
+
+.reach-deck-editor__assistant-page-indicator {
+  background: #f45f22;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  height: 0.65rem;
+  left: 0.35rem;
+  position: absolute;
+  top: 0.35rem;
+  width: 0.65rem;
+}
+
+/* Decksmith is still running on this page. */
+.reach-deck-editor__assistant-page-indicator.is-running {
+  animation: reach-deck-editor-lane-pulse 1.4s ease-in-out infinite;
+  background: #2563eb;
+}
+
+/* A returned Decksmith proposal on this page awaits the teacher's decision. */
+.reach-deck-editor__assistant-page-indicator.is-pending {
+  background: #d97706;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reach-deck-editor__assistant-page-indicator.is-running {
+    animation: none;
+  }
+}
+
+.reach-deck-editor__assistant-conflict {
+  background: #fffbeb;
+  border: 1px solid #f2d49b;
+  border-radius: 0.5rem;
+  color: #5b4413;
+  display: grid;
+  font-size: var(--reach-deck-editor-assistant-font-size);
+  gap: 0.35rem;
+  padding: 0.6rem 0.7rem;
+}
+
+.reach-deck-editor__assistant-conflict p {
+  margin: 0;
+}
+
+/* 缩略图右上角的四通道状态：版面 / 讲稿 / 语音 / 动画。 */
+.reach-deck-editor__page-lanes {
+  align-items: center;
+  background: rgb(255 255 255 / 88%);
+  border: 1px solid rgb(216 209 206 / 80%);
+  border-radius: 999px;
+  box-shadow: 0 1px 3px rgb(50 36 45 / 12%);
+  display: inline-flex;
+  gap: 0.12rem;
+  padding: 0.12rem;
+  position: absolute;
+  right: 0.45rem;
+  top: 0.45rem;
+  z-index: 2;
+}
+
+.reach-deck-editor__page-lane {
+  align-items: center;
+  border-radius: 999px;
+  color: #fff;
+  display: inline-flex;
+  height: 0.95rem;
+  justify-content: center;
+  width: 0.95rem;
+}
+
+.reach-deck-editor__page-lane[data-state='none'] {
+  background: #d7d0cd;
+}
+
+.reach-deck-editor__page-lane[data-state='ready'] {
+  background: #2f9e5b;
+}
+
+.reach-deck-editor__page-lane[data-state='generating'] {
+  animation: reach-deck-editor-lane-pulse 1.4s ease-in-out infinite;
+  background: #2f74d0;
+}
+
+.reach-deck-editor__page-lane[data-state='attention'] {
+  background: #e0a416;
+}
+
+@keyframes reach-deck-editor-lane-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(47 116 208 / 55%);
+  }
+
+  50% {
+    box-shadow: 0 0 0 0.22rem rgb(47 116 208 / 0%);
+  }
+}
+
+.reach-deck-editor .reach-deck-editor__assistant-cancel {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  height: 1.65rem;
+  min-height: 1.65rem;
+  padding: 0;
+  width: 1.65rem;
+}
+
+.reach-deck-editor__assistant-message {
+  border-radius: 0.75rem;
+  font-size: var(--reach-deck-editor-assistant-font-size);
+  line-height: 1.5;
+  margin: 0;
+  max-width: 92%;
+  padding: 0.45rem 0.55rem;
+}
+
+.reach-deck-editor__assistant-messages .is-assistant {
+  background: #fff;
+  border: 1px solid #e8dfdb;
+  justify-self: start;
+}
+
+.reach-deck-editor__assistant-messages .is-user {
+  background: #5e3853;
+  color: #fff;
+  justify-self: end;
+}
+
+.reach-deck-editor__assistant-messages .is-system {
+  background: #fff8e8;
+  border: 1px solid #e7c97e;
+  color: #5e4715;
+  display: grid;
+  gap: 0.35rem;
+  justify-self: stretch;
+  max-width: none;
+}
+
+.reach-deck-editor__assistant-guidance {
+  color: #6d5420;
+}
+
+.reach-deck-editor__assistant-blocked {
+  color: #6d5420;
+  font-size: var(--reach-deck-editor-assistant-font-size);
+  margin: 0 0 0.35rem;
+}
+
+.reach-deck-editor__assistant-suggested-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--reachany-space-1, 0.25rem);
+  min-width: 0;
+}
+
+/* Decksmith 建议按钮：紧凑胶囊，不继承编辑器通用的白底大按钮。 */
+.reach-deck-editor .reach-deck-editor__assistant-suggested-action {
+  background: var(--reachany-color-surface-warm, var(--reach-deck-editor-soft));
+  border: 1px solid var(--reachany-color-border-warm, var(--reach-deck-editor-border));
+  border-radius: var(--reachany-radius-sm, 0.25rem);
+  color: var(--reach-deck-editor-ink);
+  flex: 0 1 auto;
+  font-size: min(
+    var(--reachany-text-caption, 0.75rem),
+    var(--reach-deck-editor-assistant-font-size)
+  );
+  gap: var(--reachany-space-1, 0.25rem);
+  height: 1.5rem;
+  justify-content: flex-start;
+  line-height: 1;
+  max-width: 100%;
+  min-height: 1.5rem;
+  min-width: 0;
+  padding: 0 var(--reachany-space-2, 0.5rem);
+  transition:
+    background-color var(--reachany-motion-duration-fast, 160ms)
+      var(--reachany-motion-easing-standard, ease),
+    border-color var(--reachany-motion-duration-fast, 160ms)
+      var(--reachany-motion-easing-standard, ease);
+  white-space: nowrap;
+}
+
+.reach-deck-editor .reach-deck-editor__assistant-suggested-action > svg {
+  color: var(--reach-deck-editor-accent);
+  flex: none;
+}
+
+.reach-deck-editor .reach-deck-editor__assistant-suggested-action > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.reach-deck-editor .reach-deck-editor__assistant-suggested-action:hover:not(:disabled) {
+  background: var(--reachany-color-orange-soft, var(--reach-deck-editor-soft));
+  border-color: color-mix(in srgb, var(--reach-deck-editor-accent) 45%, transparent);
+}
+
+.reach-deck-editor .reach-deck-editor__assistant-suggested-action:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--reach-deck-editor-accent) 45%, transparent);
+  outline-offset: 1px;
+}
+
+.reach-deck-editor .reach-deck-editor__assistant-suggested-action:disabled > svg {
+  color: var(--reach-deck-editor-muted);
+}
+
+.reach-deck-editor .reach-deck-editor__assistant-guidance-action {
+  font-size: var(--reach-deck-editor-assistant-font-size);
+  justify-self: start;
+  min-height: 1.7rem;
+  padding: 0.2rem 0.45rem;
+}
+
+.reach-deck-editor__assistant-messages .is-thinking {
+  color: var(--reach-deck-editor-muted);
+}
+
+.reach-deck-editor__assistant-thinking-row {
+  align-items: center;
+  display: flex;
+  gap: 0.3rem;
+  justify-self: start;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.reach-deck-editor__assistant-thinking-row .reach-deck-editor__assistant-message {
+  flex: 0 1 auto;
+  max-width: calc(100% - 1.95rem);
+  min-width: 0;
+}
+
+.reach-deck-editor__assistant-change-summary,
+.reach-deck-editor__assistant-explanation {
+  display: block;
+}
+
+.reach-deck-editor__assistant-budget-notice {
+  color: #6d5420;
+  display: block;
+  margin-top: 0.35rem;
+}
+
+.reach-deck-editor__assistant-clarification {
+  border: 1px solid var(--reachany-color-border-warm, var(--reach-deck-editor-border));
+  border-radius: var(--reachany-radius-sm, 0.25rem);
+  display: grid;
+  gap: var(--reachany-space-2, 0.5rem);
+  margin-top: var(--reachany-space-2, 0.5rem);
+  padding: var(--reachany-space-2, 0.5rem);
+}
+
+.reach-deck-editor__assistant-clarification[data-clarification-open='false'] {
+  color: var(--reach-deck-editor-muted);
+}
+
+.reach-deck-editor__assistant-clarification-question {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.reach-deck-editor__assistant-clarification-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--reachany-space-1, 0.25rem);
+}
+
+.reach-deck-editor__assistant-clarification-candidates {
+  display: grid;
+  gap: var(--reachany-space-1, 0.25rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.reach-deck-editor .reach-deck-editor__assistant-clarification button {
+  background: var(--reachany-color-surface-warm, var(--reach-deck-editor-soft));
+  border: 1px solid var(--reachany-color-border-warm, var(--reach-deck-editor-border));
+  border-radius: var(--reachany-radius-sm, 0.25rem);
+  color: var(--reach-deck-editor-ink);
+  max-width: 100%;
+  padding: var(--reachany-space-1, 0.25rem) var(--reachany-space-2, 0.5rem);
+  text-align: start;
+}
+
+.reach-deck-editor .reach-deck-editor__assistant-clarification button:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--reach-deck-editor-accent) 45%, transparent);
+}
+
+.reach-deck-editor .reach-deck-editor__assistant-clarification button:focus-visible,
+.reach-deck-editor .reach-deck-editor__assistant-reply-link button:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--reach-deck-editor-accent) 45%, transparent);
+  outline-offset: 1px;
+}
+
+.reach-deck-editor__assistant-reply-link {
+  align-items: center;
+  color: var(--reach-deck-editor-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--reachany-space-2, 0.5rem);
+  margin: 0;
+}
+
+/* WP7 第二阶段：提问卡片里的候选编号、不可用状态与点选入口。 */
+.reach-deck-editor__assistant-clarification-candidates li {
+  align-items: center;
+  display: flex;
+  gap: var(--reachany-space-1);
+  min-width: 0;
+}
+
+.reach-deck-editor__assistant-clarification-candidates li[data-unavailable] {
+  color: var(--reachany-color-text-tertiary, var(--reach-deck-editor-muted));
+}
+
+.reach-deck-editor__assistant-clarification-index,
+.reach-deck-editor .reach-deck-editor__clarification-badge {
+  align-items: center;
+  background: var(--reachany-color-primary, var(--reach-deck-editor-accent));
+  border: 0;
+  border-radius: var(--reachany-radius-pill);
+  color: var(--reachany-color-primary-contrast, var(--reach-deck-editor-soft));
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: var(--reachany-text-caption);
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1;
+  min-height: var(--reachany-space-5);
+  min-width: var(--reachany-space-5);
+  padding: 0 var(--reachany-space-1);
+}
+
+.reach-deck-editor__assistant-clarification-candidates
+  li[data-unavailable]
+  .reach-deck-editor__assistant-clarification-index {
+  background: var(--reachany-color-surface-muted, var(--reach-deck-editor-soft));
+  color: var(--reachany-color-text-tertiary, var(--reach-deck-editor-muted));
+}
+
+.reach-deck-editor__assistant-clarification-pick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--reachany-space-1);
+}
+
+/* 画布上方的点选提示条。 */
+.reach-deck-editor__clarification-pick {
+  align-items: center;
+  background: var(--reachany-color-primary-soft, var(--reach-deck-editor-soft));
+  border: 1px solid var(--reachany-color-border-warm, var(--reach-deck-editor-border));
+  border-radius: var(--reachany-radius-md);
+  color: var(--reachany-color-primary-text-on-soft, var(--reach-deck-editor-ink));
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: var(--reachany-space-2);
+  margin-bottom: var(--reachany-space-2);
+  padding: var(--reachany-space-2) var(--reachany-space-3);
+}
+
+.reach-deck-editor__clarification-pick > svg {
+  flex: 0 0 auto;
+}
+
+.reach-deck-editor__clarification-pick-status {
+  display: grid;
+  flex: 1 1 12rem;
+  font-size: var(--reachany-text-body-sm);
+  gap: var(--reachany-space-1);
+  margin: 0;
+  min-width: 0;
+}
+
+.reach-deck-editor__clarification-pick-status small {
+  color: var(--reachany-color-text-secondary, var(--reach-deck-editor-muted));
+}
+
+.reach-deck-editor__clarification-pick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--reachany-space-1);
+}
+
+/*
+ * 舞台叠加层（舞台坐标系，随画布缩放）：描边与徽标按 --native-v2-stage-scale 反向缩放，
+ * 保持屏幕尺寸。外框不拦截指针，点击照常落到元素上；只有编号徽标可点。
+ */
+.reach-deck-editor__clarification-highlight {
+  border-radius: var(--reachany-radius-xs);
+  box-sizing: border-box;
+  outline: calc(2px / var(--native-v2-stage-scale, 1)) solid
+    var(--reachany-color-primary, var(--reach-deck-editor-accent));
+  outline-offset: calc(2px / var(--native-v2-stage-scale, 1));
+  pointer-events: none;
+  position: absolute;
+  transform-origin: center;
+}
+
+.reach-deck-editor__clarification-highlight[data-pending] {
+  background: color-mix(
+    in srgb,
+    var(--reachany-color-primary-soft, var(--reach-deck-editor-soft)) 45%,
+    transparent
+  );
+  outline-width: calc(4px / var(--native-v2-stage-scale, 1));
+}
+
+.reach-deck-editor__clarification-highlight[data-state='unavailable'] {
+  outline-color: var(--reachany-color-text-tertiary, var(--reach-deck-editor-muted));
+  outline-style: dashed;
+}
+
+.reach-deck-editor .reach-deck-editor__clarification-badge {
+  box-shadow: var(--reachany-shadow-raised);
+  cursor: pointer;
+  left: 0;
+  pointer-events: auto;
+  position: absolute;
+  top: 0;
+  transform: scale(calc(1 / var(--native-v2-stage-scale, 1)));
+  transform-origin: left top;
+}
+
+.reach-deck-editor
+  .reach-deck-editor__clarification-highlight[data-pending]
+  .reach-deck-editor__clarification-badge {
+  background: var(--reachany-color-primary-active, var(--reach-deck-editor-accent));
+}
+
+.reach-deck-editor
+  .reach-deck-editor__clarification-highlight[data-state='unavailable']
+  .reach-deck-editor__clarification-badge {
+  background: var(--reachany-color-surface-muted, var(--reach-deck-editor-soft));
+  color: var(--reachany-color-text-tertiary, var(--reach-deck-editor-muted));
+}
+
+.reach-deck-editor .reach-deck-editor__clarification-badge:focus-visible {
+  outline: 2px solid var(--reachany-color-ink, var(--reach-deck-editor-ink));
+  outline-offset: 1px;
+}
+
+/* 上下文 chip：类型图标或图片缩略图 + 有界标签。 */
+.reach-deck-editor
+  .reach-deck-editor__assistant-context-chips
+  .reach-deck-editor__assistant-element-chip {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.reach-deck-editor__assistant-element-chip > svg {
+  flex: 0 0 auto;
+}
+
+.reach-deck-editor__assistant-element-chip-thumbnail {
+  border-radius: var(--reachany-radius-xs);
+  flex: 0 0 auto;
+  height: var(--reachany-space-4);
+  object-fit: cover;
+  width: var(--reachany-space-4);
+}
+
+.reach-deck-editor__assistant-element-chip-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reach-deck-editor__assistant-change-summary {
+  border-bottom: 1px solid #eee5e1;
+  color: #4d3347;
+  margin-bottom: 0.45rem;
+  padding-bottom: 0.45rem;
+}
+
+.reach-deck-editor__assistant-change-summary strong {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.15rem;
+  text-transform: uppercase;
+}
+
+.reach-deck-editor__assistant-change-summary[data-change-summary-status='unavailable'] {
+  color: var(--reach-deck-editor-muted);
+}
+
+.reach-deck-editor__assistant-suggestions {
+  display: grid;
+  gap: 0.25rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.reach-deck-editor .reach-deck-editor__assistant-suggestions button {
+  border-radius: 999px;
+  box-sizing: border-box;
+  color: #6a465f;
+  font-family: var(
+    --reach-deck-editor-platform-font,
+    var(--reachany-font-sans, ui-sans-serif, system-ui, sans-serif)
+  );
+  font-size: var(--reach-deck-editor-assistant-font-size);
+  line-height: 1.2;
+  min-height: 1.65rem;
+  overflow: hidden;
+  padding: 0.2rem 0.35rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reach-deck-editor__sr-only {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.reach-deck-editor__assistant-preview-hold {
+  border-style: dashed !important;
+  color: #5e3853;
+}
+
+.reach-deck-editor__assistant-preview-hold:hover:not(:disabled) {
+  background: #fff5ef;
+  border-color: #d59a81 !important;
+}
+
+.reach-deck-editor__assistant-preview-hold[data-preview-active='true'] {
+  background: #f8e8df;
+  border-color: #f45f22 !important;
+  box-shadow: inset 0 0 0 2px rgb(244 95 34 / 12%);
+}
+
+.reach-deck-editor__assistant-confirm-actions {
+  border-top: 1px solid #eee5e1;
+  display: grid;
+  gap: 0.25rem;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  margin-top: 0.45rem;
+  padding-top: 0.45rem;
+  width: 100%;
+}
+
+.reach-deck-editor__assistant-confirm-actions button {
+  box-sizing: border-box;
+  font-size: var(--reach-deck-editor-assistant-font-size);
+  min-height: 1.75rem;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0.2rem 0.3rem;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.reach-deck-editor__assistant-confirm-actions button > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reach-deck-editor__assistant-confirm-actions .reach-deck-editor__assistant-apply {
+  background: #5e3853;
+  border-color: #5e3853;
+  color: #fff;
+}
+
+.reach-deck-editor__assistant-confirm-actions button:hover:not(:disabled) {
+  filter: brightness(1.04);
+}
+
+.reach-deck-editor__assistant-confirm-actions button:active:not(:disabled),
+.reach-deck-editor__assistant-preview-hold:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.reach-deck-editor__assistant-composer {
+  background: #fff;
+  border: 1px solid #d9cfca;
+  border-radius: 0.65rem;
+  box-shadow: 0 10px 30px rgb(51 37 47 / 8%);
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.45rem;
+}
+
+.reach-deck-editor__assistant-composer label {
+  color: var(--reach-deck-editor-muted);
+  font-size: 0.64rem;
+  font-weight: 800;
+}
+
+.reach-deck-editor .reach-deck-editor__assistant-composer textarea {
+  border: 0;
+  font-size: 0.72rem;
+  min-height: 3.4rem;
+  outline: 0;
+  padding: 0;
+  resize: none;
+}
+
+.reach-deck-editor .reach-deck-editor__assistant-composer button {
+  background: #5e3853;
+  border-color: #5e3853;
+  color: #fff;
+  font-size: 0.68rem;
+  justify-self: end;
+  min-height: 1.75rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.reach-deck-editor .is-danger {
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+.reach-deck-editor__check {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.reach-deck-editor__check input {
+  min-height: auto;
+  width: auto;
+}
+
+.reach-deck-editor [role='alert'] {
+  color: #b91c1c;
+  margin: 0;
+}
+
+.reach-deck-generation {
+  --reach-deck-generation-border: #dbe4ee;
+  --reach-deck-generation-muted: #647178;
+  background: #fff;
+  border: 1px solid var(--reach-deck-generation-border);
+  border-radius: 0.8rem;
+  display: grid;
+  gap: 0.8rem;
+  padding: 1rem;
+}
+
+.reach-deck-generation button,
+.reach-deck-generation input,
+.reach-deck-generation textarea {
+  font: inherit;
+}
+
+.reach-deck-generation button {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--reach-deck-generation-border);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  min-height: 2.35rem;
+  padding: 0.45rem 0.75rem;
+}
+
+.reach-deck-generation button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.reach-deck-generation button:focus-visible,
+.reach-deck-generation input:focus-visible,
+.reach-deck-generation textarea:focus-visible {
+  outline: 3px solid color-mix(in srgb, #2563eb 35%, transparent);
+  outline-offset: 2px;
+}
+
+.reach-deck-generation h2,
+.reach-deck-generation h3,
+.reach-deck-generation h4,
+.reach-deck-generation p {
+  margin: 0;
+}
+
+.reach-deck-generation__header,
+.reach-deck-generation__summary,
+.reach-deck-generation__page-heading,
+.reach-deck-generation__job-actions {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+
+.reach-deck-generation__header > div,
+.reach-deck-generation__summary > div,
+.reach-deck-generation__page-heading > div {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.reach-deck-generation__header p,
+.reach-deck-generation__summary span,
+.reach-deck-generation__page-heading span {
+  color: var(--reach-deck-generation-muted);
+  font-size: 0.82rem;
+}
+
+.reach-deck-generation__notice,
+.reach-deck-generation__error {
+  border: 1px solid #bfdbfe;
+  border-radius: 0.55rem;
+  padding: 0.65rem 0.8rem;
+}
+
+.reach-deck-generation__notice {
+  background: #eef6ff;
+}
+
+.reach-deck-generation__error {
+  background: #fff1f2;
+  border-color: #fecdd3;
+  color: #9f1239;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+
+.reach-deck-generation__artifact-preview {
+  border: 1px solid var(--reach-deck-generation-border);
+  border-radius: 0.65rem;
+  display: grid;
+  gap: 0.65rem;
+  overflow: hidden;
+  padding: 0.75rem;
+}
+
+.reach-deck-generation__artifact-preview > header {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+
+.reach-deck-generation__artifact-preview > header span {
+  color: var(--reach-deck-generation-muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+}
+
+.reach-deck-generation__artifact-player {
+  min-width: 0;
+}
+
+.reach-deck-generation__artifact-accessible {
+  border-top: 1px solid var(--reach-deck-generation-border);
+  padding-top: 0.55rem;
+}
+
+.reach-deck-generation__artifact-accessible summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.reach-deck-generation__artifact-accessible pre {
+  background: #f8fafc;
+  border: 1px solid var(--reach-deck-generation-border);
+  border-radius: 0.45rem;
+  box-sizing: border-box;
+  margin: 0.55rem 0 0;
+  max-height: 18rem;
+  overflow: auto;
+  padding: 0.65rem;
+  white-space: pre-wrap;
+}
+
+.reach-deck-generation__stage,
+.reach-deck-generation__review {
+  border-top: 1px solid var(--reach-deck-generation-border);
+  display: grid;
+  gap: 0.65rem;
+  padding-top: 0.8rem;
+}
+
+.reach-deck-generation__stage > label,
+.reach-deck-generation__pages label {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.reach-deck-generation__stage label > span,
+.reach-deck-generation__pages label > span {
+  color: var(--reach-deck-generation-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.reach-deck-generation input,
+.reach-deck-generation textarea {
+  border: 1px solid #b9c8d8;
+  border-radius: 0.45rem;
+  box-sizing: border-box;
+  padding: 0.55rem 0.65rem;
+  width: 100%;
+}
+
+.reach-deck-generation textarea {
+  min-height: 5.5rem;
+  resize: vertical;
+}
+
+.reach-deck-generation__source {
+  background: #f8fafc;
+  border-radius: 0.5rem;
+  white-space: pre-wrap;
+  padding: 0.75rem;
+}
+
+.reach-deck-generation__review {
+  background: #f8fafc;
+  border: 0;
+  border-radius: 0.55rem;
+  padding: 0.75rem;
+}
+
+.reach-deck-generation__review ol,
+.reach-deck-generation__review ul {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+  padding-left: 1.35rem;
+}
+
+.reach-deck-generation__target {
+  align-items: start;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+}
+
+.reach-deck-generation__target input {
+  margin-top: 0.2rem;
+  width: auto;
+}
+
+.reach-deck-generation__pages {
+  display: grid;
+  gap: 0.65rem;
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+}
+
+.reach-deck-generation__pages > li {
+  border: 1px solid var(--reach-deck-generation-border);
+  border-radius: 0.6rem;
+  display: grid;
+  gap: 0.55rem;
+  padding: 0.75rem;
+}
+
+.reach-deck-generation__job {
+  background: #f8fafc;
+  border-radius: 0.5rem;
+  display: grid;
+  gap: 0.55rem;
+  padding: 0.65rem;
+}
+
+.reach-deck-generation__job > div:first-child {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.reach-deck-generation__job progress {
+  max-width: 12rem;
+  width: 100%;
+}
+
+.reach-deck-generation .is-danger {
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+@media (orientation: portrait) and (max-width: 1180px) {
+  .reach-deck-editor__workspace {
+    grid-template-areas:
+      'rail-header canvas'
+      'pages canvas'
+      'decksmith decksmith';
+    grid-template-columns: var(--reach-deck-editor-page-rail-width) minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr) var(--reach-deck-editor-right-panel-row-height);
+  }
+
+  .reach-deck-editor__properties {
+    border-left: 0;
+    border-top: 1px solid var(--reach-deck-editor-border);
+    height: 100%;
+    max-height: none;
+    overflow: hidden;
+    position: static;
+  }
+
+  .reach-deck-editor__assistant {
+    height: auto;
+    min-height: auto;
+  }
+
+  .reach-deck-editor__assistant-messages {
+    flex: 0 0 auto;
+    overflow: visible;
+  }
+
+  .reach-deck-editor__right-panel-toggle svg {
+    transform: rotate(90deg);
+  }
+
+  .reach-deck-editor__properties[data-collapsed] .reach-deck-editor__right-panel-toggle svg {
+    transform: rotate(-90deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reach-deck-timeline__collapsible {
+    transition: none;
+  }
+
+  .reach-deck-editor__right-tabs button {
+    transition: none;
+  }
+
+  .reach-deck-editor__workspace,
+  .reach-deck-editor__page-rail-header-content,
+  .reach-deck-editor__sidebar-toggle svg,
+  .reach-deck-editor__pages,
+  .reach-deck-editor__right-panel-header-content,
+  .reach-deck-editor__right-panel {
+    animation: none;
+    transition: none;
+  }
+
+  .reach-deck-editor__player-layer,
+  .reach-deck-editor__player-preview-layer {
+    animation: none;
+    transition: none;
+  }
+
+  .reach-deck-timeline__generation-spinner,
+  .reach-deck-timeline__speech-smart-spinner,
+  .reach-deck-editor__generating-spinner,
+  .reach-deck-editor__page-lane[data-state='generating'] {
+    animation: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .reach-deck-generation__header,
+  .reach-deck-generation__summary,
+  .reach-deck-generation__page-heading,
+  .reach-deck-generation__job-actions,
+  .reach-deck-generation__error {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .reach-deck-editor__actions {
+    flex-wrap: wrap;
+  }
+}
+
+@media (orientation: portrait) and (max-width: 760px) {
+  .reach-deck-editor__workspace {
+    grid-template-areas:
+      'rail-header'
+      'pages'
+      'canvas'
+      'decksmith';
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows:
+      auto var(--reach-deck-editor-page-list-row-height) minmax(20rem, 1fr)
+      var(--reach-deck-editor-right-panel-row-height);
+    overflow: auto;
+  }
+
+  /* Keep embedded interactive toolbars and canvases usable after the editor stacks its rails. */
+  .reach-deck-editor__workspace:has(.reach-deck-player[data-scene-type='interactive']) {
+    grid-template-rows:
+      auto var(--reach-deck-editor-page-list-row-height) minmax(34rem, 1fr)
+      var(--reach-deck-editor-right-panel-row-height);
+  }
+
+  .reach-deck-editor__page-rail-header {
+    border-right: 0;
+  }
+
+  /* 页面栏叠在画布上方时，收起按钮留在表头右侧，沿纵向开合。 */
+  .reach-deck-editor__workspace[data-page-rail-collapsed] .reach-deck-editor__page-rail-header {
+    grid-row: auto;
+    grid-template-columns: minmax(0, 1fr) auto;
+    justify-content: stretch;
+  }
+
+  .reach-deck-editor__page-rail-toggle svg {
+    transform: rotate(90deg);
+  }
+
+  .reach-deck-editor__workspace[data-page-rail-collapsed] .reach-deck-editor__page-rail-toggle svg {
+    transform: rotate(-90deg);
+  }
+}
+
+.reach-deck-regeneration__image-option {
+  padding-inline-start: var(--reachany-space-6);
+}
+
+.reach-deck-editor__media-slots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.reach-deck-editor__media-slot-retry {
+  position: absolute;
+  transform: translate(-50%, -50%) scale(calc(1 / var(--native-v2-stage-scale)));
+  pointer-events: auto;
+  display: grid;
+  place-items: center;
+  padding: var(--reachany-space-3);
+  border-radius: var(--reachany-radius-pill);
+  border: none;
+  color: var(--reachany-color-text-secondary);
+  background: var(--reachany-color-surface);
+  cursor: pointer;
+}
+
+.reach-deck-editor__media-slot-retry:disabled {
+  cursor: wait;
+}
+
+.reach-deck-editor__media-slot-retry [data-spinning] {
+  animation: reach-deck-media-slot-spin var(--reachany-motion-duration-slow) linear infinite;
+}
+
+@keyframes reach-deck-media-slot-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reach-deck-editor__media-slot-retry [data-spinning] {
+    animation: none;
+  }
+}

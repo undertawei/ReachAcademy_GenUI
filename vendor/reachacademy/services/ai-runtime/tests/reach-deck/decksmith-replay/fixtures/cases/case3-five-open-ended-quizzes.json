@@ -1,0 +1,215 @@
+{
+  "schemaVersion": "decksmith-replay-case/v1",
+  "id": "case3-five-open-ended-quizzes",
+  "teacherCase": 3,
+  "summary": "\"出 5 道无标答的课中互动题\"：不注入 GenUI 合同，读一次测验合同，同一回合插入 5 个 has_answer=false 的简答测验页。",
+  "provenance": {
+    "kind": "synthetic-reconstruction",
+    "observedOn": "2026-10-08",
+    "notes": "重建自 GenUI 改无标答互动题反馈（原 11 轮约 25.7 万 token 超限）；页面内容为合成。"
+  },
+  "document": "energy-lesson.json",
+  "request": {
+    "prompt": "根据这一页出 5 道无标答的课中互动题，放在这一页后面",
+    "pageId": "55555555-5555-4555-8555-555555555555:page-2",
+    "promptContractVersion": "decksmith-prompt/v2"
+  },
+  "capturedWith": {
+    "toolParameterSha256": {
+      "insert_quiz_page": "cb69f98ac4051cb9b07d221ffbbee0cc7e1a74e9c227b33ca16ad50d189f56e7",
+      "read_page": "addc5cc0fbe51d9e1d3f7c87c1d9f1b544aee6ae53dad5c0e1efabb7ee785297",
+      "read_quiz_authoring_contract": "8243f0af367f188a376f2c17b5eabe872a2f7a979813e0d4e2be6d594c2aa259"
+    }
+  },
+  "transcript": [
+    {
+      "toolCalls": [
+        {
+          "id": "read",
+          "name": "read_page",
+          "arguments": {
+            "pageId": "55555555-5555-4555-8555-555555555555:page-2"
+          }
+        },
+        {
+          "id": "contract",
+          "name": "read_quiz_authoring_contract",
+          "arguments": {}
+        }
+      ],
+      "usage": {
+        "input": 9100,
+        "output": 60
+      }
+    },
+    {
+      "toolCalls": [
+        {
+          "id": "quiz-1",
+          "name": "insert_quiz_page",
+          "arguments": {
+            "sceneJson": {
+              "$json": {
+                "title": "课中互动题",
+                "content": {
+                  "questions": [
+                    {
+                      "question_type": "short_answer",
+                      "question": "生活中哪些用电器把电能主要转化为内能？说说你的判断依据。",
+                      "analysis": "可以从用电器工作时是否明显发热入手。",
+                      "has_answer": false,
+                      "answer": ""
+                    }
+                  ]
+                }
+              }
+            },
+            "position": 3
+          }
+        },
+        {
+          "id": "quiz-2",
+          "name": "insert_quiz_page",
+          "arguments": {
+            "sceneJson": {
+              "$json": {
+                "title": "课中互动题",
+                "content": {
+                  "questions": [
+                    {
+                      "question_type": "short_answer",
+                      "question": "风扇工作时，电能转化成了哪些形式的能？",
+                      "analysis": "可以从叶片转动和机身发热两方面思考。",
+                      "has_answer": false,
+                      "answer": ""
+                    }
+                  ]
+                }
+              }
+            },
+            "position": 4
+          }
+        },
+        {
+          "id": "quiz-3",
+          "name": "insert_quiz_page",
+          "arguments": {
+            "sceneJson": {
+              "$json": {
+                "title": "课中互动题",
+                "content": {
+                  "questions": [
+                    {
+                      "question_type": "short_answer",
+                      "question": "给手机充电时，能量是怎样转化的？",
+                      "analysis": "可以区分充电和放电两个过程。",
+                      "has_answer": false,
+                      "answer": ""
+                    }
+                  ]
+                }
+              }
+            },
+            "position": 5
+          }
+        },
+        {
+          "id": "quiz-4",
+          "name": "insert_quiz_page",
+          "arguments": {
+            "sceneJson": {
+              "$json": {
+                "title": "课中互动题",
+                "content": {
+                  "questions": [
+                    {
+                      "question_type": "short_answer",
+                      "question": "如果电压加倍、时间不变，电功会怎样变化？请说明理由。",
+                      "analysis": "可以结合 W=UIt 分析各量之间的关系。",
+                      "has_answer": false,
+                      "answer": ""
+                    }
+                  ]
+                }
+              }
+            },
+            "position": 6
+          }
+        },
+        {
+          "id": "quiz-5",
+          "name": "insert_quiz_page",
+          "arguments": {
+            "sceneJson": {
+              "$json": {
+                "title": "课中互动题",
+                "content": {
+                  "questions": [
+                    {
+                      "question_type": "short_answer",
+                      "question": "你认为节约用电可以从哪些方面做起？",
+                      "analysis": "可以从用电器选择、使用时长和待机耗电思考。",
+                      "has_answer": false,
+                      "answer": ""
+                    }
+                  ]
+                }
+              }
+            },
+            "position": 7
+          }
+        }
+      ],
+      "usage": {
+        "input": 25000,
+        "output": 2400
+      }
+    },
+    {
+      "text": "已在第 2 页后插入 5 道无标准答案的课中互动题（简答），每道题的解析里给出了可以思考的方向。",
+      "usage": {
+        "input": 27600,
+        "output": 120
+      }
+    }
+  ],
+  "expect": {
+    "changed": true,
+    "outcome": {
+      "mutationStatus": "proposal",
+      "toolErrorCount": 0
+    },
+    "modelTurns": 3,
+    "toolResults": [
+      {
+        "callId": "quiz-1",
+        "isError": false,
+        "includes": ["\"operation\":\"insert_quiz_page\""]
+      },
+      {
+        "callId": "quiz-2",
+        "isError": false,
+        "includes": ["\"operation\":\"insert_quiz_page\""]
+      },
+      {
+        "callId": "quiz-3",
+        "isError": false,
+        "includes": ["\"operation\":\"insert_quiz_page\""]
+      },
+      {
+        "callId": "quiz-4",
+        "isError": false,
+        "includes": ["\"operation\":\"insert_quiz_page\""]
+      },
+      {
+        "callId": "quiz-5",
+        "isError": false,
+        "includes": ["\"operation\":\"insert_quiz_page\""]
+      }
+    ],
+    "userPromptExcludes": [
+      "Interactive coding context is enabled",
+      "Interactive authoring and validation contract"
+    ]
+  }
+}

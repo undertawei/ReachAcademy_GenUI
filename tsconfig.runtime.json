@@ -1,0 +1,29 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@reachany/reach-deck-dsl": ["packages/reach-deck-dsl/src/index.ts"],
+      "@reachany/reach-deck-dsl/euclidean-geometry": [
+        "packages/reach-deck-dsl/src/euclideanGeometry.ts"
+      ],
+      "@reachany/reach-deck-dsl/euclidean-geometry-v2": [
+        "packages/reach-deck-dsl/src/euclideanGeometryV2.ts"
+      ],
+      "@reachany/reach-deck-dsl/function-plot-geometry": [
+        "packages/reach-deck-dsl/src/functionPlotGeometry.ts"
+      ],
+      "@reachany/reach-deck-dsl/euclidean-geometry-contract": [
+        "packages/reach-deck-dsl/src/euclideanGeometryContract.json"
+      ],
+      "@reachany/reach-deck-dsl/euclidean-geometry-contract-v2": [
+        "packages/reach-deck-dsl/src/euclideanGeometryContractV2.json"
+      ],
+      "@reachany/reach-deck-dsl/reference-library": [
+        "packages/reach-deck-dsl/src/reference-library/index.ts"
+      ],
+      "@reachany/reach-deck-geometry/server": ["packages/reach-deck-geometry/dist/server.mjs"],
+      "@reachany/importer/maic": ["packages/importer/src/maic/index.ts"],
+      "@reachany/*": ["packages/*/src/index.ts"]
+    }
+  }
+}

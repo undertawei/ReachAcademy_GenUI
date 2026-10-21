@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "decksmith-replay-case/v1",
+  "id": "wp7-ambiguous-picture-asks-teacher",
+  "teacherCase": 2,
+  "summary": "结构化提问（WP7）：未选中、页面有两张图时说\"这张图\"，调用 ask_teacher 给出两个候选后本轮结束，不修改文档、不再调用模型。",
+  "provenance": {
+    "kind": "synthetic-reconstruction",
+    "observedOn": "2026-10-09",
+    "notes": "与 case2-unselected-ambiguous-picture 相同的请求，在 v3 提示词合同下改为结构化提问。"
+  },
+  "document": "energy-lesson.json",
+  "request": {
+    "prompt": "把这张图里的电池换成充电电池",
+    "pageId": "55555555-5555-4555-8555-555555555555:page-2",
+    "promptContractVersion": "decksmith-prompt/v3"
+  },
+  "capturedWith": {
+    "toolParameterSha256": {
+      "read_page": "addc5cc0fbe51d9e1d3f7c87c1d9f1b544aee6ae53dad5c0e1efabb7ee785297",
+      "ask_teacher": "bf79f1e84d05b4688e1004c5417a1e9917fa5e0464da3068596a0378265b1787"
+    }
+  },
+  "transcript": [
+    {
+      "toolCalls": [
+        {
+          "id": "read",
+          "name": "read_page",
+          "arguments": {
+            "pageId": "55555555-5555-4555-8555-555555555555:page-2"
+          }
+        }
+      ],
+      "usage": {
+        "input": 7300,
+        "output": 40
+      }
+    },
+    {
+      "text": "这一页有两张图，我先确认要改哪一张。",
+      "toolCalls": [
+        {
+          "id": "ask",
+          "name": "ask_teacher",
+          "arguments": {
+            "question": "这一页有两张电池图，要把哪一张换成充电电池？",
+            "options": ["左边的一节干电池", "右边的一块锂电池"],
+            "candidateElementIds": ["p2-dry", "p2-rechargeable"],
+            "expect": "select-element"
+          }
+        }
+      ],
+      "usage": {
+        "input": 8600,
+        "output": 120
+      }
+    }
+  ],
+  "expect": {
+    "changed": false,
+    "outcome": {
+      "mutationStatus": "none",
+      "toolErrorCount": 0
+    },
+    "modelTurns": 2,
+    "toolResults": [
+      {
+        "callId": "read",
+        "isError": false,
+        "includes": ["一节干电池", "一块锂电池"]
+      }
+    ],
+    "userPromptExcludes": ["The teacher selected these element ids"],
+    "serviceCalls": {
+      "imageEdit": 0,
+      "imageGenerate": 0
+    }
+  }
+}

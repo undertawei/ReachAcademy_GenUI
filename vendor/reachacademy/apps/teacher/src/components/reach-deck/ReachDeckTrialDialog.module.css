@@ -1,0 +1,840 @@
+.backdrop {
+  --trial-backdrop-padding: var(--reachany-space-4);
+  background: var(--reachany-color-overlay);
+  box-sizing: border-box;
+  display: grid;
+  inset: 0;
+  padding: var(--trial-backdrop-padding);
+  place-items: center;
+  position: fixed;
+}
+
+.dialog {
+  font-family: var(--reachany-font-sans, ui-sans-serif, system-ui, sans-serif);
+  background: var(--reachany-color-surface);
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-lg);
+  box-shadow: var(--reachany-shadow-overlay);
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  height: min(94dvh, 68rem);
+  max-width: 96rem;
+  max-height: calc(100dvh - var(--trial-backdrop-padding) - var(--trial-backdrop-padding));
+  min-height: min(
+    34rem,
+    calc(100dvh - var(--trial-backdrop-padding) - var(--trial-backdrop-padding))
+  );
+  overflow: hidden;
+  width: min(100%, 96rem);
+}
+
+.focusGuard {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.header {
+  align-items: center;
+  box-sizing: border-box;
+  background: var(--reachany-color-surface);
+  border-bottom: 1px solid var(--reachany-color-border);
+  display: flex;
+  gap: var(--reachany-space-4);
+  justify-content: space-between;
+  min-height: var(--reachany-deck-trial-header-height);
+  padding: var(--reachany-space-3) var(--reachany-space-4);
+}
+
+.shrinkPreview {
+  flex-shrink: 0;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.heading {
+  align-items: center;
+  display: flex;
+  gap: var(--reachany-space-3);
+  min-width: 0;
+}
+
+.heading > span {
+  color: var(--reachany-color-primary);
+  flex: none;
+  font-size: var(--reachany-text-caption);
+  font-weight: var(--reachany-text-subtitle-weight);
+}
+
+.heading > div {
+  min-width: 0;
+}
+
+.heading h2,
+.heading strong,
+.heading p {
+  margin: 0;
+}
+
+.heading h2 {
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-subtitle);
+  font-weight: var(--reachany-text-subtitle-weight);
+}
+
+.heading strong {
+  color: var(--reachany-color-text-secondary);
+  display: block;
+  font-size: var(--reachany-text-caption);
+  max-width: 22rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.heading p {
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+  max-width: 34rem;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(8.5rem, 10.5rem) minmax(0, 1fr);
+  min-height: 0;
+}
+
+.workspaceWithTutor {
+  grid-template-columns: minmax(8.5rem, 10.5rem) minmax(0, 1fr) minmax(20rem, 23rem);
+}
+
+.pageRail {
+  background: var(--reachany-color-surface-muted);
+  border-right: 1px solid var(--reachany-color-border);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-height: 0;
+  padding: var(--reachany-space-3);
+}
+
+.pageRailHeader {
+  display: grid;
+  gap: var(--reachany-space-1);
+  padding: 0 var(--reachany-space-1) var(--reachany-space-3);
+}
+
+.pageRailHeader strong {
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-caption);
+}
+
+.pageRailHeader span {
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-micro);
+}
+
+.pageRail ol {
+  align-content: start;
+  display: grid;
+  gap: var(--reachany-space-2);
+  list-style: none;
+  margin: 0;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0 var(--reachany-space-1) 0 0;
+  overscroll-behavior: contain;
+}
+
+.pageRail li,
+.pageRail button {
+  min-width: 0;
+}
+
+.pageRail button {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--reachany-radius-md);
+  color: var(--reachany-color-text-secondary);
+  display: grid;
+  gap: var(--reachany-space-1);
+  padding: var(--reachany-space-1);
+  text-align: left;
+  width: 100%;
+}
+
+.pageRail button:hover {
+  background: var(--reachany-color-surface-warm);
+  border-color: var(--reachany-color-border);
+}
+
+.pageRail button[aria-current='page'] {
+  background: var(--reachany-color-accent-soft);
+  border-color: var(--reachany-color-accent);
+}
+
+.pageRail button > span:last-child {
+  font-size: var(--reachany-text-micro);
+  font-weight: var(--reachany-text-micro-weight);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.thumbnail {
+  background: var(--reachany-color-surface-muted);
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-sm);
+  box-shadow: var(--reachany-shadow-card);
+  display: grid;
+  overflow: hidden;
+  padding: var(--reachany-space-2);
+  place-content: center;
+  position: relative;
+}
+
+.thumbnail small {
+  background: var(--reachany-color-ink);
+  border-radius: var(--reachany-radius-pill);
+  color: var(--reachany-color-surface);
+  font-size: var(--reachany-text-micro);
+  font-weight: var(--reachany-text-micro-weight);
+  left: var(--reachany-space-1);
+  padding: 0 var(--reachany-space-1);
+  position: absolute;
+  top: var(--reachany-space-1);
+}
+
+.thumbnail strong {
+  color: var(--reachany-color-text);
+  display: -webkit-box;
+  font-size: var(--reachany-text-micro);
+  line-height: var(--reachany-text-micro-line-height);
+  overflow: hidden;
+  text-align: center;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.nativeThumbnail {
+  height: 100%;
+  pointer-events: none;
+  width: 100%;
+}
+
+.nativeThumbnailPreview {
+  inset: 0;
+  overflow: hidden;
+  position: absolute;
+}
+
+.playerPanel {
+  align-content: center;
+  background: var(--reachany-color-canvas);
+  display: grid;
+  gap: var(--reachany-space-3);
+  min-height: 0;
+  min-width: 0;
+  overflow: auto;
+  padding: var(--reachany-space-4);
+}
+
+.playerPanel[data-native-fit='true'] {
+  overflow: hidden;
+}
+
+.fenceNotice {
+  align-items: center;
+  background: var(--reachany-color-warning-soft);
+  border: 1px solid var(--reachany-color-border-warm);
+  border-radius: var(--reachany-radius-md);
+  color: var(--reachany-color-warning-text);
+  display: flex;
+  font-size: var(--reachany-text-caption);
+  gap: var(--reachany-space-2);
+  margin: 0 auto;
+  max-width: 78rem;
+  padding: var(--reachany-space-2) var(--reachany-space-3);
+  width: 100%;
+}
+
+.fenceNotice svg {
+  flex: none;
+}
+
+.playerShell {
+  background: var(--reachany-color-surface);
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-card);
+  box-shadow: var(--reachany-shadow-card);
+  box-sizing: border-box;
+  margin: auto;
+  max-width: 78rem;
+  min-width: 0;
+  overflow: hidden;
+  padding: var(--reachany-space-2);
+  width: 100%;
+}
+
+/* Expanded marketplace presentation shares the live player with the embedded preview. */
+.presentationBackdrop {
+  padding: 0;
+}
+.dialog.presentation {
+  --presentation-panel-padding: var(--reachany-space-4);
+  --presentation-panel-gap: var(--reachany-space-3);
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: 100%;
+  min-height: 0;
+  background: var(--reachany-color-surface);
+  border: 0;
+  border-radius: 0;
+  color: var(--reachany-color-text);
+  box-shadow: none;
+}
+.presentation .header {
+  margin-inline: var(--reachany-space-6);
+  padding: var(--reachany-space-4) 0;
+  min-height: 0;
+  background: var(--reachany-color-surface);
+  border-color: var(--reachany-color-border);
+}
+.presentation .heading {
+  gap: var(--reachany-space-3);
+}
+.presentation .heading > span {
+  background: var(--reachany-color-surface-muted);
+  border-radius: var(--reachany-radius-sm);
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  letter-spacing: normal;
+  padding: var(--reachany-space-1) var(--reachany-space-2);
+  text-transform: none;
+}
+.presentation .heading h2 {
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-subtitle);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.presentation .heading p {
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+}
+.presentation .workspace {
+  position: relative;
+  grid-template-columns: calc(var(--reachany-space-10) * 4) minmax(0, 1fr);
+  gap: var(--reachany-space-6);
+  padding: var(--reachany-space-6);
+}
+.presentation .workspace[data-notes-open='true'] {
+  grid-template-columns: calc(var(--reachany-space-10) * 4) minmax(0, 1fr) calc(
+      var(--reachany-space-10) * 7
+    );
+}
+.presentation .pageRail {
+  padding: 0;
+  border: none;
+  background: var(--reachany-color-surface);
+}
+.presentation .pageRailHeader {
+  gap: var(--reachany-space-2);
+  padding: 0 0 var(--reachany-space-4);
+}
+.presentation .pageRailHeader strong,
+.presentation .pageRailHeader span,
+.presentation .pageRail button {
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  font-weight: var(--reachany-text-caption-weight);
+}
+.presentation .pageRail ol {
+  gap: var(--reachany-space-3);
+  padding-right: var(--reachany-space-2);
+  overscroll-behavior: contain;
+}
+.presentation .pageRail button {
+  border-color: var(--reachany-color-border);
+  border-radius: var(--reachany-radius-md);
+  padding: var(--reachany-space-1);
+  gap: var(--reachany-space-2);
+}
+.presentation .pageRail button:hover {
+  background: var(--reachany-color-surface-warm);
+  border-color: var(--reachany-color-border);
+}
+
+.presentation .pageRail button[aria-current='page'] {
+  background: var(--reachany-color-accent-soft);
+  border-color: var(--reachany-color-accent);
+}
+.presentation .pageRail button > span:last-child {
+  font-size: var(--reachany-text-caption);
+  font-weight: var(--reachany-text-caption-weight);
+}
+.presentation .thumbnail {
+  box-shadow: none;
+  border-color: var(--reachany-color-border);
+  border-radius: var(--reachany-radius-sm);
+}
+.presentation .thumbnail small {
+  display: none;
+}
+.presentation .playerPanel {
+  padding: var(--presentation-panel-padding);
+  background: var(--reachany-color-canvas);
+  border-radius: var(--reachany-radius-lg);
+  align-content: stretch;
+  grid-template-rows: minmax(0, 1fr) var(--reachany-space-10);
+  gap: var(--presentation-panel-gap);
+  overflow: hidden;
+}
+.presentation .playerShell {
+  height: 100%;
+  min-height: 0;
+  max-width: none;
+  padding: var(--reachany-space-2);
+  background: var(--reachany-color-surface);
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-md);
+  box-shadow: none;
+  margin: 0 auto;
+}
+
+.presentation :global(.reach-deck-player__stage) {
+  border-radius: var(--reachany-radius-md);
+}
+.presentationControls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--reachany-space-3);
+  min-width: 0;
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  height: var(--reachany-space-10);
+}
+.presentationControls button {
+  height: var(--reachany-space-10);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.scriptPanel {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  max-height: 100%;
+  min-height: 0;
+  min-width: 0;
+  padding: var(--reachany-space-4);
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-md);
+  gap: var(--reachany-space-4);
+}
+.scriptPanel[hidden] {
+  display: none;
+}
+.scriptPanel header,
+.scriptPanel header strong {
+  display: flex;
+  align-items: center;
+  gap: var(--reachany-space-2);
+  font-weight: var(--reachany-text-caption-weight);
+}
+.scriptPanel header {
+  justify-content: space-between;
+  flex-shrink: 0;
+  font-size: var(--reachany-text-caption);
+}
+.scriptPanel header span {
+  color: var(--reachany-color-text-secondary);
+}
+.scriptBody {
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  overflow-wrap: anywhere;
+}
+.scriptBody h3 {
+  margin: 0 0 var(--reachany-space-3);
+  font-size: var(--reachany-text-body);
+  font-weight: var(--reachany-text-caption-weight);
+}
+.scriptBody p {
+  color: var(--reachany-color-text-secondary);
+}
+.scriptHint {
+  margin: 0;
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-micro);
+}
+
+@media (max-width: 1100px) {
+  .presentation .workspace {
+    gap: var(--reachany-space-3);
+    padding: var(--reachany-space-4);
+  }
+  .presentation .workspace[data-notes-open='true'] {
+    grid-template-columns: calc(var(--reachany-space-10) * 3) minmax(0, 1fr) calc(
+        var(--reachany-space-10) * 5
+      );
+  }
+  .presentation .heading p {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .dialog {
+    border-radius: var(--reachany-radius-card);
+    height: min(
+      97dvh,
+      calc(100dvh - var(--trial-backdrop-padding) - var(--trial-backdrop-padding))
+    );
+  }
+
+  .heading > span,
+  .heading p {
+    display: none;
+  }
+
+  .workspace {
+    grid-template-columns: minmax(6.5rem, 7.5rem) minmax(0, 1fr);
+  }
+
+  .pageRail {
+    padding: var(--reachany-space-2);
+  }
+
+  .playerPanel {
+    padding: var(--reachany-space-2);
+  }
+}
+
+@media (max-width: 1100px) {
+  .workspaceWithTutor {
+    grid-template-areas:
+      'pages player'
+      'tutor tutor';
+    grid-template-columns: minmax(6.5rem, 7.5rem) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) minmax(15rem, 42%);
+  }
+  .workspaceWithTutor .pageRail {
+    grid-area: pages;
+  }
+  .workspaceWithTutor .playerPanel {
+    grid-area: player;
+  }
+  .workspaceWithTutor .tutorPanel {
+    border-top: 1px solid var(--reachany-color-border);
+    grid-area: tutor;
+  }
+}
+
+@media (max-width: 1100px) and (max-height: 600px) {
+  .workspaceWithTutor {
+    grid-template-rows: minmax(0, 1fr) minmax(0, 30%);
+  }
+}
+
+/* Quiz and GenUI fill the available panel; only scene content scrolls. */
+.playerPanel:is([data-scene-type='quiz'], [data-scene-type='interactive']) {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.playerPanel:is([data-scene-type='quiz'], [data-scene-type='interactive']) .fenceNotice {
+  flex: none;
+}
+
+.playerPanel:is([data-scene-type='quiz'], [data-scene-type='interactive']) .playerShell {
+  flex: 1 1 0;
+  min-height: 0;
+  margin: 0 auto;
+  background: var(--reachany-color-surface);
+  border-color: var(--reachany-color-border);
+  padding: var(--reachany-space-2);
+}
+
+/* Embedded marketplace previews share the page's bounded workspace, not the modal sizing. */
+.embedded,
+.embeddedContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+}
+.embeddedContent {
+  background: var(--reachany-color-surface);
+  color: var(--reachany-color-text);
+}
+.embeddedContent .header[hidden],
+.embeddedContent .focusGuard {
+  display: none;
+}
+.embeddedContent .workspace {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  grid-template-columns: calc(var(--reachany-space-10) * 5) minmax(0, 1fr);
+}
+.embeddedContent .pageRail {
+  background: var(--reachany-color-surface-muted);
+  border-color: var(--reachany-color-border);
+  padding: var(--reachany-space-2);
+}
+.embeddedContent .pageRailHeader {
+  padding: var(--reachany-space-1) 0 var(--reachany-space-2);
+  gap: var(--reachany-space-1);
+}
+.embeddedContent .pageRailHeader strong {
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-caption);
+}
+.embeddedContent .pageRailHeader span {
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-micro);
+}
+.embeddedContent .pageRail ol {
+  gap: var(--reachany-space-2);
+  overscroll-behavior: contain;
+}
+.embeddedContent .pageRail button {
+  padding: var(--reachany-space-1);
+  color: var(--reachany-color-text);
+  border-radius: var(--reachany-radius-md);
+}
+.embeddedContent .pageRail button:hover {
+  background: var(--reachany-color-surface-warm);
+  border-color: var(--reachany-color-border);
+}
+
+.embeddedContent .pageRail button[aria-current='page'] {
+  background: var(--reachany-color-accent-soft);
+  border-color: var(--reachany-color-accent);
+}
+.embeddedContent .pageRail button > span:last-child {
+  font-size: var(--reachany-text-micro);
+}
+.embeddedContent .playerPanel {
+  padding: var(--reachany-space-2);
+  background: var(--reachany-color-canvas);
+}
+.embeddedContent .playerShell {
+  padding: var(--reachany-space-1);
+  border-color: var(--reachany-color-border);
+  border-radius: var(--reachany-radius-md);
+  box-shadow: none;
+}
+.pageRailToggle {
+  display: none;
+}
+@media (max-width: 720px) {
+  .embeddedContent .workspace {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .pageRailToggle {
+    display: inline-flex;
+    justify-self: start;
+    margin: var(--reachany-space-2);
+  }
+  .embeddedContent .pageRail {
+    display: none;
+    position: absolute;
+    z-index: var(--reachany-z-sticky);
+    inset: calc(var(--reachany-space-6) * 2) auto 0 0;
+    width: calc(var(--reachany-space-10) * 4);
+    box-shadow: var(--reachany-shadow-raised);
+  }
+  .embeddedContent .pageRail[data-open='true'] {
+    display: grid;
+  }
+  .embeddedContent .playerPanel {
+    padding: var(--reachany-space-2);
+  }
+}
+
+.embeddedContent .pageRailToggle {
+  white-space: nowrap;
+}
+@media (max-height: 600px) {
+  .embeddedContent .playerPanel {
+    padding: var(--reachany-space-1);
+  }
+}
+/* Compact expanded preview: page chooser overlays, notes stay in their own bounded row. */
+.presentation .presentationControls {
+  flex-shrink: 0;
+}
+@media (max-width: 720px) {
+  .presentation .header {
+    margin-inline: var(--reachany-space-3);
+    padding-block: var(--reachany-space-2);
+  }
+  .presentation .heading > span {
+    display: none;
+  }
+  .presentation .workspace,
+  .presentation .workspace[data-notes-open='true'] {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr) minmax(0, 35%);
+    gap: var(--reachany-space-3);
+    padding: var(--reachany-space-3);
+  }
+  .presentation .workspace[data-notes-open='true'] {
+    grid-template-rows: auto minmax(0, 1fr) minmax(0, 35%);
+  }
+  .presentation .pageRailToggle {
+    display: inline-flex;
+    margin: 0;
+  }
+  .presentation .pageRail {
+    display: none;
+    position: absolute;
+    z-index: var(--reachany-z-sticky);
+    inset: calc(var(--reachany-space-6) * 2) auto 0 var(--reachany-space-3);
+    width: calc(var(--reachany-space-10) * 4);
+    padding: var(--reachany-space-2);
+    box-shadow: var(--reachany-shadow-raised);
+  }
+  .presentation .pageRail[data-open='true'] {
+    display: grid;
+  }
+  .presentationControls {
+    gap: var(--reachany-space-2);
+  }
+  .presentationControls button {
+    padding-inline: var(--reachany-space-2);
+  }
+  .presentation .scriptPanel {
+    align-self: stretch;
+    padding: var(--reachany-space-3);
+    gap: var(--reachany-space-2);
+  }
+  .presentation .scriptHint {
+    display: none;
+  }
+}
+
+/* Interactive documents may be taller than the modal. Keep navigation fixed and
+   scroll the scene within the bounded stage instead of clipping its controls. */
+.presentation .playerPanel[data-scene-type='interactive'] {
+  grid-template-rows: minmax(0, 1fr) var(--reachany-space-10);
+}
+.presentation .playerPanel[data-scene-type='interactive'] .playerShell {
+  height: 100%;
+  min-height: 0;
+}
+.presentation .playerPanel[data-scene-type='interactive'] :global(.reach-deck-player) {
+  height: 100%;
+  min-height: 0;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+.presentation .playerPanel[data-scene-type='interactive'] :global(.reach-deck-player__stage) {
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+@media (max-width: 720px) and (max-height: 649px) {
+  .dialog.presentation {
+    --presentation-panel-padding: var(--reachany-space-2);
+    --presentation-panel-gap: var(--reachany-space-2);
+  }
+  .presentation .workspace,
+  .presentation .workspace[data-notes-open='true'] {
+    grid-template-rows: auto minmax(0, 1fr) minmax(0, 20%);
+  }
+}
+
+/* A stable frame owns the geometry; page content never sizes its controls. */
+.presentation .playerShell > :global(.reach-deck-player) {
+  height: 100%;
+  min-height: 0;
+  gap: 0;
+  grid-template-rows: minmax(0, 1fr);
+}
+.presentation :global(.reach-deck-player__stage) {
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+/* The shared dock reserves its real height, including its responsive controls.
+   Only the remaining flex slot sizes the canvas; subtitles never narrow with it. */
+.presentation [data-native-v2-readonly] {
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.presentation [data-native-v2-slide-renderer] {
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  flex: 1 1 0;
+}
+/* Icon groups still need room beside the avatar on a phone. Let the dock grow
+   vertically while its remaining canvas slot continues to fit the slide. */
+.presentation .playerPanel :global(.reach-deck-player__learner-dock)[data-dock-layout='narrow'] {
+  grid-template-rows: var(--reach-deck-caption-height) auto;
+}
+.presentation
+  .playerPanel
+  :global(.reach-deck-player__learner-dock)[data-dock-layout='narrow']
+  :global(.reach-deck-player__dock-controls) {
+  flex-wrap: wrap;
+}
+.presentation .playerPanel[data-scene-type='quiz'] {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) var(--reachany-space-10);
+  gap: var(--presentation-panel-gap);
+  padding: var(--presentation-panel-padding);
+}
+.presentation .playerPanel[data-scene-type='quiz'] .playerShell {
+  display: flex;
+  flex-direction: column;
+  padding: var(--reachany-space-2);
+  border-radius: var(--reachany-radius-md);
+}
+.presentation .playerPanel[data-scene-type='quiz'] .playerShell > :global(.reach-deck-player) {
+  flex: 1;
+  height: auto;
+}
+/* App-owned framing; learner chrome belongs to the shared player. */
+.learnerPlayer[data-native-fit='true'] {
+  display: flex;
+  flex-direction: column;
+  background: var(--reachany-color-surface);
+}
+.learnerPlayer[data-native-fit='true'] .playerShell {
+  flex: 1 1 0;
+  height: 100%;
+  min-height: 0;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+.learnerPlayer .playerShell > :global(.reach-deck-player) {
+  height: 100%;
+  min-height: 0;
+}

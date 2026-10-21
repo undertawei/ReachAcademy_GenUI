@@ -1,0 +1,324 @@
+{
+  "description": "单选：唯一选中值等于答案得满分，否则 0 分。",
+  "cases": [
+    {
+      "name": "exact match earns full points",
+      "question": {
+        "question_type": "single_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["B"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["B"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 10,
+        "maxScore": 10,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "wrong option earns zero",
+      "question": {
+        "question_type": "single_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["B"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["A"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "empty selection earns zero",
+      "question": {
+        "question_type": "single_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["B"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": []
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "several selected values earn zero",
+      "question": {
+        "question_type": "single_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["B"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["B", "A"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "missing response earns zero",
+      "question": {
+        "question_type": "single_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["B"],
+        "sub_problems": []
+      },
+      "response": null,
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "rich-text response is the wrong kind",
+      "question": {
+        "question_type": "single_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["B"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "rich_text",
+        "document": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "B"
+                }
+              ]
+            }
+          ]
+        },
+        "attachments": []
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "has_answer=false is unscored",
+      "question": {
+        "question_type": "single_choice",
+        "has_answer": false,
+        "points": 10,
+        "answer": ["B"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["B"]
+      },
+      "expected": {
+        "mode": "UNSCORED"
+      }
+    },
+    {
+      "name": "points=0 is unscored",
+      "question": {
+        "question_type": "single_choice",
+        "has_answer": true,
+        "points": 0,
+        "answer": ["B"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["B"]
+      },
+      "expected": {
+        "mode": "UNSCORED"
+      }
+    },
+    {
+      "name": "negative points are unscored",
+      "question": {
+        "question_type": "single_choice",
+        "has_answer": true,
+        "points": -5,
+        "answer": ["B"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["B"]
+      },
+      "expected": {
+        "mode": "UNSCORED"
+      }
+    },
+    {
+      "name": "fractional points are kept",
+      "question": {
+        "question_type": "single_choice",
+        "has_answer": true,
+        "points": 2.5,
+        "answer": ["B"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["B"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 2.5,
+        "maxScore": 2.5,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "missing reference answer is unscored",
+      "question": {
+        "question_type": "single_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["B"]
+      },
+      "expected": {
+        "mode": "UNSCORED"
+      }
+    },
+    {
+      "name": "surrounding whitespace in the selected value is stripped",
+      "question": {
+        "question_type": "single_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["B"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["  B\t"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 10,
+        "maxScore": 10,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "a duplicated selection of the answer counts once",
+      "question": {
+        "question_type": "single_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["B"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["B", "B"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 10,
+        "maxScore": 10,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "blank selection entries are dropped before grading",
+      "question": {
+        "question_type": "single_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["B"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["", " ", "B"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 10,
+        "maxScore": 10,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "whitespace-only selection is an empty answer",
+      "question": {
+        "question_type": "single_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["B"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["  "]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "a no-break space is not stripped and does not match",
+      "question": {
+        "question_type": "single_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["B"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["\u00a0B"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    }
+  ]
+}

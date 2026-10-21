@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "diagnosticVersion": "word-import-diagnostics/v1",
+  "rules": [
+    {
+      "code": "word-import.invalid-blocks",
+      "clearance": "never"
+    },
+    {
+      "code": "word-import.invalid-reference",
+      "clearance": "never"
+    },
+    {
+      "code": "word-import.unknown-block",
+      "clearance": "never"
+    },
+    {
+      "code": "word-import.invalid-range",
+      "clearance": "never"
+    },
+    {
+      "code": "word-import.invalid-question",
+      "clearance": "never"
+    },
+    {
+      "code": "word-import.unexpected-question-field",
+      "clearance": "never"
+    },
+    {
+      "code": "word-import.incomplete-response",
+      "clearance": "never"
+    },
+    {
+      "code": "word-import.output-too-large",
+      "clearance": "never"
+    },
+    {
+      "code": "word-import.segment-too-large",
+      "clearance": "never"
+    },
+    {
+      "code": "word-import.unaccounted-source",
+      "clearance": "never"
+    },
+    {
+      "code": "word-import.ambiguous-shared-material",
+      "clearance": "never"
+    },
+    {
+      "code": "word-import.ambiguous-segments",
+      "clearance": "never"
+    },
+    {
+      "code": "word-import.ambiguous-appendix",
+      "clearance": "never"
+    },
+    {
+      "code": "word-import.too-many-segments",
+      "clearance": "never"
+    },
+    {
+      "code": "word-import.invalid-points",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.unsourced-points",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.missing-points",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.invalid-options",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.missing-options",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.empty-option",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.invalid-answer-reference",
+      "clearance": "nonempty-answer"
+    },
+    {
+      "code": "word-import.single-answer-count",
+      "clearance": "nonempty-answer"
+    },
+    {
+      "code": "word-import.blank-answer-count",
+      "clearance": "nonempty-answer"
+    },
+    {
+      "code": "word-import.invalid-answer",
+      "clearance": "nonempty-answer"
+    },
+    {
+      "code": "word-import.missing-answer",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.has-answer-mismatch",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.cloze-root-pool",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.unexpected-options",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.missing-pool-policy",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.unexpected-pool-policy",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.unexpected-blanks",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.blank-outside-question",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.missing-blank-reference",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.overlapping-blanks",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.invalid-blank-identity",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.unexpected-blank-pool",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.missing-blanks",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.reused-pool-answer",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.empty-question",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.unsupported-question-type",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.invalid-rich-text",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.invalid-children",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.duplicated-material",
+      "clearance": "never"
+    },
+    {
+      "code": "word-import.question-parse-failed",
+      "clearance": "never"
+    },
+    {
+      "code": "word-import.unassigned-block",
+      "clearance": "review"
+    },
+    {
+      "code": "word-import.uncertain-block",
+      "clearance": "review"
+    },
+    {
+      "code": "word-import.unassigned-range",
+      "clearance": "review"
+    },
+    {
+      "code": "word-import.check-question-boundary",
+      "clearance": "review"
+    },
+    {
+      "code": "word-import.unresolved-child-level",
+      "clearance": "review"
+    },
+    {
+      "code": "word-import.answer-normalized",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.options-normalized",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.unsupported-content",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.media-unavailable",
+      "clearance": "current-fields"
+    },
+    {
+      "code": "word-import.unreferenced-media",
+      "clearance": "review"
+    },
+    {
+      "code": "word-import.extraction-warning",
+      "clearance": "review"
+    },
+    {
+      "code": "word-import.diagnostics-truncated",
+      "clearance": "never"
+    },
+    {
+      "code": "word-import.unknown-diagnostic",
+      "clearance": "never"
+    },
+    {
+      "code": "word-import.unsupported-diagnostic-version",
+      "clearance": "never"
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "decksmith-replay-case/v1",
+  "id": "wp2-genui-to-quiz-skips-interactive-contract",
+  "teacherCase": 3,
+  "summary": "从 GenUI 转题：来源页是互动页，模型只读测验合同就插入 2 道无标答题，全程不加载互动合同。",
+  "provenance": {
+    "kind": "synthetic-reconstruction",
+    "observedOn": "2026-10-09",
+    "notes": "WP2 正例：GenUI 转测验不需要互动合同；重建自 2026-10-02 / 10-06 的 GenUI 转互动题反馈。"
+  },
+  "document": "energy-lesson.json",
+  "request": {
+    "prompt": "把这个 GenUI 改成 2 道无标答的课中互动题，放在它后面",
+    "pageId": "55555555-5555-4555-8555-555555555555:page-3",
+    "promptContractVersion": "decksmith-prompt/v2"
+  },
+  "capturedWith": {
+    "toolParameterSha256": {
+      "insert_quiz_page": "cb69f98ac4051cb9b07d221ffbbee0cc7e1a74e9c227b33ca16ad50d189f56e7",
+      "read_page": "addc5cc0fbe51d9e1d3f7c87c1d9f1b544aee6ae53dad5c0e1efabb7ee785297",
+      "read_quiz_authoring_contract": "8243f0af367f188a376f2c17b5eabe872a2f7a979813e0d4e2be6d594c2aa259"
+    }
+  },
+  "transcript": [
+    {
+      "toolCalls": [
+        {
+          "id": "read",
+          "name": "read_page",
+          "arguments": {
+            "pageId": "55555555-5555-4555-8555-555555555555:page-3"
+          }
+        },
+        {
+          "id": "contract",
+          "name": "read_quiz_authoring_contract",
+          "arguments": {}
+        }
+      ],
+      "usage": {
+        "input": 6200,
+        "output": 60
+      }
+    },
+    {
+      "toolCalls": [
+        {
+          "id": "quiz-1",
+          "name": "insert_quiz_page",
+          "arguments": {
+            "sceneJson": {
+              "$json": {
+                "title": "课中互动题",
+                "content": {
+                  "questions": [
+                    {
+                      "question_type": "short_answer",
+                      "question": "电压从 3 V 调到 6 V、时间不变时，电功怎样变化？说说你的理由。",
+                      "analysis": "可以结合 W=UIt 分析各量之间的关系。",
+                      "has_answer": false,
+                      "answer": ""
+                    }
+                  ]
+                }
+              }
+            },
+            "position": 4
+          }
+        },
+        {
+          "id": "quiz-2",
+          "name": "insert_quiz_page",
+          "arguments": {
+            "sceneJson": {
+              "$json": {
+                "title": "课中互动题",
+                "content": {
+                  "questions": [
+                    {
+                      "question_type": "short_answer",
+                      "question": "滑块实验里，你还想改变哪个量来观察电功？预测会发生什么。",
+                      "analysis": "可以从电流或通电时间入手。",
+                      "has_answer": false,
+                      "answer": ""
+                    }
+                  ]
+                }
+              }
+            },
+            "position": 5
+          }
+        }
+      ],
+      "usage": {
+        "input": 14500,
+        "output": 900
+      }
+    },
+    {
+      "text": "已在 GenUI 页后面新增 2 道无标答的课中互动题，GenUI 页本身未改动。",
+      "usage": {
+        "input": 15200,
+        "output": 60
+      }
+    }
+  ],
+  "expect": {
+    "changed": true,
+    "outcome": {
+      "mutationStatus": "proposal",
+      "toolErrorCount": 0
+    },
+    "modelTurns": 3,
+    "toolResults": [
+      {
+        "callId": "quiz-1",
+        "isError": false,
+        "includes": ["\"operation\":\"insert_quiz_page\""]
+      },
+      {
+        "callId": "quiz-2",
+        "isError": false,
+        "includes": ["\"operation\":\"insert_quiz_page\""]
+      }
+    ],
+    "userPromptIncludes": ["The current page is an Interactive (GenUI) page"],
+    "userPromptExcludes": [
+      "Interactive coding context is enabled",
+      "Interactive authoring and validation contract:"
+    ]
+  }
+}

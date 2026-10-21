@@ -1,0 +1,293 @@
+{
+  "schemaVersion": "reach-interactive-runtime-manifest/v1",
+  "registryVersion": "reach-interactive-runtime-registry/v1",
+  "maximumDocumentBytes": 524288,
+  "maximumAssembledSrcdocBytes": 1048576,
+  "maximumExternalDependencyBytes": 5242880,
+  "entries": [
+    {
+      "id": "animate-css",
+      "version": "4.1.1",
+      "package": "animate.css",
+      "license": "MIT",
+      "kind": "style",
+      "sourceBytes": 71750,
+      "sha256": "5fbaeb9f8e25d7e0143bae61d4b1802c16ce7390b96ceb2d498b0d96ff4c853f"
+    },
+    {
+      "id": "expression",
+      "version": "3.0.3",
+      "package": "expr-eval-fork",
+      "license": "MIT",
+      "kind": "script",
+      "sourceBytes": 27638,
+      "sha256": "876c722e4fe9e6c6b1859a0f6f410f62419e433f9837fdaa9f965d24a579c237"
+    },
+    {
+      "id": "function-plot",
+      "version": "1.25.4",
+      "package": "function-plot",
+      "license": "MIT",
+      "kind": "script",
+      "sourceBytes": 253865,
+      "sha256": "554d69a005ebbb383b8967ba43c78ff3ea7b5cabb38f25c3a2809babc0bbef31"
+    }
+  ],
+  "documentRuntimeEntries": [
+    {
+      "id": "tailwind-browser",
+      "version": "4.3.0",
+      "category": "document",
+      "package": "@tailwindcss/browser",
+      "packageVersion": "4.3.0",
+      "license": "MIT",
+      "kind": "script",
+      "scriptPath": "/reach-deck-dependencies/tailwind-browser/b91f8cd2dbae57f19d35a51934e6e4af24865d9725d4acf737a2993794270a1e.js",
+      "sourceBytes": 273105,
+      "sha256": "b91f8cd2dbae57f19d35a51934e6e4af24865d9725d4acf737a2993794270a1e",
+      "integrity": "sha256-uR+M0tuuV/GdNaUZNObkrySGXZcl1Kz3N6KZN5QnCh4="
+    },
+    {
+      "id": "three-module",
+      "version": "0.185.1",
+      "category": "document",
+      "package": "three",
+      "packageVersion": "0.185.1",
+      "license": "MIT",
+      "kind": "script",
+      "scriptPath": "/reach-deck-dependencies/three-module/274a289eb145e1b3fbd6e79b2da56df490f79b267c7c86936ba40bdb702d8559.js",
+      "sourceBytes": 750227,
+      "sha256": "274a289eb145e1b3fbd6e79b2da56df490f79b267c7c86936ba40bdb702d8559",
+      "integrity": "sha256-J0oonrFF4bP71uebLaVt9JD3myZ8fIaTa6QL23AthVk="
+    }
+  ],
+  "scienceKitEntries": [
+    {
+      "id": "geometry-mathigon",
+      "version": "1.0.0",
+      "category": "science-kit",
+      "package": "@mathigon/euclid + @mathigon/fermat",
+      "packageVersion": "1.2.3 / 1.1.23",
+      "license": "MIT",
+      "kind": "script",
+      "scriptPath": "/reach-deck-dependencies/geometry-mathigon/3cc824622dd733b3686dc72207a689a428481d602f4631d0f99d9b468d5a2cf0.js",
+      "sourceBytes": 14151,
+      "sha256": "3cc824622dd733b3686dc72207a689a428481d602f4631d0f99d9b468d5a2cf0",
+      "integrity": "sha256-PMgkYi3XM7NobcciB6aJpChIHWAvRjHQ+Z2bRo1aLPA="
+    },
+    {
+      "id": "mechanics-matter",
+      "version": "1.0.0",
+      "category": "science-kit",
+      "package": "matter-js",
+      "packageVersion": "0.20.0",
+      "license": "MIT",
+      "kind": "script",
+      "scriptPath": "/reach-deck-dependencies/mechanics-matter/b4d54e21e5a35cb7cefbcee8beb58d1a5074d85b7286156b857d2f9b7cde1516.js",
+      "sourceBytes": 91151,
+      "sha256": "b4d54e21e5a35cb7cefbcee8beb58d1a5074d85b7286156b857d2f9b7cde1516",
+      "integrity": "sha256-tNVOIeWjXLfO+87ovrWNGlB02FtyhhVrhX0vm3zeFRY="
+    },
+    {
+      "id": "molecule-smiles",
+      "version": "1.0.0",
+      "category": "science-kit",
+      "package": "smiles-drawer",
+      "packageVersion": "2.4.1",
+      "license": "MIT",
+      "kind": "script",
+      "scriptPath": "/reach-deck-dependencies/molecule-smiles/3380fa2f644d63fbbf9692c9d7933c2c8171bde103841cdf4cff02fb985393c4.js",
+      "sourceBytes": 200706,
+      "sha256": "3380fa2f644d63fbbf9692c9d7933c2c8171bde103841cdf4cff02fb985393c4",
+      "integrity": "sha256-M4D6L2RNY/u/lpLJ15M8LIFxveEDhBzfTP8C+5hTk8Q="
+    },
+    {
+      "id": "network-cytoscape",
+      "version": "1.0.0",
+      "category": "science-kit",
+      "package": "cytoscape",
+      "packageVersion": "3.34.2",
+      "license": "MIT",
+      "kind": "script",
+      "scriptPath": "/reach-deck-dependencies/network-cytoscape/17920ecccc11fc2ca9b1a9b963b1450625dc95503c835a0f1846ab15fb178751.js",
+      "sourceBytes": 448932,
+      "sha256": "17920ecccc11fc2ca9b1a9b963b1450625dc95503c835a0f1846ab15fb178751",
+      "integrity": "sha256-F5IOzMwR/Cypsam5Y7FFBiXclVA8g1oPGEarFfsXh1E="
+    },
+    {
+      "id": "geo-d3",
+      "version": "1.0.0",
+      "category": "science-kit",
+      "package": "d3-geo + topojson-client + world-atlas",
+      "packageVersion": "3.1.1 / 3.1.0 / 2.0.2",
+      "license": "ISC / ISC / ISC",
+      "kind": "script",
+      "scriptPath": "/reach-deck-dependencies/geo-d3/0ee2434cc7b7c27cb3cd8b4b2de1a6a0bfada5e17eeef8ba7406b886ed30bb9c.js",
+      "sourceBytes": 135565,
+      "sha256": "0ee2434cc7b7c27cb3cd8b4b2de1a6a0bfada5e17eeef8ba7406b886ed30bb9c",
+      "integrity": "sha256-DuJDTMe3wnyzzYtLLeGmoL+tpeF+7vi6dAa4hu0wu5w="
+    },
+    {
+      "id": "solid-three",
+      "version": "1.0.0",
+      "category": "science-kit",
+      "package": "three",
+      "packageVersion": "0.185.1",
+      "license": "MIT",
+      "kind": "script",
+      "scriptPath": "/reach-deck-dependencies/solid-three/5de3a9b6c5e2646d52de0ea9d4d9173524ff1115e8181396742acdcc13e7471a.js",
+      "sourceBytes": 529808,
+      "sha256": "5de3a9b6c5e2646d52de0ea9d4d9173524ff1115e8181396742acdcc13e7471a",
+      "integrity": "sha256-XeOptsXiZG1S3g6p1NkXNST/ERXoGBOWdCrNzBPnRxo="
+    },
+    {
+      "id": "molecule-3dmol",
+      "version": "1.0.0",
+      "category": "science-kit",
+      "package": "3dmol",
+      "packageVersion": "2.5.5",
+      "license": "BSD-3-Clause",
+      "kind": "script",
+      "scriptPath": "/reach-deck-dependencies/molecule-3dmol/762965c04cec0672a25bbc7d44116d43c0747bd64542eff5d6f706fd001540a9.js",
+      "sourceBytes": 588659,
+      "sha256": "762965c04cec0672a25bbc7d44116d43c0747bd64542eff5d6f706fd001540a9",
+      "integrity": "sha256-dillwEzsBnKiW7x9RBFtQ8B0e9ZFQu/11vcG/QAVQKk="
+    },
+    {
+      "id": "sequence-nightingale",
+      "version": "1.0.0",
+      "category": "science-kit",
+      "package": "@nightingale-elements/nightingale-sequence",
+      "packageVersion": "5.6.0",
+      "license": "ISC",
+      "kind": "script",
+      "scriptPath": "/reach-deck-dependencies/sequence-nightingale/ca6df84154ad8e8d14e02ad9ba6107a5c249e3324edc66f3f0a20f409e0ef5bf.js",
+      "sourceBytes": 151778,
+      "sha256": "ca6df84154ad8e8d14e02ad9ba6107a5c249e3324edc66f3f0a20f409e0ef5bf",
+      "integrity": "sha256-ym34QVStjo0U4CrZumEHpcJJ4zJO3Gbz8KIPQJ4O9b8="
+    },
+    {
+      "id": "geometry-jsxgraph",
+      "version": "1.0.0",
+      "category": "science-kit",
+      "package": "jsxgraph",
+      "packageVersion": "1.13.2",
+      "license": "MIT OR LGPL-3.0-or-later",
+      "kind": "script",
+      "scriptPath": "/reach-deck-dependencies/geometry-jsxgraph/f1ac78edd3153a41bf3860ff0b998597df6006477d40420688983b18eebd11df.js",
+      "sourceBytes": 981690,
+      "sha256": "f1ac78edd3153a41bf3860ff0b998597df6006477d40420688983b18eebd11df",
+      "integrity": "sha256-8ax47dMVOkG/OGD/C5mFl99gBkd9QEIGiJg7GO69Ed8="
+    },
+    {
+      "id": "geometry-euclidean-2d",
+      "version": "1.0.0",
+      "category": "science-kit",
+      "package": "jsxgraph + @noble/hashes + lucide",
+      "packageVersion": "1.13.2 / 1.8.0 / 0.562.0",
+      "license": "MIT / ISC",
+      "libraries": [
+        { "name": "jsxgraph", "version": "1.13.2", "license": "MIT" },
+        { "name": "@noble/hashes", "version": "1.8.0", "license": "MIT" },
+        { "name": "lucide", "version": "0.562.0", "license": "ISC" }
+      ],
+      "kind": "script",
+      "scriptPath": "/reach-deck-dependencies/geometry-euclidean-2d/77d0e0f0510fe05eb452448f17736bb4ed187baf507c20eb5e9d8ecd87201870.js",
+      "sourceBytes": 1073025,
+      "sha256": "77d0e0f0510fe05eb452448f17736bb4ed187baf507c20eb5e9d8ecd87201870",
+      "integrity": "sha256-d9Dg8FEP4F60UkSPF3NrtO0Ye69QfCDrXp2OzYcgGHA="
+    },
+    {
+      "id": "geometry-euclidean-3d",
+      "version": "1.0.0",
+      "category": "science-kit",
+      "package": "jsxgraph + three + @noble/hashes + lucide",
+      "packageVersion": "1.13.2 / 0.185.1 / 1.8.0 / 0.562.0",
+      "license": "MIT / ISC",
+      "libraries": [
+        { "name": "jsxgraph", "version": "1.13.2", "license": "MIT" },
+        { "name": "three", "version": "0.185.1", "license": "MIT" },
+        { "name": "@noble/hashes", "version": "1.8.0", "license": "MIT" },
+        { "name": "lucide", "version": "0.562.0", "license": "ISC" }
+      ],
+      "kind": "script",
+      "scriptPath": "/reach-deck-dependencies/geometry-euclidean-3d/59ed3f0b319a7ecce06ac8c67c0c43e27e14bd0b99ff56d92000d7415743097d.js",
+      "sourceBytes": 1618230,
+      "sha256": "59ed3f0b319a7ecce06ac8c67c0c43e27e14bd0b99ff56d92000d7415743097d",
+      "integrity": "sha256-We0/CzGafszgasjGfAxD4n4UvQuZ/1bZIADXQVdDCX0="
+    },
+    {
+      "id": "geometry-euclidean-2d-v2",
+      "version": "1.0.0",
+      "category": "science-kit",
+      "package": "jsxgraph + @noble/hashes + lucide",
+      "packageVersion": "1.13.2 / 1.8.0 / 0.562.0",
+      "license": "MIT / ISC",
+      "libraries": [
+        { "name": "jsxgraph", "version": "1.13.2", "license": "MIT" },
+        { "name": "@noble/hashes", "version": "1.8.0", "license": "MIT" },
+        { "name": "lucide", "version": "0.562.0", "license": "ISC" }
+      ],
+      "kind": "script",
+      "scriptPath": "/reach-deck-dependencies/geometry-euclidean-2d-v2/c7dc490361a56aba309290c958e1f5f6b99f4b87ce111906634bf81fa1b61828.js",
+      "sourceBytes": 1118637,
+      "sha256": "c7dc490361a56aba309290c958e1f5f6b99f4b87ce111906634bf81fa1b61828",
+      "integrity": "sha256-x9xJA2GlarowkpDJWOH19rmfS4fOERkGY0v4H6G2GCg="
+    },
+    {
+      "id": "geometry-euclidean-3d-v2",
+      "version": "1.0.0",
+      "category": "science-kit",
+      "package": "jsxgraph + three + @noble/hashes + lucide",
+      "packageVersion": "1.13.2 / 0.185.1 / 1.8.0 / 0.562.0",
+      "license": "MIT / ISC",
+      "libraries": [
+        { "name": "jsxgraph", "version": "1.13.2", "license": "MIT" },
+        { "name": "three", "version": "0.185.1", "license": "MIT" },
+        { "name": "@noble/hashes", "version": "1.8.0", "license": "MIT" },
+        { "name": "lucide", "version": "0.562.0", "license": "ISC" }
+      ],
+      "kind": "script",
+      "scriptPath": "/reach-deck-dependencies/geometry-euclidean-3d-v2/eafead7674dd01fe925fe76fb77dde99191409505092a517890e540d2959ab9e.js",
+      "sourceBytes": 1662208,
+      "sha256": "eafead7674dd01fe925fe76fb77dde99191409505092a517890e540d2959ab9e",
+      "integrity": "sha256-6v6tdnTdAf6SX+dvt33emRkUCVBQkqUXiQ5UDSlZq54="
+    }
+  ],
+  "supportedCombinations": [
+    { "runtimeIds": ["animate-css"], "sourceBytes": 71750 },
+    { "runtimeIds": ["expression"], "sourceBytes": 27638 },
+    { "runtimeIds": ["animate-css", "expression"], "sourceBytes": 99388 },
+    { "runtimeIds": ["function-plot"], "sourceBytes": 253865 },
+    { "runtimeIds": ["animate-css", "function-plot"], "sourceBytes": 325615 },
+    { "runtimeIds": ["expression", "function-plot"], "sourceBytes": 281503 },
+    { "runtimeIds": ["animate-css", "expression", "function-plot"], "sourceBytes": 353253 }
+  ],
+  "scienceCombinationBudget": {
+    "maximumMarkers": 4,
+    "maximumHeavy": 1,
+    "checkedCombinations": 3856,
+    "maximumSourceBytes": 5188813,
+    "largestCombination": [
+      "geometry-jsxgraph",
+      "geometry-euclidean-2d",
+      "geometry-euclidean-2d-v2",
+      "geometry-euclidean-3d-v2",
+      "animate-css",
+      "expression",
+      "function-plot"
+    ]
+  },
+  "rejectedCandidates": [
+    {
+      "id": "katex",
+      "version": "0.16.33",
+      "reason": "offline font assets make the full supported combination exceed the srcdoc budget"
+    },
+    {
+      "id": "mermaid",
+      "version": "11.16.0",
+      "reason": "the 3,565,102-byte minified JavaScript artifact exceeds the srcdoc limit by itself"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "reach-deck-narration-humanization-sources/v1",
+  "hashNormalization": "UTF-8 with CRLF normalized to LF",
+  "sources": [
+    {
+      "project": "Humanizer",
+      "repository": "https://github.com/blader/humanizer",
+      "commitSha": "9862685f575c65a8247f90369951df1b3416e3d6",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2025 Siqi Chen",
+      "files": [
+        {
+          "sourcePath": "SKILL.md",
+          "vendoredPath": "blader-humanizer/SKILL.md",
+          "sha256Lf": "e8269e236bed06ed0fe4824c274112e54950b0cb46b0bafe5e1576ef7c9f93d5",
+          "copiedVerbatim": true,
+          "productionEligible": false,
+          "usage": "Complete audit reference; selected rules and examples are curated in TypeScript."
+        },
+        {
+          "sourcePath": "LICENSE",
+          "vendoredPath": "blader-humanizer/LICENSE",
+          "sha256Lf": "4ac4810254ab36d45419141aeb8e69bf50652cfafe5b2dab947d06d44e5cbf96",
+          "copiedVerbatim": true,
+          "productionEligible": false,
+          "usage": "Required MIT notice."
+        }
+      ]
+    },
+    {
+      "project": "说人话",
+      "repository": "https://github.com/MrGeDiao/shuorenhua",
+      "commitSha": "5a9eafefe03807404135f4d2ee4f42fe61d58759",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2026 MrGeDiao",
+      "files": [
+        {
+          "sourcePath": "SKILL.md",
+          "vendoredPath": "mrgediao-shuorenhua/SKILL.md",
+          "sha256Lf": "56a156045d2ac25ebf8210768b6c2608a42c37ac7ee4979d746cde7b026012db",
+          "copiedVerbatim": true,
+          "productionEligible": false,
+          "usage": "Complete audit reference; selected rules are curated in TypeScript."
+        },
+        {
+          "sourcePath": "references/editing-guide.md",
+          "vendoredPath": "mrgediao-shuorenhua/references/editing-guide.md",
+          "sha256Lf": "c4ce2a4b43f967fc18f688b486908751563c0503263a28ea7a5b65bfe04d94b6",
+          "copiedVerbatim": true,
+          "productionEligible": false,
+          "usage": "Fidelity and over-editing boundary reference."
+        },
+        {
+          "sourcePath": "references/examples.md",
+          "vendoredPath": "mrgediao-shuorenhua/references/examples.md",
+          "sha256Lf": "ef6c9e19edd8f0addf6a95335adab1a0f6344bbebdc3f15981fd4182b0e6c29c",
+          "copiedVerbatim": true,
+          "productionEligible": true,
+          "usage": "Source of complete fidelity-safe before/after and no-op examples."
+        },
+        {
+          "sourcePath": "evals/real-samples.md",
+          "vendoredPath": "mrgediao-shuorenhua/evals/real-samples.md",
+          "sha256Lf": "f61d2674c556057e999b6ac094e3753cd4aa20d6ee533a05b19f4dbfec94332b",
+          "copiedVerbatim": true,
+          "productionEligible": true,
+          "usage": "Source of selected complete anti-register conversation examples; the full file remains audit-only."
+        },
+        {
+          "sourcePath": "LICENSE",
+          "vendoredPath": "mrgediao-shuorenhua/LICENSE",
+          "sha256Lf": "d26eebf6104e9770ca097771022767da18fc07ca73a542469d2748b2e3186878",
+          "copiedVerbatim": true,
+          "productionEligible": false,
+          "usage": "Required MIT notice."
+        }
+      ]
+    }
+  ]
+}

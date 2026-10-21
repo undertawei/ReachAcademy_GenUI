@@ -1,0 +1,998 @@
+[
+  {
+    "id": "scalar-constant",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [{ "id": "A", "kind": "point", "x": 1e-12, "y": 0 }],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "defined", "value": 1e-12 }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-parameter",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [{ "id": "A", "kind": "point", "x": { "parameter": "h" }, "y": 0 }],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "defined", "value": 3 }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-add-sub-mul",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [
+          {
+            "id": "A",
+            "kind": "point",
+            "x": {
+              "op": "mul",
+              "args": [
+                { "op": "add", "args": [{ "parameter": "h" }, 2] },
+                { "op": "sub", "args": [4, 1] }
+              ]
+            },
+            "y": 0
+          }
+        ],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "defined", "value": 15 }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-division",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [{ "id": "A", "kind": "point", "x": { "op": "div", "args": [7, 2] }, "y": 0 }],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "defined", "value": 3.5 }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-neg-sqrt",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [
+          {
+            "id": "A",
+            "kind": "point",
+            "x": { "op": "neg", "args": [{ "op": "sqrt", "args": [4] }] },
+            "y": 0
+          }
+        ],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "defined", "value": -2 }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-sin",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [
+          { "id": "A", "kind": "point", "x": { "op": "sin", "args": [0.5235987755982988] }, "y": 0 }
+        ],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "defined", "value": 0.5 }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-cos",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [
+          { "id": "A", "kind": "point", "x": { "op": "cos", "args": [3.141592653589793] }, "y": 0 }
+        ],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "defined", "value": -1 }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-negative-power",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [{ "id": "A", "kind": "point", "x": { "op": "pow", "args": [2, -3] }, "y": 0 }],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "defined", "value": 0.125 }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-negative-base",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [{ "id": "A", "kind": "point", "x": { "op": "pow", "args": [-2, 3] }, "y": 0 }],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "defined", "value": -8 }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-positive-power-zero-base",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [{ "id": "A", "kind": "point", "x": { "op": "pow", "args": [0, 3] }, "y": 0 }],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "defined", "value": 0 }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-zero-exponent",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [{ "id": "A", "kind": "point", "x": { "op": "pow", "args": [2, 0] }, "y": 0 }],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "defined", "value": 1 }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-division-by-zero",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [{ "id": "A", "kind": "point", "x": { "op": "div", "args": [1, 0] }, "y": 0 }],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "undefined", "reason": "division_by_zero" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-sqrt-domain",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [{ "id": "A", "kind": "point", "x": { "op": "sqrt", "args": [-1] }, "y": 0 }],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "undefined", "reason": "sqrt_domain" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-power-zero-zero",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [{ "id": "A", "kind": "point", "x": { "op": "pow", "args": [0, 0] }, "y": 0 }],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "undefined", "reason": "power_domain" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-power-zero-negative",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [{ "id": "A", "kind": "point", "x": { "op": "pow", "args": [0, -1] }, "y": 0 }],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "undefined", "reason": "power_domain" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-overflow",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [
+          { "id": "A", "kind": "point", "x": { "op": "mul", "args": [1e308, 2] }, "y": 0 }
+        ],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "undefined", "reason": "non_finite_result" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-reciprocal-overflow",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [
+          { "id": "A", "kind": "point", "x": { "op": "pow", "args": [1e-320, -1] }, "y": 0 }
+        ],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "undefined", "reason": "non_finite_result" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-intermediate-overflow",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [
+          {
+            "id": "A",
+            "kind": "point",
+            "x": { "op": "mul", "args": [{ "op": "mul", "args": [1e308, 2] }, 0] },
+            "y": 0
+          }
+        ],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "undefined", "reason": "non_finite_result" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-ordered-propagation",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [
+          {
+            "id": "A",
+            "kind": "point",
+            "x": {
+              "op": "add",
+              "args": [
+                { "op": "div", "args": [1, 0] },
+                { "op": "sqrt", "args": [-1] }
+              ]
+            },
+            "y": 0
+          }
+        ],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "undefined", "reason": "division_by_zero" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-small-finite",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [
+          { "id": "A", "kind": "point", "x": { "op": "div", "args": [1e-300, 1e-9] }, "y": 0 }
+        ],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "defined", "value": 1e-291 }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-large-finite",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [{ "id": "A", "kind": "point", "x": { "op": "sqrt", "args": [1e300] }, "y": 0 }],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": { "h": 3 },
+          "result": { "status": "defined", "value": 1e150 }
+        }
+      ]
+    }
+  },
+  {
+    "id": "scalar-missing-parameter-input",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "h", "initial": 3, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [{ "id": "A", "kind": "point", "x": { "parameter": "h" }, "y": 0 }],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "scalar": [
+        {
+          "object": "A",
+          "field": "x",
+          "parameters": {},
+          "result": { "status": "undefined", "reason": "parameter_missing" }
+        }
+      ]
+    }
+  }
+]

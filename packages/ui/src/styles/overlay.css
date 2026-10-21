@@ -1,0 +1,538 @@
+/*
+ * 弹窗、抽屉、侧面板、下拉菜单（规范 03 §3.13、§3.15、§3.19；动效 04 §3.4、§3.5、§3.7；层级 02 §7）。
+ * 层级（z-index）由共享浮层栈以内联样式给出；离场动画：[data-state='closed'] 给终态静态样式 + 只写 from 的关键帧。
+ */
+
+/* —— 模态根节点与遮罩（Dialog、Drawer 共用）—— */
+.rx-overlay-root {
+  position: fixed;
+  inset: 0;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  padding: var(--reachany-space-8) var(--reachany-space-4);
+}
+
+.rx-overlay-root[data-state='closed'] {
+  pointer-events: none;
+}
+
+.rx-overlay-root[data-variant='drawer'] {
+  display: block;
+  padding: 0;
+}
+
+.rx-overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--reachany-color-overlay);
+  animation: rx-fade-in var(--reachany-motion-duration-moderate)
+    var(--reachany-motion-easing-standard) backwards;
+}
+
+.rx-overlay-backdrop[data-state='closed'] {
+  opacity: 0;
+  animation: rx-fade-out var(--reachany-motion-duration-fast) var(--reachany-motion-easing-exit)
+    backwards;
+}
+
+/* —— Dialog 面板 —— */
+.rx-dialog {
+  --rx-dialog-width: 640px;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  width: min(var(--rx-dialog-width), calc(100vw - 32px));
+  max-height: calc(100dvh - 64px);
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--reachany-radius-lg);
+  background: var(--reachany-color-surface);
+  color: var(--reachany-color-text);
+  font-family: var(--reachany-font-sans);
+  font-size: var(--reachany-text-body);
+  line-height: var(--reachany-text-body-line-height);
+  box-shadow: var(--reachany-shadow-overlay);
+  transform-origin: center;
+  animation: rx-pop-in var(--reachany-motion-duration-moderate) var(--reachany-motion-easing-enter)
+    backwards;
+}
+
+.rx-dialog:focus,
+.rx-drawer:focus {
+  outline: none;
+}
+
+.rx-dialog[data-size='sm'] {
+  --rx-dialog-width: 480px;
+}
+
+.rx-dialog[data-size='md'] {
+  --rx-dialog-width: 640px;
+}
+
+.rx-dialog[data-size='lg'] {
+  --rx-dialog-width: 864px;
+}
+
+.rx-dialog[data-size='xl'] {
+  --rx-dialog-width: 1080px;
+}
+
+.rx-dialog[data-surface='warm'] {
+  background: var(--reachany-color-surface-warm);
+}
+
+.rx-dialog[data-state='closed'] {
+  opacity: 0;
+  transform: scale(0.98);
+  animation: rx-pop-out var(--reachany-motion-duration-fast) var(--reachany-motion-easing-exit)
+    backwards;
+}
+
+/* —— 头部 / 内容 / 底部（Dialog 与 Drawer 同结构）—— */
+.rx-dialog-header {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: flex-start;
+  gap: var(--reachany-space-3);
+  border-bottom: 1px solid var(--reachany-color-border-warm);
+  padding: var(--reachany-space-4) var(--reachany-space-8);
+}
+
+.rx-dialog-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  color: var(--reachany-color-warning);
+}
+
+.rx-dialog-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.rx-dialog-heading {
+  display: grid;
+  min-width: 0;
+  flex: 1 1 auto;
+  gap: var(--reachany-space-1);
+}
+
+.rx-dialog-title {
+  margin: 0;
+  color: var(--reachany-color-primary);
+  font-size: var(--reachany-text-subtitle);
+  font-weight: var(--reachany-text-subtitle-weight);
+  line-height: var(--reachany-text-subtitle-line-height);
+  overflow-wrap: anywhere;
+}
+
+.rx-dialog-description {
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+  overflow-wrap: anywhere;
+}
+
+.rx-dialog-close {
+  flex: 0 0 auto;
+  margin-inline-end: calc(var(--reachany-space-2) * -1);
+}
+
+.rx-dialog-body {
+  display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: var(--reachany-space-4);
+  padding: var(--reachany-space-4) var(--reachany-space-8);
+}
+
+.rx-dialog-footer {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--reachany-space-3);
+  border-top: 1px solid var(--reachany-color-border-warm);
+  padding: var(--reachany-space-5) var(--reachany-space-8);
+}
+
+/* —— ConfirmDialog：图标 + 标题 + 说明一个整块，无分隔线 —— */
+.rx-confirm-dialog .rx-dialog-header {
+  border-bottom: 0;
+  padding-top: var(--reachany-space-6);
+  padding-bottom: var(--reachany-space-2);
+}
+
+.rx-confirm-dialog .rx-dialog-description {
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-body);
+  line-height: var(--reachany-text-body-line-height);
+}
+
+.rx-confirm-dialog[data-tone='danger'] .rx-dialog-icon {
+  color: var(--reachany-color-danger);
+}
+
+.rx-confirm-dialog .rx-dialog-body {
+  padding-top: var(--reachany-space-2);
+  padding-bottom: var(--reachany-space-2);
+  padding-inline-start: calc(var(--reachany-space-8) + 20px + var(--reachany-space-3));
+}
+
+.rx-confirm-dialog .rx-dialog-footer {
+  border-top: 0;
+  padding-top: var(--reachany-space-4);
+}
+
+.rx-confirm-dialog-field {
+  display: grid;
+  gap: var(--reachany-space-2);
+}
+
+.rx-confirm-dialog-label {
+  color: var(--reachany-color-text);
+  font-size: var(--rx-label-font-size);
+  line-height: var(--reachany-text-body-line-height);
+  overflow-wrap: anywhere;
+}
+
+.rx-confirm-dialog-input {
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--rx-control-height);
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--rx-control-radius);
+  background: var(--reachany-color-surface);
+  padding: 0 var(--rx-control-padding-inline);
+  color: var(--reachany-color-text);
+  font: inherit;
+  font-size: var(--rx-control-font-size);
+  transition:
+    border-color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard),
+    box-shadow var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard);
+}
+
+.rx-confirm-dialog-input:hover:not(:disabled) {
+  border-color: var(--reachany-color-text-tertiary);
+}
+
+.rx-confirm-dialog-input:focus-visible,
+.rx-confirm-dialog-input:focus {
+  border-color: var(--reachany-color-primary);
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-confirm-dialog-input:disabled {
+  background: var(--reachany-color-surface-muted);
+  color: var(--reachany-color-text-tertiary);
+  cursor: not-allowed;
+}
+
+/* —— Drawer —— */
+.rx-drawer {
+  --rx-drawer-width: 560px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  box-sizing: border-box;
+  display: flex;
+  width: min(var(--rx-drawer-width), 100vw);
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--reachany-color-surface);
+  color: var(--reachany-color-text);
+  font-family: var(--reachany-font-sans);
+  font-size: var(--reachany-text-body);
+  line-height: var(--reachany-text-body-line-height);
+  box-shadow: var(--reachany-shadow-overlay);
+  animation: rx-slide-in-right var(--reachany-motion-duration-moderate)
+    var(--reachany-motion-easing-enter) backwards;
+}
+
+.rx-drawer[data-size='sm'] {
+  --rx-drawer-width: 400px;
+}
+
+.rx-drawer[data-size='md'] {
+  --rx-drawer-width: 560px;
+}
+
+.rx-drawer[data-size='lg'] {
+  --rx-drawer-width: 720px;
+}
+
+.rx-drawer[data-state='closed'] {
+  transform: translateX(100%);
+  animation: rx-drawer-out var(--reachany-motion-duration-fast) var(--reachany-motion-easing-exit)
+    backwards;
+}
+
+.rx-drawer[data-placement='bottom'] {
+  top: auto;
+  left: 0;
+  width: auto;
+  max-height: 85dvh;
+  border-radius: var(--reachany-radius-lg) var(--reachany-radius-lg) 0 0;
+  animation-name: rx-slide-in-up;
+}
+
+.rx-drawer[data-placement='bottom'][data-state='closed'] {
+  transform: translateY(100%);
+  animation-name: rx-drawer-out;
+}
+
+.rx-drawer-handle {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 4px;
+  margin: var(--reachany-space-2) auto 0;
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-border);
+}
+
+.rx-drawer .rx-dialog-body {
+  flex: 1 1 auto;
+}
+
+/* 离场只写 from（静止态），终态由 [data-state='closed'] 的 transform 给出。 */
+@keyframes rx-drawer-out {
+  from {
+    transform: none;
+  }
+}
+
+/* —— SidePanel（嵌入式，可收起）—— */
+.rx-side-panel {
+  --rx-side-panel-header-height: calc(var(--reachany-space-1) * 14);
+
+  position: relative;
+  box-sizing: border-box;
+  width: var(--reachany-side-panel-width);
+  min-height: 0;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-left: 1px solid var(--reachany-color-border);
+  background: var(--reachany-color-surface);
+  color: var(--reachany-color-text);
+}
+
+.rx-side-panel[data-state='closed'] {
+  width: var(--reachany-side-panel-collapsed-width);
+}
+
+.rx-side-panel[data-size='sm'] {
+  --rx-side-panel-header-height: calc(var(--reachany-space-1) * 11);
+}
+
+/* 收起：内容先淡出（fast），再收窄（moderate）；展开：先展宽，宽度到位后内容淡入。 */
+.rx-side-panel[data-ready] {
+  transition: width var(--reachany-motion-duration-moderate) var(--reachany-motion-easing-standard);
+}
+
+.rx-side-panel[data-ready][data-state='closed'] {
+  transition-delay: var(--reachany-motion-duration-fast);
+}
+
+.rx-side-panel-inner {
+  display: flex;
+  width: var(--reachany-side-panel-width);
+  height: 100%;
+  flex-direction: column;
+}
+
+.rx-side-panel-header {
+  display: flex;
+  min-height: var(--rx-side-panel-header-height);
+  flex: 0 0 auto;
+  align-items: center;
+  padding-inline-end: var(--reachany-side-panel-collapsed-width);
+}
+
+.rx-side-panel-header-content {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  align-items: center;
+}
+
+.rx-side-panel-toggle {
+  position: absolute;
+  top: calc((var(--rx-side-panel-header-height) - var(--rx-control-height)) / 2);
+  right: calc((var(--reachany-side-panel-collapsed-width) - var(--rx-control-height)) / 2);
+}
+
+.rx-side-panel-body {
+  flex: 1 1 auto;
+}
+
+.rx-side-panel-footer {
+  flex: 0 0 auto;
+  border-top: 1px solid var(--reachany-color-border);
+}
+
+.rx-side-panel-fade {
+  opacity: 1;
+}
+
+.rx-side-panel[data-ready] .rx-side-panel-fade {
+  transition: opacity var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard)
+    var(--reachany-motion-duration-moderate);
+}
+
+.rx-side-panel[data-state='closed'] .rx-side-panel-fade {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.rx-side-panel[data-ready][data-state='closed'] .rx-side-panel-fade {
+  transition:
+    opacity var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    visibility 0s linear var(--reachany-motion-duration-fast);
+}
+
+/* —— DropdownMenu（面板外观与进出场来自 .rx-floating-panel）—— */
+.rx-dropdown-menu {
+  min-width: 140px;
+  max-width: 320px;
+}
+
+.rx-dropdown-menu-item {
+  box-sizing: border-box;
+  display: flex;
+  min-height: var(--rx-option-height);
+  align-items: center;
+  gap: var(--reachany-space-2);
+  border-radius: var(--reachany-radius-sm);
+  padding: 0 var(--reachany-space-3);
+  color: var(--reachany-color-text);
+  cursor: pointer;
+  font-size: var(--reachany-text-body);
+  line-height: var(--reachany-text-body-line-height);
+  outline: none;
+  user-select: none;
+  transition: background-color var(--reachany-motion-duration-instant)
+    var(--reachany-motion-easing-standard);
+}
+
+.rx-dropdown-menu-item:focus {
+  background: var(--reachany-color-surface-muted);
+}
+
+.rx-dropdown-menu-item:focus-visible {
+  box-shadow: inset 0 0 0 1px var(--reachany-color-primary);
+}
+
+.rx-dropdown-menu-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  color: var(--reachany-color-icon);
+}
+
+.rx-dropdown-menu-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.rx-dropdown-menu-text {
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rx-dropdown-menu-item[data-danger] {
+  color: var(--reachany-color-danger-text);
+}
+
+.rx-dropdown-menu-item[data-danger] .rx-dropdown-menu-icon {
+  color: var(--reachany-color-danger);
+}
+
+.rx-dropdown-menu-item[data-danger]:focus {
+  background: var(--reachany-color-danger-soft);
+}
+
+.rx-dropdown-menu-item[data-disabled],
+.rx-dropdown-menu-item[data-disabled] .rx-dropdown-menu-icon {
+  color: var(--reachany-color-text-tertiary);
+  cursor: not-allowed;
+}
+
+.rx-dropdown-menu-item[data-disabled]:focus {
+  background: transparent;
+}
+
+.rx-dropdown-menu-separator {
+  height: 1px;
+  margin: var(--reachany-space-1) calc(var(--reachany-space-1) * -1);
+  background: var(--reachany-color-border);
+}
+
+.rx-dropdown-menu-group-label {
+  padding: var(--reachany-space-1) var(--reachany-space-3);
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  font-weight: 500;
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+/* —— 减少动效（规范 04 §4）：取消位移、缩放与滑动，状态瞬变 —— */
+@media (prefers-reduced-motion: reduce) {
+  .rx-overlay-backdrop,
+  .rx-overlay-backdrop[data-state='closed'],
+  .rx-dialog,
+  .rx-dialog[data-state='closed'],
+  .rx-confirm-dialog,
+  .rx-drawer,
+  .rx-drawer[data-state='closed'],
+  .rx-drawer[data-placement='bottom'][data-state='closed'] {
+    animation: none;
+  }
+
+  .rx-side-panel[data-ready],
+  .rx-side-panel[data-ready][data-state='closed'],
+  .rx-side-panel[data-ready] .rx-side-panel-fade,
+  .rx-side-panel[data-ready][data-state='closed'] .rx-side-panel-fade,
+  .rx-confirm-dialog-input,
+  .rx-dropdown-menu-item {
+    transition: none;
+  }
+}
+
+/* 持续挂载的媒体在内联与弹窗容器之间移动时保持同一棵 React 树。 */
+.rx-persistent-portal-anchor,
+.rx-persistent-portal,
+.rx-inline-dialog-root,
+.rx-inline-dialog {
+  min-height: 0;
+  min-width: 0;
+  height: 100%;
+}
+.rx-inline-dialog {
+  display: flex;
+  flex-direction: column;
+}
+.rx-inline-dialog > .rx-dialog-body {
+  padding: 0;
+}
+.rx-inline-dialog > .rx-dialog-header[hidden],
+.rx-inline-dialog > .rx-dialog-footer[hidden] {
+  display: none;
+}
+.rx-dialog[data-content-layout='media'] {
+  height: calc(100dvh - var(--reachany-space-8) - var(--reachany-space-8));
+}
+[data-content-layout='media'] > .rx-dialog-body {
+  overflow: hidden;
+}

@@ -1,0 +1,248 @@
+/*
+ * ReachAny 品牌 CSS 变量（第二期视觉基线，规范见 docs/wiki/frontend/01-visual-foundations.md）。
+ * 首个 :root 块与 src/tokens.ts 的 brandCssVariables 保持同键同值（tests/visual-baseline.test.mjs）。
+ * 应用通过 `@reachany/ui/styles.css` 引入本文件；不要在 <body> 上以内联样式重复注入，
+ * 否则下面的响应式、密度与减少动效覆盖会被内联值压住。
+ */
+:root {
+  --reachany-color-header: #1e2740;
+  --reachany-color-header-accent: rgb(255 255 255 / 28%);
+  --reachany-color-ink: #1e2234;
+  --reachany-color-ink-hover: #393d4c;
+  --reachany-color-primary: #b5402e;
+  --reachany-color-primary-hover: #9c3728;
+  --reachany-color-primary-active: #862f22;
+  --reachany-color-primary-soft: #f6e8e6;
+  --reachany-color-primary-soft-strong: #f0d9d5;
+  --reachany-color-primary-text-on-soft: #9a3526;
+  --reachany-color-primary-contrast: #ffffff;
+  --reachany-color-accent: #f6c84b;
+  --reachany-color-accent-hover: #edbb35;
+  --reachany-color-accent-soft: #fef8e9;
+  --reachany-color-accent-text: #8b6310;
+  --reachany-color-accent-contrast: #1e2234;
+  --reachany-color-amber-soft: #fff2dc;
+  --reachany-color-orange: #f45f23;
+  --reachany-color-orange-strong: #c94f1a;
+  --reachany-color-orange-soft: #feeadf;
+  --reachany-color-canvas: #fcf9f2;
+  --reachany-color-surface: #ffffff;
+  --reachany-color-surface-muted: #f5f7f9;
+  --reachany-color-surface-warm: #fffcf7;
+  --reachany-color-surface-warm-strong: #fbf5e9;
+  --reachany-color-text: #1e2234;
+  --reachany-color-text-secondary: #6b6f80;
+  --reachany-color-text-tertiary: #a5a8b8;
+  --reachany-color-border: #ebebeb;
+  --reachany-color-border-subtle: #e2e8f0;
+  --reachany-color-border-warm: #e9dfca;
+  --reachany-color-icon: #707485;
+  --reachany-color-track: #ebebeb;
+  --reachany-color-overlay: rgb(0 0 0 / 60%);
+  --reachany-color-success: #59b08c;
+  --reachany-color-success-strong: #337a4f;
+  --reachany-color-success-text: #2f7a5b;
+  --reachany-color-success-soft: #ecf8f3;
+  --reachany-color-published: #2a6f64;
+  --reachany-color-warning: #b55e11;
+  --reachany-color-warning-text: #b55e11;
+  --reachany-color-warning-soft: #fff3e0;
+  --reachany-color-danger: #b5402e;
+  --reachany-color-danger-hover: #9c3728;
+  --reachany-color-danger-text: #9c3728;
+  --reachany-color-danger-soft: #f6e8e6;
+  --reachany-color-danger-border: #e9c6c0;
+  --reachany-color-pending-soft: #ffe0d6;
+  --reachany-color-info: #544aae;
+  --reachany-color-info-text: #372aac;
+  --reachany-color-info-soft: #eff2ff;
+  --reachany-color-purple: #544aae;
+  --reachany-color-purple-soft: #f5f2fc;
+  --reachany-color-category-1: #544aae;
+  --reachany-color-category-1-soft: #f5f2fc;
+  --reachany-color-category-2: #59b08c;
+  --reachany-color-category-2-soft: #ecf8f3;
+  --reachany-color-category-3: #f45f23;
+  --reachany-color-category-3-soft: #fff6f0;
+  --reachany-color-category-4: #a758c9;
+  --reachany-color-category-4-soft: #f7effa;
+  --reachany-color-player: #2f2d31;
+  --reachany-color-action: #b5402e;
+  --reachany-color-action-hover: #9c3728;
+  --reachany-color-muted-text: #6b6f80;
+  --reachany-color-muted-accent: #a5a8b8;
+  --reachany-color-surface-subtle: #f5f7f9;
+  --reachany-color-header-avatar: #e2e8f0;
+  --reachany-color-brick: #9c3728;
+  --reachany-color-brick-soft: #f6e8e6;
+  --reachany-color-neutral-1: #f5f7f9;
+  --reachany-color-neutral-2: #ebebeb;
+  --reachany-module-reach-deck-from: #8097ff;
+  --reachany-module-reach-deck-to: #5477ff;
+  --reachany-module-quiz-from: #36e9a8;
+  --reachany-module-quiz-to: #03b76a;
+  --reachany-module-spaced-review-from: #4f84ff;
+  --reachany-module-spaced-review-to: #165dff;
+  --reachany-module-group-collaboration-from: #fdc807;
+  --reachany-module-group-collaboration-to: #fb9100;
+  --reachany-module-video-from: #ff8fb1;
+  --reachany-module-video-to: #e8457a;
+  --reachany-font-sans:
+    'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', Inter, ui-sans-serif, system-ui, sans-serif;
+  --reachany-font-serif: 'Source Han Serif SC', 'Noto Serif SC', 'Songti SC', SimSun, serif;
+  --reachany-font-brand: Montserrat, Inter, ui-sans-serif, system-ui, sans-serif;
+  --reachany-font-numeric: Montserrat, Inter, ui-sans-serif, system-ui, sans-serif;
+  --reachany-text-display: 48px;
+  --reachany-text-display-line-height: 56px;
+  --reachany-text-display-weight: 700;
+  --reachany-text-title-xl: 32px;
+  --reachany-text-title-xl-line-height: 40px;
+  --reachany-text-title-xl-weight: 700;
+  --reachany-text-title-lg: 24px;
+  --reachany-text-title-lg-line-height: 32px;
+  --reachany-text-title-lg-weight: 700;
+  --reachany-text-title-md: 20px;
+  --reachany-text-title-md-line-height: 28px;
+  --reachany-text-title-md-weight: 700;
+  --reachany-text-title-sm: 18px;
+  --reachany-text-title-sm-line-height: 26px;
+  --reachany-text-title-sm-weight: 700;
+  --reachany-text-subtitle: 16px;
+  --reachany-text-subtitle-line-height: 24px;
+  --reachany-text-subtitle-weight: 600;
+  --reachany-text-body-lg: 15px;
+  --reachany-text-body-lg-line-height: 24px;
+  --reachany-text-body-lg-weight: 400;
+  --reachany-text-body: 14px;
+  --reachany-text-body-line-height: 22px;
+  --reachany-text-body-weight: 400;
+  --reachany-text-body-sm: 13px;
+  --reachany-text-body-sm-line-height: 20px;
+  --reachany-text-body-sm-weight: 400;
+  --reachany-text-caption: 12px;
+  --reachany-text-caption-line-height: 20px;
+  --reachany-text-caption-weight: 400;
+  --reachany-text-micro: 11px;
+  --reachany-text-micro-line-height: 16px;
+  --reachany-text-micro-weight: 400;
+  --reachany-text-control-weight: 500;
+  --reachany-space-1: 4px;
+  --reachany-space-2: 8px;
+  --reachany-space-3: 12px;
+  --reachany-space-4: 16px;
+  --reachany-space-5: 20px;
+  --reachany-space-6: 24px;
+  --reachany-space-8: 32px;
+  --reachany-space-10: 40px;
+  --reachany-radius-xs: 2px;
+  --reachany-radius-sm: 4px;
+  --reachany-radius-md: 8px;
+  --reachany-radius-card: 12px;
+  --reachany-radius-lg: 16px;
+  --reachany-radius-xl: 24px;
+  --reachany-radius-pill: 999px;
+  --reachany-opacity-disabled: 0.45;
+  --reachany-shadow-field: 0 1px 2px rgb(0 0 0 / 5%);
+  --reachany-shadow-card: 0 0 4px rgb(82 17 101 / 8%);
+  --reachany-shadow-raised: 0 4px 14px rgb(0 0 0 / 12%);
+  --reachany-shadow-overlay:
+    0 8px 10px -5px rgb(0 0 0 / 8%), 0 12px 24px 2px rgb(0 0 0 / 4%), 0 2px 30px 5px rgb(0 0 0 / 5%);
+  --reachany-shadow-knob: 0 1px 4px rgb(121 141 176 / 49%);
+  --reachany-shadow-focus: 0 0 0 3px rgb(181 64 46 / 18%);
+  --reachany-z-base: 0;
+  --reachany-z-sticky: 10;
+  --reachany-z-header: 100;
+  --reachany-z-dropdown: 1000;
+  --reachany-z-drawer: 1100;
+  --reachany-z-modal: 1200;
+  --reachany-z-toast: 1300;
+  --reachany-z-tooltip: 1400;
+  --reachany-motion-duration-instant: 80ms;
+  --reachany-motion-duration-fast: 160ms;
+  --reachany-motion-duration-moderate: 240ms;
+  --reachany-motion-duration-slow: 480ms;
+  --reachany-motion-easing-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --reachany-motion-easing-exit: cubic-bezier(0.7, 0, 0.84, 0);
+  --reachany-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --reachany-motion-easing-emphasized: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --reachany-motion-distance-sm: 4px;
+  --reachany-motion-distance-md: 8px;
+  --reachany-motion-distance-lg: 24px;
+  --reachany-feedback-spinner-sm: 14px;
+  --reachany-feedback-spinner-md: 18px;
+  --reachany-feedback-spinner-lg: 28px;
+  --reachany-feedback-progress-height: 6px;
+  --reachany-feedback-toast-width: 22rem;
+  --reachany-header-height: 60px;
+  --reachany-header-padding-inline: 40px;
+  --reachany-header-nav-gap: 34px;
+  --reachany-layout-feedback-inset: 16px;
+  --reachany-layout-feedback-size: 44px;
+  --reachany-layout-feedback-tab-width: 24px;
+  --reachany-layout-page-gutter-safe: calc(
+    max(env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px)) +
+      var(--reachany-layout-feedback-tab-width)
+  );
+  --reachany-page-padding-inline: max(40px, var(--reachany-layout-page-gutter-safe));
+  --reachany-content-max-width: 1760px;
+  --reachany-side-nav-width: 160px;
+  --reachany-side-panel-width: 400px;
+  --reachany-course-cover-width: 160px;
+  --reachany-course-cover-compact-width: 56px;
+  --reachany-course-search-width: 224px;
+  --reachany-data-table-min-width: 960px;
+  --reachany-classroom-table-min-width: 1440px;
+  --reachany-classroom-drawer-width: 1200px;
+  --reachany-classroom-page-nav-compact-height: 120px;
+  --reachany-data-table-primary-column-width: 224px;
+  --reachany-skeleton-heading-width: 224px;
+  --reachany-skeleton-label-width: 160px;
+  --reachany-deck-thumbnail-width: 160px;
+  --reachany-deck-caption-height: 64px;
+  --reachany-deck-caption-narrow-height: 72px;
+  --reachany-deck-controls-height: 44px;
+  --reachany-deck-control-size: 36px;
+  --reachany-deck-timeline-trailing-width: 128px;
+  --reachany-deck-trial-header-height: 68px;
+  --reachany-course-overview-compact-height: 120px;
+  --reachany-attachment-preview-height: 400px;
+  --reachany-attachment-preview-max-height: 60dvh;
+  --reachany-side-panel-collapsed-width: 56px;
+  --reachany-overview-column-width: 376px;
+  --reachany-question-column-width: 768px;
+  --reachany-reading-column-width: 880px;
+  --reachany-detail-column-width: 864px;
+  --reachany-back-bar-height: 64px;
+  --reachany-step-bar-height: 84px;
+  --reachany-action-footer-height: 80px;
+  --reachany-chip-width: 96px;
+}
+
+/*
+ * 规范 02 §6：1280–1439 视口页面边距 24px、右侧面板 360px。
+ * 页面边距仍不小于浮动反馈入口的安全留白（规范 02 §6.1）。
+ */
+@media (max-width: 1439px) {
+  :root {
+    --reachany-page-padding-inline: max(24px, var(--reachany-layout-page-gutter-safe));
+    --reachany-side-panel-width: 360px;
+  }
+}
+
+/* 规范 03 §3.6：紧凑密度（教师、管理端）的多选胶囊宽 80px。 */
+[data-density='compact'] {
+  --reachany-chip-width: 80px;
+}
+
+/* 规范 04 §4：减少动效时所有时长压到 0.01ms，引用变量的过渡与动画随之失效。 */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --reachany-motion-duration-instant: 0.01ms;
+    --reachany-motion-duration-fast: 0.01ms;
+    --reachany-motion-duration-moderate: 0.01ms;
+    --reachany-motion-duration-slow: 0.01ms;
+    --reachany-motion-distance-sm: 0px;
+    --reachany-motion-distance-md: 0px;
+    --reachany-motion-distance-lg: 0px;
+  }
+}

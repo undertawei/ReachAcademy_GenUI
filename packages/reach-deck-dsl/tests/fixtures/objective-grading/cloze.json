@@ -1,0 +1,925 @@
+{
+  "description": "完形填空：逐空比对，按空数比例给分，全部空正确才算正确。",
+  "cases": [
+    {
+      "name": "all blanks right",
+      "question": {
+        "question_type": "cloze",
+        "has_answer": true,
+        "points": 9,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["went", "go"],
+            "candidates": [
+              {
+                "value": "went"
+              },
+              {
+                "value": "go"
+              },
+              {
+                "value": "gone"
+              }
+            ]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["to"],
+            "candidates": [
+              {
+                "value": "to"
+              },
+              {
+                "value": "at"
+              }
+            ]
+          },
+          {
+            "id": "b3",
+            "blank_index": 3,
+            "answer": ["school"],
+            "candidates": [
+              {
+                "value": "school"
+              },
+              {
+                "value": "home"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "selection",
+              "values": ["went"]
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "selection",
+              "values": ["to"]
+            }
+          },
+          {
+            "blankId": "b3",
+            "answer": {
+              "kind": "selection",
+              "values": ["school"]
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 9,
+        "maxScore": 9,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "any accepted value counts",
+      "question": {
+        "question_type": "cloze",
+        "has_answer": true,
+        "points": 9,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["went", "go"],
+            "candidates": [
+              {
+                "value": "went"
+              },
+              {
+                "value": "go"
+              },
+              {
+                "value": "gone"
+              }
+            ]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["to"],
+            "candidates": [
+              {
+                "value": "to"
+              },
+              {
+                "value": "at"
+              }
+            ]
+          },
+          {
+            "id": "b3",
+            "blank_index": 3,
+            "answer": ["school"],
+            "candidates": [
+              {
+                "value": "school"
+              },
+              {
+                "value": "home"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "selection",
+              "values": ["go"]
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "selection",
+              "values": ["to"]
+            }
+          },
+          {
+            "blankId": "b3",
+            "answer": {
+              "kind": "selection",
+              "values": ["school"]
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 9,
+        "maxScore": 9,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "two of three blanks right",
+      "question": {
+        "question_type": "cloze",
+        "has_answer": true,
+        "points": 9,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["went", "go"],
+            "candidates": [
+              {
+                "value": "went"
+              },
+              {
+                "value": "go"
+              },
+              {
+                "value": "gone"
+              }
+            ]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["to"],
+            "candidates": [
+              {
+                "value": "to"
+              },
+              {
+                "value": "at"
+              }
+            ]
+          },
+          {
+            "id": "b3",
+            "blank_index": 3,
+            "answer": ["school"],
+            "candidates": [
+              {
+                "value": "school"
+              },
+              {
+                "value": "home"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "selection",
+              "values": ["went"]
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "selection",
+              "values": ["at"]
+            }
+          },
+          {
+            "blankId": "b3",
+            "answer": {
+              "kind": "selection",
+              "values": ["school"]
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 6,
+        "maxScore": 9,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "missing blank counts wrong",
+      "question": {
+        "question_type": "cloze",
+        "has_answer": true,
+        "points": 9,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["went", "go"],
+            "candidates": [
+              {
+                "value": "went"
+              },
+              {
+                "value": "go"
+              },
+              {
+                "value": "gone"
+              }
+            ]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["to"],
+            "candidates": [
+              {
+                "value": "to"
+              },
+              {
+                "value": "at"
+              }
+            ]
+          },
+          {
+            "id": "b3",
+            "blank_index": 3,
+            "answer": ["school"],
+            "candidates": [
+              {
+                "value": "school"
+              },
+              {
+                "value": "home"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "selection",
+              "values": ["went"]
+            }
+          },
+          {
+            "blankId": "b3",
+            "answer": {
+              "kind": "selection",
+              "values": ["school"]
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 6,
+        "maxScore": 9,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "unanswered blank counts wrong",
+      "question": {
+        "question_type": "cloze",
+        "has_answer": true,
+        "points": 9,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["went", "go"],
+            "candidates": [
+              {
+                "value": "went"
+              },
+              {
+                "value": "go"
+              },
+              {
+                "value": "gone"
+              }
+            ]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["to"],
+            "candidates": [
+              {
+                "value": "to"
+              },
+              {
+                "value": "at"
+              }
+            ]
+          },
+          {
+            "id": "b3",
+            "blank_index": 3,
+            "answer": ["school"],
+            "candidates": [
+              {
+                "value": "school"
+              },
+              {
+                "value": "home"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "selection",
+              "values": ["went"]
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "selection",
+              "values": []
+            }
+          },
+          {
+            "blankId": "b3",
+            "answer": {
+              "kind": "selection",
+              "values": []
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 3,
+        "maxScore": 9,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "rich-text blank counts wrong",
+      "question": {
+        "question_type": "cloze",
+        "has_answer": true,
+        "points": 9,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["went", "go"],
+            "candidates": [
+              {
+                "value": "went"
+              },
+              {
+                "value": "go"
+              },
+              {
+                "value": "gone"
+              }
+            ]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["to"],
+            "candidates": [
+              {
+                "value": "to"
+              },
+              {
+                "value": "at"
+              }
+            ]
+          },
+          {
+            "id": "b3",
+            "blank_index": 3,
+            "answer": ["school"],
+            "candidates": [
+              {
+                "value": "school"
+              },
+              {
+                "value": "home"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "went"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "selection",
+              "values": ["to"]
+            }
+          },
+          {
+            "blankId": "b3",
+            "answer": {
+              "kind": "selection",
+              "values": ["school"]
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 6,
+        "maxScore": 9,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "unknown blank ids are ignored",
+      "question": {
+        "question_type": "cloze",
+        "has_answer": true,
+        "points": 9,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["went", "go"],
+            "candidates": [
+              {
+                "value": "went"
+              },
+              {
+                "value": "go"
+              },
+              {
+                "value": "gone"
+              }
+            ]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["to"],
+            "candidates": [
+              {
+                "value": "to"
+              },
+              {
+                "value": "at"
+              }
+            ]
+          },
+          {
+            "id": "b3",
+            "blank_index": 3,
+            "answer": ["school"],
+            "candidates": [
+              {
+                "value": "school"
+              },
+              {
+                "value": "home"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "selection",
+              "values": ["went"]
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "selection",
+              "values": ["to"]
+            }
+          },
+          {
+            "blankId": "b3",
+            "answer": {
+              "kind": "selection",
+              "values": ["school"]
+            }
+          },
+          {
+            "blankId": "b9",
+            "answer": {
+              "kind": "selection",
+              "values": ["went"]
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 9,
+        "maxScore": 9,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "selection response is the wrong kind",
+      "question": {
+        "question_type": "cloze",
+        "has_answer": true,
+        "points": 9,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["went", "go"],
+            "candidates": [
+              {
+                "value": "went"
+              },
+              {
+                "value": "go"
+              },
+              {
+                "value": "gone"
+              }
+            ]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["to"],
+            "candidates": [
+              {
+                "value": "to"
+              },
+              {
+                "value": "at"
+              }
+            ]
+          },
+          {
+            "id": "b3",
+            "blank_index": 3,
+            "answer": ["school"],
+            "candidates": [
+              {
+                "value": "school"
+              },
+              {
+                "value": "home"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["went"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 9,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "empty fill earns zero",
+      "question": {
+        "question_type": "cloze",
+        "has_answer": true,
+        "points": 9,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["went", "go"],
+            "candidates": [
+              {
+                "value": "went"
+              },
+              {
+                "value": "go"
+              },
+              {
+                "value": "gone"
+              }
+            ]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["to"],
+            "candidates": [
+              {
+                "value": "to"
+              },
+              {
+                "value": "at"
+              }
+            ]
+          },
+          {
+            "id": "b3",
+            "blank_index": 3,
+            "answer": ["school"],
+            "candidates": [
+              {
+                "value": "school"
+              },
+              {
+                "value": "home"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": []
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 9,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "cloze ignores candidate pool repetition",
+      "question": {
+        "question_type": "cloze",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["the"]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["the"]
+          }
+        ],
+        "candidate_pool_repeatable": false
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "selection",
+              "values": ["the"]
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "selection",
+              "values": ["the"]
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 10,
+        "maxScore": 10,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "blank without reference answer is unscored",
+      "question": {
+        "question_type": "cloze",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": []
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "selection",
+              "values": ["went"]
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "UNSCORED"
+      }
+    },
+    {
+      "name": "padded and duplicated blank selections are normalized",
+      "question": {
+        "question_type": "cloze",
+        "has_answer": true,
+        "points": 9,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["went", "go"],
+            "candidates": [
+              {
+                "value": "went"
+              },
+              {
+                "value": "go"
+              },
+              {
+                "value": "gone"
+              }
+            ]
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": ["to"],
+            "candidates": [
+              {
+                "value": "to"
+              },
+              {
+                "value": "at"
+              }
+            ]
+          },
+          {
+            "id": "b3",
+            "blank_index": 3,
+            "answer": ["school"],
+            "candidates": [
+              {
+                "value": "school"
+              },
+              {
+                "value": "home"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "selection",
+              "values": [" went ", "went"]
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "selection",
+              "values": ["", "to\n"]
+            }
+          },
+          {
+            "blankId": "b3",
+            "answer": {
+              "kind": "selection",
+              "values": ["school"]
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 9,
+        "maxScore": 9,
+        "result": "correct"
+      }
+    }
+  ]
+}

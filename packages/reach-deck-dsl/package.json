@@ -1,0 +1,46 @@
+{
+  "name": "@reachany/reach-deck-dsl",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./reference-library": {
+      "types": "./dist/reference-library/index.d.ts",
+      "default": "./dist/reference-library/index.js"
+    },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./function-plot-geometry": {
+      "types": "./dist/functionPlotGeometry.d.ts",
+      "default": "./dist/functionPlotGeometry.js"
+    },
+    "./euclidean-geometry": {
+      "types": "./dist/euclideanGeometry.d.ts",
+      "default": "./dist/euclideanGeometry.js"
+    },
+    "./euclidean-geometry-contract": {
+      "default": "./dist/euclideanGeometryContract.json"
+    },
+    "./euclidean-geometry-v2": {
+      "types": "./dist/euclideanGeometryV2.d.ts",
+      "default": "./dist/euclideanGeometryV2.js"
+    },
+    "./euclidean-geometry-contract-v2": {
+      "default": "./dist/euclideanGeometryContractV2.json"
+    }
+  },
+  "scripts": {
+    "references:project": "tsx scripts/project-reference-registry.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --pool=threads --maxWorkers=1"
+  },
+  "devDependencies": {
+    "@reachany/eslint-config": "workspace:*",
+    "@reachany/tsconfig": "workspace:*",
+    "@playwright/test": "^1.58.2",
+    "tsx": "4.20.6"
+  }
+}

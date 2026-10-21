@@ -1,0 +1,416 @@
+{
+  "schemaVersion": "reach-deck-document/v2",
+  "id": "55555555-5555-4555-8555-555555555555",
+  "title": "能量转化（回放夹具）",
+  "stage": {
+    "width": 1600,
+    "height": 900,
+    "aspectRatio": "16:9"
+  },
+  "theme": {
+    "name": "Reach",
+    "background": "#ffffff",
+    "surface": "#f8fafc",
+    "ink": "#172024",
+    "muted": "#647178",
+    "accent": "#2563eb",
+    "success": "#15803d",
+    "warning": "#b45309",
+    "fontDisplay": "Inter",
+    "fontBody": "Inter"
+  },
+  "defaultThemeId": "reach-default-theme",
+  "resources": {
+    "themes": [
+      {
+        "id": "reach-default-theme",
+        "name": "Reach",
+        "colors": {
+          "background": "#ffffff",
+          "surface": "#f8fafc",
+          "ink": "#172024",
+          "muted": "#647178",
+          "accent": "#2563eb",
+          "success": "#15803d",
+          "warning": "#b45309"
+        },
+        "fonts": {
+          "display": "Inter",
+          "body": "Inter"
+        }
+      }
+    ],
+    "masters": [],
+    "layouts": [],
+    "media": [
+      {
+        "id": "media-hero",
+        "objectKey": "uploads/11111111-1111-4111-8111-111111111111/reach-deck/decksmith-replay/hero.png",
+        "contentType": "image/png",
+        "digest": "sha256:a0badbb735fd32f6d11a91c84c2c145b639225f170bd6fdb36df96c21a82830b"
+      },
+      {
+        "id": "media-battery-dry",
+        "objectKey": "uploads/11111111-1111-4111-8111-111111111111/reach-deck/decksmith-replay/battery-dry.png",
+        "contentType": "image/png",
+        "digest": "sha256:b658c9dbe8d642ad2b89c330fa836906d39607ddc803a1ca29a771db2aeb8fbd"
+      },
+      {
+        "id": "media-battery-rechargeable",
+        "objectKey": "uploads/11111111-1111-4111-8111-111111111111/reach-deck/decksmith-replay/battery-rechargeable.png",
+        "contentType": "image/png",
+        "digest": "sha256:49553ff711033a3b02cf1d6615e957c56a70a7e7d739473c3d14121f11a77512"
+      },
+      {
+        "id": "media-p1-audio",
+        "objectKey": "uploads/11111111-1111-4111-8111-111111111111/reach-deck/decksmith-replay/narration-p1.mp3",
+        "contentType": "audio/mpeg",
+        "digest": "sha256:1a38d10766bf370bae9793b9b257d2ebf8c909b0fc2cc0e54dcbe1cbc5a58671"
+      }
+    ]
+  },
+  "metadata": {
+    "source": "editor",
+    "language": "zh-CN",
+    "generatedAt": "2026-10-08T00:00:00.000Z",
+    "contentDigest": "draft:blank:v2"
+  },
+  "revisions": [],
+  "pages": [
+    {
+      "pageId": "55555555-5555-4555-8555-555555555555:page-1",
+      "title": "能量从哪里来",
+      "order": 1,
+      "revision": 3,
+      "sceneType": "slide"
+    },
+    {
+      "pageId": "55555555-5555-4555-8555-555555555555:page-2",
+      "title": "两种电池",
+      "order": 2,
+      "revision": 1,
+      "sceneType": "slide"
+    },
+    {
+      "pageId": "55555555-5555-4555-8555-555555555555:page-3",
+      "title": "调参数感受 W=UIt",
+      "order": 3,
+      "revision": 2,
+      "sceneType": "interactive",
+      "scene": {
+        "schemaVersion": "reach-interactive-scene/v2",
+        "id": "55555555-5555-4555-8555-555555555555:page-3",
+        "title": "调参数感受 W=UIt",
+        "sceneType": "interactive",
+        "documentHtml": "<!doctype html><html><head><style>body{margin:0;font-family:sans-serif}</style></head><body><label>电压 U <input id=\"u\" type=\"range\" min=\"1\" max=\"12\" value=\"6\"></label><p id=\"w\">W = 6 J</p><script>const u=document.getElementById(\"u\");u.addEventListener(\"input\",()=>{document.getElementById(\"w\").textContent=\"W = \"+u.value+\" J\";});window.ReachInteractive?.ready?.();</script></body></html>",
+        "bridgeVersion": "reach-interactive-bridge/v1",
+        "runtimePolicy": {
+          "completionMode": "none",
+          "allowReset": true,
+          "maximumDurationSeconds": null
+        },
+        "eventManifest": {
+          "schemaVersion": "reach-interactive-event-manifest/v1",
+          "events": []
+        },
+        "narration": {
+          "schemaVersion": "reach-interactive-narration/v1",
+          "text": "拖动滑块改变电压，观察电功怎样变化。"
+        }
+      }
+    },
+    {
+      "pageId": "55555555-5555-4555-8555-555555555555:page-4",
+      "title": "小结",
+      "order": 4,
+      "revision": 1,
+      "sceneType": "slide"
+    }
+  ],
+  "nativeSlides": [
+    {
+      "pageId": "55555555-5555-4555-8555-555555555555:page-1",
+      "slide": {
+        "schemaVersion": "reach-deck-slide/v2",
+        "id": "55555555-5555-4555-8555-555555555555:page-1:native",
+        "title": "能量从哪里来",
+        "background": {
+          "kind": "solid",
+          "color": {
+            "kind": "srgb",
+            "value": "#ffffff"
+          }
+        },
+        "elements": [
+          {
+            "id": "p1-title",
+            "type": "textFrame",
+            "transform": {
+              "x": 80,
+              "y": 56,
+              "width": 1440,
+              "height": 96
+            },
+            "zIndex": 1,
+            "text": {
+              "margins": {
+                "left": 8,
+                "top": 4,
+                "right": 8,
+                "bottom": 4
+              },
+              "verticalAlignment": "top",
+              "wrap": true,
+              "autofit": {
+                "mode": "none"
+              },
+              "doc": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "能量从哪里来"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "fontSubstitutions": []
+            }
+          },
+          {
+            "id": "p1-hero",
+            "type": "image",
+            "transform": {
+              "x": 120,
+              "y": 200,
+              "width": 960,
+              "height": 640
+            },
+            "zIndex": 2,
+            "resourceId": "media-hero",
+            "alt": "电热水壶、风扇和左下角一节电池之间的能量转化示意图",
+            "fit": "contain"
+          },
+          {
+            "id": "p1-body",
+            "type": "textFrame",
+            "transform": {
+              "x": 1120,
+              "y": 240,
+              "width": 400,
+              "height": 240
+            },
+            "zIndex": 3,
+            "text": {
+              "margins": {
+                "left": 8,
+                "top": 4,
+                "right": 8,
+                "bottom": 4
+              },
+              "verticalAlignment": "top",
+              "wrap": true,
+              "autofit": {
+                "mode": "none"
+              },
+              "doc": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "用电器把电能转化为其他形式的能。"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "fontSubstitutions": []
+            }
+          }
+        ],
+        "animations": [
+          {
+            "id": "teacher-title-appear",
+            "targetId": "p1-title",
+            "trigger": "on-enter",
+            "effect": "appear",
+            "start": 0,
+            "duration": 0.2
+          },
+          {
+            "id": "narration-entrance:p1-hero",
+            "targetId": "p1-hero",
+            "trigger": "after-previous",
+            "effect": "fade",
+            "start": 1.2,
+            "duration": 0.4
+          }
+        ],
+        "duration": 8,
+        "narration": {
+          "markdown": "我们先看三种常见的用电器，它们都在把电能转化为别的能。",
+          "audioResourceId": "media-p1-audio",
+          "segments": [
+            {
+              "text": "我们先看三种常见的用电器，它们都在把电能转化为别的能。",
+              "start": 0,
+              "end": 6.5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "pageId": "55555555-5555-4555-8555-555555555555:page-2",
+      "slide": {
+        "schemaVersion": "reach-deck-slide/v2",
+        "id": "55555555-5555-4555-8555-555555555555:page-2:native",
+        "title": "两种电池",
+        "background": {
+          "kind": "solid",
+          "color": {
+            "kind": "srgb",
+            "value": "#ffffff"
+          }
+        },
+        "elements": [
+          {
+            "id": "p2-title",
+            "type": "textFrame",
+            "transform": {
+              "x": 80,
+              "y": 56,
+              "width": 1440,
+              "height": 96
+            },
+            "zIndex": 1,
+            "text": {
+              "margins": {
+                "left": 8,
+                "top": 4,
+                "right": 8,
+                "bottom": 4
+              },
+              "verticalAlignment": "top",
+              "wrap": true,
+              "autofit": {
+                "mode": "none"
+              },
+              "doc": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "两种电池"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "fontSubstitutions": []
+            }
+          },
+          {
+            "id": "p2-dry",
+            "type": "image",
+            "transform": {
+              "x": 120,
+              "y": 220,
+              "width": 640,
+              "height": 480
+            },
+            "zIndex": 2,
+            "resourceId": "media-battery-dry",
+            "alt": "一节干电池",
+            "fit": "contain"
+          },
+          {
+            "id": "p2-rechargeable",
+            "type": "image",
+            "transform": {
+              "x": 840,
+              "y": 220,
+              "width": 640,
+              "height": 480
+            },
+            "zIndex": 3,
+            "resourceId": "media-battery-rechargeable",
+            "alt": "一块锂电池",
+            "fit": "contain"
+          }
+        ],
+        "animations": []
+      }
+    },
+    {
+      "pageId": "55555555-5555-4555-8555-555555555555:page-4",
+      "slide": {
+        "schemaVersion": "reach-deck-slide/v2",
+        "id": "55555555-5555-4555-8555-555555555555:page-4:native",
+        "title": "小结",
+        "background": {
+          "kind": "solid",
+          "color": {
+            "kind": "srgb",
+            "value": "#ffffff"
+          }
+        },
+        "elements": [
+          {
+            "id": "p4-title",
+            "type": "textFrame",
+            "transform": {
+              "x": 80,
+              "y": 56,
+              "width": 1440,
+              "height": 96
+            },
+            "zIndex": 1,
+            "text": {
+              "margins": {
+                "left": 8,
+                "top": 4,
+                "right": 8,
+                "bottom": 4
+              },
+              "verticalAlignment": "top",
+              "wrap": true,
+              "autofit": {
+                "mode": "none"
+              },
+              "doc": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "小结"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "fontSubstitutions": []
+            }
+          }
+        ],
+        "animations": [],
+        "narration": {
+          "markdown": "这节课我们认识了电能与其他形式能量之间的转化。"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1168 @@
+{
+  "description": "填空快路径：每空规范化（富文本转纯文本、NFKC、去首尾空白、合并连续空白）后与参考答案逐字相等判满分；全空判 0；否则交给 AI。",
+  "cases": [
+    {
+      "name": "exact text earns full points",
+      "question": {
+        "question_type": "fill_in_the_blank",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "光合作用"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Hello World"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "光合作用"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Hello World"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 10,
+        "maxScore": 10,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "full-width characters are normalised",
+      "question": {
+        "question_type": "fill_in_the_blank",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "光合作用"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Hello World"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "光合作用"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Ｈｅｌｌｏ　Ｗｏｒｌｄ"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 10,
+        "maxScore": 10,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "surrounding and repeated whitespace is collapsed",
+      "question": {
+        "question_type": "fill_in_the_blank",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "光合作用"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Hello World"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "  光合作用\t"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Hello   \n World "
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 10,
+        "maxScore": 10,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "paragraph breaks collapse to a single space",
+      "question": {
+        "question_type": "fill_in_the_blank",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "光合作用"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Hello World"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "光合作用"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Hello"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "World"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 10,
+        "maxScore": 10,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "case differences go to AI",
+      "question": {
+        "question_type": "fill_in_the_blank",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "光合作用"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Hello World"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "光合作用"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "hello world"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "AI_REQUIRED",
+        "maxScore": 10
+      }
+    },
+    {
+      "name": "synonyms go to AI",
+      "question": {
+        "question_type": "fill_in_the_blank",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "光合作用"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Hello World"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "光合反应"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Hello World"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "AI_REQUIRED",
+        "maxScore": 10
+      }
+    },
+    {
+      "name": "one empty blank with another right goes to AI",
+      "question": {
+        "question_type": "fill_in_the_blank",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "光合作用"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Hello World"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Hello World"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "AI_REQUIRED",
+        "maxScore": 10
+      }
+    },
+    {
+      "name": "all blanks empty earns zero without AI",
+      "question": {
+        "question_type": "fill_in_the_blank",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "光合作用"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Hello World"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "blankId": "b2",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "  　 "
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "no blanks answered earns zero without AI",
+      "question": {
+        "question_type": "fill_in_the_blank",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "光合作用"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Hello World"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": []
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "selection response is the wrong kind",
+      "question": {
+        "question_type": "fill_in_the_blank",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "光合作用"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Hello World"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["光合作用"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "has_answer=false fill-in-the-blank still goes to AI",
+      "question": {
+        "question_type": "fill_in_the_blank",
+        "has_answer": false,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "光合作用"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "b2",
+            "blank_index": 2,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Hello World"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "光合作用"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "AI_REQUIRED",
+        "maxScore": 10
+      }
+    },
+    {
+      "name": "formula text is compared as LaTeX",
+      "question": {
+        "question_type": "fill_in_the_blank",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "x = "
+                    },
+                    {
+                      "type": "inlineMath",
+                      "attrs": {
+                        "latex": "a^2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "x = "
+                      },
+                      {
+                        "type": "inlineMath",
+                        "attrs": {
+                          "latex": " a^2 "
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 10,
+        "maxScore": 10,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "legacy string reference answers are alternatives",
+      "question": {
+        "question_type": "fill_in_the_blank",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": ["你好", "您好"]
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "您好"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 10,
+        "maxScore": 10,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "empty reference text never matches",
+      "question": {
+        "question_type": "fill_in_the_blank",
+        "has_answer": true,
+        "points": 10,
+        "answer": [],
+        "sub_problems": [],
+        "blanks": [
+          {
+            "id": "b1",
+            "blank_index": 1,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "rich_text",
+              "document": {
+                "type": "doc",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "anything"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "AI_REQUIRED",
+        "maxScore": 10
+      }
+    }
+  ]
+}

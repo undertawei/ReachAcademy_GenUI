@@ -1,0 +1,2504 @@
+@import '@reachany/learner-editor/styles.css';
+@import '@reachany/tiptap-mathlive/styles.css';
+/* Static webfonts for the PPTX import catalog (generated, see fonts/fonts.css). */
+@import './fonts/fonts.css';
+
+.reach-deck-player {
+  --reach-deck-border: #dbe4ee;
+  --reach-deck-background: #ffffff;
+  --reach-deck-ink: #172024;
+  --reach-deck-muted: #647178;
+  --reach-deck-surface: #ffffff;
+  --reach-deck-soft: #f5f8fb;
+  --reach-deck-accent: #2563eb;
+  --reach-deck-success: #15803d;
+  --reach-deck-warning: #b45309;
+
+  /* 字幕条固定高度：画布外独立占位（编辑器 16:9 自适应公式按它扣减可用高度）。 */
+  --reach-deck-caption-height: 3.2rem;
+  color: var(--reach-deck-ink);
+  display: grid;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.reach-deck-player
+  button:not(
+    :where(
+      .rx-button,
+      .rx-icon-button,
+      .rx-attachment-name,
+      .rx-select-trigger,
+      .rx-select-option,
+      .rx-switch
+    )
+  ),
+.reach-deck-player input,
+.reach-deck-player select,
+.reach-deck-player textarea {
+  font: inherit;
+}
+
+.reach-deck-player
+  button:not(
+    :where(
+      .rx-button,
+      .rx-icon-button,
+      .rx-attachment-name,
+      .rx-select-trigger,
+      .rx-select-option,
+      .rx-switch
+    )
+  ) {
+  border: 1px solid var(--reach-deck-border);
+  border-radius: 0.55rem;
+  cursor: pointer;
+  min-height: 2.4rem;
+  padding: 0.45rem 0.75rem;
+}
+
+.reach-deck-player
+  button:not(
+    :where(
+      .rx-button,
+      .rx-icon-button,
+      .rx-attachment-name,
+      .rx-select-trigger,
+      .rx-select-option,
+      .rx-switch
+    )
+  ):disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.reach-deck-player
+  button:not(
+    :where(
+      .rx-button,
+      .rx-icon-button,
+      .rx-attachment-name,
+      .rx-select-trigger,
+      .rx-select-option,
+      .rx-switch
+    )
+  ):focus-visible,
+.reach-deck-player input:focus-visible,
+.reach-deck-player select:focus-visible,
+.reach-deck-player textarea:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--reach-deck-accent) 35%, transparent);
+  outline-offset: 2px;
+}
+
+.reach-deck-player__timeline {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+
+.reach-deck-player__stage {
+  background: var(--reach-deck-soft);
+  border: 1px solid var(--reach-deck-border);
+  border-radius: 0.85rem;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.reach-deck-player__timeline {
+  background: #fff;
+  border-top: 1px solid var(--reach-deck-border);
+  padding: 0.65rem 0.8rem;
+}
+
+.reach-deck-player__transport {
+  align-items: center;
+  border-radius: 999px;
+  display: inline-flex;
+  flex: none;
+  justify-content: center;
+  min-height: 2.1rem;
+  min-width: 2.1rem;
+  padding: 0;
+}
+
+.reach-deck-player__transport-group {
+  align-items: center;
+  display: inline-flex;
+  flex: none;
+  gap: 0.35rem;
+}
+
+.reach-deck-player__timeline input {
+  flex: 1;
+  min-width: 4rem;
+}
+
+.reach-deck-player__time {
+  color: var(--reach-deck-muted);
+  flex: none;
+  font-variant-numeric: tabular-nums;
+  min-width: 5.5rem;
+  text-align: center;
+}
+
+.reach-deck-player__page-indicator {
+  color: var(--reach-deck-muted);
+  flex: none;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+/* 倍速用共享 Select（sm）；这里只管它在控制条里的外部布局。 */
+.reach-deck-player .reach-deck-player__rate {
+  flex: none;
+  width: auto;
+}
+
+/* 倍速控件外的定位壳：自定义倍速气泡挂在它上方，本身不占额外空间。 */
+.reach-deck-player__rate-anchor {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  outline: none;
+}
+
+/* 自定义倍速气泡（共享 Popover，挂 portal，不在 .reach-deck-player 内，只用品牌 token）。 */
+.reach-deck-player__rate-custom-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--reachany-space-2);
+}
+
+.reach-deck-player__rate-custom-title {
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-body-sm);
+  font-weight: var(--reachany-text-control-weight);
+}
+
+.reach-deck-player__rate-custom-row {
+  display: flex;
+  align-items: center;
+  gap: var(--reachany-space-2);
+}
+
+.reach-deck-player__rate-custom-hint {
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+/* 自动翻页：文字 + 共享 Switch，整组不换行。 */
+.reach-deck-player__auto-advance {
+  align-items: center;
+  color: var(--reach-deck-muted);
+  display: inline-flex;
+  flex: none;
+  font-size: var(--reachany-text-caption);
+  gap: var(--reachany-space-2);
+  line-height: var(--reachany-text-caption-line-height);
+  white-space: nowrap;
+}
+
+.reach-deck-player__sr-only {
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.reach-deck-player__placeholder,
+.reach-deck-player__unsupported {
+  align-items: center;
+  aspect-ratio: 16 / 9;
+  background: var(--reach-deck-soft);
+  color: var(--reach-deck-muted);
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.reach-deck-player__interactive-empty {
+  align-items: center;
+  aspect-ratio: 16 / 9;
+  background:
+    radial-gradient(circle at 50% 28%, rgb(255 255 255 / 92%), transparent 42%),
+    linear-gradient(145deg, #f7f5ff, #f4f8ff);
+  color: #5f596a;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.reach-deck-player__interactive-empty strong {
+  color: #312d3b;
+  font-size: 1.05rem;
+}
+
+.reach-deck-player__interactive-empty span {
+  max-width: 32rem;
+}
+
+.reach-deck-player__interactive-empty-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.reach-deck-player__interactive-empty button {
+  background: #5b45d6;
+  border: 0;
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 650;
+  margin-top: 0.35rem;
+  padding-inline: 1rem;
+}
+
+/* 上传是次要入口：Decksmith 仍是空白互动页的默认路径。 */
+.reach-deck-player__interactive-empty-actions button + button {
+  background: rgb(91 69 214 / 10%);
+  color: #4a37b4;
+}
+
+@media (max-width: 640px) {
+  .reach-deck-player__timeline {
+    flex-wrap: wrap;
+  }
+
+  .reach-deck-player__timeline input {
+    flex-basis: calc(100% - 8rem);
+    order: 3;
+  }
+}
+
+.reach-deck-player__timeline-extra {
+  align-items: center;
+  display: inline-flex;
+  flex: none;
+  gap: 0.35rem;
+  /* 宿主可能在只读态对播放器整体禁用指针事件，白板入口仍需可点。 */
+  pointer-events: auto;
+}
+
+/* 题目页与互动页的翻页控制条（showPageControls）：翻页 + 页码在左，宿主扩展位靠右。 */
+.reach-deck-player__page-controls {
+  justify-content: flex-start;
+}
+
+.reach-deck-player__page-controls .reach-deck-player__timeline-extra {
+  margin-left: auto;
+}
+
+.reach-deck-player .deck-transform-overlay {
+  border: 3px solid #f45f22;
+  box-shadow: 0 0 0 2px rgb(255 255 255 / 88%);
+  box-sizing: border-box;
+  cursor: move;
+  outline: 0;
+  position: absolute;
+  touch-action: none;
+  transform-origin: center;
+}
+
+.reach-deck-player .deck-transform-overlay:focus-visible {
+  box-shadow:
+    0 0 0 3px #fff,
+    0 0 0 8px rgb(244 95 34 / 42%);
+}
+
+.reach-deck-player .deck-transform-handle,
+.reach-deck-player .deck-rotate-handle {
+  background: #fff;
+  border: 4px solid #f45f22;
+  border-radius: 999px;
+  box-shadow: 0 3px 12px rgb(60 38 50 / 28%);
+  box-sizing: border-box;
+  display: block;
+  height: 24px;
+  position: absolute;
+  touch-action: none;
+  width: 24px;
+}
+
+.reach-deck-player .deck-transform-handle.is-nw {
+  cursor: nwse-resize;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+}
+
+.reach-deck-player .deck-transform-handle.is-ne {
+  cursor: nesw-resize;
+  right: 0;
+  top: 0;
+  transform: translate(50%, -50%);
+}
+
+.reach-deck-player .deck-transform-handle.is-se {
+  bottom: 0;
+  cursor: nwse-resize;
+  right: 0;
+  transform: translate(50%, 50%);
+}
+
+.reach-deck-player .deck-transform-handle.is-sw {
+  bottom: 0;
+  cursor: nesw-resize;
+  left: 0;
+  transform: translate(-50%, 50%);
+}
+
+.reach-deck-player .deck-rotate-stem {
+  background: #f45f22;
+  height: 38px;
+  left: 50%;
+  position: absolute;
+  top: -40px;
+  transform: translateX(-50%);
+  width: 3px;
+}
+
+.reach-deck-player .deck-rotate-handle {
+  cursor: grab;
+  left: 50%;
+  top: -56px;
+  transform: translate(-50%, -50%);
+}
+
+.reach-deck-player .deck-rotate-handle:active {
+  cursor: grabbing;
+}
+
+.reach-deck-player .deck-group-overlay {
+  border: 3px dashed #f45f22;
+  box-shadow: 0 0 0 2px rgb(255 255 255 / 88%);
+  box-sizing: border-box;
+  cursor: move;
+  outline: 0;
+  position: absolute;
+  touch-action: none;
+}
+
+.reach-deck-player .deck-group-overlay:focus-visible {
+  box-shadow:
+    0 0 0 3px #fff,
+    0 0 0 8px rgb(244 95 34 / 42%);
+}
+
+.reach-deck-player .deck-align-guide {
+  background: #0ea5e9;
+  pointer-events: none;
+  position: absolute;
+  z-index: 10500;
+}
+
+.reach-deck-player .deck-align-guide.is-vertical {
+  top: 0;
+  width: 2px;
+}
+
+.reach-deck-player .deck-align-guide.is-horizontal {
+  height: 2px;
+  left: 0;
+}
+
+.reach-deck-player .deck-marquee {
+  background: rgb(14 165 233 / 12%);
+  border: 2px solid #0ea5e9;
+  box-sizing: border-box;
+  pointer-events: none;
+  position: absolute;
+  z-index: 10600;
+}
+
+.reach-deck-player .text-element__paragraph {
+  margin: 0;
+}
+
+.reach-deck-player .image-element,
+.reach-deck-player .video-element,
+.reach-deck-player .image-element img,
+.reach-deck-player .video-element video {
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
+
+.reach-deck-player .image-element img,
+.reach-deck-player .video-element video {
+  display: block;
+}
+
+/* 字幕条：固定高度的独立区域（不悬浮、不压画布），文字超过两行时在原位上下滚动。 */
+.reach-deck-player .voice-caption-strip {
+  flex: none;
+  min-height: 0;
+  max-height: var(--reach-deck-caption-height);
+  overflow: hidden;
+  align-items: center;
+  background: #111827;
+  box-sizing: border-box;
+  color: #f8fafc;
+  display: flex;
+  gap: 0.55rem;
+  height: var(--reach-deck-caption-height);
+  padding: 0.4rem 0.8rem;
+}
+
+.reach-deck-player .voice-caption-strip > span,
+.reach-deck-player .voice-caption-strip > .voice-caption-strip__markdown {
+  display: block;
+  flex: 1 1 auto;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  max-height: calc(0.85rem * 1.35 * 2);
+  min-width: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  /* 常驻细滚动条，不用悬停也能看出字幕还有下文。 */
+  scrollbar-color: rgb(248 250 252 / 45%) transparent;
+  scrollbar-width: thin;
+}
+
+.reach-deck-player .voice-caption-strip__markdown > .text-element__paragraph {
+  display: inline;
+  font-size: inherit !important;
+  line-height: inherit;
+  margin: 0;
+}
+
+.reach-deck-player .voice-caption-strip__markdown {
+  min-width: 0;
+}
+
+.reach-deck-player .voice-caption-strip__markdown .reachany-mathlive-node.is-block {
+  display: inline-block;
+}
+
+.quiz-scene {
+  font-family: var(--reachany-font-sans, ui-sans-serif, system-ui, sans-serif);
+  --reach-deck-border: #d6cdd2;
+  --reach-deck-ink: #2f2d31;
+  --reach-deck-muted: #81727a;
+  --reach-deck-accent: #f45f22;
+  background: #fff;
+  box-sizing: border-box;
+  min-height: 34rem;
+  padding: clamp(1.1rem, 2.5vw, 2rem);
+}
+
+.quiz-scene__header {
+  align-items: flex-start;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.quiz-scene__header {
+  align-items: center;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.quiz-scene__header h2 {
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.quiz-scene__header progress {
+  max-width: 12rem;
+  width: 20vw;
+}
+
+.quiz-scene__question {
+  background: #faf7f2;
+  border: 1px solid #e3d8d0;
+  border-radius: 0.65rem;
+  margin-top: 1rem;
+  padding: clamp(1rem, 2vw, 1.5rem);
+}
+
+.quiz-scene .reach-deck-attachments {
+  margin-bottom: var(--reachany-space-4);
+}
+
+.quiz-scene__options,
+.quiz-scene__mapping,
+.quiz-scene__composite {
+  display: grid;
+  gap: 0.75rem;
+}
+
+/*
+ * 单选 / 多选题选项走共享 QuestionOption（@reachany/ui，规范 03 §3.8a），样式在 question-option.css；
+ * 下面只保留填空题候选（cloze / 选词填空）的选项行。
+ */
+.quiz-scene__options.is-candidates label {
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid #e3d8d0;
+  border-radius: 0.65rem;
+  display: flex;
+  gap: 0.65rem;
+  min-height: 3.1rem;
+  padding: 0.75rem;
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.quiz-scene__options.is-candidates label:has(input:checked) {
+  background: color-mix(in srgb, var(--reach-deck-accent) 8%, #fff);
+  border-color: var(--reach-deck-accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--reach-deck-accent) 15%, transparent);
+}
+
+.quiz-scene__option-badge {
+  align-items: center;
+  background: #f0e7e7;
+  border: 1px solid #d6cdd2;
+  border-radius: 999px;
+  color: var(--reach-deck-ink);
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: 0.78rem;
+  font-weight: 800;
+  height: 1.65rem;
+  justify-content: center;
+  min-width: 1.8rem;
+  padding-inline: 0.35rem;
+}
+
+.quiz-scene__blank-marker {
+  background: #f3e8ff;
+  border-radius: 0.25rem;
+  color: #6b21a8;
+  font-family: ui-monospace, monospace;
+  padding-inline: 0.2rem;
+}
+
+.quiz-scene__blanks {
+  display: grid;
+  gap: 1rem;
+}
+
+.quiz-scene__blank-answer {
+  border: 1px solid #e3d8d0;
+  border-radius: 0.65rem;
+  display: grid;
+  gap: 0.65rem;
+  padding: 0.8rem;
+}
+
+/* 整题结论条是共享 QuestionOutcome（question-option.css），这里只管与上方提交按钮的间距。 */
+.quiz-scene__result {
+  margin: 1rem 0 0;
+}
+
+.quiz-scene__grading {
+  background: var(--reach-deck-soft);
+  border: 1px solid var(--reach-deck-border);
+  border-radius: var(--reachany-radius-md);
+  color: var(--reach-deck-muted);
+  margin: var(--reachany-space-4) 0 0;
+  padding: var(--reachany-space-2) var(--reachany-space-3);
+}
+
+.quiz-scene__grading.is-failed {
+  align-items: center;
+  background: var(--reachany-color-danger-soft);
+  border-color: var(--reachany-color-danger-border);
+  color: var(--reachany-color-danger-text);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--reachany-space-2) var(--reachany-space-3);
+}
+
+.quiz-scene__grading.is-failed > p {
+  margin: 0;
+}
+
+.quiz-scene__grading-message {
+  flex-basis: 100%;
+}
+
+.quiz-scene__grading-feedback {
+  background: var(--reach-deck-surface);
+  border: 1px solid var(--reach-deck-border);
+  border-radius: var(--reachany-radius-md);
+  display: grid;
+  gap: var(--reachany-space-2);
+  line-height: 1.65;
+  margin-top: var(--reachany-space-3);
+  padding: var(--reachany-space-3) var(--reachany-space-4);
+}
+
+.quiz-scene__grading-feedback > strong {
+  color: var(--reach-deck-muted);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.quiz-scene__grading-feedback-body {
+  min-width: 0;
+}
+
+.quiz-scene__grading-feedback-text {
+  margin: 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.quiz-scene__question-title {
+  font-weight: 700;
+  line-height: 1.65;
+  margin: 1.25rem 0 1.5rem;
+  max-width: 72ch;
+}
+
+.quiz-scene__submit {
+  background: var(--reach-deck-accent);
+  border-color: var(--reach-deck-accent);
+  color: #fff;
+  font-weight: 700;
+  margin-top: 1.1rem;
+  min-width: 7rem;
+}
+
+.quiz-scene__submit:disabled {
+  background: #d6cdd2;
+  border-color: #d6cdd2;
+  color: var(--reach-deck-ink);
+}
+
+.quiz-scene__question > button.quiz-scene__complete {
+  background: #fff;
+  border-color: var(--reach-deck-border);
+  color: var(--reach-deck-ink);
+}
+
+.quiz-scene__rich-text {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 从 Word 粘贴进题干 / 解析的表格；幻灯片文本框不会产生这些节点。 */
+.quiz-scene__question-title table,
+.quiz-scene__rich-text table,
+.quiz-scene__reveal table {
+  border-collapse: collapse;
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+.quiz-scene__question-title :is(td, th),
+.quiz-scene__rich-text :is(td, th),
+.quiz-scene__reveal :is(td, th) {
+  border: 1px solid var(--reach-deck-border);
+  padding: 0.35rem 0.5rem;
+  vertical-align: top;
+}
+
+/* 题干 / 选项 / 参考答案 / 解析里的行内图片；与学生作答编辑器的图片规则保持一致。 */
+.quiz-scene__question-title img,
+.quiz-scene__rich-text img,
+.quiz-scene__reveal img,
+.quiz-scene__blank-references img {
+  border-radius: 0.5rem;
+  display: block;
+  height: auto;
+  margin-block: 0.65rem;
+  max-height: 24rem;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.quiz-scene__answer-editor {
+  border: 0;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+}
+
+.quiz-scene__answer-editor > .quiz-scene__options,
+.quiz-scene__answer-editor > .quiz-scene__blanks,
+.quiz-scene__answer-editor > .quiz-answer-editor {
+  margin-bottom: 0.25rem;
+}
+
+.quiz-scene__reveal {
+  border-top: 1px solid var(--reach-deck-border);
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+}
+
+.quiz-scene__reveal-section {
+  background: #fff;
+  border: 1px solid var(--reach-deck-border);
+  border-radius: 0.5rem;
+  display: grid;
+  gap: 0.45rem;
+  line-height: 1.65;
+  padding: 0.85rem 1rem;
+}
+
+.quiz-scene__reveal-section > strong {
+  color: var(--reach-deck-muted);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.quiz-scene__reveal-section > div {
+  min-width: 0;
+}
+
+.quiz-scene .reachany-mathlive-node.is-block {
+  max-width: 100%;
+  overflow-x: visible;
+  overflow-y: visible;
+}
+
+.reach-deck-player .reachany-mathlive-node.is-block > .reachany-mathlive-static,
+.reach-deck-player .reachany-mathlive-node.is-block > .reachany-mathlive-static > .katex-display {
+  overflow-x: visible;
+  overflow-y: visible;
+}
+
+.quiz-answer-editor,
+.quiz-answer-editor > .learner-editor {
+  display: block;
+  min-width: 0;
+}
+
+.quiz-answer-editor .quiz-answer-editor__toolbar {
+  align-items: center;
+  background: var(--learner-editor-soft);
+  border: 0;
+  border-bottom: 1px solid var(--learner-editor-border);
+  border-radius: 0.7rem 0.7rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0.625rem 0.75rem;
+}
+
+.quiz-answer-editor .quiz-answer-editor__toolbar button,
+.quiz-answer-editor .quiz-answer-editor__toolbar select,
+.quiz-answer-editor .quiz-answer-editor__color {
+  align-items: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.4rem;
+  color: var(--learner-editor-accent);
+  box-sizing: border-box;
+  display: inline-flex;
+  font-size: 0.78rem;
+  gap: 0.3rem;
+  min-height: 2rem;
+  padding: 0.25rem 0.5rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.quiz-answer-editor .quiz-answer-editor__toolbar select:disabled,
+.quiz-answer-editor .quiz-answer-editor__color:has(input:disabled) {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.quiz-answer-editor .quiz-answer-editor__color input {
+  border: 0;
+  height: 1.25rem;
+  padding: 0;
+  width: 1.4rem;
+}
+
+.quiz-answer-editor .quiz-answer-editor__more-formatting {
+  order: 10;
+  min-width: 0;
+}
+
+.quiz-answer-editor .quiz-answer-editor__more-formatting summary {
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 0.4rem;
+  background: transparent;
+  color: var(--learner-editor-accent);
+  font-size: 0.78rem;
+  min-height: 2rem;
+  padding: 0.35rem 0.5rem;
+  box-sizing: border-box;
+}
+
+.quiz-answer-editor .quiz-answer-editor__more-formatting[open] {
+  flex-basis: 100%;
+}
+
+.quiz-answer-editor .quiz-answer-editor__advanced-formatting {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  padding-top: 0.5rem;
+}
+
+.quiz-answer-editor .quiz-answer-editor__advanced-formatting select {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.quiz-answer-editor .tiptap {
+  border: 0;
+  border-radius: 0 0 0.7rem 0.7rem;
+  box-sizing: border-box;
+  min-height: 10rem;
+  outline: none;
+  padding: 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.85;
+}
+
+.quiz-answer-editor .tiptap:focus {
+  box-shadow: none;
+}
+
+.quiz-answer-editor .tiptap blockquote {
+  border-left: 4px solid #d6cdd2;
+  margin-left: 0;
+  padding-left: 0.8rem;
+}
+
+.quiz-answer-editor .tiptap ol,
+.quiz-answer-editor .tiptap ul {
+  padding-left: 1.5rem;
+}
+
+.quiz-answer-editor .tiptap img {
+  border-radius: 0.5rem;
+  display: block;
+  height: auto;
+  margin-block: 0.65rem;
+  max-width: 100%;
+}
+
+.quiz-answer-editor .quiz-answer-editor__attachments {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.quiz-answer-editor .quiz-answer-editor__attach-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: 0;
+  border-radius: 0.375rem;
+  color: var(--learner-editor-action);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  min-height: 2rem;
+  padding: 0.25rem 0;
+}
+
+.quiz-answer-editor .quiz-answer-editor__attach-action:not(:disabled):hover {
+  text-decoration: underline;
+}
+
+.quiz-answer-editor.is-loading {
+  border: 1px solid #e3d8d0;
+  border-radius: 0.65rem;
+  min-height: 10rem;
+}
+
+.quiz-scene textarea,
+.quiz-scene input:not([type='radio']):not([type='checkbox']) {
+  border: 1px solid #b9c8d8;
+  border-radius: 0.45rem;
+  box-sizing: border-box;
+  min-height: 2.5rem;
+  padding: 0.55rem;
+  width: 100%;
+}
+
+.quiz-scene__navigation {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  margin-top: 1.25rem;
+}
+
+.interactive-scene-player-shell {
+  height: var(--reach-deck-interactive-height, min(70vh, 720px));
+  min-height: var(--reach-deck-interactive-min-height, 34rem);
+  position: relative;
+}
+
+.reach-deck-player__stage:has(> .reach-deck-player__interactive-narration) {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.reach-deck-player__stage:has(> .reach-deck-player__interactive-narration)
+  > [data-interactive-page-id] {
+  min-height: 0;
+}
+
+.reach-deck-player__interactive-narration {
+  align-items: center;
+  background: #fff;
+  border-top: 1px solid var(--reach-deck-border);
+  display: grid;
+  gap: 0.65rem;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  min-height: 4.25rem;
+  padding: 0.55rem 0.8rem;
+}
+
+.reach-deck-player__interactive-narration-icon {
+  align-items: center;
+  color: var(--reach-deck-accent);
+  display: inline-flex;
+}
+
+.reach-deck-player__interactive-narration p {
+  color: var(--reach-deck-ink);
+  font-size: 0.86rem;
+  line-height: 1.4;
+  margin: 0;
+  min-width: 0;
+}
+
+.reach-deck-player__interactive-narration-actions {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.35rem;
+}
+
+.reach-deck-player__interactive-narration-actions > button {
+  align-items: center;
+  background: var(--reach-deck-surface);
+  border-radius: 999px;
+  display: inline-flex;
+  justify-content: center;
+  min-height: 2.1rem;
+  min-width: 2.1rem;
+  padding: 0;
+}
+
+.reach-deck-player__interactive-narration-unavailable {
+  color: var(--reach-deck-warning);
+  font-size: 0.75rem;
+  grid-column: 2 / -1;
+}
+
+.reach-deck-player__interactive-narration audio {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .reach-deck-player__interactive-narration {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .reach-deck-player__interactive-narration-actions {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+  }
+}
+
+.interactive-scene-player {
+  background: #fff;
+  border: 0;
+  display: block;
+  height: 100%;
+  min-height: 0;
+  width: 100%;
+}
+
+.interactive-scene-player__error {
+  align-items: center;
+  background: color-mix(in srgb, var(--reach-deck-surface) 96%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  inset: 0;
+  justify-content: center;
+  padding: 2rem;
+  position: absolute;
+  text-align: center;
+}
+
+.interactive-scene-player__error span {
+  color: var(--reach-deck-muted);
+  max-width: 34rem;
+}
+
+.scientific-visual-player {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.scientific-visual-player__frame {
+  border: 0;
+  height: 100%;
+  inset: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.scientific-visual-player__frame {
+  background: transparent;
+  pointer-events: none;
+}
+
+.scientific-visual-player__error {
+  align-items: center;
+  background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+  color: #475569;
+  display: flex;
+  font-size: clamp(12px, 2.4cqw, 18px);
+  inset: 0;
+  justify-content: center;
+  line-height: 1.5;
+  padding: 10%;
+  position: absolute;
+  text-align: center;
+}
+
+.scientific-visual-player__text-alternative {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@media print {
+  .scientific-visual-player__frame {
+    display: block !important;
+  }
+}
+
+/* 与现有幻灯片、旁白及测验富文本的图标控件保持一致。 */
+.quiz-answer-editor .quiz-answer-editor__toolbar .quiz-answer-editor__tool {
+  justify-content: center;
+  color: #58505a;
+  border-radius: 0.3rem;
+  min-width: 1.75rem;
+  min-height: 1.75rem;
+  padding: 0 0.3rem;
+}
+
+.quiz-answer-editor .quiz-answer-editor__toolbar .quiz-answer-editor__tool:hover:not(:disabled) {
+  background: #ece5e8;
+}
+
+.quiz-answer-editor .quiz-answer-editor__toolbar .quiz-answer-editor__tool[aria-pressed='true'] {
+  background: var(--learner-editor-accent);
+  color: #fff;
+}
+
+.quiz-answer-editor .quiz-answer-editor__tool svg {
+  flex: none;
+}
+
+/* 已完成作答保持写入锁定，同时允许阅读附件。 */
+[data-reach-deck-readable-attachments='true'] .reach-deck-attachments .rx-attachment-name,
+[data-reach-deck-readable-attachments='true']
+  .reach-deck-attachments
+  .rx-file-list-actions
+  > .rx-icon-button {
+  pointer-events: auto;
+}
+
+/*
+ * 学生端题目页排布（layout="learner"，#804）：题目页铺满舞台高度——
+ *   顶部：页标题 + 「已提交 n/N」+ 题号导航（多题时）
+ *   中部：作答区，内部纵向滚动
+ *   底部：上一题 / 跳过 / 提交答案（或下一题）固定，不随内容滚走
+ * 只引用 @reachany/brand 语义 token；默认排布（教师端预览/试讲）不受影响。
+ */
+.quiz-scene.is-learner {
+  --learner-editor-border: var(--reachany-color-border-warm);
+  --learner-editor-soft: var(--reachany-color-surface-warm);
+  --learner-editor-ink: var(--reachany-color-text);
+  --learner-editor-accent: var(--reachany-color-primary);
+  --learner-editor-action: var(--reachany-color-primary);
+  --reach-deck-border: var(--reachany-color-border-warm);
+  --reach-deck-ink: var(--reachany-color-text);
+  --reach-deck-muted: var(--reachany-color-text-secondary);
+  --reach-deck-accent: var(--reachany-color-primary);
+
+  display: flex;
+  height: 100%;
+  min-height: 0;
+  flex-direction: column;
+  background: var(--reachany-color-surface);
+  color: var(--reachany-color-text);
+  padding: 0;
+}
+
+.quiz-scene.is-learner.is-readonly-question {
+  height: auto;
+}
+
+.quiz-scene.is-learner .quiz-scene__header {
+  display: grid;
+  flex: none;
+  align-items: stretch;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--reachany-space-3);
+  border-bottom: 1px solid var(--reachany-color-border);
+  padding: var(--reachany-space-4) var(--reachany-space-6);
+}
+
+.quiz-scene.is-learner .quiz-scene__heading {
+  display: flex;
+  min-width: 0;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--reachany-space-4);
+}
+
+.quiz-scene.is-learner .quiz-scene__header h2 {
+  overflow: hidden;
+  min-width: 0;
+  margin: 0;
+  font-size: var(--reachany-text-title-sm);
+  font-weight: var(--reachany-text-title-sm-weight);
+  line-height: var(--reachany-text-title-sm-line-height);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.quiz-scene.is-learner .quiz-scene__summary {
+  flex: none;
+  color: var(--reachany-color-text-secondary);
+  font-family: var(--reachany-font-numeric, inherit);
+  font-size: var(--reachany-text-body-sm);
+  line-height: var(--reachany-text-body-sm-line-height);
+}
+
+/* —— 题号导航：32px 方块，状态靠底色 + 角标图标区分，不只靠颜色 —— */
+.quiz-scene__navigator ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--reachany-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.quiz-scene__navigator-item {
+  position: relative;
+  display: inline-flex;
+  width: calc(var(--reachany-space-1) * 8);
+  height: calc(var(--reachany-space-1) * 8);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--reachany-color-border-warm);
+  border-radius: var(--reachany-radius-md);
+  background: var(--reachany-color-surface);
+  color: var(--reachany-color-text-secondary);
+  cursor: pointer;
+  font: inherit;
+  font-family: var(--reachany-font-numeric, inherit);
+  font-size: var(--reachany-text-body-sm);
+  font-weight: 600;
+  padding: 0;
+  transition:
+    background-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    border-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    box-shadow var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+.quiz-scene__navigator-item:not(:disabled):hover {
+  border-color: var(--reachany-color-text-tertiary);
+}
+
+.quiz-scene__navigator-item:focus-visible {
+  box-shadow: var(--reachany-shadow-focus);
+  outline: none;
+}
+
+.quiz-scene__navigator-item:disabled {
+  background: var(--reachany-color-surface-muted);
+  color: var(--reachany-color-text-tertiary);
+  cursor: not-allowed;
+}
+
+.quiz-scene__navigator-item[data-status='answered'] {
+  border-color: var(--reachany-color-primary);
+  color: var(--reachany-color-primary-text-on-soft);
+}
+
+.quiz-scene__navigator-item:is(
+  [data-status='submitted'],
+  [data-status='pending'],
+  [data-status='partial']
+) {
+  border-color: transparent;
+  background: var(--reachany-color-primary-soft);
+  color: var(--reachany-color-primary-text-on-soft);
+}
+
+/* 批改中：虚线描边，与「部分正确」的实底区分。 */
+.quiz-scene__navigator-item[data-status='pending'] {
+  border: 1px dashed var(--reachany-color-warning);
+  background: var(--reachany-color-surface);
+  color: var(--reachany-color-warning-text);
+}
+
+.quiz-scene__navigator-item[data-status='partial'] {
+  background: var(--reachany-color-warning-soft);
+  color: var(--reachany-color-warning-text);
+}
+
+.quiz-scene__navigator-item[data-status='correct'] {
+  border-color: transparent;
+  background: var(--reachany-color-success-soft);
+  color: var(--reachany-color-success-text);
+}
+
+.quiz-scene__navigator-item:is([data-status='incorrect'], [data-status='failed']) {
+  border-color: transparent;
+  background: var(--reachany-color-danger-soft);
+  color: var(--reachany-color-danger-text);
+}
+
+/* 当前题：外圈描边（与状态底色叠加，状态仍可读）。 */
+.quiz-scene__navigator-item[aria-current='step'] {
+  box-shadow:
+    0 0 0 2px var(--reachany-color-surface),
+    0 0 0 4px var(--reachany-color-primary);
+}
+
+.quiz-scene__navigator-mark {
+  position: absolute;
+  top: calc(var(--reachany-space-1) * -1.5);
+  right: calc(var(--reachany-space-1) * -1.5);
+  width: var(--reachany-space-4);
+  height: var(--reachany-space-4);
+  box-sizing: border-box;
+  border: 2px solid var(--reachany-color-surface);
+  border-radius: var(--reachany-radius-pill);
+  background: currentcolor;
+  color: var(--reachany-color-surface);
+  padding: 1px;
+  stroke-width: 3;
+}
+
+.quiz-scene__navigator-item[data-status='correct'] .quiz-scene__navigator-mark {
+  background: var(--reachany-color-success-strong);
+}
+
+.quiz-scene__navigator-item:is([data-status='incorrect'], [data-status='failed'])
+  .quiz-scene__navigator-mark {
+  background: var(--reachany-color-danger);
+}
+
+.quiz-scene__navigator-item[data-status='partial'] .quiz-scene__navigator-mark {
+  background: var(--reachany-color-warning);
+}
+
+/* —— 作答区：唯一滚动容器 —— */
+.quiz-scene.is-learner .quiz-scene__body {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+.quiz-scene.is-learner .quiz-scene__question {
+  max-width: calc(var(--reachany-space-10) * 20);
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: var(--reachany-space-5) var(--reachany-space-6) var(--reachany-space-6);
+}
+
+.quiz-scene.is-learner .quiz-scene__meta {
+  display: inline-flex;
+  margin: 0 0 var(--reachany-space-3);
+  border-radius: var(--reachany-radius-sm);
+  background: var(--reachany-color-primary-soft);
+  color: var(--reachany-color-primary-text-on-soft);
+  font-size: var(--reachany-text-caption);
+  font-weight: 500;
+  line-height: var(--reachany-text-caption-line-height);
+  padding: 2px var(--reachany-space-2);
+}
+
+.quiz-scene.is-learner .quiz-scene__question-title {
+  max-width: none;
+  margin: 0 0 var(--reachany-space-5);
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-subtitle);
+  font-weight: 500;
+  line-height: 1.75;
+}
+
+.quiz-scene.is-learner .quiz-scene__blank-marker {
+  border-radius: var(--reachany-radius-sm);
+  background: var(--reachany-color-primary-soft);
+  color: var(--reachany-color-primary-text-on-soft);
+  font-family: var(--reachany-font-numeric, inherit);
+  font-weight: 600;
+  padding-inline: var(--reachany-space-1);
+}
+
+/* —— 填空：每空一行，「第 n 空」标签 + 控件 —— */
+.quiz-scene.is-learner .quiz-scene__blanks {
+  gap: var(--reachany-space-3);
+}
+
+.quiz-scene.is-learner .quiz-scene__blank-answer {
+  display: grid;
+  align-items: start;
+  border: 0;
+  border-radius: 0;
+  column-gap: var(--reachany-space-3);
+  grid-template-columns: calc(var(--reachany-space-1) * 16) minmax(0, 1fr);
+  padding: 0;
+  row-gap: var(--reachany-space-1);
+}
+
+.quiz-scene.is-learner .quiz-scene__blank-answer > strong {
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-body-sm);
+  font-weight: 500;
+  line-height: calc(var(--reachany-space-1) * 10);
+}
+
+.quiz-scene.is-learner .quiz-scene__blank-answer > :not(strong) {
+  grid-column: 2;
+}
+
+/* 候选（选词填空 / 完形）：紧凑选块，整块可点；原生单选只隐藏外观，仍可键盘操作与读屏。 */
+.quiz-scene.is-learner .quiz-scene__options.is-candidates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--reachany-space-2);
+}
+
+.quiz-scene.is-learner .quiz-scene__options.is-candidates label {
+  position: relative;
+  display: inline-flex;
+  min-height: calc(var(--reachany-space-1) * 10);
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--reachany-space-2);
+  border: 1px solid var(--reachany-color-border-warm);
+  border-radius: var(--reachany-radius-md);
+  background: var(--reachany-color-surface);
+  box-shadow: none;
+  cursor: pointer;
+  font-size: var(--reachany-text-body-lg);
+  line-height: var(--reachany-text-body-lg-line-height);
+  padding: var(--reachany-space-1) var(--reachany-space-3);
+  transition:
+    background-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    border-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    box-shadow var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+.quiz-scene.is-learner .quiz-scene__options.is-candidates input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.quiz-scene.is-learner .quiz-scene__options.is-candidates label:hover:not(:has(input:disabled)) {
+  border-color: var(--reachany-color-text-tertiary);
+}
+
+.quiz-scene.is-learner .quiz-scene__options.is-candidates label:has(input:focus-visible) {
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.quiz-scene.is-learner .quiz-scene__options.is-candidates label:has(input:checked) {
+  border-color: var(--reachany-color-primary);
+  background: var(--reachany-color-primary-soft);
+  box-shadow: none;
+  color: var(--reachany-color-primary-text-on-soft);
+}
+
+.quiz-scene.is-learner .quiz-scene__options.is-candidates label:has(input:disabled) {
+  cursor: not-allowed;
+}
+
+.quiz-scene.is-learner
+  .quiz-scene__options.is-candidates
+  label:not([data-result]):has(input:disabled:not(:checked)) {
+  border-style: dashed;
+  background: var(--reachany-color-surface-muted);
+  color: var(--reachany-color-text-tertiary);
+}
+
+.quiz-scene.is-learner .quiz-scene__option-badge {
+  min-width: 0;
+  height: auto;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: var(--reachany-text-body-sm);
+  font-weight: 600;
+  padding: 0;
+}
+
+.quiz-scene.is-learner .quiz-scene__options.is-candidates .quiz-scene__rich-text {
+  flex: none;
+}
+
+.quiz-scene.is-learner .quiz-scene__candidate-used {
+  color: var(--reachany-color-text-tertiary);
+  font-size: var(--reachany-text-caption);
+}
+
+.quiz-scene.is-learner .quiz-scene__blank-clear {
+  justify-self: start;
+  border: 0;
+  background: transparent;
+  color: var(--reachany-color-text-secondary);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--reachany-text-caption);
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.quiz-scene.is-learner .quiz-scene__blank-clear:hover {
+  color: var(--reachany-color-primary);
+}
+
+/* 文本空：单行高度的输入框，格式工具栏只在聚焦时出现在输入框下方。 */
+.quiz-scene.is-learner [data-blank-kind='text'] .learner-editor {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--reachany-radius-md);
+}
+
+.quiz-scene.is-learner [data-blank-kind='text'] .quiz-answer-editor__toolbar {
+  display: none;
+  order: 2;
+  border-top: 1px solid var(--learner-editor-border);
+  border-bottom: 0;
+  border-radius: 0 0 var(--reachany-radius-md) var(--reachany-radius-md);
+  padding: var(--reachany-space-1) var(--reachany-space-2);
+}
+
+.quiz-scene.is-learner
+  [data-blank-kind='text']
+  .learner-editor:focus-within
+  .quiz-answer-editor__toolbar {
+  display: flex;
+}
+
+.quiz-scene.is-learner [data-blank-kind='text'] .quiz-answer-editor .tiptap {
+  min-height: calc(var(--reachany-space-1) * 10 - 2px);
+  border-radius: var(--reachany-radius-md);
+  font-size: var(--reachany-text-body-lg);
+  line-height: var(--reachany-text-body-lg-line-height);
+  padding: calc((var(--reachany-space-1) * 10 - 2px - var(--reachany-text-body-lg-line-height)) / 2)
+    var(--reachany-space-3);
+}
+
+.quiz-scene.is-learner .quiz-answer-editor .tiptap {
+  min-height: calc(var(--reachany-space-10) * 3);
+  font-size: var(--reachany-text-body-lg);
+}
+
+.quiz-scene.is-learner .learner-editor:focus-within {
+  border-color: var(--reachany-color-primary);
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+/* —— 结果与解析 —— */
+.quiz-scene.is-learner .quiz-scene__grading {
+  margin: var(--reachany-space-4) 0 0;
+  border: 0;
+  background: var(--reachany-color-surface-muted);
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-body);
+}
+
+.quiz-scene.is-learner .quiz-scene__grading.is-pending {
+  background: var(--reachany-color-warning-soft);
+  color: var(--reachany-color-warning-text);
+}
+
+.quiz-scene.is-learner .quiz-scene__grading.is-failed {
+  background: var(--reachany-color-danger-soft);
+  color: var(--reachany-color-danger-text);
+}
+
+.quiz-scene.is-learner .quiz-scene__grading-retry {
+  border: 1px solid var(--reachany-color-danger-border);
+  border-radius: var(--reachany-radius-md);
+  background: var(--reachany-color-surface);
+  color: var(--reachany-color-danger-text);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--reachany-text-body-sm);
+  font-weight: 500;
+  padding: var(--reachany-space-1) var(--reachany-space-3);
+}
+
+.quiz-scene.is-learner .quiz-scene__result {
+  margin-top: var(--reachany-space-5);
+}
+
+.quiz-scene.is-learner :is(.quiz-scene__grading-feedback, .quiz-scene__reveal-section) {
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-card);
+  background: var(--reachany-color-surface-warm);
+  font-size: var(--reachany-text-body);
+  line-height: 1.75;
+  padding: var(--reachany-space-3) var(--reachany-space-4);
+}
+
+.quiz-scene.is-learner :is(.quiz-scene__grading-feedback, .quiz-scene__reveal-section) > strong {
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.quiz-scene.is-learner .quiz-scene__reveal {
+  gap: var(--reachany-space-3);
+  margin-top: var(--reachany-space-4);
+  border-top: 0;
+  padding-top: 0;
+}
+
+.quiz-scene.is-learner .quiz-scene__blank-references {
+  margin: 0;
+  padding-left: var(--reachany-space-5);
+}
+
+/* —— 底部操作条 —— */
+.quiz-scene.is-learner .quiz-scene__footer {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--reachany-space-3);
+  border-top: 1px solid var(--reachany-color-border);
+  padding: var(--reachany-space-3) var(--reachany-space-6);
+}
+
+.quiz-scene.is-learner .quiz-scene__footer-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--reachany-space-2);
+}
+
+.quiz-scene.is-learner .quiz-scene__footer-submit {
+  min-width: calc(var(--reachany-space-1) * 24);
+}
+
+.quiz-scene.is-learner .quiz-scene__done {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--reachany-space-2);
+  margin: 0;
+  color: var(--reachany-color-success-text);
+  font-size: var(--reachany-text-body);
+  font-weight: 500;
+}
+
+/* 候选空揭晓：与选择题选项同一语义（规范 03 §3.8a）——选对 success、选错 danger、未选的正确答案虚线 success。 */
+.quiz-scene.is-learner .quiz-scene__options.is-candidates label[data-result] {
+  opacity: 1;
+}
+
+.quiz-scene.is-learner .quiz-scene__options.is-candidates label[data-result='correct'] {
+  border: 1px solid var(--reachany-color-success-strong);
+  background: var(--reachany-color-success-soft);
+  color: var(--reachany-color-success-text);
+}
+
+.quiz-scene.is-learner .quiz-scene__options.is-candidates label[data-result='incorrect'] {
+  border: 1px solid var(--reachany-color-danger);
+  background: var(--reachany-color-danger-soft);
+  color: var(--reachany-color-danger-text);
+}
+
+.quiz-scene.is-learner .quiz-scene__options.is-candidates label[data-result='missed'] {
+  border: 1px dashed var(--reachany-color-success-strong);
+  background: var(--reachany-color-surface);
+  color: var(--reachany-color-success-text);
+}
+
+.quiz-scene.is-learner .quiz-scene__blank-references {
+  display: grid;
+  gap: var(--reachany-space-1);
+  padding: 0;
+  list-style: none;
+}
+
+.quiz-scene.is-learner .quiz-scene__blank-references > li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--reachany-space-2);
+}
+
+.quiz-scene.is-learner .quiz-scene__blank-reference-label {
+  flex: none;
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-body-sm);
+}
+
+.quiz-scene.is-learner .quiz-scene__candidate-values {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--reachany-space-3);
+}
+
+.quiz-scene.is-learner .quiz-scene__candidate-value {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--reachany-space-1);
+}
+
+.quiz-scene.is-learner .quiz-scene__candidate-value .quiz-scene__option-badge {
+  display: inline;
+}
+
+/* 已提交的作答只读：收起格式工具栏与「选择附件」，已上传的附件仍然列出。 */
+.quiz-scene.is-learner
+  .learner-editor:has(.tiptap[contenteditable='false'])
+  .quiz-answer-editor__toolbar,
+.quiz-scene.is-learner
+  .learner-editor:has(.tiptap[contenteditable='false'])
+  .quiz-answer-editor__attach-action {
+  display: none;
+}
+
+.quiz-scene.is-learner
+  .learner-editor:has(.tiptap[contenteditable='false'])
+  .quiz-answer-editor__attachments:not(:has(.reach-deck-attachments)) {
+  display: none;
+}
+
+.quiz-scene.is-learner .learner-editor:has(.tiptap[contenteditable='false']) {
+  background: var(--reachany-color-surface-muted);
+}
+
+.quiz-scene.is-learner .learner-editor:has(.tiptap[contenteditable='false']) .tiptap {
+  min-height: 0;
+  background: transparent;
+  color: var(--reachany-color-text);
+}
+
+/* 仅显式启用的宿主在窄屏扩大控制条触控区域，不改变默认播放器密度。 */
+@media (max-width: 1023px) {
+  .reach-deck-player[data-control-touch-target='responsive'] .reach-deck-player__transport {
+    min-width: var(--reachany-space-10);
+    min-height: var(--reachany-space-10);
+  }
+  .reach-deck-player[data-control-touch-target='responsive']
+    .reach-deck-player__timeline
+    input[type='range'] {
+    min-height: var(--reachany-space-10);
+  }
+}
+
+/* Shared learner appearance. Default hosts retain their existing chrome. */
+.reach-deck-player[data-reach-deck-appearance='learner'] {
+  --reach-deck-border: var(--reachany-color-border);
+  --reach-deck-background: var(--reachany-color-surface);
+  --reach-deck-ink: var(--reachany-color-text);
+  --reach-deck-muted: var(--reachany-color-text-secondary);
+  --reach-deck-surface: var(--reachany-color-surface);
+  --reach-deck-soft: var(--reachany-color-surface-muted);
+  --reach-deck-accent: var(--reachany-color-primary);
+  --reach-deck-success: var(--reachany-color-success);
+  --reach-deck-warning: var(--reachany-color-warning-text);
+  container-name: reach-deck-learner;
+  container-type: inline-size;
+  --reach-deck-interactive-height: 100%;
+  --reach-deck-interactive-min-height: 0;
+  /* 字幕：讲者图标 + 正文字号两行，高度固定。 */
+  --reach-deck-caption-height: var(--reachany-deck-caption-height);
+
+  min-height: 0;
+  flex: 1 1 auto;
+  gap: 0;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__stage {
+  min-height: 0;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']:not([data-scene-type='slide'])
+  .reach-deck-player__stage {
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-card);
+}
+
+/*
+ * 题目页（共享播放器 layout="learner"）铺满舞台：标题与题号导航、底部操作条固定，
+ * 只有中间的作答区在题目自己的容器里滚动，舞台本身不滚。
+ */
+.reach-deck-player[data-reach-deck-appearance='learner'][data-scene-type='quiz']
+  .reach-deck-player__stage {
+  overflow: hidden;
+  background: var(--reachany-color-surface);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'][data-scene-type='interactive']
+  .reach-deck-player__stage,
+.reach-deck-player[data-reach-deck-appearance='learner'][data-scene-type='interactive']
+  .reach-deck-player__stage
+  > [data-interactive-page-id] {
+  height: 100%;
+  min-height: 0;
+}
+
+/* —— 幻灯片 —— */
+.reach-deck-player[data-reach-deck-appearance='learner'][data-scene-type='slide']
+  .reach-deck-player__stage {
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'][data-scene-type='slide']
+  .reach-deck-player__stage
+  > [data-native-v2-readonly] {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+  flex-direction: column;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'][data-scene-type='slide']
+  [data-native-v2-slide-renderer] {
+  display: flex;
+  min-height: 0;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'][data-scene-type='slide']
+  [data-native-v2-viewport] {
+  max-width: 100%;
+  flex: none;
+  border-radius: var(--reachany-radius-card);
+  box-shadow:
+    0 0 0 1px var(--reachany-color-border),
+    var(--reachany-shadow-card);
+}
+
+/*
+ * —— 学习者讲稿区（参考模课，幻灯片与 GenUI 共用）——
+ * 左列：讲者头像（整体是播放 / 暂停键）+ 下方页码胶囊；右列：讲稿（两行，超出原位滚动）+ 控制行。
+ * 点页码展开的进度浮层与控制行占同一个网格格子，盖住快退 / 快进等按钮。
+ */
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__learner-dock {
+  position: relative;
+  display: grid;
+  flex: none;
+  box-sizing: border-box;
+  align-items: center;
+  column-gap: var(--reachany-space-4);
+  row-gap: var(--reachany-space-1);
+  grid-template-areas:
+    'avatar caption'
+    'page controls';
+  grid-template-columns: var(--reach-deck-caption-height) minmax(0, 1fr);
+  grid-template-rows: var(--reach-deck-caption-height) var(--reachany-deck-control-size);
+  padding: var(--reachany-space-3) var(--reachany-space-1) 0;
+  /* 宿主还没把幻灯片按可用高度拟合好的那一刻，也不让幻灯片画到讲稿和控件上。 */
+  z-index: var(--reachany-z-base);
+  background: var(--reachany-color-surface);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-avatar[data-reach-deck-play-toggle] {
+  position: relative;
+  display: block;
+  width: var(--reach-deck-caption-height);
+  height: var(--reach-deck-caption-height);
+  box-sizing: border-box;
+  border: 0;
+  border-radius: var(--reachany-radius-pill);
+  background: transparent;
+  color: var(--reachany-color-primary);
+  cursor: pointer;
+  grid-area: avatar;
+  padding: 0;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-avatar[data-reach-deck-play-toggle]:hover:not(:disabled) {
+  background: transparent;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__dock-avatar:disabled {
+  cursor: default;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__dock-avatar-image {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-primary-soft);
+  box-shadow: 0 0 0 1px var(--reachany-color-border);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-avatar-image
+  > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 播放中头像外圈亮起，提示讲者正在讲。 */
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-avatar[data-playing]
+  .reach-deck-player__dock-avatar-image {
+  box-shadow: 0 0 0 2px var(--reachany-color-primary);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__dock-avatar-badge {
+  position: absolute;
+  right: calc(-1 * var(--reachany-space-1));
+  bottom: calc(-1 * var(--reachany-space-1));
+  display: inline-flex;
+  width: var(--reachany-space-6);
+  height: var(--reachany-space-6);
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--reachany-color-surface);
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-primary);
+  color: var(--reachany-color-primary-contrast);
+  transition: background-color var(--reachany-motion-duration-fast)
+    var(--reachany-motion-easing-standard);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-avatar:hover:not(:disabled)
+  .reach-deck-player__dock-avatar-badge {
+  background: var(--reachany-color-primary-hover);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__dock-caption {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  grid-area: caption;
+  color: var(--reachany-color-text);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__dock-caption > span,
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__dock-caption > p,
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-caption
+  > .voice-caption-strip__markdown {
+  display: block;
+  min-width: 0;
+  max-height: calc(var(--reachany-text-body-lg-line-height) * 2);
+  margin: 0;
+  overflow-y: auto;
+  font-size: var(--reachany-text-body-lg);
+  line-height: var(--reachany-text-body-lg-line-height);
+  overscroll-behavior: contain;
+  /* 常驻细滚动条，不用悬停也能看出讲稿还有下文。 */
+  scrollbar-color: var(--reachany-color-text-secondary) var(--reachany-color-surface-muted);
+  scrollbar-width: thin;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-caption
+  > .reach-deck-player__dock-empty {
+  color: var(--reachany-color-text-secondary);
+}
+
+/* 音频不可用时第二行是提示文字，讲稿只留一行高（仍可滚动）。 */
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-caption:has(.reach-deck-player__interactive-narration-unavailable)
+  > p {
+  max-height: var(--reachany-text-body-lg-line-height);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-caption
+  .reach-deck-player__interactive-narration-unavailable {
+  color: var(--reachany-color-warning-text);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__dock-page {
+  display: inline-flex;
+  height: var(--reachany-space-6);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  border: 1px solid transparent;
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-surface-muted);
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--reachany-text-control-weight);
+  grid-area: page;
+  line-height: var(--reachany-text-caption-line-height);
+  padding-inline: var(--reachany-space-2);
+  white-space: nowrap;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'] button.reach-deck-player__dock-page {
+  cursor: pointer;
+  transition: background-color var(--reachany-motion-duration-fast)
+    var(--reachany-motion-easing-standard);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'] button.reach-deck-player__dock-page:hover {
+  background: var(--reachany-color-primary-soft);
+  color: var(--reachany-color-primary-text-on-soft);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  button.reach-deck-player__dock-page[aria-expanded='true'] {
+  border-color: var(--reachany-color-primary);
+  background: var(--reachany-color-primary-soft);
+  color: var(--reachany-color-primary-text-on-soft);
+}
+
+/* 控制行这一格：宽档时进度条在左、控件在右；中 / 窄档只有控件，进度浮层盖在这一格上。 */
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__dock-bar {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: var(--reachany-space-4);
+  grid-area: controls;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__dock-controls {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: var(--reachany-space-2);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__learner-dock[data-dock-layout='wide']
+  .reach-deck-player__dock-controls {
+  flex: none;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-controls
+  > .reach-deck-player__timeline-extra {
+  margin-left: auto;
+}
+
+/* 控件文字（后退 / 前进 / 倍速 / 上一页 / 下一页）：默认隐藏，讲稿区宽 / 中档才显示。 */
+.reach-deck-player .reach-deck-player__control-label {
+  display: none;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-controls[data-labels='visible']
+  .reach-deck-player__control-label {
+  display: inline;
+  font-size: var(--reachany-text-body-sm);
+  font-weight: var(--reachany-text-control-weight);
+  line-height: var(--reachany-text-body-sm-line-height);
+  white-space: nowrap;
+}
+
+/*
+ * 宽 / 中档：后退、前进、音量、倍速、上一页、下一页都是带文字的胶囊，与「自动播放 开/关」同高、同底色、同字号；
+ * 上一页 / 下一页有文字时不再显示箭头。窄档退回 36px 圆形图标按钮。
+ */
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-controls[data-labels='visible']
+  .reach-deck-player__transport:has(> .reach-deck-player__control-label) {
+  width: auto;
+  gap: var(--reachany-space-2);
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-surface-muted);
+  padding-inline: var(--reachany-space-3);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-controls[data-labels='visible']
+  .reach-deck-player__transport:has(> .reach-deck-player__control-label):hover:not(:disabled) {
+  background: var(--reachany-color-primary-soft);
+  color: var(--reachany-color-primary-text-on-soft);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-controls[data-labels='visible']
+  .reach-deck-player__page-arrow {
+  display: none;
+}
+
+/* 「完成学习」在胶囊档仍是主色。 */
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-controls[data-labels='visible']
+  .reach-deck-player__transport[data-reach-deck-primary-control]:has(
+    > .reach-deck-player__control-label
+  ) {
+  background: var(--reachany-color-primary);
+  color: var(--reachany-color-primary-contrast);
+}
+
+/* 倍速：「倍速」+ 档位小标；窄档只剩小标，按钮随内容变宽。 */
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__transport.reach-deck-player__rate-pill {
+  width: auto;
+  gap: var(--reachany-space-2);
+  padding-inline: var(--reachany-space-2);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__rate-pill
+  [data-reach-deck-control-badge] {
+  font-weight: var(--reachany-text-control-weight);
+}
+
+/* 进度条：宽档排在控制行里；中 / 窄档是盖住控制行的浮层，浮层外点一下或 Esc 收起。 */
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__dock-progress {
+  display: flex;
+  min-width: 0;
+  height: var(--reachany-deck-control-size);
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--reachany-space-3);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-progress[data-variant='inline'] {
+  flex: 1 1 auto;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-progress[data-variant='popover'] {
+  position: absolute;
+  z-index: var(--reachany-z-sticky);
+  inset: 0;
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-surface);
+  box-shadow: var(--reachany-shadow-card);
+  padding-inline: var(--reachany-space-4);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__dock-progress-track {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  align-items: center;
+}
+
+/* 轨道三段：已播放（主色）/ 可拖到（浅主色）/ 未学完不可快进（描边色）。 */
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-progress-track::before {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: var(--reachany-space-1);
+  border-radius: var(--reachany-radius-pill);
+  background: linear-gradient(
+    to right,
+    var(--reachany-color-primary) 0 var(--dock-progress-played),
+    var(--reachany-color-primary-soft-strong) var(--dock-progress-played)
+      var(--dock-progress-reachable),
+    var(--reachany-color-border) var(--dock-progress-reachable) 100%
+  );
+  content: '';
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-progress-track
+  > input[type='range'] {
+  position: relative;
+  width: 100%;
+  height: var(--reachany-deck-control-size);
+  margin: 0;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-progress-track
+  > input[type='range']::-webkit-slider-runnable-track {
+  background: transparent;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-progress-track
+  > input[type='range']::-moz-range-track {
+  background: transparent;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-progress-track
+  > input[type='range']::-webkit-slider-thumb {
+  width: var(--reachany-space-3);
+  height: var(--reachany-space-3);
+  border: 2px solid var(--reachany-color-surface);
+  border-radius: var(--reachany-radius-pill);
+  appearance: none;
+  background: var(--reachany-color-primary);
+  box-shadow: 0 0 0 1px var(--reachany-color-primary);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-progress-track
+  > input[type='range']::-moz-range-thumb {
+  width: var(--reachany-space-3);
+  height: var(--reachany-space-3);
+  box-sizing: border-box;
+  border: 2px solid var(--reachany-color-surface);
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-primary);
+  box-shadow: 0 0 0 1px var(--reachany-color-primary);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__dock-progress
+  .reach-deck-player__time {
+  min-width: 0;
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__dock-progress-hint {
+  overflow: hidden;
+  flex: 0 1 auto;
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 快退 / 快进：圆形箭头中间写「10」。 */
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__skip-icon {
+  position: relative;
+  display: inline-flex;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__skip-icon > span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(var(--reachany-text-caption) * 3 / 4);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--reachany-text-control-weight);
+  line-height: 1;
+}
+
+/* 音量浮层渲染在 portal 里，不在播放器作用域内。 */
+.reach-deck-player__volume-panel .reach-deck-player__volume-body {
+  display: flex;
+  align-items: center;
+  gap: var(--reachany-space-2);
+  padding: var(--reachany-space-2) var(--reachany-space-3);
+}
+
+.reach-deck-player__volume-panel .reach-deck-player__volume-mute {
+  display: inline-flex;
+  width: var(--reachany-space-8);
+  height: var(--reachany-space-8);
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--reachany-radius-pill);
+  background: transparent;
+  color: var(--reachany-color-text-secondary);
+  cursor: pointer;
+}
+
+.reach-deck-player__volume-panel .reach-deck-player__volume-mute:hover {
+  background: var(--reachany-color-surface-muted);
+  color: var(--reachany-color-text);
+}
+
+.reach-deck-player__volume-panel input[type='range'] {
+  width: calc(var(--reachany-space-10) * 3);
+  accent-color: var(--reachany-color-primary);
+}
+
+/*
+ * —— GenUI 页：互动内容是带描边的圆角卡片，讲稿区排在卡片下方的白底上 ——
+ */
+.reach-deck-player[data-reach-deck-appearance='learner'][data-scene-type='interactive']
+  .reach-deck-player__stage:has(> .reach-deck-player__interactive-dock) {
+  display: grid;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'][data-scene-type='interactive']
+  .reach-deck-player__stage:has(> .reach-deck-player__interactive-dock)
+  > [data-interactive-page-id] {
+  overflow: hidden;
+  min-height: 0;
+  border-radius: var(--reachany-radius-card);
+  box-shadow:
+    0 0 0 1px var(--reachany-color-border),
+    var(--reachany-shadow-card);
+}
+
+/* 后台保活的其他互动页是 0×0，不画描边。 */
+.reach-deck-player[data-reach-deck-appearance='learner'][data-scene-type='interactive']
+  .reach-deck-player__stage
+  > [data-interactive-page-id]:has(> * > iframe[data-visible='false']) {
+  box-shadow: none;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__interactive-dock
+  audio {
+  display: none;
+}
+
+/*
+ * 控制条：幻灯片的时间轴与题目页的翻页条同高、同内边距、同左右起点。题目页没有播放键，
+ * 「上一页」后面留出播放键的位置，下一页、页码与右侧的自动翻页 / 笔记 / 全屏都不挪位。
+ */
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__timeline {
+  flex: none;
+  min-height: var(--reachany-deck-controls-height);
+  box-sizing: border-box;
+  border-top: 0;
+  background: transparent;
+  padding: var(--reachany-space-2) 0 0;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__transport-group {
+  gap: var(--reachany-space-1);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  [data-reach-deck-timeline='page-controls']
+  .reach-deck-player__transport-group
+  > :first-child {
+  margin-inline-end: calc(var(--reachany-deck-control-size) + var(--reachany-space-1));
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__timeline-extra {
+  gap: var(--reachany-space-2);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__timeline
+  input[type='range'] {
+  accent-color: var(--reachany-color-primary);
+}
+
+/* 图标按钮（翻页 / 播放 / 全屏）：36px 圆形，无描边，悬停才出底色；播放键是唯一的实心主按钮。 */
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__transport {
+  border-color: transparent;
+  background: transparent;
+  color: var(--reachany-color-text-secondary);
+  transition: background-color var(--reachany-motion-duration-fast)
+    var(--reachany-motion-easing-standard);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__transport:hover:not(:disabled) {
+  background: var(--reachany-color-surface-muted);
+  color: var(--reachany-color-text);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__transport:not([data-reach-deck-control-pill]) {
+  width: var(--reachany-deck-control-size);
+  min-width: 0;
+  height: var(--reachany-deck-control-size);
+  min-height: 0;
+  border-radius: var(--reachany-radius-pill);
+  padding: 0;
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'] [data-reach-deck-play-toggle] {
+  background: var(--reachany-color-primary);
+  color: var(--reachany-color-primary-contrast);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  [data-reach-deck-play-toggle]:hover:not(:disabled) {
+  background: var(--reachany-color-primary-hover);
+  color: var(--reachany-color-primary-contrast);
+}
+
+/* 带文字的胶囊（自动翻页 开/关、学习笔记 + 数量）：同高、同字号，右侧一个小标记。 */
+.reach-deck-player [data-reach-deck-auto-advance][data-reach-deck-control-pill],
+.reach-deck-player[data-reach-deck-appearance='learner'] [data-reach-deck-control-pill] {
+  align-items: center;
+  display: inline-flex;
+  border: 1px solid transparent;
+  height: var(--reachany-deck-control-size);
+  min-height: 0;
+  padding-block: 0;
+  gap: var(--reachany-space-2);
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-surface-muted);
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-body-sm);
+  font-weight: var(--reachany-text-control-weight);
+  padding-inline: var(--reachany-space-3);
+  white-space: nowrap;
+}
+
+/* 最后一页替换「下一页」的「完成学习」旗子：主色圆钮，与播放键同色以示强调。 */
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__interactive-narration-actions
+  button[data-reach-deck-primary-control],
+.reach-deck-player[data-reach-deck-appearance='learner'] [data-reach-deck-primary-control] {
+  background: var(--reachany-color-primary);
+  color: var(--reachany-color-primary-contrast);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__interactive-narration-actions
+  button[data-reach-deck-primary-control]:hover:not(:disabled),
+.reach-deck-player[data-reach-deck-appearance='learner']
+  [data-reach-deck-primary-control]:hover:not(:disabled) {
+  background: var(--reachany-color-primary-hover);
+  color: var(--reachany-color-primary-contrast);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner']
+  [data-reach-deck-control-pill][aria-expanded='true'] {
+  border-color: var(--reachany-color-primary);
+  background: var(--reachany-color-primary-soft);
+  color: var(--reachany-color-primary-text-on-soft);
+}
+
+.reach-deck-player [data-reach-deck-auto-advance] [data-reach-deck-control-badge],
+.reach-deck-player[data-reach-deck-appearance='learner'] [data-reach-deck-control-badge] {
+  display: inline-flex;
+  min-width: var(--reachany-space-5);
+  height: var(--reachany-space-5);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-surface);
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  font-variant-numeric: tabular-nums;
+  padding-inline: var(--reachany-space-1);
+}
+
+.reach-deck-player
+  [data-reach-deck-auto-advance][aria-pressed='true']
+  [data-reach-deck-control-badge] {
+  background: var(--reachany-color-primary);
+  color: var(--reachany-color-primary-contrast);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__transport:disabled,
+.reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__dock-avatar:disabled,
+.reach-deck-player[data-reach-deck-appearance='learner']
+  .reach-deck-player__interactive-narration-actions
+  > button:disabled,
+.reach-deck-player[data-reach-deck-appearance='learner'] [data-reach-deck-control-pill]:disabled {
+  opacity: var(--reachany-opacity-disabled);
+}
+
+.reach-deck-player[data-reach-deck-appearance='learner'] button:focus-visible,
+.reach-deck-player[data-reach-deck-appearance='learner'] [tabindex='0']:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+/* Width-based wrapping belongs to the shared player rather than its host. */
+@container reach-deck-learner (max-width: 640px) {
+  .reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__stage {
+    --reach-deck-caption-height: var(--reachany-deck-caption-narrow-height);
+  }
+  .reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__timeline {
+    flex-wrap: wrap;
+  }
+  .reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__timeline input {
+    flex-basis: calc(100% - var(--reachany-deck-timeline-trailing-width));
+    order: 3;
+  }
+}
+
+/* Keep explicitly requested touch targets when learner chrome is selected. */
+@media (max-width: 1023px) {
+  .reach-deck-player[data-reach-deck-appearance='learner'][data-control-touch-target='responsive']
+    .reach-deck-player__transport,
+  .reach-deck-player[data-reach-deck-appearance='learner'][data-control-touch-target='responsive']
+    .reach-deck-player__interactive-narration-actions
+    > button {
+    min-width: var(--reachany-space-10);
+    min-height: var(--reachany-space-10);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reach-deck-player[data-reach-deck-appearance='learner'] .reach-deck-player__transport,
+  .reach-deck-player[data-reach-deck-appearance='learner']
+    .reach-deck-player__interactive-narration-actions
+    > button {
+    transition: none;
+  }
+}

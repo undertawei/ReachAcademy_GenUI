@@ -1,0 +1,49 @@
+{
+  "name": "@reachany/reach-deck-editor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": "./styles.css"
+  },
+  "sideEffects": [
+    "./styles.css"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --pool=threads --maxWorkers=1"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "dependencies": {
+    "@noble/hashes": "1.8.0",
+    "@reachany/clipboard-content": "workspace:*",
+    "@reachany/reach-deck-dsl": "workspace:*",
+    "@reachany/reach-deck-player": "workspace:*",
+    "@reachany/reach-deck-rich-text": "workspace:^",
+    "@reachany/tiptap-mathlive": "workspace:*",
+    "@reachany/ui": "workspace:*",
+    "@tiptap/core": "3.28.0",
+    "@tiptap/extension-text-align": "3.28.0",
+    "@tiptap/extension-text-style": "3.28.0",
+    "@tiptap/pm": "3.28.0",
+    "@tiptap/react": "3.28.0",
+    "@tiptap/starter-kit": "3.28.0",
+    "lucide-react": "^0.562.0"
+  },
+  "devDependencies": {
+    "@reachany/tsconfig": "workspace:*",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "jsdom": "^25.0.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  }
+}

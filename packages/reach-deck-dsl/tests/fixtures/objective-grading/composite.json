@@ -1,0 +1,269 @@
+{
+  "description": "复合题与其他边界：含主观题的 sub_problems 有作答交给 AI、空作答判 0；纯客观子题按根题判分；未知题型不判分。",
+  "cases": [
+    {
+      "name": "objective root with subjective sub-problem goes to AI",
+      "question": {
+        "question_type": "single_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["A"],
+        "sub_problems": [
+          {
+            "question_type": "short_answer",
+            "has_answer": true,
+            "points": 10,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "理由"
+                    }
+                  ]
+                }
+              ]
+            },
+            "sub_problems": []
+          }
+        ]
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["A"]
+      },
+      "expected": {
+        "mode": "AI_REQUIRED",
+        "maxScore": 10
+      }
+    },
+    {
+      "name": "subjective composite with empty response earns zero",
+      "question": {
+        "question_type": "single_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["A"],
+        "sub_problems": [
+          {
+            "question_type": "short_answer",
+            "has_answer": true,
+            "points": 10,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "理由"
+                    }
+                  ]
+                }
+              ]
+            },
+            "sub_problems": []
+          }
+        ]
+      },
+      "response": {
+        "kind": "selection",
+        "values": []
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "subjective root with objective sub-problem goes to AI",
+      "question": {
+        "question_type": "short_answer",
+        "has_answer": true,
+        "points": 10,
+        "answer": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "理由"
+                }
+              ]
+            }
+          ]
+        },
+        "sub_problems": [
+          {
+            "question_type": "single_choice",
+            "has_answer": true,
+            "points": 10,
+            "answer": ["A"],
+            "sub_problems": []
+          }
+        ]
+      },
+      "response": {
+        "kind": "rich_text",
+        "document": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "理由"
+                }
+              ]
+            }
+          ]
+        },
+        "attachments": []
+      },
+      "expected": {
+        "mode": "AI_REQUIRED",
+        "maxScore": 10
+      }
+    },
+    {
+      "name": "nested subjective sub-problem goes to AI",
+      "question": {
+        "question_type": "multiple_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["A", "B"],
+        "sub_problems": [
+          {
+            "question_type": "single_choice",
+            "has_answer": true,
+            "points": 10,
+            "answer": ["A"],
+            "sub_problems": [
+              {
+                "question_type": "short_answer",
+                "has_answer": true,
+                "points": 10,
+                "answer": {
+                  "type": "doc",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "理由"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "sub_problems": []
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["A", "B"]
+      },
+      "expected": {
+        "mode": "AI_REQUIRED",
+        "maxScore": 10
+      }
+    },
+    {
+      "name": "objective-only sub-problems grade the root",
+      "question": {
+        "question_type": "single_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["A"],
+        "sub_problems": [
+          {
+            "question_type": "single_choice",
+            "has_answer": true,
+            "points": 10,
+            "answer": ["A"],
+            "sub_problems": []
+          }
+        ]
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["A"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 10,
+        "maxScore": 10,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "has_answer=false composite with subjective sub-problem still goes to AI",
+      "question": {
+        "question_type": "single_choice",
+        "has_answer": false,
+        "points": 10,
+        "answer": ["A"],
+        "sub_problems": [
+          {
+            "question_type": "short_answer",
+            "has_answer": true,
+            "points": 10,
+            "answer": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "理由"
+                    }
+                  ]
+                }
+              ]
+            },
+            "sub_problems": []
+          }
+        ]
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["A"]
+      },
+      "expected": {
+        "mode": "AI_REQUIRED",
+        "maxScore": 10
+      }
+    },
+    {
+      "name": "unknown question type is unscored",
+      "question": {
+        "question_type": "true_false",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["true"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["true"]
+      },
+      "expected": {
+        "mode": "UNSCORED"
+      }
+    }
+  ]
+}

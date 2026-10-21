@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "decksmith-replay-case/v1",
+  "id": "wp1-follow-up-after-rejected-edit",
+  "teacherCase": 2,
+  "summary": "跨轮记忆（WP1）：上一轮选中题图改电池的提案被教师拒绝；下一轮模型输入里有上一轮的实际答复、结构化变更与\"已拒绝\"结局，以及上一轮的选区描述。",
+  "provenance": {
+    "kind": "synthetic-reconstruction",
+    "observedOn": "2026-10-09",
+    "notes": "多轮案例：上一轮复用 case2-selected-hero-image-edit 的回放结果，教师拒绝后接着追问。"
+  },
+  "document": "energy-lesson.json",
+  "followsCase": {
+    "id": "case2-selected-hero-image-edit",
+    "proposalOutcome": "rejected"
+  },
+  "request": {
+    "prompt": "上一版我没采用，你刚才具体改了什么？",
+    "pageId": "55555555-5555-4555-8555-555555555555:page-1",
+    "promptContractVersion": "decksmith-prompt/v2"
+  },
+  "capturedWith": {
+    "toolParameterSha256": {}
+  },
+  "transcript": [
+    {
+      "text": "上一轮我把题图 p1-hero 左下角的电池改成了正在充电的充电电池，你没有采用，所以课件里仍是原图。需要的话我可以换一种改法。",
+      "usage": {
+        "input": 8200,
+        "output": 90
+      }
+    }
+  ],
+  "expect": {
+    "changed": false,
+    "outcome": {
+      "mutationStatus": "none",
+      "toolErrorCount": 0
+    },
+    "modelTurns": 1,
+    "userPromptIncludes": [
+      "Previous panel conversation (oldest first):",
+      "Teacher: 只把左下角电池改成充电电池\n(Teacher had selected: image p1-hero \"电热水壶、风扇和左下角一节电池之间的能量转化示意图\" on page 1 \"能量从哪里来\")",
+      "Decksmith: 已参考原图把左下角的电池改成正在充电的充电电池，整体构图沿用原图，但细节可能略有不同，请检查后再采用。",
+      "Proposed changes: slide page \"能量从哪里来\" [55555555-5555-4555-8555-555555555555:page-1] modified (image p1-hero modified).",
+      "Proposal outcome: rejected; the teacher rejected these changes, so the deck does not contain them.",
+      "Teacher request: 上一版我没采用，你刚才具体改了什么？"
+    ],
+    "userPromptExcludes": ["Decksmith 已生成修改建议", "base64", "replay.invalid"]
+  }
+}

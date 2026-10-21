@@ -1,0 +1,653 @@
+/* Radio、Checkbox、Switch、SegmentedControl（规范 03 §3.7–3.10，动效 04 §3.8、§3.11）。 */
+
+/* —— 尺寸：勾选控件外径 sm/md 16、lg/xl 20；不传 size 时随角色密度（foundation 的 --rx-check-size）—— */
+:is(.rx-radio, .rx-radio-group, .rx-checkbox, .rx-checkbox-group).rx-sized:is(
+    [data-size='sm'],
+    [data-size='md']
+  ) {
+  --rx-check-size: 16px;
+}
+
+:is(.rx-radio, .rx-radio-group, .rx-checkbox, .rx-checkbox-group).rx-sized:is(
+    [data-size='lg'],
+    [data-size='xl']
+  ) {
+  --rx-check-size: 20px;
+}
+
+/* —— 单选框 / 复选框（整行可点）—— */
+.rx-radio,
+.rx-checkbox {
+  position: relative;
+  display: inline-flex;
+  max-width: 100%;
+  align-items: flex-start;
+  gap: var(--reachany-space-2);
+  color: var(--reachany-color-text);
+  cursor: pointer;
+  font-size: var(--rx-label-font-size);
+  line-height: var(--reachany-text-body-line-height);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.rx-radio-control,
+.rx-checkbox-control {
+  position: relative;
+  display: inline-flex;
+  width: var(--rx-check-size);
+  height: var(--rx-check-size);
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  /* 与首行文字垂直居中 */
+  margin-top: calc(
+    (var(--rx-choice-line-height, var(--reachany-text-body-line-height)) - var(--rx-check-size)) / 2
+  );
+  border: 1.5px solid var(--reachany-color-border);
+  background: var(--reachany-color-surface);
+  transition:
+    background-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    border-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+.rx-radio-control {
+  border-radius: 50%;
+}
+
+/* 内圆点：直径为外径的 50%，选中时 scale 0→1（fast + emphasized）。 */
+.rx-radio-control::after {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  background: var(--reachany-color-primary);
+  content: '';
+  transform: scale(0);
+  transition: transform var(--reachany-motion-duration-fast)
+    var(--reachany-motion-easing-emphasized);
+}
+
+.rx-radio-input:checked + .rx-radio-control {
+  border-color: var(--reachany-color-primary);
+}
+
+.rx-radio-input:checked + .rx-radio-control::after {
+  transform: scale(1);
+}
+
+.rx-checkbox-control {
+  border-radius: var(--reachany-radius-sm);
+  color: var(--reachany-color-primary-contrast);
+}
+
+.rx-checkbox-check,
+.rx-checkbox-dash {
+  position: absolute;
+  width: calc(var(--rx-check-size) - 4px);
+  height: calc(var(--rx-check-size) - 4px);
+  opacity: 0;
+  transition: opacity var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+/* 勾以描边绘制出现（04 §3.11）：lucide Check 的路径长约 23。 */
+.rx-checkbox-check path {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  transition: stroke-dashoffset var(--reachany-motion-duration-fast)
+    var(--reachany-motion-easing-standard);
+}
+
+.rx-checkbox-input:is(:checked, :indeterminate) + .rx-checkbox-control {
+  border-color: var(--reachany-color-primary);
+  background: var(--reachany-color-primary);
+}
+
+.rx-checkbox-input:checked:not(:indeterminate) + .rx-checkbox-control .rx-checkbox-check {
+  opacity: 1;
+}
+
+.rx-checkbox-input:checked:not(:indeterminate) + .rx-checkbox-control .rx-checkbox-check path {
+  stroke-dashoffset: 0;
+}
+
+.rx-checkbox-input:indeterminate + .rx-checkbox-control .rx-checkbox-dash {
+  opacity: 1;
+}
+
+/* 悬停描边 primary */
+:is(.rx-radio, .rx-checkbox, .rx-checkbox-card):hover
+  :is(.rx-radio-input, .rx-checkbox-input):not(:disabled, [aria-readonly='true'])
+  + :is(.rx-radio-control, .rx-checkbox-control) {
+  border-color: var(--reachany-color-primary);
+}
+
+/* 键盘焦点：primary 描边 + shadow-focus，立即出现 */
+:is(.rx-radio-input, .rx-checkbox-input):focus-visible
+  + :is(.rx-radio-control, .rx-checkbox-control) {
+  border-color: var(--reachany-color-primary);
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+:is(.rx-radio-input, .rx-checkbox-input)[aria-invalid='true']:not(:checked, :indeterminate)
+  + :is(.rx-radio-control, .rx-checkbox-control) {
+  border-color: var(--reachany-color-danger);
+}
+
+/* 禁用：surface-muted 底 + text-tertiary */
+:is(.rx-radio-input, .rx-checkbox-input):disabled + :is(.rx-radio-control, .rx-checkbox-control) {
+  border-color: var(--reachany-color-border);
+  background: var(--reachany-color-surface-muted);
+  color: var(--reachany-color-text-tertiary);
+}
+
+.rx-radio-input:disabled + .rx-radio-control::after {
+  background: var(--reachany-color-text-tertiary);
+}
+
+:is(.rx-radio, .rx-checkbox, .rx-radio-card, .rx-checkbox-card)[data-disabled] {
+  color: var(--reachany-color-text-tertiary);
+  cursor: not-allowed;
+}
+
+:is(.rx-radio, .rx-checkbox, .rx-radio-card, .rx-checkbox-card):has(
+  > :is(.rx-radio-input, .rx-checkbox-input)[aria-readonly='true']
+) {
+  cursor: default;
+}
+
+/* —— 文字 —— */
+.rx-choice-text {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rx-choice-label {
+  overflow-wrap: anywhere;
+}
+
+.rx-choice-description {
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+  overflow-wrap: anywhere;
+}
+
+[data-disabled] > .rx-choice-text .rx-choice-description {
+  color: var(--reachany-color-text-tertiary);
+}
+
+/* —— 组布局：纵向间距 12，横向间距 24；卡片变体为栅格（间距 12）—— */
+.rx-radio-group,
+.rx-checkbox-group,
+.rx-checkbox-group-items {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--reachany-space-3);
+}
+
+.rx-radio-group[data-orientation='horizontal'],
+.rx-checkbox-group[data-orientation='horizontal'] > .rx-checkbox-group-items {
+  flex-flow: row wrap;
+  column-gap: var(--reachany-space-6);
+}
+
+/* 「全选」下的子项缩进到父复选框文字起点 */
+.rx-checkbox-group-items[data-nested] {
+  padding-left: calc(var(--rx-check-size) + var(--reachany-space-2));
+}
+
+.rx-radio-group[data-variant='card'],
+.rx-checkbox-group[data-variant='card'] > .rx-checkbox-group-items {
+  display: grid;
+  align-items: stretch;
+  gap: var(--reachany-space-3);
+  grid-template-columns: repeat(var(--rx-choice-columns, 3), minmax(0, 1fr));
+}
+
+.rx-checkbox-group[data-variant='card'] {
+  align-items: stretch;
+  --rx-choice-columns: 2;
+}
+
+:is(.rx-radio-group, .rx-checkbox-group)[data-columns='1'] {
+  --rx-choice-columns: 1;
+}
+
+:is(.rx-radio-group, .rx-checkbox-group)[data-columns='2'] {
+  --rx-choice-columns: 2;
+}
+
+:is(.rx-radio-group, .rx-checkbox-group)[data-columns='3'] {
+  --rx-choice-columns: 3;
+}
+
+:is(.rx-radio-group, .rx-checkbox-group)[data-columns='4'] {
+  --rx-choice-columns: 4;
+}
+
+@media (max-width: 639px) {
+  :is(.rx-radio-group, .rx-checkbox-group)[data-variant='card'] {
+    --rx-choice-columns: 1;
+  }
+}
+
+/* —— RadioCard / CheckboxCard（card 变体）—— */
+.rx-radio-card,
+.rx-checkbox-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  box-sizing: border-box;
+  align-items: flex-start;
+  gap: var(--reachany-space-3);
+  color: var(--reachany-color-text);
+  cursor: pointer;
+  font-size: var(--reachany-text-body);
+  line-height: var(--reachany-text-body-line-height);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.rx-radio-card,
+.rx-checkbox-card[data-variant='card'] {
+  padding: var(--reachany-space-3) var(--reachany-space-4);
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-md);
+  background: var(--reachany-color-surface);
+  transition:
+    background-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    border-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+:is(.rx-radio-card, .rx-checkbox-card[data-variant='card']):not(
+    [data-disabled],
+    [data-state='checked'],
+    [data-state='indeterminate']
+  ):hover {
+  border-color: var(--reachany-color-text-tertiary);
+}
+
+.rx-radio-card:is([data-state='checked'], :has(> .rx-radio-input:checked)),
+.rx-checkbox-card[data-variant='card']:is([data-state='checked'], [data-state='indeterminate']) {
+  border-color: var(--reachany-color-primary);
+}
+
+:is(.rx-radio-card, .rx-checkbox-card):has(
+  > :is(.rx-radio-input, .rx-checkbox-input):focus-visible
+) {
+  border-color: var(--reachany-color-primary);
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+:is(.rx-radio-card, .rx-checkbox-card[data-variant='card'])[data-disabled] {
+  border-color: var(--reachany-color-border);
+  background: var(--reachany-color-surface-muted);
+}
+
+:is(.rx-radio-card, .rx-checkbox-card):has(> [aria-invalid='true']):not([data-state='checked']) {
+  border-color: var(--reachany-color-danger);
+}
+
+.rx-radio-card-icon,
+.rx-checkbox-card-icon {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  color: var(--reachany-color-icon);
+}
+
+:is(.rx-radio-card-icon, .rx-checkbox-card-icon) > svg {
+  width: 24px;
+  height: 24px;
+}
+
+:is(.rx-radio-card-icon, .rx-checkbox-card-icon) > img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.rx-radio-card-title,
+.rx-checkbox-card-title {
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+/* —— CheckboxCard callout：带说明的勾选框（「同时开放到平台」）—— */
+.rx-checkbox-card[data-variant='callout'] {
+  --rx-choice-line-height: var(--reachany-text-subtitle-line-height);
+
+  padding: var(--reachany-space-4);
+  border: 1px solid transparent;
+  border-radius: var(--reachany-radius-card);
+  background: var(--reachany-color-surface-muted);
+}
+
+.rx-checkbox-card[data-variant='callout'][data-tone='surface'] {
+  background: var(--reachany-color-surface);
+}
+
+.rx-checkbox-card[data-variant='callout'] .rx-checkbox-card-title {
+  color: var(--reachany-color-primary);
+  font-size: var(--reachany-text-subtitle);
+  line-height: var(--reachany-text-subtitle-line-height);
+}
+
+.rx-checkbox-card[data-variant='callout'][data-disabled] .rx-checkbox-card-title {
+  color: var(--reachany-color-text-tertiary);
+}
+
+/* —— Switch —— */
+.rx-switch {
+  --rx-switch-width: 38px;
+  --rx-switch-height: 18px;
+  --rx-switch-thumb: 14px;
+
+  position: relative;
+  display: inline-flex;
+  width: var(--rx-switch-width);
+  height: var(--rx-switch-height);
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  align-items: center;
+  padding: 2px;
+  border: 0;
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-track);
+  cursor: pointer;
+  transition: background-color var(--reachany-motion-duration-fast)
+    var(--reachany-motion-easing-standard);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.rx-switch[data-size='sm'] {
+  --rx-switch-width: 28px;
+  --rx-switch-height: 16px;
+  --rx-switch-thumb: 12px;
+}
+
+/* 扩大点击区到最小目标（教师 24、学生 40），不改变视觉尺寸 */
+.rx-switch::before {
+  position: absolute;
+  inset: min(0px, calc((var(--rx-switch-height) - var(--rx-min-target)) / 2)) 0;
+  content: '';
+}
+
+.rx-switch[data-state='checked'] {
+  background: var(--reachany-color-primary);
+}
+
+.rx-switch-thumb {
+  display: inline-flex;
+  width: var(--rx-switch-thumb);
+  height: var(--rx-switch-thumb);
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-surface);
+  box-shadow: var(--reachany-shadow-knob);
+  color: var(--reachany-color-primary);
+  transition: transform var(--reachany-motion-duration-fast)
+    var(--reachany-motion-easing-emphasized);
+}
+
+.rx-switch[data-state='checked'] .rx-switch-thumb {
+  transform: translateX(calc(var(--rx-switch-width) - var(--rx-switch-thumb) - 4px));
+}
+
+.rx-switch[data-state='unchecked'] .rx-switch-thumb {
+  color: var(--reachany-color-text-tertiary);
+}
+
+.rx-switch .rx-switch-spinner {
+  width: calc(var(--rx-switch-thumb) - 4px);
+  height: calc(var(--rx-switch-thumb) - 4px);
+  border-width: 1.5px;
+}
+
+.rx-switch:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-switch:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.rx-switch[data-loading='true'] {
+  cursor: progress;
+}
+
+.rx-switch[aria-readonly='true'] {
+  cursor: default;
+}
+
+/* —— 设置行与栅格 —— */
+.rx-setting-row {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--reachany-space-4);
+}
+
+.rx-setting-row-main {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rx-setting-row-title {
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-body);
+  font-weight: 500;
+  line-height: var(--reachany-text-body-line-height);
+  overflow-wrap: anywhere;
+}
+
+.rx-setting-row-description {
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+  overflow-wrap: anywhere;
+}
+
+.rx-setting-row-attachments {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--reachany-space-2) var(--reachany-space-3);
+  margin: var(--reachany-space-2) 0 0;
+  padding: 0;
+  border: 0;
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-body);
+}
+
+.rx-setting-row-attachments:disabled {
+  color: var(--reachany-color-text-tertiary);
+}
+
+/* 开关（高 18）与标题首行（行高 22）垂直居中 */
+.rx-setting-row-switch {
+  margin-top: calc((var(--reachany-text-body-line-height) - var(--rx-switch-height)) / 2);
+}
+
+.rx-setting-row[data-disabled] :is(.rx-setting-row-title, .rx-setting-row-description) {
+  color: var(--reachany-color-text-tertiary);
+}
+
+.rx-setting-grid {
+  display: grid;
+  min-width: 0;
+  gap: var(--reachany-space-5) var(--reachany-space-10);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 1024px) {
+  .rx-setting-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* —— SegmentedControl：等宽选项 + 滑动选中块（moderate + standard）—— */
+.rx-segmented {
+  --rx-segment-pad: 2px;
+  --rx-segment-radius: var(--reachany-radius-md);
+  --rx-segment-selected-bg: var(--reachany-color-primary);
+  --rx-segment-selected-fg: var(--reachany-color-primary-contrast);
+
+  position: relative;
+  display: inline-grid;
+  height: 40px;
+  box-sizing: border-box;
+  padding: var(--rx-segment-pad);
+  border: 1px solid var(--reachany-color-border-subtle);
+  border-radius: var(--rx-segment-radius);
+  background: var(--reachany-color-surface-muted);
+  font-size: var(--reachany-text-body);
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+  line-height: var(--reachany-text-body-line-height);
+  vertical-align: middle;
+}
+
+.rx-segmented[data-size='sm'] {
+  --rx-segment-radius: var(--reachany-radius-pill);
+
+  height: 24px;
+  border: 0;
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+.rx-segmented[data-size='lg'] {
+  --rx-segment-pad: 4px;
+  --rx-segment-radius: var(--reachany-radius-pill);
+
+  height: 56px;
+  border: 0;
+  font-size: var(--reachany-text-title-md);
+  line-height: var(--reachany-text-title-md-line-height);
+}
+
+.rx-segmented[data-tone='neutral'] {
+  --rx-segment-pad: 2px;
+  --rx-segment-radius: var(--reachany-radius-md);
+  --rx-segment-selected-bg: var(--reachany-color-border-warm);
+  --rx-segment-selected-fg: var(--reachany-color-text);
+
+  height: 36px;
+  border: 0;
+  background: var(--reachany-color-surface);
+  font-size: var(--reachany-text-body);
+  line-height: var(--reachany-text-body-line-height);
+}
+
+.rx-segmented-indicator {
+  position: absolute;
+  top: var(--rx-segment-pad);
+  bottom: var(--rx-segment-pad);
+  left: var(--rx-segment-pad);
+  width: calc((100% - var(--rx-segment-pad) * 2) / var(--rx-segment-count, 1));
+  border-radius: var(--rx-segment-radius);
+  background: var(--rx-segment-selected-bg);
+  pointer-events: none;
+  transform: translateX(calc(100% * var(--rx-segment-index, 0)));
+  transition: transform var(--reachany-motion-duration-moderate)
+    var(--reachany-motion-easing-standard);
+}
+
+.rx-segmented-indicator[data-state='hidden'] {
+  display: none;
+}
+
+.rx-segmented-item {
+  position: relative;
+  display: inline-flex;
+  min-width: 0;
+  height: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  gap: var(--reachany-space-1);
+  padding: 0 var(--reachany-space-4);
+  border: 0;
+  border-radius: var(--rx-segment-radius);
+  background: transparent;
+  color: var(--reachany-color-text-secondary);
+  cursor: pointer;
+  font: inherit;
+  white-space: nowrap;
+  transition: color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.rx-segmented[data-size='sm'] .rx-segmented-item {
+  padding: 0 var(--reachany-space-3);
+}
+
+.rx-segmented[data-size='lg'] .rx-segmented-item {
+  padding: 0 var(--reachany-space-6);
+}
+
+.rx-segmented-item:hover:not(:disabled, [data-state='selected']) {
+  color: var(--reachany-color-text);
+}
+
+.rx-segmented-item[data-state='selected'] {
+  color: var(--rx-segment-selected-fg);
+  font-weight: 500;
+}
+
+.rx-segmented-item:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-segmented-item:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.rx-segmented-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rx-segmented-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.rx-segmented-icon > svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* —— 减少动效（04 §4）：取消缩放、平移与描边绘制，状态直接切换 —— */
+@media (prefers-reduced-motion: reduce) {
+  .rx-radio-control,
+  .rx-radio-control::after,
+  .rx-checkbox-control,
+  .rx-checkbox-check,
+  .rx-checkbox-dash,
+  .rx-checkbox-check path,
+  .rx-radio-card,
+  .rx-checkbox-card,
+  .rx-switch,
+  .rx-switch-thumb,
+  .rx-segmented-indicator,
+  .rx-segmented-item {
+    transition: none;
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "decksmith-replay-case/v1",
+  "id": "case3-quiz-request-on-genui-origin",
+  "teacherCase": 3,
+  "summary": "来源页是 GenUI、教师要的是互动题时，不预加载 GenUI 合同（WP2 起按需读取），用户消息只提示来源页类型。",
+  "provenance": {
+    "kind": "synthetic-reconstruction",
+    "observedOn": "2026-10-08",
+    "notes": "重建自教师在 GenUI 页上要求改成互动题。"
+  },
+  "document": "energy-lesson.json",
+  "request": {
+    "prompt": "把这个改成 5 个无标答的课中互动题",
+    "pageId": "55555555-5555-4555-8555-555555555555:page-3",
+    "promptContractVersion": "decksmith-prompt/v2"
+  },
+  "capturedWith": {
+    "toolParameterSha256": {}
+  },
+  "transcript": [
+    {
+      "text": "好的，我会改成 5 道无标准答案的课中互动题。",
+      "usage": {
+        "input": 15200,
+        "output": 40
+      }
+    }
+  ],
+  "expect": {
+    "changed": false,
+    "outcome": {
+      "mutationStatus": "none",
+      "toolErrorCount": 0
+    },
+    "modelTurns": 1,
+    "userPromptIncludes": ["The current page is an Interactive (GenUI) page"],
+    "userPromptExcludes": [
+      "Interactive coding context is enabled",
+      "Interactive authoring and validation contract:"
+    ]
+  }
+}

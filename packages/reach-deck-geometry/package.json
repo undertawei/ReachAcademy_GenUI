@@ -1,0 +1,52 @@
+{
+  "name": "@reachany/reach-deck-geometry",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./worker": "./dist/worker.mjs",
+    "./server": {
+      "types": "./dist/server.d.ts",
+      "default": "./dist/server.mjs"
+    },
+    "./session": {
+      "types": "./dist/session.d.ts",
+      "default": "./dist/session.js"
+    },
+    "./session-v2": {
+      "types": "./dist/sessionV2.d.ts",
+      "default": "./dist/sessionV2.js"
+    },
+    "./relations": {
+      "types": "./dist/relations.d.ts",
+      "default": "./dist/relations.js"
+    },
+    "./exploration": {
+      "types": "./dist/exploration.d.ts",
+      "default": "./dist/exploration.js"
+    },
+    "./worker-path": {
+      "types": "./dist/workerPath.d.ts",
+      "default": "./dist/workerPath.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && node scripts/build-worker.mjs",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "pnpm build && vitest run --pool=threads --maxWorkers=1"
+  },
+  "dependencies": {
+    "@noble/hashes": "1.8.0",
+    "@reachany/reach-deck-dsl": "workspace:*",
+    "jsxgraph": "1.13.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@reachany/tsconfig": "workspace:*",
+    "esbuild": "0.27.7"
+  }
+}

@@ -1,0 +1,123 @@
+[
+  {
+    "id": "authored-relation-reserves-learner-prefix",
+    "target": "envelope",
+    "path": ["spec", "relations", 0, "id"],
+    "value": "L_base",
+    "errorCode": "invalid_id"
+  },
+  {
+    "id": "policy-rejects-out-of-scope-perpendicular-lines",
+    "target": "envelope",
+    "path": ["spec", "interaction", "exploration", "objectKinds"],
+    "value": ["perpendicularLine"],
+    "errorCode": "invalid_value"
+  },
+  {
+    "id": "policy-reference-must-be-base-object",
+    "target": "envelope",
+    "path": ["spec", "interaction", "exploration", "referenceableObjects", 0],
+    "value": "missing",
+    "errorCode": "unknown_reference"
+  },
+  {
+    "id": "auxiliary-id-requires-learner-prefix",
+    "target": "auxiliary",
+    "path": ["objects", 0, "id"],
+    "value": "M",
+    "errorCode": "invalid_id"
+  },
+  {
+    "id": "auxiliary-reference-must-be-earlier",
+    "target": "auxiliary",
+    "path": ["objects", 0, "a"],
+    "value": "L_F",
+    "errorCode": "unknown_reference"
+  },
+  {
+    "id": "policy-controls-object-kinds",
+    "target": "envelope",
+    "path": ["spec", "interaction", "exploration", "objectKinds"],
+    "value": [],
+    "errorCode": "unknown_kind",
+    "compose": true
+  },
+  {
+    "id": "policy-budget-controls-auxiliary-count",
+    "target": "envelope",
+    "path": ["spec", "interaction", "exploration", "limits", "objects"],
+    "value": 0,
+    "errorCode": "limit_exceeded",
+    "compose": true
+  },
+  {
+    "id": "relation-enforces-linear-operands",
+    "target": "auxiliary",
+    "path": ["relations", 0, "line1"],
+    "value": "A",
+    "errorCode": "reference_type_mismatch"
+  },
+  {
+    "id": "relation-presentation-must-reference-auxiliary-relation",
+    "target": "auxiliary",
+    "path": ["presentation", "relations", 0, "relation"],
+    "value": "baseLines",
+    "errorCode": "unknown_reference"
+  },
+  {
+    "id": "authoring-reference-must-match-category",
+    "target": "envelope",
+    "path": ["spec", "authoring", "editable", "objects"],
+    "value": ["baseLines"],
+    "errorCode": "reference_type_mismatch"
+  },
+  {
+    "id": "authoring-deletable-must-be-editable",
+    "target": "envelope",
+    "path": ["spec", "authoring", "deletable", "objects"],
+    "value": ["AB"],
+    "errorCode": "invalid_value"
+  },
+  {
+    "id": "authoring-external-object-cannot-be-deletable",
+    "target": "envelope",
+    "path": ["spec", "authoring", "deletable", "objects"],
+    "value": ["AP"],
+    "errorCode": "invalid_value"
+  },
+  {
+    "id": "authoring-external-relation-cannot-be-deletable",
+    "target": "envelope",
+    "path": ["spec", "authoring", "externalReferences"],
+    "value": ["baseLines"],
+    "errorCode": "invalid_value"
+  },
+  {
+    "id": "authoring-external-reference-must-exist",
+    "target": "envelope",
+    "path": ["spec", "authoring", "externalReferences"],
+    "value": ["missing"],
+    "errorCode": "unknown_reference"
+  },
+  {
+    "id": "authoring-external-reference-reserves-learner-prefix",
+    "target": "envelope",
+    "path": ["spec", "authoring", "externalReferences"],
+    "value": ["L_external"],
+    "errorCode": "invalid_id"
+  },
+  {
+    "id": "authoring-external-references-must-be-unique",
+    "target": "envelope",
+    "path": ["spec", "authoring", "externalReferences"],
+    "value": ["AP", "AP"],
+    "errorCode": "duplicate_id"
+  },
+  {
+    "id": "authoring-rejects-unknown-fields",
+    "target": "envelope",
+    "path": ["spec", "authoring", "extra"],
+    "value": true,
+    "errorCode": "unknown_field"
+  }
+]

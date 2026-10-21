@@ -1,0 +1,38 @@
+{
+  "geometry-mathigon": {
+    "version": "1.0.0",
+    "sha256": "3cc824622dd733b3686dc72207a689a428481d602f4631d0f99d9b468d5a2cf0"
+  },
+  "mechanics-matter": {
+    "version": "1.0.0",
+    "sha256": "b4d54e21e5a35cb7cefbcee8beb58d1a5074d85b7286156b857d2f9b7cde1516"
+  },
+  "molecule-smiles": {
+    "version": "1.0.0",
+    "sha256": "3380fa2f644d63fbbf9692c9d7933c2c8171bde103841cdf4cff02fb985393c4"
+  },
+  "network-cytoscape": {
+    "version": "1.0.0",
+    "sha256": "17920ecccc11fc2ca9b1a9b963b1450625dc95503c835a0f1846ab15fb178751"
+  },
+  "geo-d3": {
+    "version": "1.0.0",
+    "sha256": "0ee2434cc7b7c27cb3cd8b4b2de1a6a0bfada5e17eeef8ba7406b886ed30bb9c"
+  },
+  "solid-three": {
+    "version": "1.0.0",
+    "sha256": "5de3a9b6c5e2646d52de0ea9d4d9173524ff1115e8181396742acdcc13e7471a"
+  },
+  "molecule-3dmol": {
+    "version": "1.0.0",
+    "sha256": "762965c04cec0672a25bbc7d44116d43c0747bd64542eff5d6f706fd001540a9"
+  },
+  "sequence-nightingale": {
+    "version": "1.0.0",
+    "sha256": "ca6df84154ad8e8d14e02ad9ba6107a5c249e3324edc66f3f0a20f409e0ef5bf"
+  },
+  "geometry-jsxgraph": {
+    "version": "1.0.0",
+    "sha256": "f1ac78edd3153a41bf3860ff0b998597df6006477d40420688983b18eebd11df"
+  }
+}

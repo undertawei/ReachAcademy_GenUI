@@ -1,0 +1,213 @@
+/* 学生答题选项 QuestionOption / QuestionOptionGroup / QuestionOutcome（规范 03 §3.8a、§4）。 */
+
+/* —— 选项组：纵向整行排列，选项间距 16 —— */
+:is(.rx-radio-group, .rx-checkbox-group).rx-question-option-group,
+.rx-question-option-group > .rx-checkbox-group-items {
+  align-items: stretch;
+  gap: var(--reachany-space-4);
+}
+
+/* —— 选项行：最小高 52、圆角 card、内边距 16、文字 15 —— */
+.rx-question-option {
+  --rx-question-option-min-height: 52px;
+  --rx-question-option-bg: var(--reachany-color-surface);
+  --rx-question-option-border: var(--reachany-color-border-warm);
+  --rx-question-option-result-fg: var(--reachany-color-text);
+  --rx-choice-line-height: var(--reachany-text-body-lg-line-height);
+
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: var(--rx-question-option-min-height);
+  box-sizing: border-box;
+  align-items: center;
+  border: 1px solid var(--rx-question-option-border);
+  border-radius: var(--reachany-radius-card);
+  background: var(--rx-question-option-bg);
+  color: var(--reachany-color-text);
+  transition:
+    background-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    border-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    box-shadow var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+/* 内置 Radio/Checkbox 的 label 撑满整行：整行可点，单行时恰好 52 高。 */
+.rx-question-option > .rx-question-option-control {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  align-self: stretch;
+  align-items: flex-start;
+  gap: var(--reachany-space-3);
+  padding: calc(
+      (var(--rx-question-option-min-height) - var(--reachany-text-body-lg-line-height)) / 2 - 1px
+    )
+    var(--reachany-space-4);
+  color: inherit;
+  font-size: var(--reachany-text-body-lg);
+  line-height: var(--reachany-text-body-lg-line-height);
+}
+
+.rx-question-option .rx-choice-label {
+  display: flex;
+  min-width: 0;
+  align-items: baseline;
+  gap: var(--reachany-space-2);
+}
+
+.rx-question-option-marker {
+  flex: 0 0 auto;
+  font-weight: 600;
+}
+
+.rx-question-option-content {
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow-wrap: anywhere;
+}
+
+/* 悬停：描边 text-tertiary（未选中、未判分、可编辑时） */
+.rx-question-option:not(
+    [data-disabled],
+    [data-readonly],
+    [data-result],
+    [data-state='checked']
+  ):hover {
+  --rx-question-option-border: var(--reachany-color-text-tertiary);
+}
+
+/* 选中（未提交）：primary-soft 底 + primary 描边；选中只用 primary 系 */
+.rx-question-option[data-state='checked'] {
+  --rx-question-option-bg: var(--reachany-color-primary-soft);
+  --rx-question-option-border: var(--reachany-color-primary);
+}
+
+/* 判分后：底色/描边 + 行尾图标与文字标签，不只靠颜色。
+ * 绿色描边用 success-strong：success 在 success-soft 上只有 2.41，达不到非文本 3:1（strong 为 4.78）。 */
+.rx-question-option[data-result='correct'] {
+  --rx-question-option-bg: var(--reachany-color-success-soft);
+  --rx-question-option-border: var(--reachany-color-success-strong);
+  --rx-question-option-result-fg: var(--reachany-color-success-text);
+}
+
+.rx-question-option[data-result='incorrect'] {
+  --rx-question-option-bg: var(--reachany-color-danger-soft);
+  --rx-question-option-border: var(--reachany-color-danger);
+  --rx-question-option-result-fg: var(--reachany-color-danger-text);
+}
+
+.rx-question-option[data-result='missed'] {
+  --rx-question-option-bg: var(--reachany-color-surface);
+  --rx-question-option-border: var(--reachany-color-success-strong);
+  --rx-question-option-result-fg: var(--reachany-color-success-text);
+
+  border-style: dashed;
+}
+
+/* 禁用：surface-muted 底 + text-tertiary（已选中或已判分的行保留其状态外观） */
+.rx-question-option[data-disabled]:not([data-state='checked'], [data-result]) {
+  --rx-question-option-bg: var(--reachany-color-surface-muted);
+  --rx-question-option-border: var(--reachany-color-border);
+}
+
+.rx-question-option[data-readonly] > .rx-question-option-control {
+  cursor: default;
+}
+
+/* 键盘焦点：整行 shadow-focus；未判分时描边同时变 primary。内置控件不再单独画焦点环。 */
+.rx-question-option:has(:is(.rx-radio-input, .rx-checkbox-input):focus-visible) {
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-question-option:not([data-result]):has(:is(.rx-radio-input, .rx-checkbox-input):focus-visible) {
+  --rx-question-option-border: var(--reachany-color-primary);
+}
+
+.rx-question-option
+  :is(.rx-radio-input, .rx-checkbox-input):focus-visible
+  + :is(.rx-radio-control, .rx-checkbox-control) {
+  box-shadow: none;
+}
+
+/* 行尾判分标签：图标 16 + 文字 13/500（AA 文字色） */
+.rx-question-option-result {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--reachany-space-1);
+  margin-inline-end: var(--reachany-space-4);
+  color: var(--rx-question-option-result-fg);
+  font-size: var(--reachany-text-body-sm);
+  font-weight: 500;
+  line-height: var(--reachany-text-body-sm-line-height);
+  white-space: nowrap;
+}
+
+.rx-question-option-result > svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+}
+
+/* —— 整题判分结论：图标 + 文字 —— */
+.rx-question-outcome {
+  --rx-question-outcome-bg: var(--reachany-color-success-soft);
+  --rx-question-outcome-fg: var(--reachany-color-success-text);
+
+  display: flex;
+  box-sizing: border-box;
+  align-items: flex-start;
+  gap: var(--reachany-space-2);
+  padding: var(--reachany-space-3) var(--reachany-space-4);
+  border-radius: var(--reachany-radius-md);
+  background: var(--rx-question-outcome-bg);
+  color: var(--rx-question-outcome-fg);
+  font-size: var(--reachany-text-body);
+  line-height: var(--reachany-text-body-line-height);
+}
+
+.rx-question-outcome[data-outcome='incorrect'] {
+  --rx-question-outcome-bg: var(--reachany-color-danger-soft);
+  --rx-question-outcome-fg: var(--reachany-color-danger-text);
+}
+
+/* warning-text on warning-soft 仅 4.19，与 InlineNotice 一致加深到 AA（5.08） */
+.rx-question-outcome[data-outcome='partial'] {
+  --rx-question-outcome-bg: var(--reachany-color-warning-soft);
+  --rx-question-outcome-fg: color-mix(
+    in srgb,
+    var(--reachany-color-warning-text) 85%,
+    var(--reachany-color-text)
+  );
+}
+
+.rx-question-outcome-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  margin-top: calc((var(--reachany-text-body-line-height) - 16px) / 2);
+}
+
+.rx-question-outcome-content {
+  display: grid;
+  min-width: 0;
+  flex: 1 1 auto;
+  gap: 2px;
+  overflow-wrap: anywhere;
+}
+
+.rx-question-outcome-title {
+  margin: 0;
+  font-weight: 500;
+}
+
+.rx-question-outcome-description {
+  font-size: var(--reachany-text-body-sm);
+  line-height: var(--reachany-text-body-sm-line-height);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rx-question-option {
+    transition: none;
+  }
+}

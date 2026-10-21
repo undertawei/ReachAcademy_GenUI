@@ -1,0 +1,530 @@
+{
+  "contractVersion": "reach-euclidean-geometry-contract/v1",
+  "schemaVersion": "reach-euclidean-geometry/v1",
+  "envelopeVersion": "reach-science-kit/v1",
+  "evaluatorVersion": "reach-euclidean-geometry-evaluator/1.0.0",
+  "engine": { "name": "jsxgraph", "version": "1.13.2" },
+  "transport": {
+    "schemaVersion": "reach-geometry-validation/v1",
+    "requestFields": ["schemaVersion", "markers"],
+    "markerFields": ["instanceId", "envelope"],
+    "responseFields": ["schemaVersion", "evaluatorVersion", "digest", "results"],
+    "resultFields": ["instanceId", "valid", "diagnostics"],
+    "diagnosticFields": ["code", "path"],
+    "instanceIdPattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+    "digestHeader": "x-reach-geometry-digest",
+    "digestPattern": "^[a-f0-9]{64}$",
+    "requestBytes": 278528,
+    "responseBytes": 32768,
+    "minimumMarkers": 1,
+    "maximumMarkers": 4,
+    "markerBytes": 65536,
+    "aggregateMarkerBytes": 262144,
+    "computeDeadlineMs": 500,
+    "overallDeadlineMs": 750,
+    "workerSlotsPerProcess": 2,
+    "diagnosticsPerMarker": 32,
+    "diagnosticTextLength": 160,
+    "diagnosticTextPattern": "^[\\x20-\\x7e]{1,160}$",
+    "binding": "SHA-256 over exact UTF-8 request bytes; response digest/schema/evaluator must match; result instance IDs exactly preserve request order with no omissions, additions or duplicates",
+    "evaluatorBinding": "evaluatorVersion is immutable and binds engine jsxgraph@1.13.2, schemaVersion and this contractVersion; any normative change after release requires a new evaluatorVersion",
+    "resultSemantics": "valid=true requires zero diagnostics; valid=false requires 1..32 diagnostics; initial state only; no geometry coordinates or HTML in response",
+    "deadlines": "overall begins after authentication and includes body read, digest/schema validation, worker startup and computation; compute begins at worker ready handshake; abort/terminate outside evaluator thread; retain slot until termination completes"
+  },
+  "kits": {
+    "euclidean-geometry-2d": {
+      "dimension": 2,
+      "kitVersion": 1,
+      "runtimeId": "geometry-euclidean-2d",
+      "runtimeVersion": "1.0.0",
+      "runtimePin": "geometry-euclidean-2d@1.0.0",
+      "heavy": false
+    },
+    "euclidean-geometry-3d": {
+      "dimension": 3,
+      "kitVersion": 1,
+      "runtimeId": "geometry-euclidean-3d",
+      "runtimeVersion": "1.0.0",
+      "runtimePin": "geometry-euclidean-3d@1.0.0",
+      "heavy": true
+    }
+  },
+  "limits": {
+    "markerBytes": 65536,
+    "pageBytes": 262144,
+    "pageMarkers": 4,
+    "pageHeavy": 1,
+    "jsonDepth": 24,
+    "jsonNodes": 4096,
+    "objects": 128,
+    "parameters": 24,
+    "measurements": 24,
+    "assertions": 32,
+    "dagDepth": 32,
+    "astDepth": 8,
+    "astNodes": 64,
+    "astRootDepth": 6,
+    "idLength": 40,
+    "labelLength": 160,
+    "ariaLabelLength": 256,
+    "groups": 16,
+    "freedoms": 32
+  },
+  "tolerances": { "absolute": 1e-9, "relative": 1e-9, "angleDegrees": 1e-6 },
+  "idPattern": "^[A-Za-z][A-Za-z0-9_]{0,39}$",
+  "scalarOperations": {
+    "add": 2,
+    "sub": 2,
+    "mul": 2,
+    "div": 2,
+    "pow": 2,
+    "neg": 1,
+    "sqrt": 1,
+    "sin": 1,
+    "cos": 1
+  },
+  "scalarSemantics": {
+    "powExponentMin": -8,
+    "powExponentMax": 8,
+    "powOrder": "negative: reciprocal first; multiply left-to-right abs(exponent) times starting at 1; zero base and nonpositive exponent undefined",
+    "trigonometricInputUnit": "radian",
+    "parameterReferencesOnly": true,
+    "nodeCounting": "each scalar expression value counts once: numeric literal, parameter-reference object or operation object; args array containers, op-name strings and parameter-name strings do not count as additional AST nodes",
+    "depthCounting": "scalar root depth is 1; entering each operand expression adds 1; args containers add no AST depth; full-envelope JSON depth and node counting are independent"
+  },
+  "validationOrder": {
+    "jsonEntry": ["raw UTF-8 marker byte limit", "JSON parse", "valueEntry phases"],
+    "valueEntry": [
+      "safe JSON deep copy, visiting root depth 0: node count before depth before value validity; object fields in own-key order and array elements in index order",
+      "compact UTF-8 marker byte limit",
+      "envelope record and exact fields; envelope version and kitVersion; kitId registration",
+      "spec record and exact fields; spec version; kit dimension; ariaLabel; units",
+      "parameters, objects, measurements, assertions array shape/count and entry-record checks in this order",
+      "parameters in array order: exact fields, claim global ID, finite initial, min/max/step/range",
+      "claim object IDs, then measurement IDs, then assertion IDs, each in array order",
+      "validate objects, then measurements, then assertions, each in array order: kind, dimension, exact fields, then field types/references/scalar AST in shared signature field order",
+      "object DAG depth-first validation starting with ASCII-sorted IDs, following shared signature reference-field order: cycle before cached depth; path depth limit after dependency traversal; parameters are independent inputs outside object DAG depth",
+      "compute ASCII-smallest-ready object order",
+      "presentation exact fields; objects, measurements, groups, rightAngles in array order; camera",
+      "interaction exact fields; parameter references; selectable references; visibleGroups references; reset; freedoms in array order",
+      "disjoint accounting and deep freeze"
+    ],
+    "exactFields": "unknown fields in input own-key order precede missing required fields in shared declaration order",
+    "scalar": "root depth bound, then preorder expression traversal: node limit before depth limit; literal finite check or exact parameter reference; operation exact fields then known op then arity then literal integer power bound then operands left-to-right",
+    "freedom": "claim global ID, reference target object, duplicate target, kind-specific exact fields/type, bindings/ranges and alias checks in declared coordinate order; translation checks direct-transform source closure before axes/ranges, binds in ranges array order, then checks edited-parameter source closure",
+    "failure": "stop at first failure; matching TS/Java fixtures must return the same reason code; paths identify the actual first failure and are not inferred from subsequent invalid fields"
+  },
+  "envelopeFields": ["schemaVersion", "kitId", "kitVersion", "spec"],
+  "specFields": [
+    "schemaVersion",
+    "dimension",
+    "ariaLabel",
+    "units",
+    "parameters",
+    "objects",
+    "measurements",
+    "assertions",
+    "presentation",
+    "interaction"
+  ],
+  "units": ["unit", "mm", "cm", "m", "km"],
+  "parameterFields": {
+    "id": "id",
+    "initial": "number",
+    "min": "number",
+    "max": "number",
+    "step": "number"
+  },
+  "presentationFields": ["objects", "measurements", "groups", "rightAngles", "camera"],
+  "presentationEntries": {
+    "objects": {
+      "required": { "object": "object" },
+      "optional": {
+        "label": "label",
+        "colorToken": "colorToken",
+        "lineStyle": "lineStyle",
+        "visible": "boolean",
+        "opacity": "opacity"
+      },
+      "maximum": 128,
+      "uniqueBy": "object"
+    },
+    "measurements": {
+      "required": { "measurement": "measurement" },
+      "optional": { "label": "label", "decimals": "decimals", "visible": "boolean" },
+      "maximum": 24,
+      "uniqueBy": "measurement"
+    },
+    "groups": {
+      "required": { "id": "id", "objects": "object[]", "measurements": "measurement[]" },
+      "optional": {},
+      "maximum": 16,
+      "globalId": true
+    },
+    "rightAngles": {
+      "required": { "id": "id", "measurement": "angularMeasurement" },
+      "optional": {},
+      "maximum": 24,
+      "globalId": true
+    }
+  },
+  "presentationValues": {
+    "colorToken": ["ink", "muted", "accent", "success", "warning"],
+    "lineStyle": ["solid", "dashed", "dotted"],
+    "opacity": [0, 1],
+    "decimals": [0, 4],
+    "defaultDecimals": 2,
+    "cameraZoom": [0.01, 100],
+    "cameraUpCrossMinimum": 1e-9
+  },
+  "cameraOperations": {
+    "planar": {
+      "dimension": 2,
+      "fields": { "bounds": "number[4]" },
+      "semantics": "left,bottom,right,top; strictly positive finite extents"
+    },
+    "spatial": {
+      "dimension": 3,
+      "fields": {
+        "projection": "projection",
+        "position": "number[3]",
+        "target": "number[3]",
+        "up": "number[3]",
+        "zoom": "number"
+      },
+      "projection": ["orthographic", "perspective"],
+      "semantics": "finite nonzero view/up vectors with finite norms; normalized cross norm>1e-9; zoom 0.01..100"
+    }
+  },
+  "interactionFields": {
+    "parameters": "parameter[]",
+    "freedoms": "freedom[]",
+    "selectable": "object[]",
+    "visibleGroups": "group[]",
+    "reset": "initial"
+  },
+  "freedomOperations": {
+    "freePoint": {
+      "dimensions": [2],
+      "targetKind": "freePoint",
+      "fields": { "object": "object", "x": "range", "y": "range" },
+      "bindings": { "x": "x", "y": "y" }
+    },
+    "line": {
+      "dimensions": [2, 3],
+      "targetKind": "pointOnLine",
+      "fields": { "object": "object", "range": "range" },
+      "bindings": { "range": "t" }
+    },
+    "circle": {
+      "dimensions": [2],
+      "targetKind": "pointOnCircle",
+      "fields": { "object": "object", "range": "range" },
+      "bindings": { "range": "angle" }
+    },
+    "plane": {
+      "dimensions": [3],
+      "targetKind": "pointOnPlane",
+      "fields": { "object": "object", "u": "range", "v": "range" },
+      "bindings": { "u": "u", "v": "v" }
+    },
+    "translate": {
+      "dimensions": [2, 3],
+      "targetKind": "segment",
+      "fields": { "object": "object", "axes": "axis[]", "ranges": "axisRange[]" },
+      "bindings": { "x": "dx", "y": "dy", "z": "dz" }
+    }
+  },
+  "rangeFields": { "min": "number", "max": "number", "step": "number" },
+  "axisRangeFields": { "axis": "axis", "min": "number", "max": "number", "step": "number" },
+  "objectOperations": {
+    "point": {
+      "dimensions": [2, 3],
+      "output": "point",
+      "fields": { "x": "scalar", "y": "scalar" },
+      "fields3": { "z": "scalar" }
+    },
+    "freePoint": {
+      "dimensions": [2],
+      "output": "point",
+      "fields": { "x": "number", "y": "number" }
+    },
+    "line": { "dimensions": [2, 3], "output": "linear", "fields": { "a": "point", "b": "point" } },
+    "segment": {
+      "dimensions": [2, 3],
+      "output": "linear",
+      "fields": { "a": "point", "b": "point" }
+    },
+    "ray": { "dimensions": [2, 3], "output": "linear", "fields": { "a": "point", "b": "point" } },
+    "midpoint": {
+      "dimensions": [2, 3],
+      "output": "point",
+      "fields": { "a": "point", "b": "point" }
+    },
+    "circle": {
+      "dimensions": [2],
+      "output": "circle",
+      "fields": { "center": "point", "radius": "scalar" }
+    },
+    "pointOnCircle": {
+      "dimensions": [2],
+      "output": "point",
+      "fields": { "circle": "circle", "angle": "scalar" }
+    },
+    "pointOnLine": {
+      "dimensions": [2, 3],
+      "output": "point",
+      "fields": { "line": "linear", "t": "scalar" }
+    },
+    "plane": {
+      "dimensions": [3],
+      "output": "plane",
+      "fields": { "origin": "point", "uPoint": "point", "vPoint": "point" }
+    },
+    "pointOnPlane": {
+      "dimensions": [3],
+      "output": "point",
+      "fields": { "plane": "plane", "u": "scalar", "v": "scalar" }
+    },
+    "parallelLine": {
+      "dimensions": [2, 3],
+      "output": "linear",
+      "fields": { "point": "point", "line": "linear" }
+    },
+    "perpendicularLine": {
+      "dimensions": [2],
+      "output": "linear",
+      "fields": { "point": "point", "line": "linear" }
+    },
+    "normalLine": {
+      "dimensions": [3],
+      "output": "linear",
+      "fields": { "point": "point", "plane": "plane" }
+    },
+    "parallelPlane": {
+      "dimensions": [3],
+      "output": "plane",
+      "fields": { "point": "point", "plane": "plane" }
+    },
+    "footToLine": {
+      "dimensions": [2, 3],
+      "output": "point",
+      "fields": { "point": "point", "line": "linear" }
+    },
+    "footToPlane": {
+      "dimensions": [3],
+      "output": "point",
+      "fields": { "point": "point", "plane": "plane" }
+    },
+    "intersectLines": {
+      "dimensions": [2],
+      "output": "point",
+      "fields": { "line1": "linear", "line2": "linear" }
+    },
+    "intersectLineCircle": {
+      "dimensions": [2],
+      "output": "point",
+      "fields": { "line": "linear", "circle": "circle", "branch": "branch" }
+    },
+    "intersectLinePlane": {
+      "dimensions": [3],
+      "output": "point",
+      "fields": { "line": "linear", "plane": "plane" }
+    },
+    "intersectPlanes": {
+      "dimensions": [3],
+      "output": "linear",
+      "fields": { "plane1": "plane", "plane2": "plane" }
+    },
+    "polygon": { "dimensions": [2], "output": "face", "fields": { "vertices": "points" } },
+    "face": { "dimensions": [3], "output": "face", "fields": { "vertices": "points" } },
+    "polyhedron": {
+      "dimensions": [3],
+      "output": "polyhedron",
+      "fields": { "faces": "faces", "closed": "boolean" }
+    },
+    "translate": {
+      "dimensions": [2, 3],
+      "output": "transform",
+      "fields": { "dx": "scalar", "dy": "scalar" },
+      "fields3": { "dz": "scalar" }
+    },
+    "rotate": {
+      "dimensions": [2, 3],
+      "output": "transform",
+      "fields": { "angle": "scalar" },
+      "fields2": { "center": "point" },
+      "fields3": { "axis": "linear" }
+    },
+    "scale": {
+      "dimensions": [2, 3],
+      "output": "transform",
+      "fields": { "center": "point", "factor": "scalar" }
+    },
+    "mirror": {
+      "dimensions": [2, 3],
+      "output": "transform",
+      "fields": {},
+      "fields2": { "line": "linear" },
+      "fields3": { "plane": "plane" }
+    },
+    "transformPoint": {
+      "dimensions": [2, 3],
+      "output": "point",
+      "fields": { "point": "point", "transform": "transform" }
+    }
+  },
+  "measurementOperations": {
+    "distance": {
+      "dimensions": [2, 3],
+      "fields": { "a": "point", "b": "point" },
+      "unit": "length"
+    },
+    "pointLineDistance": {
+      "dimensions": [2, 3],
+      "fields": { "point": "point", "line": "linear" },
+      "unit": "length"
+    },
+    "pointSegmentDistance": {
+      "dimensions": [2, 3],
+      "fields": { "point": "point", "segment": "segment" },
+      "unit": "length"
+    },
+    "pointPlaneDistance": {
+      "dimensions": [3],
+      "fields": { "point": "point", "plane": "plane" },
+      "unit": "length"
+    },
+    "lineAngle": {
+      "dimensions": [2, 3],
+      "fields": { "line1": "linear", "line2": "linear" },
+      "unit": "degree",
+      "range": [0, 90]
+    },
+    "threePointAngle": {
+      "dimensions": [2, 3],
+      "fields": { "a": "point", "vertex": "point", "b": "point" },
+      "unit": "degree",
+      "range": [0, 180]
+    },
+    "linePlaneAngle": {
+      "dimensions": [3],
+      "fields": { "line": "linear", "plane": "plane" },
+      "unit": "degree",
+      "range": [0, 90]
+    },
+    "planeAngle": {
+      "dimensions": [3],
+      "fields": { "plane1": "plane", "plane2": "plane" },
+      "unit": "degree",
+      "range": [0, 90]
+    },
+    "dihedralAngle": {
+      "dimensions": [3],
+      "fields": {
+        "edge": "linear",
+        "plane1": "plane",
+        "plane2": "plane",
+        "q1": "point",
+        "q2": "point"
+      },
+      "unit": "degree",
+      "range": [0, 180]
+    }
+  },
+  "assertionOperations": {
+    "parallel": { "dimensions": [2, 3], "fields": { "a": "linear|plane", "b": "linear|plane" } },
+    "perpendicular": {
+      "dimensions": [2, 3],
+      "fields": { "a": "linear|plane", "b": "linear|plane" }
+    },
+    "coplanar": { "dimensions": [3], "fields": { "points": "coplanarPoints" } },
+    "onLine": { "dimensions": [2, 3], "fields": { "point": "point", "line": "linear" } },
+    "onPlane": { "dimensions": [3], "fields": { "point": "point", "plane": "plane" } },
+    "measurementEquals": {
+      "dimensions": [2, 3],
+      "fields": { "measurement": "measurement", "expected": "scalar" }
+    }
+  },
+  "conventions": {
+    "linearDomain": "line, parallelLine, perpendicularLine, normalLine and intersectPlanes: all t; segment: 0<=t<=1; ray: t>=0; feet and pointLineDistance use supporting infinite line",
+    "intersectionBranch": "lower/upper ordered affine line t; tangent coalesces; missing branch undefined; reappearance uses same order",
+    "planeFrame": "e1=normalize(U-O); n=normalize(cross(U-O,V-O)); e2=cross(n,e1); O+u*e1+v*e2; parallelPlane inherits axes and replaces origin",
+    "linearParameterization": "every linear object is O+t*d: line/segment/ray O=a,d=b-a; parallelLine O=point,d=source d preserving magnitude; perpendicularLine O=point,d=positive90(source d) preserving magnitude; normalLine O=point,d=ordered plane unit normal; intersectPlanes O=unique point on intersection closest to world origin,d=normalize(cross(n1,n2)) using ordered plane unit normals",
+    "planeIntersectionDirection": "normalize(cross(first ordered unit normal,second ordered unit normal)); origin is unique closest point to world origin",
+    "perpendicularLine": "2D positive 90 degree counterclockwise rotation maps source direction (dx,dy) to (-dy,dx), preserving magnitude; origin is declared point",
+    "pointOnCircle": "center+radius*[cos(angle),sin(angle)]; angle zero points along global +x; positive angles are counterclockwise; angle in radians",
+    "rotate": "2D counterclockwise about center; 3D right-hand rule about any referenced linear object's canonical O,d, using O as axis anchor and normalized d as direction; linear segment/ray domains do not restrict the rotation axis",
+    "scale": "strictly positive factor; fixed center",
+    "mirror": "reconstruct faces from transformed shared vertices; winding order retained; spatial orientation reverses",
+    "lineAngle": "atan2(norm(cross(u,v)),abs(dot(u,v))) in degrees",
+    "threePointAngle": "atan2(norm(cross(a-vertex,b-vertex)),dot(a-vertex,b-vertex)) in degrees",
+    "linePlaneAngle": "atan2(abs(dot(u,n)),norm(cross(u,n))) in degrees",
+    "planeAngle": "atan2(norm(cross(n1,n2)),abs(dot(n1,n2))) in degrees",
+    "dihedralAngle": "validate edge in both planes and qi in corresponding plane; normalize qi-O projected perpendicular to edge; atan2(cross norm,dot), no absolute dot",
+    "assertions": "passive numerical residual checks; no solver; parallel/perpendicular accepts linear-linear, plane-plane or linear-plane; coplanar requires 4+ points with a noncollinear frame; onLine respects the referenced line/segment/ray domain with the fixed numerical tolerance, unlike supporting-line feet and pointLineDistance",
+    "range": "finite min<max, min<=initial<=max, finite 0<step<=max-min; continuous values need not align to step",
+    "mobility": "freePoint constants; pointOnLine t, pointOnCircle angle, pointOnPlane u/v or shared translate fields must be literal numbers or exact parameter references; aliases require identical ranges; composite AST remains derived",
+    "translation": "freedom object is a segment whose two distinct transformPoint endpoints reference the same translate node; source-point dependency closures cannot contain this translation or reference its edited parameters; declared axes map directly to dx/dy/dz; unlisted axes remain fixed",
+    "pageBudgetPrecedence": "validated kit and nonnegative integer byte metadata, aggregate bytes, marker count, individual bytes, heavy count",
+    "rightAngleMarkers": "reference an angular measurement; render only while defined and within angleDegrees of 90, never treat as an assertion",
+    "jsonAccounting": "root depth 0; every JSON value is one node (keys excluded); UTF-8 compact JSON bytes; AST owns its subtree, parent category owns field key and punctuation; remaining bytes/nodes belong to envelope; disjoint totals"
+  },
+  "diagnosticCodes": ["assertion_failed"],
+  "reasonCodes": [
+    "invalid_json",
+    "marker_bytes_exceeded",
+    "json_nodes_exceeded",
+    "json_depth_exceeded",
+    "schema_mismatch",
+    "unknown_field",
+    "invalid_value",
+    "limit_exceeded",
+    "invalid_id",
+    "duplicate_id",
+    "unknown_reference",
+    "reference_type_mismatch",
+    "dimension_mismatch",
+    "unknown_kind",
+    "dag_cycle",
+    "dag_depth_exceeded",
+    "scalar_invalid",
+    "scalar_nodes_exceeded",
+    "scalar_depth_exceeded",
+    "scalar_root_depth_exceeded",
+    "mobility_invalid",
+    "mobility_alias",
+    "range_invalid",
+    "unknown_runtime",
+    "runtime_mismatch",
+    "page_bytes_exceeded",
+    "page_markers_exceeded",
+    "page_heavy_exceeded"
+  ],
+  "scalarUndefinedReasons": [
+    "parameter_missing",
+    "parameter_non_finite",
+    "division_by_zero",
+    "sqrt_domain",
+    "power_domain",
+    "non_finite_result"
+  ],
+  "geometryUndefinedReasons": [
+    "scalar_undefined",
+    "dependency_undefined",
+    "non_finite_result",
+    "zero_length_line",
+    "degenerate_plane",
+    "invalid_radius",
+    "invalid_scale",
+    "outside_domain",
+    "parallel_no_intersection",
+    "coincident_no_unique_intersection",
+    "no_intersection",
+    "half_plane_reference_on_edge",
+    "invalid_incidence",
+    "degenerate_face",
+    "nonplanar_face",
+    "invalid_closed_polyhedron"
+  ]
+}

@@ -1,0 +1,20 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office">
+  <body onload="alert(1)">
+    <script>
+      fetch('https://example.invalid/script');
+    </script>
+    <style>
+      .bad {
+        background: url('https://example.invalid/style');
+      }
+    </style>
+    <iframe src="https://example.invalid/frame"></iframe>
+    <object data="file:///etc/passwd"></object>
+    <p onclick="alert(1)">
+      safe
+      <a href="javascript:alert(1)">link</a>
+      <span style="color: red; background-image: url(https://example.invalid/css)">styled</span>
+      <img src="https://example.invalid/image" alt="visible image" />
+    </p>
+  </body>
+</html>

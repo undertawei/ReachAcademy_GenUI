@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "decksmith-replay-case/v1",
+  "id": "wp2-legacy-v1-genui-origin-preloads-contract",
+  "teacherCase": 0,
+  "summary": "WP2 之前入队的旧 Run（冻结输入无 promptContractVersion）：仍用 v1 系统提示词与工具面，来源页为 GenUI 时整份预加载合同。",
+  "provenance": {
+    "kind": "synthetic-reconstruction",
+    "observedOn": "2026-10-08",
+    "notes": "与 case3-quiz-request-on-genui-origin 相同的请求，只去掉提示词合同版本，验证已排队旧 Run 的旧行为。"
+  },
+  "document": "energy-lesson.json",
+  "request": {
+    "prompt": "把这个改成 5 个无标答的课中互动题",
+    "pageId": "55555555-5555-4555-8555-555555555555:page-3"
+  },
+  "capturedWith": {
+    "toolParameterSha256": {}
+  },
+  "transcript": [
+    {
+      "text": "好的，我会改成 5 道无标准答案的课中互动题。",
+      "usage": {
+        "input": 15200,
+        "output": 40
+      }
+    }
+  ],
+  "expect": {
+    "changed": false,
+    "outcome": {
+      "mutationStatus": "none",
+      "toolErrorCount": 0
+    },
+    "modelTurns": 1,
+    "userPromptIncludes": [
+      "Interactive coding context is enabled",
+      "Interactive authoring and validation contract:"
+    ]
+  }
+}

@@ -1,0 +1,1198 @@
+[
+  {
+    "id": "G1-planar-dependencies",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [
+          {
+            "id": "theta",
+            "initial": 0,
+            "min": -3.141592653589793,
+            "max": 3.141592653589793,
+            "step": 0.1
+          }
+        ],
+        "objects": [
+          { "id": "A", "kind": "freePoint", "x": 0, "y": 0 },
+          { "id": "B", "kind": "freePoint", "x": 4, "y": 0 },
+          { "id": "Q", "kind": "freePoint", "x": 2, "y": 3 },
+          { "id": "AB", "kind": "segment", "a": "A", "b": "B" },
+          { "id": "M", "kind": "midpoint", "a": "A", "b": "B" },
+          { "id": "F", "kind": "footToLine", "point": "Q", "line": "AB" },
+          { "id": "Circle", "kind": "circle", "center": "A", "radius": 2 },
+          {
+            "id": "C",
+            "kind": "pointOnCircle",
+            "circle": "Circle",
+            "angle": { "parameter": "theta" }
+          },
+          { "id": "Parallel", "kind": "parallelLine", "point": "Q", "line": "AB" },
+          { "id": "Perpendicular", "kind": "perpendicularLine", "point": "Q", "line": "AB" }
+        ],
+        "measurements": [
+          { "id": "height", "kind": "pointLineDistance", "point": "Q", "line": "AB" },
+          { "id": "radius", "kind": "distance", "a": "A", "b": "C" }
+        ],
+        "assertions": [
+          { "id": "midOnLine", "kind": "onLine", "point": "M", "line": "AB" },
+          { "id": "right", "kind": "perpendicular", "a": "AB", "b": "Perpendicular" }
+        ],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": ["theta"],
+          "freedoms": [
+            {
+              "id": "dragA",
+              "kind": "freePoint",
+              "object": "A",
+              "x": { "min": -10, "max": 10, "step": 0.1 },
+              "y": { "min": -10, "max": 10, "step": 0.1 }
+            },
+            {
+              "id": "dragB",
+              "kind": "freePoint",
+              "object": "B",
+              "x": { "min": -10, "max": 10, "step": 0.1 },
+              "y": { "min": -10, "max": 10, "step": 0.1 }
+            },
+            {
+              "id": "dragQ",
+              "kind": "freePoint",
+              "object": "Q",
+              "x": { "min": -10, "max": 10, "step": 0.1 },
+              "y": { "min": -10, "max": 10, "step": 0.1 }
+            },
+            {
+              "id": "dragC",
+              "kind": "circle",
+              "object": "C",
+              "range": { "min": -3.141592653589793, "max": 3.141592653589793, "step": 0.1 }
+            }
+          ],
+          "selectable": ["A", "B", "Q", "AB"],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "geometry": {
+        "measurements": { "height": 3, "radius": 2 },
+        "points": { "M": [2, 0], "F": [2, 0], "C": [2, 0] }
+      }
+    }
+  },
+  {
+    "id": "G2-irregular-tetrahedron",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-3d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 3,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [],
+        "objects": [
+          { "id": "A", "kind": "point", "x": 0, "y": 0, "z": 0 },
+          { "id": "B", "kind": "point", "x": 3, "y": 0, "z": 0 },
+          { "id": "C", "kind": "point", "x": 1, "y": 2, "z": 0 },
+          { "id": "D", "kind": "point", "x": 0.5, "y": 0.4, "z": 4 },
+          { "id": "ABC", "kind": "face", "vertices": ["A", "C", "B"] },
+          { "id": "ABD", "kind": "face", "vertices": ["A", "B", "D"] },
+          { "id": "BCD", "kind": "face", "vertices": ["B", "C", "D"] },
+          { "id": "CAD", "kind": "face", "vertices": ["C", "A", "D"] },
+          {
+            "id": "Tetrahedron",
+            "kind": "polyhedron",
+            "faces": ["ABC", "ABD", "BCD", "CAD"],
+            "closed": true
+          }
+        ],
+        "measurements": [{ "id": "ADLength", "kind": "distance", "a": "A", "b": "D" }],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": {
+            "kind": "spatial",
+            "projection": "orthographic",
+            "position": [8, 7, 9],
+            "target": [0, 0, 0],
+            "up": [0, 0, 1],
+            "zoom": 1
+          }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "geometry": { "measurements": { "ADLength": 4.050925820105819 } }
+    }
+  },
+  {
+    "id": "G3-pyramid",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-3d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 3,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [
+          { "id": "h", "initial": 4, "min": 1, "max": 8, "step": 0.1 },
+          { "id": "t", "initial": 0, "min": 0, "max": 1, "step": 0.1 }
+        ],
+        "objects": [
+          { "id": "A", "kind": "point", "x": 0, "y": 0, "z": 0 },
+          { "id": "B", "kind": "point", "x": 4, "y": 0, "z": 0 },
+          { "id": "C", "kind": "point", "x": 4, "y": 3, "z": 0 },
+          { "id": "D", "kind": "point", "x": 0, "y": 3, "z": 0 },
+          { "id": "Base", "kind": "plane", "origin": "A", "uPoint": "B", "vPoint": "D" },
+          { "id": "Normal", "kind": "normalLine", "point": "A", "plane": "Base" },
+          { "id": "P", "kind": "pointOnLine", "line": "Normal", "t": { "parameter": "h" } },
+          { "id": "BC", "kind": "segment", "a": "B", "b": "C" },
+          { "id": "M", "kind": "pointOnLine", "line": "BC", "t": { "parameter": "t" } },
+          { "id": "PM", "kind": "segment", "a": "P", "b": "M" },
+          { "id": "Side", "kind": "plane", "origin": "B", "uPoint": "C", "vPoint": "P" },
+          { "id": "Foot", "kind": "footToPlane", "point": "P", "plane": "Base" },
+          { "id": "ABCD", "kind": "face", "vertices": ["D", "C", "B", "A"] },
+          { "id": "PAB", "kind": "face", "vertices": ["P", "A", "B"] },
+          { "id": "PBC", "kind": "face", "vertices": ["P", "B", "C"] },
+          { "id": "PCD", "kind": "face", "vertices": ["P", "C", "D"] },
+          { "id": "PDA", "kind": "face", "vertices": ["P", "D", "A"] },
+          {
+            "id": "Pyramid",
+            "kind": "polyhedron",
+            "faces": ["ABCD", "PAB", "PBC", "PCD", "PDA"],
+            "closed": true
+          }
+        ],
+        "measurements": [
+          { "id": "linePlane", "kind": "linePlaneAngle", "line": "PM", "plane": "Base" },
+          {
+            "id": "dihedral",
+            "kind": "dihedralAngle",
+            "edge": "BC",
+            "plane1": "Side",
+            "plane2": "Base",
+            "q1": "P",
+            "q2": "A"
+          },
+          { "id": "height", "kind": "pointPlaneDistance", "point": "P", "plane": "Base" }
+        ],
+        "assertions": [
+          { "id": "normalToBase", "kind": "perpendicular", "a": "Normal", "b": "Base" }
+        ],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": {
+            "kind": "spatial",
+            "projection": "orthographic",
+            "position": [8, 7, 9],
+            "target": [0, 0, 0],
+            "up": [0, 0, 1],
+            "zoom": 1
+          }
+        },
+        "interaction": {
+          "parameters": ["h", "t"],
+          "freedoms": [
+            {
+              "id": "dragP",
+              "kind": "line",
+              "object": "P",
+              "range": { "min": 1, "max": 8, "step": 0.1 }
+            },
+            {
+              "id": "dragM",
+              "kind": "line",
+              "object": "M",
+              "range": { "min": 0, "max": 1, "step": 0.1 }
+            }
+          ],
+          "selectable": ["P", "M", "BC", "PM", "PBC"],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "geometry": {
+        "measurements": { "linePlane": 45, "dihedral": 45, "height": 4 },
+        "points": { "P": [0, 0, 4], "M": [4, 0, 0], "Foot": [0, 0, 0] }
+      }
+    }
+  },
+  {
+    "id": "G4-half-planes-30",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-3d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 3,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [
+          {
+            "id": "angle",
+            "initial": 0.5235987755982988,
+            "min": 0,
+            "max": 3.141592653589793,
+            "step": 0.1
+          }
+        ],
+        "objects": [
+          { "id": "A", "kind": "point", "x": 0, "y": 0, "z": 0 },
+          { "id": "B", "kind": "point", "x": 1, "y": 0, "z": 0 },
+          { "id": "Q1", "kind": "point", "x": 0, "y": 1, "z": 0 },
+          {
+            "id": "Q2",
+            "kind": "point",
+            "x": 0,
+            "y": { "op": "cos", "args": [{ "parameter": "angle" }] },
+            "z": { "op": "sin", "args": [{ "parameter": "angle" }] }
+          },
+          { "id": "Edge", "kind": "line", "a": "A", "b": "B" },
+          { "id": "Plane1", "kind": "plane", "origin": "A", "uPoint": "B", "vPoint": "Q1" },
+          { "id": "Plane2", "kind": "plane", "origin": "A", "uPoint": "B", "vPoint": "Q2" }
+        ],
+        "measurements": [
+          {
+            "id": "angleValue",
+            "kind": "dihedralAngle",
+            "edge": "Edge",
+            "plane1": "Plane1",
+            "plane2": "Plane2",
+            "q1": "Q1",
+            "q2": "Q2"
+          }
+        ],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": {
+            "kind": "spatial",
+            "projection": "orthographic",
+            "position": [8, 7, 9],
+            "target": [0, 0, 0],
+            "up": [0, 0, 1],
+            "zoom": 1
+          }
+        },
+        "interaction": {
+          "parameters": ["angle"],
+          "freedoms": [],
+          "selectable": ["Edge", "Plane1", "Plane2"],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": { "accepted": true, "geometry": { "measurements": { "angleValue": 30 } } }
+  },
+  {
+    "id": "G4-half-planes-90",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-3d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 3,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [
+          {
+            "id": "angle",
+            "initial": 1.5707963267948966,
+            "min": 0,
+            "max": 3.141592653589793,
+            "step": 0.1
+          }
+        ],
+        "objects": [
+          { "id": "A", "kind": "point", "x": 0, "y": 0, "z": 0 },
+          { "id": "B", "kind": "point", "x": 1, "y": 0, "z": 0 },
+          { "id": "Q1", "kind": "point", "x": 0, "y": 1, "z": 0 },
+          {
+            "id": "Q2",
+            "kind": "point",
+            "x": 0,
+            "y": { "op": "cos", "args": [{ "parameter": "angle" }] },
+            "z": { "op": "sin", "args": [{ "parameter": "angle" }] }
+          },
+          { "id": "Edge", "kind": "line", "a": "A", "b": "B" },
+          { "id": "Plane1", "kind": "plane", "origin": "A", "uPoint": "B", "vPoint": "Q1" },
+          { "id": "Plane2", "kind": "plane", "origin": "A", "uPoint": "B", "vPoint": "Q2" }
+        ],
+        "measurements": [
+          {
+            "id": "angleValue",
+            "kind": "dihedralAngle",
+            "edge": "Edge",
+            "plane1": "Plane1",
+            "plane2": "Plane2",
+            "q1": "Q1",
+            "q2": "Q2"
+          }
+        ],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": {
+            "kind": "spatial",
+            "projection": "orthographic",
+            "position": [8, 7, 9],
+            "target": [0, 0, 0],
+            "up": [0, 0, 1],
+            "zoom": 1
+          }
+        },
+        "interaction": {
+          "parameters": ["angle"],
+          "freedoms": [],
+          "selectable": ["Edge", "Plane1", "Plane2"],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": { "accepted": true, "geometry": { "measurements": { "angleValue": 90 } } }
+  },
+  {
+    "id": "G4-half-planes-120",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-3d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 3,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [
+          {
+            "id": "angle",
+            "initial": 2.0943951023931953,
+            "min": 0,
+            "max": 3.141592653589793,
+            "step": 0.1
+          }
+        ],
+        "objects": [
+          { "id": "A", "kind": "point", "x": 0, "y": 0, "z": 0 },
+          { "id": "B", "kind": "point", "x": 1, "y": 0, "z": 0 },
+          { "id": "Q1", "kind": "point", "x": 0, "y": 1, "z": 0 },
+          {
+            "id": "Q2",
+            "kind": "point",
+            "x": 0,
+            "y": { "op": "cos", "args": [{ "parameter": "angle" }] },
+            "z": { "op": "sin", "args": [{ "parameter": "angle" }] }
+          },
+          { "id": "Edge", "kind": "line", "a": "A", "b": "B" },
+          { "id": "Plane1", "kind": "plane", "origin": "A", "uPoint": "B", "vPoint": "Q1" },
+          { "id": "Plane2", "kind": "plane", "origin": "A", "uPoint": "B", "vPoint": "Q2" }
+        ],
+        "measurements": [
+          {
+            "id": "angleValue",
+            "kind": "dihedralAngle",
+            "edge": "Edge",
+            "plane1": "Plane1",
+            "plane2": "Plane2",
+            "q1": "Q1",
+            "q2": "Q2"
+          }
+        ],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": {
+            "kind": "spatial",
+            "projection": "orthographic",
+            "position": [8, 7, 9],
+            "target": [0, 0, 0],
+            "up": [0, 0, 1],
+            "zoom": 1
+          }
+        },
+        "interaction": {
+          "parameters": ["angle"],
+          "freedoms": [],
+          "selectable": ["Edge", "Plane1", "Plane2"],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": { "accepted": true, "geometry": { "measurements": { "angleValue": 120 } } }
+  },
+  {
+    "id": "G4-half-planes-180",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-3d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 3,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [
+          {
+            "id": "angle",
+            "initial": 3.141592653589793,
+            "min": 0,
+            "max": 3.141592653589793,
+            "step": 0.1
+          }
+        ],
+        "objects": [
+          { "id": "A", "kind": "point", "x": 0, "y": 0, "z": 0 },
+          { "id": "B", "kind": "point", "x": 1, "y": 0, "z": 0 },
+          { "id": "Q1", "kind": "point", "x": 0, "y": 1, "z": 0 },
+          {
+            "id": "Q2",
+            "kind": "point",
+            "x": 0,
+            "y": { "op": "cos", "args": [{ "parameter": "angle" }] },
+            "z": { "op": "sin", "args": [{ "parameter": "angle" }] }
+          },
+          { "id": "Edge", "kind": "line", "a": "A", "b": "B" },
+          { "id": "Plane1", "kind": "plane", "origin": "A", "uPoint": "B", "vPoint": "Q1" },
+          { "id": "Plane2", "kind": "plane", "origin": "A", "uPoint": "B", "vPoint": "Q2" }
+        ],
+        "measurements": [
+          {
+            "id": "angleValue",
+            "kind": "dihedralAngle",
+            "edge": "Edge",
+            "plane1": "Plane1",
+            "plane2": "Plane2",
+            "q1": "Q1",
+            "q2": "Q2"
+          }
+        ],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": {
+            "kind": "spatial",
+            "projection": "orthographic",
+            "position": [8, 7, 9],
+            "target": [0, 0, 0],
+            "up": [0, 0, 1],
+            "zoom": 1
+          }
+        },
+        "interaction": {
+          "parameters": ["angle"],
+          "freedoms": [],
+          "selectable": ["Edge", "Plane1", "Plane2"],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": { "accepted": true, "geometry": { "measurements": { "angleValue": 180 } } }
+  },
+  {
+    "id": "G5-translation",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "dx", "initial": 0, "min": -10, "max": 10, "step": 0.1 }],
+        "objects": [
+          { "id": "A", "kind": "point", "x": 0, "y": 0 },
+          { "id": "B", "kind": "point", "x": 3, "y": 0 },
+          { "id": "Shift", "kind": "translate", "dx": { "parameter": "dx" }, "dy": 0 },
+          { "id": "MovedA", "kind": "transformPoint", "point": "A", "transform": "Shift" },
+          { "id": "MovedB", "kind": "transformPoint", "point": "B", "transform": "Shift" },
+          { "id": "Edge", "kind": "segment", "a": "MovedA", "b": "MovedB" },
+          { "id": "Middle", "kind": "midpoint", "a": "MovedA", "b": "MovedB" },
+          { "id": "DependentEdge", "kind": "segment", "a": "A", "b": "Middle" }
+        ],
+        "measurements": [{ "id": "length", "kind": "distance", "a": "MovedA", "b": "MovedB" }],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": ["dx"],
+          "freedoms": [
+            {
+              "id": "dragEdge",
+              "kind": "translate",
+              "object": "Edge",
+              "axes": ["x", "y"],
+              "ranges": [
+                { "axis": "x", "min": -10, "max": 10, "step": 0.1 },
+                { "axis": "y", "min": -10, "max": 10, "step": 0.1 }
+              ]
+            }
+          ],
+          "selectable": ["Edge", "DependentEdge"],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "geometry": { "measurements": { "length": 3 }, "points": { "Middle": [1.5, 0] } }
+    }
+  },
+  {
+    "id": "G6-intersection-recovery",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [{ "id": "height", "initial": 0, "min": -2, "max": 2, "step": 0.1 }],
+        "objects": [
+          { "id": "A", "kind": "point", "x": -3, "y": { "parameter": "height" } },
+          { "id": "B", "kind": "point", "x": 3, "y": { "parameter": "height" } },
+          { "id": "O", "kind": "point", "x": 0, "y": 0 },
+          { "id": "Line", "kind": "line", "a": "A", "b": "B" },
+          { "id": "Circle", "kind": "circle", "center": "O", "radius": 1 },
+          {
+            "id": "Lower",
+            "kind": "intersectLineCircle",
+            "line": "Line",
+            "circle": "Circle",
+            "branch": "lower"
+          },
+          {
+            "id": "Upper",
+            "kind": "intersectLineCircle",
+            "line": "Line",
+            "circle": "Circle",
+            "branch": "upper"
+          }
+        ],
+        "measurements": [{ "id": "separation", "kind": "distance", "a": "Lower", "b": "Upper" }],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": ["height"],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "geometry": {
+        "measurements": { "separation": 2 },
+        "updates": [
+          { "parameters": { "height": 1 }, "measurements": { "separation": 0 } },
+          {
+            "parameters": { "height": 2 },
+            "undefined": {
+              "Lower": "no_intersection",
+              "Upper": "no_intersection",
+              "separation": "dependency_undefined"
+            }
+          },
+          { "parameters": { "height": 0 }, "points": { "Lower": [-1, 0], "Upper": [1, 0] } }
+        ]
+      }
+    }
+  },
+  {
+    "id": "G6-collinear-plane",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-3d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 3,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [],
+        "objects": [
+          { "id": "A", "kind": "point", "x": 0, "y": 0, "z": 0 },
+          { "id": "B", "kind": "point", "x": 1, "y": 0, "z": 0 },
+          { "id": "C", "kind": "point", "x": 2, "y": 0, "z": 0 },
+          { "id": "Plane", "kind": "plane", "origin": "A", "uPoint": "B", "vPoint": "C" }
+        ],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": {
+            "kind": "spatial",
+            "projection": "orthographic",
+            "position": [8, 7, 9],
+            "target": [0, 0, 0],
+            "up": [0, 0, 1],
+            "zoom": 1
+          }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": { "accepted": true, "geometry": { "undefined": { "Plane": "degenerate_plane" } } }
+  },
+  {
+    "id": "G6-parallel-and-coincident",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-3d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 3,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [],
+        "objects": [
+          { "id": "A", "kind": "point", "x": 0, "y": 0, "z": 0 },
+          { "id": "B", "kind": "point", "x": 1, "y": 0, "z": 0 },
+          { "id": "C", "kind": "point", "x": 0, "y": 1, "z": 0 },
+          { "id": "D", "kind": "point", "x": 0, "y": 0, "z": 1 },
+          { "id": "E", "kind": "point", "x": 1, "y": 0, "z": 1 },
+          { "id": "Plane", "kind": "plane", "origin": "A", "uPoint": "B", "vPoint": "C" },
+          { "id": "Line", "kind": "line", "a": "D", "b": "E" },
+          { "id": "Intersection", "kind": "intersectLinePlane", "line": "Line", "plane": "Plane" },
+          { "id": "Coincident", "kind": "intersectPlanes", "plane1": "Plane", "plane2": "Plane" },
+          { "id": "ZeroLine", "kind": "line", "a": "A", "b": "A" }
+        ],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": {
+            "kind": "spatial",
+            "projection": "orthographic",
+            "position": [8, 7, 9],
+            "target": [0, 0, 0],
+            "up": [0, 0, 1],
+            "zoom": 1
+          }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "geometry": {
+        "undefined": {
+          "Intersection": "parallel_no_intersection",
+          "Coincident": "coincident_no_unique_intersection",
+          "ZeroLine": "zero_length_line"
+        }
+      }
+    }
+  },
+  {
+    "id": "all-planar-operators",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [
+          {
+            "id": "theta",
+            "initial": 0,
+            "min": -3.141592653589793,
+            "max": 3.141592653589793,
+            "step": 0.1
+          }
+        ],
+        "objects": [
+          { "id": "A", "kind": "freePoint", "x": 0, "y": 0 },
+          { "id": "B", "kind": "freePoint", "x": 4, "y": 0 },
+          { "id": "Q", "kind": "freePoint", "x": 2, "y": 3 },
+          { "id": "AB", "kind": "segment", "a": "A", "b": "B" },
+          { "id": "M", "kind": "midpoint", "a": "A", "b": "B" },
+          { "id": "F", "kind": "footToLine", "point": "Q", "line": "AB" },
+          { "id": "Circle", "kind": "circle", "center": "A", "radius": 2 },
+          {
+            "id": "C",
+            "kind": "pointOnCircle",
+            "circle": "Circle",
+            "angle": { "parameter": "theta" }
+          },
+          { "id": "Parallel", "kind": "parallelLine", "point": "Q", "line": "AB" },
+          { "id": "Perpendicular", "kind": "perpendicularLine", "point": "Q", "line": "AB" },
+          { "id": "Line", "kind": "line", "a": "A", "b": "B" },
+          { "id": "Ray", "kind": "ray", "a": "A", "b": "Q" },
+          { "id": "OnRay", "kind": "pointOnLine", "line": "Ray", "t": 0.5 },
+          { "id": "Triangle", "kind": "polygon", "vertices": ["A", "B", "Q"] },
+          {
+            "id": "Intersection",
+            "kind": "intersectLines",
+            "line1": "Line",
+            "line2": "Perpendicular"
+          },
+          { "id": "Translation", "kind": "translate", "dx": 1, "dy": 2 },
+          { "id": "Rotation", "kind": "rotate", "center": "A", "angle": 0.5 },
+          { "id": "Scale", "kind": "scale", "center": "A", "factor": 2 },
+          { "id": "Mirror", "kind": "mirror", "line": "Line" },
+          {
+            "id": "TranslationQ",
+            "kind": "transformPoint",
+            "point": "Q",
+            "transform": "Translation"
+          },
+          { "id": "RotationQ", "kind": "transformPoint", "point": "Q", "transform": "Rotation" },
+          { "id": "ScaleQ", "kind": "transformPoint", "point": "Q", "transform": "Scale" },
+          { "id": "MirrorQ", "kind": "transformPoint", "point": "Q", "transform": "Mirror" }
+        ],
+        "measurements": [
+          { "id": "height", "kind": "pointLineDistance", "point": "Q", "line": "AB" },
+          { "id": "radius", "kind": "distance", "a": "A", "b": "C" },
+          {
+            "id": "segmentDistance",
+            "kind": "pointSegmentDistance",
+            "point": "Q",
+            "segment": "AB"
+          },
+          {
+            "id": "lineAngleValue",
+            "kind": "lineAngle",
+            "line1": "Line",
+            "line2": "Perpendicular"
+          },
+          {
+            "id": "threePointAngleValue",
+            "kind": "threePointAngle",
+            "a": "B",
+            "vertex": "A",
+            "b": "Q"
+          }
+        ],
+        "assertions": [
+          { "id": "midOnLine", "kind": "onLine", "point": "M", "line": "AB" },
+          { "id": "right", "kind": "perpendicular", "a": "AB", "b": "Perpendicular" },
+          { "id": "parallelAssertion", "kind": "parallel", "a": "Line", "b": "Parallel" },
+          {
+            "id": "equalRadius",
+            "kind": "measurementEquals",
+            "measurement": "radius",
+            "expected": 2
+          }
+        ],
+        "presentation": {
+          "objects": [
+            {
+              "object": "AB",
+              "label": "AB",
+              "colorToken": "accent",
+              "lineStyle": "dashed",
+              "opacity": 0.8,
+              "visible": true
+            }
+          ],
+          "measurements": [
+            { "measurement": "radius", "label": "r", "decimals": 4, "visible": true }
+          ],
+          "groups": [{ "id": "auxiliary", "objects": ["F"], "measurements": ["height"] }],
+          "rightAngles": [{ "id": "rightMark", "measurement": "lineAngleValue" }],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": ["theta"],
+          "freedoms": [
+            {
+              "id": "dragA",
+              "kind": "freePoint",
+              "object": "A",
+              "x": { "min": -10, "max": 10, "step": 0.1 },
+              "y": { "min": -10, "max": 10, "step": 0.1 }
+            },
+            {
+              "id": "dragB",
+              "kind": "freePoint",
+              "object": "B",
+              "x": { "min": -10, "max": 10, "step": 0.1 },
+              "y": { "min": -10, "max": 10, "step": 0.1 }
+            },
+            {
+              "id": "dragQ",
+              "kind": "freePoint",
+              "object": "Q",
+              "x": { "min": -10, "max": 10, "step": 0.1 },
+              "y": { "min": -10, "max": 10, "step": 0.1 }
+            },
+            {
+              "id": "dragC",
+              "kind": "circle",
+              "object": "C",
+              "range": { "min": -3.141592653589793, "max": 3.141592653589793, "step": 0.1 }
+            }
+          ],
+          "selectable": ["A", "B", "Q", "AB"],
+          "visibleGroups": ["auxiliary"],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": { "accepted": true }
+  },
+  {
+    "id": "all-spatial-operators",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-3d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 3,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [
+          { "id": "h", "initial": 4, "min": 1, "max": 8, "step": 0.1 },
+          { "id": "t", "initial": 0, "min": 0, "max": 1, "step": 0.1 }
+        ],
+        "objects": [
+          { "id": "A", "kind": "point", "x": 0, "y": 0, "z": 0 },
+          { "id": "B", "kind": "point", "x": 4, "y": 0, "z": 0 },
+          { "id": "C", "kind": "point", "x": 4, "y": 3, "z": 0 },
+          { "id": "D", "kind": "point", "x": 0, "y": 3, "z": 0 },
+          { "id": "Base", "kind": "plane", "origin": "A", "uPoint": "B", "vPoint": "D" },
+          { "id": "Normal", "kind": "normalLine", "point": "A", "plane": "Base" },
+          { "id": "P", "kind": "pointOnLine", "line": "Normal", "t": { "parameter": "h" } },
+          { "id": "BC", "kind": "segment", "a": "B", "b": "C" },
+          { "id": "M", "kind": "pointOnLine", "line": "BC", "t": { "parameter": "t" } },
+          { "id": "PM", "kind": "segment", "a": "P", "b": "M" },
+          { "id": "Side", "kind": "plane", "origin": "B", "uPoint": "C", "vPoint": "P" },
+          { "id": "Foot", "kind": "footToPlane", "point": "P", "plane": "Base" },
+          { "id": "ABCD", "kind": "face", "vertices": ["D", "C", "B", "A"] },
+          { "id": "PAB", "kind": "face", "vertices": ["P", "A", "B"] },
+          { "id": "PBC", "kind": "face", "vertices": ["P", "B", "C"] },
+          { "id": "PCD", "kind": "face", "vertices": ["P", "C", "D"] },
+          { "id": "PDA", "kind": "face", "vertices": ["P", "D", "A"] },
+          {
+            "id": "Pyramid",
+            "kind": "polyhedron",
+            "faces": ["ABCD", "PAB", "PBC", "PCD", "PDA"],
+            "closed": true
+          },
+          { "id": "OnPlane", "kind": "pointOnPlane", "plane": "Base", "u": 1, "v": 2 },
+          { "id": "ParallelBase", "kind": "parallelPlane", "point": "P", "plane": "Base" },
+          { "id": "NormalFoot", "kind": "intersectLinePlane", "line": "Normal", "plane": "Base" },
+          {
+            "id": "BaseSideIntersection",
+            "kind": "intersectPlanes",
+            "plane1": "Base",
+            "plane2": "Side"
+          },
+          { "id": "Translation", "kind": "translate", "dx": 1, "dy": 2, "dz": 3 },
+          { "id": "Rotation", "kind": "rotate", "axis": "Normal", "angle": 0.5 },
+          { "id": "Scale", "kind": "scale", "center": "A", "factor": 2 },
+          { "id": "Mirror", "kind": "mirror", "plane": "Base" },
+          {
+            "id": "TranslationP",
+            "kind": "transformPoint",
+            "point": "P",
+            "transform": "Translation"
+          },
+          { "id": "RotationP", "kind": "transformPoint", "point": "P", "transform": "Rotation" },
+          { "id": "ScaleP", "kind": "transformPoint", "point": "P", "transform": "Scale" },
+          { "id": "MirrorP", "kind": "transformPoint", "point": "P", "transform": "Mirror" }
+        ],
+        "measurements": [
+          { "id": "linePlane", "kind": "linePlaneAngle", "line": "PM", "plane": "Base" },
+          {
+            "id": "dihedral",
+            "kind": "dihedralAngle",
+            "edge": "BC",
+            "plane1": "Side",
+            "plane2": "Base",
+            "q1": "P",
+            "q2": "A"
+          },
+          { "id": "height", "kind": "pointPlaneDistance", "point": "P", "plane": "Base" },
+          { "id": "planeAngleValue", "kind": "planeAngle", "plane1": "Base", "plane2": "Side" }
+        ],
+        "assertions": [
+          { "id": "normalToBase", "kind": "perpendicular", "a": "Normal", "b": "Base" },
+          { "id": "baseCoplanar", "kind": "coplanar", "points": ["A", "B", "C", "D"] },
+          { "id": "planeIncidence", "kind": "onPlane", "point": "OnPlane", "plane": "Base" }
+        ],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": {
+            "kind": "spatial",
+            "projection": "orthographic",
+            "position": [8, 7, 9],
+            "target": [0, 0, 0],
+            "up": [0, 0, 1],
+            "zoom": 1
+          }
+        },
+        "interaction": {
+          "parameters": ["h", "t"],
+          "freedoms": [
+            {
+              "id": "dragP",
+              "kind": "line",
+              "object": "P",
+              "range": { "min": 1, "max": 8, "step": 0.1 }
+            },
+            {
+              "id": "dragM",
+              "kind": "line",
+              "object": "M",
+              "range": { "min": 0, "max": 1, "step": 0.1 }
+            },
+            {
+              "id": "dragOnPlane",
+              "kind": "plane",
+              "object": "OnPlane",
+              "u": { "min": -10, "max": 10, "step": 0.1 },
+              "v": { "min": -10, "max": 10, "step": 0.1 }
+            }
+          ],
+          "selectable": ["P", "M", "BC", "PM", "PBC"],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": { "accepted": true }
+  },
+  {
+    "id": "derived-linear-parameterization-2d",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-2d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 2,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [],
+        "objects": [
+          { "id": "A", "kind": "point", "x": 1, "y": 2 },
+          { "id": "B", "kind": "point", "x": 4, "y": 6 },
+          { "id": "Q", "kind": "point", "x": 10, "y": -1 },
+          { "id": "Line", "kind": "line", "a": "A", "b": "B" },
+          { "id": "Parallel", "kind": "parallelLine", "point": "Q", "line": "Line" },
+          { "id": "Perpendicular", "kind": "perpendicularLine", "point": "Q", "line": "Line" },
+          { "id": "AlongParallel", "kind": "pointOnLine", "line": "Parallel", "t": 2 },
+          { "id": "AlongPerpendicular", "kind": "pointOnLine", "line": "Perpendicular", "t": 2 },
+          { "id": "Circle", "kind": "circle", "center": "Q", "radius": 2 },
+          { "id": "CircleZero", "kind": "pointOnCircle", "circle": "Circle", "angle": 0 },
+          {
+            "id": "CircleQuarter",
+            "kind": "pointOnCircle",
+            "circle": "Circle",
+            "angle": 1.5707963267948966
+          },
+          { "id": "Rotation", "kind": "rotate", "center": "A", "angle": 1.5707963267948966 },
+          { "id": "RotatedB", "kind": "transformPoint", "point": "B", "transform": "Rotation" }
+        ],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": { "kind": "planar", "bounds": [-8, -6, 8, 6] }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "geometry": {
+        "points": {
+          "AlongParallel": [16, 7],
+          "AlongPerpendicular": [2, 5],
+          "CircleZero": [12, -1],
+          "CircleQuarter": [10, 1],
+          "RotatedB": [-3, 5]
+        }
+      }
+    }
+  },
+  {
+    "id": "derived-linear-parameterization-3d",
+    "envelope": {
+      "schemaVersion": "reach-science-kit/v1",
+      "kitId": "euclidean-geometry-3d",
+      "kitVersion": 1,
+      "spec": {
+        "schemaVersion": "reach-euclidean-geometry/v1",
+        "dimension": 3,
+        "ariaLabel": "Geometry contract fixture",
+        "units": "cm",
+        "parameters": [],
+        "objects": [
+          { "id": "A", "kind": "point", "x": 0, "y": 0, "z": 2 },
+          { "id": "B", "kind": "point", "x": 1, "y": 0, "z": 2 },
+          { "id": "C", "kind": "point", "x": 0, "y": 1, "z": 2 },
+          { "id": "D", "kind": "point", "x": 1, "y": 1, "z": 2 },
+          { "id": "E", "kind": "point", "x": 0, "y": 0, "z": 3 },
+          { "id": "Q", "kind": "point", "x": 2, "y": 0, "z": 2 },
+          { "id": "Plane1", "kind": "plane", "origin": "A", "uPoint": "B", "vPoint": "C" },
+          { "id": "Plane2", "kind": "plane", "origin": "B", "uPoint": "D", "vPoint": "E" },
+          {
+            "id": "Intersection",
+            "kind": "intersectPlanes",
+            "plane1": "Plane1",
+            "plane2": "Plane2"
+          },
+          {
+            "id": "IntersectionReversed",
+            "kind": "intersectPlanes",
+            "plane1": "Plane2",
+            "plane2": "Plane1"
+          },
+          { "id": "AlongIntersection", "kind": "pointOnLine", "line": "Intersection", "t": 3 },
+          { "id": "AlongReversed", "kind": "pointOnLine", "line": "IntersectionReversed", "t": 3 },
+          { "id": "Normal", "kind": "normalLine", "point": "B", "plane": "Plane1" },
+          { "id": "AlongNormal", "kind": "pointOnLine", "line": "Normal", "t": 3 },
+          {
+            "id": "Rotation",
+            "kind": "rotate",
+            "axis": "Intersection",
+            "angle": 1.5707963267948966
+          },
+          { "id": "RotatedQ", "kind": "transformPoint", "point": "Q", "transform": "Rotation" }
+        ],
+        "measurements": [],
+        "assertions": [],
+        "presentation": {
+          "objects": [],
+          "measurements": [],
+          "groups": [],
+          "rightAngles": [],
+          "camera": {
+            "kind": "spatial",
+            "projection": "orthographic",
+            "position": [8, 7, 9],
+            "target": [0, 0, 0],
+            "up": [0, 0, 1],
+            "zoom": 1
+          }
+        },
+        "interaction": {
+          "parameters": [],
+          "freedoms": [],
+          "selectable": [],
+          "visibleGroups": [],
+          "reset": "initial"
+        }
+      }
+    },
+    "expected": {
+      "accepted": true,
+      "geometry": {
+        "points": {
+          "AlongIntersection": [1, 3, 2],
+          "AlongReversed": [1, -3, 2],
+          "AlongNormal": [1, 0, 5],
+          "RotatedQ": [1, 0, 1]
+        }
+      }
+    }
+  }
+]

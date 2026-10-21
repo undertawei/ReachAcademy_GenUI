@@ -1,0 +1,36 @@
+{
+  "name": "@reachany/reach-deck-rich-text",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --environment happy-dom --pool=threads --maxWorkers=1"
+  },
+  "dependencies": {
+    "@reachany/clipboard-content": "workspace:*",
+    "@reachany/reach-deck-dsl": "workspace:*",
+    "@tiptap/core": "3.28.0",
+    "@tiptap/extension-image": "3.28.0",
+    "@tiptap/extension-mathematics": "3.28.0",
+    "@tiptap/extension-table": "3.28.0",
+    "@tiptap/extension-text-align": "3.28.0",
+    "@tiptap/extension-text-style": "3.28.0",
+    "@tiptap/html": "3.28.0",
+    "@tiptap/pm": "3.28.0",
+    "@tiptap/starter-kit": "3.28.0",
+    "happy-dom": "20.11.1",
+    "katex": "0.16.33"
+  },
+  "devDependencies": {
+    "@reachany/eslint-config": "workspace:*",
+    "@reachany/tsconfig": "workspace:*"
+  }
+}

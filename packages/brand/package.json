@@ -1,0 +1,23 @@
+{
+  "name": "@reachany/brand",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./assets/*": "./assets/*",
+    "./styles/theme.css": "./styles/theme.css",
+    "./styles/variables.css": "./styles/variables.css"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test tests/visual-baseline.test.mjs"
+  },
+  "devDependencies": {
+    "@reachany/tsconfig": "workspace:*"
+  }
+}

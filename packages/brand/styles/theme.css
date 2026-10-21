@@ -1,0 +1,150 @@
+/*
+ * Tailwind v4 语义工具类映射（规范 06 §2.3）。各 app 在 `@import 'tailwindcss'` 之后引入：
+ *
+ *   @import '@reachany/brand/styles/theme.css';
+ *
+ * 只声明语义名，值全部引用 --reachany-* 变量（inline），不复制色值。
+ * 为避免改变存量页面，本文件不覆盖 Tailwind 默认的 rounded-md/lg/xl、shadow-sm 等同名刻度，
+ * 品牌圆角用 rounded-control / rounded-card / rounded-panel / rounded-hero / rounded-pill；
+ * 间距沿用 Tailwind 默认 4px 刻度（p-1 = 4px … p-10 = 40px，与 --reachany-space-* 一致）；
+ * 层级与时长没有 Tailwind 主题命名空间，直接写 z-(--reachany-z-modal)、duration-(--reachany-motion-duration-fast)。
+ * 清空 Tailwind 默认色板属于计划 P3，届时在本文件加 `--color-*: initial`。
+ */
+@theme inline {
+  /* 品牌与强调色 */
+  --color-header: var(--reachany-color-header);
+  --color-ink: var(--reachany-color-ink);
+  --color-ink-hover: var(--reachany-color-ink-hover);
+  --color-primary: var(--reachany-color-primary);
+  --color-primary-hover: var(--reachany-color-primary-hover);
+  --color-primary-active: var(--reachany-color-primary-active);
+  --color-primary-soft: var(--reachany-color-primary-soft);
+  --color-primary-soft-strong: var(--reachany-color-primary-soft-strong);
+  --color-primary-on-soft: var(--reachany-color-primary-text-on-soft);
+  --color-primary-contrast: var(--reachany-color-primary-contrast);
+  --color-accent: var(--reachany-color-accent);
+  --color-accent-hover: var(--reachany-color-accent-hover);
+  --color-accent-soft: var(--reachany-color-accent-soft);
+  --color-accent-text: var(--reachany-color-accent-text);
+  --color-accent-contrast: var(--reachany-color-accent-contrast);
+  --color-amber-soft: var(--reachany-color-amber-soft);
+  --color-orange: var(--reachany-color-orange);
+  --color-orange-strong: var(--reachany-color-orange-strong);
+  --color-orange-soft: var(--reachany-color-orange-soft);
+
+  /* 中性色：文字用 fg-*，描边用 line-* */
+  --color-canvas: var(--reachany-color-canvas);
+  --color-surface: var(--reachany-color-surface);
+  --color-surface-muted: var(--reachany-color-surface-muted);
+  --color-surface-warm: var(--reachany-color-surface-warm);
+  --color-surface-warm-strong: var(--reachany-color-surface-warm-strong);
+  --color-fg: var(--reachany-color-text);
+  --color-fg-secondary: var(--reachany-color-text-secondary);
+  --color-fg-tertiary: var(--reachany-color-text-tertiary);
+  --color-line: var(--reachany-color-border);
+  --color-line-subtle: var(--reachany-color-border-subtle);
+  --color-line-warm: var(--reachany-color-border-warm);
+  --color-icon: var(--reachany-color-icon);
+  --color-track: var(--reachany-color-track);
+  --color-overlay: var(--reachany-color-overlay);
+
+  /* 状态色 */
+  --color-success: var(--reachany-color-success);
+  --color-success-strong: var(--reachany-color-success-strong);
+  --color-success-text: var(--reachany-color-success-text);
+  --color-success-soft: var(--reachany-color-success-soft);
+  --color-published: var(--reachany-color-published);
+  --color-warning: var(--reachany-color-warning);
+  --color-warning-text: var(--reachany-color-warning-text);
+  --color-warning-soft: var(--reachany-color-warning-soft);
+  --color-danger: var(--reachany-color-danger);
+  --color-danger-hover: var(--reachany-color-danger-hover);
+  --color-danger-text: var(--reachany-color-danger-text);
+  --color-danger-soft: var(--reachany-color-danger-soft);
+  --color-danger-border: var(--reachany-color-danger-border);
+  --color-pending-soft: var(--reachany-color-pending-soft);
+  --color-info: var(--reachany-color-info);
+  --color-info-text: var(--reachany-color-info-text);
+  --color-info-soft: var(--reachany-color-info-soft);
+  --color-purple: var(--reachany-color-purple);
+  --color-purple-soft: var(--reachany-color-purple-soft);
+
+  /* 分类色（轨道、头像、图表） */
+  --color-category-1: var(--reachany-color-category-1);
+  --color-category-1-soft: var(--reachany-color-category-1-soft);
+  --color-category-2: var(--reachany-color-category-2);
+  --color-category-2-soft: var(--reachany-color-category-2-soft);
+  --color-category-3: var(--reachany-color-category-3);
+  --color-category-3-soft: var(--reachany-color-category-3-soft);
+  --color-category-4: var(--reachany-color-category-4);
+  --color-category-4-soft: var(--reachany-color-category-4-soft);
+
+  /* 模块类型渐变：bg-linear-to-br from-module-quiz-from to-module-quiz-to */
+  --color-module-reach-deck-from: var(--reachany-module-reach-deck-from);
+  --color-module-reach-deck-to: var(--reachany-module-reach-deck-to);
+  --color-module-quiz-from: var(--reachany-module-quiz-from);
+  --color-module-quiz-to: var(--reachany-module-quiz-to);
+  --color-module-spaced-review-from: var(--reachany-module-spaced-review-from);
+  --color-module-spaced-review-to: var(--reachany-module-spaced-review-to);
+  --color-module-group-collaboration-from: var(--reachany-module-group-collaboration-from);
+  --color-module-group-collaboration-to: var(--reachany-module-group-collaboration-to);
+  --color-module-video-from: var(--reachany-module-video-from);
+  --color-module-video-to: var(--reachany-module-video-to);
+
+  /* 字体 */
+  --font-sans: var(--reachany-font-sans);
+  --font-serif: var(--reachany-font-serif);
+  --font-brand: var(--reachany-font-brand);
+  --font-numeric: var(--reachany-font-numeric);
+
+  /* 字号层级：text-title-xl 同时带行高与字重 */
+  --text-display: var(--reachany-text-display);
+  --text-display--line-height: var(--reachany-text-display-line-height);
+  --text-display--font-weight: var(--reachany-text-display-weight);
+  --text-title-xl: var(--reachany-text-title-xl);
+  --text-title-xl--line-height: var(--reachany-text-title-xl-line-height);
+  --text-title-xl--font-weight: var(--reachany-text-title-xl-weight);
+  --text-title-lg: var(--reachany-text-title-lg);
+  --text-title-lg--line-height: var(--reachany-text-title-lg-line-height);
+  --text-title-lg--font-weight: var(--reachany-text-title-lg-weight);
+  --text-title-md: var(--reachany-text-title-md);
+  --text-title-md--line-height: var(--reachany-text-title-md-line-height);
+  --text-title-md--font-weight: var(--reachany-text-title-md-weight);
+  --text-title-sm: var(--reachany-text-title-sm);
+  --text-title-sm--line-height: var(--reachany-text-title-sm-line-height);
+  --text-title-sm--font-weight: var(--reachany-text-title-sm-weight);
+  --text-subtitle: var(--reachany-text-subtitle);
+  --text-subtitle--line-height: var(--reachany-text-subtitle-line-height);
+  --text-subtitle--font-weight: var(--reachany-text-subtitle-weight);
+  --text-body-lg: var(--reachany-text-body-lg);
+  --text-body-lg--line-height: var(--reachany-text-body-lg-line-height);
+  --text-body: var(--reachany-text-body);
+  --text-body--line-height: var(--reachany-text-body-line-height);
+  --text-body-sm: var(--reachany-text-body-sm);
+  --text-body-sm--line-height: var(--reachany-text-body-sm-line-height);
+  --text-caption: var(--reachany-text-caption);
+  --text-caption--line-height: var(--reachany-text-caption-line-height);
+  --text-micro: var(--reachany-text-micro);
+  --text-micro--line-height: var(--reachany-text-micro-line-height);
+
+  /* 圆角：xs/sm 与 Tailwind 默认值相同，直接用 rounded-xs / rounded-sm */
+  --radius-control: var(--reachany-radius-md);
+  --radius-card: var(--reachany-radius-card);
+  --radius-panel: var(--reachany-radius-lg);
+  --radius-hero: var(--reachany-radius-xl);
+  --radius-pill: var(--reachany-radius-pill);
+
+  /* 阴影 */
+  --shadow-field: var(--reachany-shadow-field);
+  --shadow-card: var(--reachany-shadow-card);
+  --shadow-raised: var(--reachany-shadow-raised);
+  --shadow-overlay: var(--reachany-shadow-overlay);
+  --shadow-knob: var(--reachany-shadow-knob);
+  --shadow-focus: var(--reachany-shadow-focus);
+
+  /* 动效曲线：ease-enter / ease-exit / ease-standard / ease-emphasized */
+  --ease-enter: var(--reachany-motion-easing-enter);
+  --ease-exit: var(--reachany-motion-easing-exit);
+  --ease-standard: var(--reachany-motion-easing-standard);
+  --ease-emphasized: var(--reachany-motion-easing-emphasized);
+}

@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "decksmith-replay-case/v1",
+  "id": "case4-media-lock-blocks-origin-page-only",
+  "teacherCase": 4,
+  "summary": "来源页讲稿/音频生成中：改来源页讲稿被拒，来源页布局与别页讲稿照常修改。",
+  "provenance": {
+    "kind": "synthetic-reconstruction",
+    "observedOn": "2026-10-08",
+    "notes": "重建自 V2 恢复丢失 mediaStatus 的评审发现（M4）；锁只作用于状态描述的来源页。"
+  },
+  "document": "energy-lesson.json",
+  "request": {
+    "prompt": "本页讲稿改短一点，正文往下挪，再给小结页讲稿补一句下节课预告",
+    "pageId": "55555555-5555-4555-8555-555555555555:page-1",
+    "mediaStatus": {
+      "schemaVersion": "reach-deck-decksmith-page-media-status/v1",
+      "pageId": "55555555-5555-4555-8555-555555555555:page-1",
+      "narration": "generating",
+      "audio": "generating",
+      "animation": "not-started",
+      "reasonCode": "narration-generating"
+    },
+    "promptContractVersion": "decksmith-prompt/v2"
+  },
+  "capturedWith": {
+    "toolParameterSha256": {
+      "set_native_narration": "2cc0091b00fb4b375716316e3f9a47e57f43ecf2fc43edb8a41d2da01540105b",
+      "transform_native_element": "a4339b58efce376edba63e614c6798eb8cfafac403f8d758a17d90291b42dbd5"
+    }
+  },
+  "transcript": [
+    {
+      "toolCalls": [
+        {
+          "id": "origin-narration",
+          "name": "set_native_narration",
+          "arguments": {
+            "pageId": "55555555-5555-4555-8555-555555555555:page-1",
+            "markdown": "三种用电器都在把电能转化为别的能。"
+          }
+        },
+        {
+          "id": "move-body",
+          "name": "transform_native_element",
+          "arguments": {
+            "pageId": "55555555-5555-4555-8555-555555555555:page-1",
+            "elementId": "p1-body",
+            "transform": {
+              "x": 1120,
+              "y": 520,
+              "width": 400,
+              "height": 240
+            }
+          }
+        },
+        {
+          "id": "other-narration",
+          "name": "set_native_narration",
+          "arguments": {
+            "pageId": "55555555-5555-4555-8555-555555555555:page-4",
+            "markdown": "这节课我们认识了电能与其他形式能量之间的转化，下节课学习电功率。"
+          }
+        }
+      ],
+      "usage": {
+        "input": 7800,
+        "output": 260
+      }
+    },
+    {
+      "text": "本页讲稿正在生成中，暂时不能修改；正文已下移，小结页讲稿已补上下节课预告。",
+      "usage": {
+        "input": 8400,
+        "output": 80
+      }
+    }
+  ],
+  "expect": {
+    "changed": true,
+    "outcome": {
+      "mutationStatus": "partial",
+      "toolErrorCount": 1
+    },
+    "modelTurns": 2,
+    "toolResults": [
+      {
+        "callId": "origin-narration",
+        "isError": true,
+        "includes": ["DECKSMITH_MEDIA_GENERATION_ACTIVE", "narration-generating"]
+      },
+      {
+        "callId": "move-body",
+        "isError": false,
+        "includes": ["\"changed\":true"]
+      },
+      {
+        "callId": "other-narration",
+        "isError": false
+      }
+    ],
+    "userPromptIncludes": [
+      "Authoritative media-generation status for this page (do not override or infer):",
+      "layout edits remain allowed"
+    ]
+  }
+}

@@ -1,0 +1,271 @@
+{
+  "description": "多选：max(0, 选对数 − 选错数) / 正确项数 × points，集合完全相等才算正确。",
+  "cases": [
+    {
+      "name": "exact set earns full points",
+      "question": {
+        "question_type": "multiple_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["A", "C", "D"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["D", "A", "C"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 10,
+        "maxScore": 10,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "two of three correct earns two thirds",
+      "question": {
+        "question_type": "multiple_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["A", "C", "D"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["A", "C"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 6.67,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "one correct one wrong cancels out",
+      "question": {
+        "question_type": "multiple_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["A", "C", "D"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["A", "B"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "two correct one wrong earns one third",
+      "question": {
+        "question_type": "multiple_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["A", "C", "D"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["A", "C", "B"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 3.33,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "all options selected is penalised",
+      "question": {
+        "question_type": "multiple_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["A", "C", "D"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["A", "B", "C", "D"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 6.67,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "only wrong options floors at zero",
+      "question": {
+        "question_type": "multiple_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["A", "C", "D"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["B", "E"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "empty selection earns zero",
+      "question": {
+        "question_type": "multiple_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["A", "C", "D"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": []
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "fill_blanks response is the wrong kind",
+      "question": {
+        "question_type": "multiple_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["A", "C", "D"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "fill_blanks",
+        "version": 1,
+        "blanks": [
+          {
+            "blankId": "b1",
+            "answer": {
+              "kind": "selection",
+              "values": ["A"]
+            }
+          }
+        ]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "half credit on odd points",
+      "question": {
+        "question_type": "multiple_choice",
+        "has_answer": true,
+        "points": 5,
+        "answer": ["A", "B"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["A"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 2.5,
+        "maxScore": 5,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "rounds half up to two decimals",
+      "question": {
+        "question_type": "multiple_choice",
+        "has_answer": true,
+        "points": 1.25,
+        "answer": ["A", "B"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["B"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 0.63,
+        "maxScore": 1.25,
+        "result": "incorrect"
+      }
+    },
+    {
+      "name": "has_answer=false is unscored",
+      "question": {
+        "question_type": "multiple_choice",
+        "has_answer": false,
+        "points": 10,
+        "answer": ["A", "C", "D"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["A"]
+      },
+      "expected": {
+        "mode": "UNSCORED"
+      }
+    },
+    {
+      "name": "duplicated and padded selections are normalized before scoring",
+      "question": {
+        "question_type": "multiple_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["A", "C"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["A", " A ", "C", "", "C"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 10,
+        "maxScore": 10,
+        "result": "correct"
+      }
+    },
+    {
+      "name": "a duplicated wrong selection is penalized once",
+      "question": {
+        "question_type": "multiple_choice",
+        "has_answer": true,
+        "points": 10,
+        "answer": ["A", "C"],
+        "sub_problems": []
+      },
+      "response": {
+        "kind": "selection",
+        "values": ["A", "C", "D", " D"]
+      },
+      "expected": {
+        "mode": "GRADED",
+        "score": 5,
+        "maxScore": 10,
+        "result": "incorrect"
+      }
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "contractVersion": "reach-euclidean-geometry-contract/v2",
+  "schemaVersion": "reach-euclidean-geometry/v2",
+  "envelopeVersion": "reach-science-kit/v1",
+  "baseContractVersion": "reach-euclidean-geometry-contract/v1",
+  "evaluatorVersion": "reach-euclidean-geometry-evaluator/2.0.0",
+  "transport": {
+    "schemaVersion": "reach-geometry-validation/v2",
+    "requestFields": ["schemaVersion", "markers"],
+    "markerFields": ["instanceId", "envelope", "state"],
+    "responseFields": ["schemaVersion", "evaluatorVersion", "digest", "results"],
+    "resultFields": ["instanceId", "valid", "diagnostics"],
+    "diagnosticFields": ["code", "path"],
+    "instanceIdPattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+    "digestHeader": "x-reach-geometry-digest",
+    "digestPattern": "^[a-f0-9]{64}$",
+    "requestBytes": 278528,
+    "responseBytes": 32768,
+    "minimumMarkers": 1,
+    "maximumMarkers": 4,
+    "markerBytes": 131072,
+    "aggregateMarkerBytes": 262144,
+    "computeDeadlineMs": 500,
+    "overallDeadlineMs": 750,
+    "workerSlotsPerProcess": 2,
+    "diagnosticsPerMarker": 32,
+    "diagnosticTextLength": 160,
+    "diagnosticTextPattern": "^[\\x20-\\x7e]{1,160}$",
+    "binding": "SHA-256 over exact UTF-8 request bytes; state is null for publication preflight or a complete reach-geometry-state/v2 snapshot for learner structural adoption",
+    "resultSemantics": "valid=true requires zero diagnostics; valid=false requires 1..32 diagnostics; no geometry coordinates, derived values, HTML or state in the response"
+  },
+  "kits": {
+    "euclidean-geometry-2d": {
+      "dimension": 2,
+      "kitVersion": 2,
+      "runtimeId": "geometry-euclidean-2d-v2",
+      "runtimeVersion": "1.0.0",
+      "runtimePin": "geometry-euclidean-2d-v2@1.0.0",
+      "heavy": false
+    },
+    "euclidean-geometry-3d": {
+      "dimension": 3,
+      "kitVersion": 2,
+      "runtimeId": "geometry-euclidean-3d-v2",
+      "runtimeVersion": "1.0.0",
+      "runtimePin": "geometry-euclidean-3d-v2@1.0.0",
+      "heavy": true
+    }
+  },
+  "limits": {
+    "markerBytes": 65536,
+    "jsonDepth": 24,
+    "jsonNodes": 4096,
+    "labelLength": 160,
+    "baseRelations": 8,
+    "auxiliaryObjects": 32,
+    "auxiliaryMeasurements": 8,
+    "auxiliaryRelations": 8,
+    "referenceableObjects": 128
+  },
+  "idPattern": "^[A-Za-z][A-Za-z0-9_]{0,39}$",
+  "learnerIdPattern": "^L_[A-Za-z0-9][A-Za-z0-9_]{0,37}$",
+  "relationOperations": {
+    "lineLine": {
+      "dimensions": [2, 3],
+      "fields": { "line1": "linear", "line2": "linear" }
+    },
+    "linePlane": {
+      "dimensions": [3],
+      "fields": { "line": "linear", "plane": "plane" }
+    }
+  },
+  "exploration": {
+    "objectKinds": [
+      "line",
+      "segment",
+      "midpoint",
+      "pointOnLine",
+      "parallelLine",
+      "footToLine",
+      "footToPlane"
+    ],
+    "measurementKinds": [
+      "distance",
+      "pointLineDistance",
+      "pointSegmentDistance",
+      "pointPlaneDistance",
+      "lineAngle",
+      "linePlaneAngle"
+    ],
+    "relationKinds": ["lineLine", "linePlane"],
+    "feedback": ["immediate", "onRequest", "hidden"],
+    "policyFields": [
+      "objectKinds",
+      "measurementKinds",
+      "relationKinds",
+      "referenceableObjects",
+      "limits",
+      "feedback"
+    ],
+    "auxiliaryFields": ["objects", "measurements", "relations", "freedoms", "presentation"],
+    "auxiliaryPresentationFields": ["objects", "measurements", "relations"],
+    "semantics": {
+      "namespace": "Every auxiliary object, measurement, relation and freedom id starts with L_; authored/base global ids must not start with L_.",
+      "references": "referenceableObjects contains base object ids only; an auxiliary object may additionally reference an earlier auxiliary object.",
+      "permissions": "Base interaction parameters and freedoms remain the complete permission and range source for authored inputs; exploration grants only structural additions.",
+      "adoption": "Compose the base and complete auxiliary graph and validate it against the v1 evaluator contract before adopting a structural command."
+    }
+  },
+  "relationPresentation": {
+    "required": { "relation": "relation" },
+    "optional": { "label": "label", "visible": "boolean" }
+  },
+  "authoring": {
+    "schemaVersion": "reach-geometry-authoring/v1",
+    "fields": ["schemaVersion", "editable", "deletable", "externalReferences"],
+    "editableFields": ["parameters", "objects", "measurements", "relations", "freedoms"],
+    "deletableFields": ["objects", "measurements", "relations"],
+    "limits": {
+      "parameters": 24,
+      "objects": 128,
+      "measurements": 24,
+      "relations": 8,
+      "freedoms": 32,
+      "externalReferences": 288
+    },
+    "semantics": {
+      "availability": "Direct geometry editing is available only when this binding is present; an omitted binding is read-only.",
+      "references": "Every entry names an existing authored/base global id in the matching category; learner L_ ids are forbidden.",
+      "deletion": "Every deletable id is also present in the corresponding editable list.",
+      "externalReferences": "Names any authored/base global ids referenced outside the geometry marker so a later editor can prevent unsafe deletion."
+    }
+  },
+  "reasonCodes": [
+    "invalid_input",
+    "schema_mismatch",
+    "instance_mismatch",
+    "fingerprint_mismatch",
+    "unknown_input",
+    "input_conflict",
+    "unknown_selection",
+    "unknown_group",
+    "unknown_auxiliary",
+    "state_bytes_exceeded"
+  ]
+}

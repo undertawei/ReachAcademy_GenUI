@@ -1,0 +1,682 @@
+/*
+ * Select / MultiSelect / TagInput（规范 03 §3.4–3.6，动效 04 §3.7、§3.10，状态 05 §2）。
+ * 面板外观与进出场复用 floating.css 的 .rx-floating-panel；这里只写选择器自身的触发器、选项与胶囊。
+ * 尺寸随密度变量（--rx-control-*、--rx-option-height、--rx-chip-height）切换；显式 size 见 foundation.css。
+ */
+
+/* —— 根与触发器 —— */
+.rx-select {
+  --rx-select-bg: var(--reachany-color-surface);
+  --rx-select-border: var(--reachany-color-border);
+  --rx-select-border-hover: var(--reachany-color-text-tertiary);
+  --rx-select-fg: var(--reachany-color-text);
+  --rx-select-shadow: var(--reachany-shadow-field);
+
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  min-width: 0;
+  vertical-align: middle;
+  font-family: var(--reachany-font-sans);
+}
+
+.rx-select[data-variant='filled'] {
+  --rx-select-bg: var(--reachany-color-surface-muted);
+  --rx-select-border: transparent;
+  --rx-select-border-hover: transparent;
+  --rx-select-shadow: none;
+}
+
+/* 页头筛选型（「全部学段 ▾」）：白底、1px 描边、圆角 md、高 36、12/700；宽度随内容。 */
+.rx-select[data-variant='filter'] {
+  --rx-control-height: 36px;
+  --rx-control-radius: var(--reachany-radius-md);
+  --rx-field-font-size: var(--reachany-text-caption);
+  --rx-select-bg: var(--reachany-color-surface);
+  --rx-select-shadow: none;
+
+  width: auto;
+}
+
+.rx-select-trigger,
+.rx-select-control {
+  display: inline-flex;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: var(--rx-control-height);
+  align-items: center;
+  gap: var(--reachany-space-2);
+  border: 1px solid var(--rx-select-border);
+  border-radius: var(--rx-control-radius);
+  background: var(--rx-select-bg);
+  box-shadow: var(--rx-select-shadow);
+  color: var(--rx-select-fg);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--rx-field-font-size);
+  line-height: 1.4;
+  padding: 0 var(--reachany-space-3);
+  text-align: left;
+  transition:
+    background-color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard),
+    border-color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard),
+    box-shadow var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard),
+    color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.rx-select-trigger {
+  height: var(--rx-control-height);
+}
+
+.rx-select[data-variant='filter'] .rx-select-trigger {
+  font-weight: 700;
+}
+
+.rx-select:not([data-disabled], [data-readonly]) .rx-select-trigger:hover,
+.rx-select:not([data-disabled], [data-readonly]) .rx-select-control:hover {
+  border-color: var(--rx-select-border-hover);
+}
+
+.rx-select-trigger:focus-visible,
+.rx-select-control:focus-within,
+.rx-select[data-state='open'] .rx-select-trigger,
+.rx-select[data-state='open'] .rx-select-control {
+  outline: none;
+  border-color: var(--reachany-color-primary);
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-select[data-variant='filled'] .rx-select-trigger:focus-visible,
+.rx-select[data-variant='filled'] .rx-select-control:focus-within,
+.rx-select[data-variant='filled'][data-state='open'] :is(.rx-select-trigger, .rx-select-control) {
+  background: var(--reachany-color-surface);
+}
+
+/* 筛选型激活态：选了非默认值后 primary 描边与文字（设计：课程广场「高中 ⊗」）。 */
+.rx-select[data-active] {
+  --rx-select-border: var(--reachany-color-primary);
+  --rx-select-border-hover: var(--reachany-color-primary-hover);
+  --rx-select-fg: var(--reachany-color-primary);
+}
+
+.rx-select[data-invalid] {
+  --rx-select-border: var(--reachany-color-danger);
+  --rx-select-border-hover: var(--reachany-color-danger);
+}
+
+.rx-select[data-disabled] {
+  --rx-select-bg: var(--reachany-color-surface-muted);
+  --rx-select-fg: var(--reachany-color-text-tertiary);
+  --rx-select-shadow: none;
+}
+
+.rx-select[data-disabled] :is(.rx-select-trigger, .rx-select-control) {
+  cursor: not-allowed;
+}
+
+.rx-select[data-readonly] {
+  --rx-select-bg: transparent;
+  --rx-select-border: transparent;
+  --rx-select-shadow: none;
+}
+
+.rx-select[data-readonly] :is(.rx-select-trigger, .rx-select-control) {
+  cursor: default;
+}
+
+.rx-select-value {
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rx-select-placeholder {
+  color: var(--reachany-color-text-tertiary);
+}
+
+.rx-select-chevron,
+.rx-select-spinner {
+  flex: 0 0 auto;
+  width: var(--rx-control-icon-size);
+  height: var(--rx-control-icon-size);
+  color: var(--reachany-color-icon);
+}
+
+.rx-select-chevron {
+  transition: transform var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+.rx-select[data-active] .rx-select-chevron {
+  color: currentcolor;
+}
+
+.rx-select-chevron[data-open] {
+  transform: rotate(180deg);
+}
+
+/* 清除按钮：与箭头同一位置。表单型悬停/聚焦时出现，筛选型激活后常驻为 ⊗。 */
+.rx-select-clear {
+  position: absolute;
+  top: 50%;
+  right: calc(var(--reachany-space-3) - 2px);
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--reachany-radius-pill);
+  background: var(--rx-select-bg);
+  color: var(--reachany-color-text-tertiary);
+  cursor: pointer;
+  opacity: 0;
+  padding: 0;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition:
+    opacity var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+.rx-select-clear svg {
+  width: 14px;
+  height: 14px;
+}
+
+.rx-select-clear:hover {
+  color: var(--reachany-color-text-secondary);
+}
+
+.rx-select-clear:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-select[data-clearable]:is(:hover, :focus-within) .rx-select-clear,
+.rx-select[data-active][data-clearable] .rx-select-clear {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.rx-select[data-clearable]:is(:hover, :focus-within) .rx-select-chevron,
+.rx-select[data-active][data-clearable] .rx-select-chevron {
+  visibility: hidden;
+}
+
+.rx-select[data-active] .rx-select-clear {
+  color: var(--reachany-color-primary);
+}
+
+.rx-select[data-active] .rx-select-clear:hover {
+  color: var(--reachany-color-primary-hover);
+}
+
+/* —— 面板（外观来自 .rx-floating-panel）—— */
+.rx-select-panel {
+  min-width: 100%;
+  max-height: 320px;
+}
+
+/* 非 portal：相对触发器绝对定位（第一期行为），宽度与触发器一致或更宽。 */
+.rx-select-panel[data-inline] {
+  position: absolute;
+  top: calc(100% + var(--reachany-space-1));
+  left: 0;
+}
+
+.rx-select-panel:not([data-inline]) {
+  min-width: 0;
+}
+
+/* 带搜索框 / 状态行 / 底栏：面板是纵向容器，只让 listbox 滚动。 */
+.rx-select-panel[data-chrome] {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+}
+
+.rx-select-panel[data-chrome] .rx-select-listbox {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--reachany-space-1);
+  scrollbar-color: var(--reachany-color-border) transparent;
+  scrollbar-width: thin;
+}
+
+.rx-select-panel[data-chrome] .rx-select-listbox:empty {
+  display: none;
+}
+
+.rx-select-listbox {
+  box-sizing: border-box;
+  outline: none;
+}
+
+.rx-select-listbox[data-stale] {
+  opacity: 0.6;
+}
+
+.rx-select-listbox[data-virtual] {
+  position: relative;
+}
+
+.rx-select-virtual {
+  position: relative;
+}
+
+.rx-select-virtual > :is(.rx-select-option, .rx-select-group-label) {
+  position: absolute;
+  right: 0;
+  left: 0;
+  box-sizing: border-box;
+}
+
+/* —— 选项 —— */
+.rx-select-option {
+  display: flex;
+  box-sizing: border-box;
+  min-height: var(--rx-option-height);
+  align-items: center;
+  gap: var(--reachany-space-2);
+  border-radius: var(--reachany-radius-sm);
+  color: var(--reachany-color-text);
+  cursor: pointer;
+  font-size: var(--rx-field-font-size);
+  line-height: 1.4;
+  padding: var(--reachany-space-1) var(--reachany-space-3);
+  transition: background-color var(--reachany-motion-duration-instant)
+    var(--reachany-motion-easing-standard);
+  user-select: none;
+}
+
+.rx-select-option-label {
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rx-select-option[data-active] {
+  background: var(--reachany-color-surface-muted);
+}
+
+.rx-select-listbox:not([aria-multiselectable]) > .rx-select-option[data-selected],
+.rx-select-listbox:not([aria-multiselectable]) .rx-select-group > .rx-select-option[data-selected] {
+  background: var(--reachany-color-primary-soft);
+  color: var(--reachany-color-primary);
+  font-weight: 500;
+}
+
+.rx-select-listbox:not([aria-multiselectable]) .rx-select-option[data-selected][data-active] {
+  background: var(--reachany-color-primary-soft-strong);
+}
+
+.rx-select-option[aria-disabled] {
+  background: transparent;
+  color: var(--reachany-color-text-tertiary);
+  cursor: not-allowed;
+}
+
+.rx-select-option[data-kind='create'] {
+  color: var(--reachany-color-primary);
+}
+
+.rx-select-check {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  color: var(--reachany-color-primary);
+}
+
+.rx-select-group-label {
+  display: flex;
+  box-sizing: border-box;
+  min-height: var(--rx-option-height);
+  align-items: center;
+  color: var(--reachany-color-text-tertiary);
+  cursor: default;
+  font-size: var(--reachany-text-caption);
+  padding: 0 var(--reachany-space-3);
+  user-select: none;
+}
+
+.rx-select-hit {
+  background: transparent;
+  color: var(--reachany-color-primary);
+  font-weight: 600;
+}
+
+/* 多选：选项前的复选标记（与 Checkbox 同尺寸变量）。 */
+.rx-select-checkbox {
+  display: inline-flex;
+  box-sizing: border-box;
+  width: var(--rx-check-size);
+  height: var(--rx-check-size);
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-xs);
+  background: var(--reachany-color-surface);
+  color: var(--reachany-color-primary-contrast);
+  transition:
+    background-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    border-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+.rx-select-option:not([aria-disabled]):hover .rx-select-checkbox {
+  border-color: var(--reachany-color-primary);
+}
+
+.rx-select-checkbox:is([data-state='checked'], [data-state='mixed']) {
+  border-color: var(--reachany-color-primary);
+  background: var(--reachany-color-primary);
+}
+
+.rx-select-checkbox[data-state='mixed']::after {
+  width: 50%;
+  height: 2px;
+  border-radius: var(--reachany-radius-pill);
+  background: currentcolor;
+  content: '';
+}
+
+.rx-select-option[aria-disabled] .rx-select-checkbox {
+  border-color: var(--reachany-color-border);
+  background: var(--reachany-color-surface-muted);
+}
+
+.rx-select-checkbox-icon {
+  width: 75%;
+  height: 75%;
+  animation: rx-fade-in var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard)
+    backwards;
+}
+
+/* —— 搜索框（面板顶部固定）—— */
+.rx-select-search {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--reachany-space-2);
+  border-bottom: 1px solid var(--reachany-color-border);
+  padding: 0 var(--reachany-space-3);
+}
+
+.rx-select-search-icon,
+.rx-select-search-spinner {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  color: var(--reachany-color-icon);
+}
+
+.rx-select-search-input {
+  min-width: 0;
+  height: var(--rx-option-height);
+  flex: 1 1 auto;
+  border: 0;
+  background: transparent;
+  color: var(--reachany-color-text);
+  font: inherit;
+  font-size: var(--rx-field-font-size);
+  outline: none;
+  padding: 0;
+}
+
+.rx-select-search-input::placeholder {
+  color: var(--reachany-color-text-tertiary);
+}
+
+/* —— 底部状态行与底栏 —— */
+.rx-select-status {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: var(--reachany-space-2);
+  color: var(--reachany-color-text-tertiary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+  padding: var(--reachany-space-2) var(--reachany-space-3);
+}
+
+.rx-select-status:empty {
+  display: none;
+}
+
+.rx-select-retry,
+.rx-select-footer-action {
+  border: 0;
+  border-radius: var(--reachany-radius-xs);
+  background: transparent;
+  color: var(--reachany-color-primary);
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+}
+
+.rx-select-retry:hover,
+.rx-select-footer-action:hover {
+  color: var(--reachany-color-primary-hover);
+  text-decoration: underline;
+}
+
+.rx-select-retry:focus-visible,
+.rx-select-footer-action:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-select-footer {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--reachany-space-3);
+  border-top: 1px solid var(--reachany-color-border);
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+  padding: var(--reachany-space-2) var(--reachany-space-3);
+}
+
+.rx-select-footer-count {
+  flex: 1 1 auto;
+}
+
+.rx-select-footer-max {
+  color: var(--reachany-color-warning-text);
+}
+
+/* —— MultiSelect / TagInput 控件 —— */
+.rx-multi-select .rx-select-control {
+  height: auto;
+  cursor: text;
+  padding-block: calc((var(--rx-control-height) - var(--rx-chip-height)) / 2 - 1px);
+}
+
+.rx-multi-select[data-disabled] .rx-select-control {
+  cursor: not-allowed;
+}
+
+.rx-select-chips {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--reachany-space-1);
+}
+
+.rx-select-input {
+  min-width: 4em;
+  height: var(--rx-chip-height);
+  flex: 1 1 4em;
+  border: 0;
+  background: transparent;
+  color: var(--reachany-color-text);
+  font: inherit;
+  outline: none;
+  padding: 0;
+}
+
+.rx-select-input::placeholder {
+  color: var(--reachany-color-text-tertiary);
+}
+
+.rx-select-input:read-only {
+  cursor: inherit;
+}
+
+.rx-select-input:disabled {
+  background: transparent;
+  color: var(--reachany-color-text-tertiary);
+}
+
+/* —— 胶囊（规范 03 §3.6）：固定宽度、pill、surface-muted + 1px border、12px —— */
+.rx-select-chip {
+  position: relative;
+  display: inline-flex;
+  box-sizing: border-box;
+  width: var(--reachany-chip-width);
+  height: var(--rx-chip-height);
+  flex: 0 0 auto;
+  align-items: center;
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-surface-muted);
+  color: var(--reachany-color-text);
+  cursor: default;
+  font-family: inherit;
+  font-size: var(--reachany-text-caption);
+  line-height: 1;
+  outline: none;
+  padding: 0 22px 0 10px;
+  transition:
+    border-color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard),
+    box-shadow var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard);
+}
+
+.rx-select-chip[data-appear] {
+  animation: rx-select-chip-in var(--reachany-motion-duration-fast)
+    var(--reachany-motion-easing-enter) backwards;
+}
+
+.rx-select-chip[data-state='closed'] {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.8);
+  animation: rx-select-chip-out 120ms var(--reachany-motion-easing-exit) backwards;
+}
+
+.rx-select-chip:focus-visible,
+.rx-select-chip:focus {
+  border-color: var(--reachany-color-primary);
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-select-chip[data-locked] {
+  padding-right: 10px;
+}
+
+.rx-select-chip-label {
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* × 图标 12px，可点区域 20×20。 */
+.rx-select-chip-remove {
+  position: absolute;
+  top: 50%;
+  right: 2px;
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--reachany-radius-pill);
+  background: transparent;
+  color: var(--reachany-color-text-tertiary);
+  cursor: pointer;
+  padding: 0;
+  transform: translateY(-50%);
+  transition: color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+.rx-select-chip-remove svg {
+  width: 12px;
+  height: 12px;
+}
+
+.rx-select-chip-remove:hover {
+  color: var(--reachany-color-primary);
+}
+
+.rx-select-chip-more {
+  justify-content: center;
+  color: var(--reachany-color-text-secondary);
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.rx-select-chip-more:hover,
+.rx-select-chip-more[aria-expanded='true'] {
+  border-color: var(--reachany-color-primary);
+  color: var(--reachany-color-primary);
+}
+
+.rx-select-overflow {
+  display: flex;
+  max-width: calc(var(--reachany-chip-width) * 3 + var(--reachany-space-1) * 2);
+  flex-wrap: wrap;
+  gap: var(--reachany-space-1);
+}
+
+@keyframes rx-select-chip-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes rx-select-chip-out {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rx-select-trigger,
+  .rx-select-control,
+  .rx-select-chevron,
+  .rx-select-clear,
+  .rx-select-option,
+  .rx-select-checkbox,
+  .rx-select-chip,
+  .rx-select-chip-remove {
+    transition: none;
+  }
+
+  .rx-select-checkbox-icon,
+  .rx-select-chip[data-appear],
+  .rx-select-chip[data-state='closed'] {
+    animation: none;
+  }
+
+  .rx-select-chip[data-state='closed'] {
+    transform: none;
+  }
+}

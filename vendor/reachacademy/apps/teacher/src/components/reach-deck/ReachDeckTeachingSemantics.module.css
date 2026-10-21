@@ -1,0 +1,378 @@
+.knowledgePoints {
+  display: grid;
+  gap: 18px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.knowledgeCard {
+  background: #fffdf9;
+  border: 1px solid #e6ddd8;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgb(75 48 62 / 4%);
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+  padding: 18px;
+}
+
+.knowledgeCardHeader {
+  align-items: start;
+  border-bottom: 1px solid #eee7e3;
+  display: flex;
+  gap: 14px;
+  justify-content: space-between;
+  padding-bottom: 14px;
+}
+
+.knowledgeHeading {
+  align-items: start;
+  display: flex;
+  gap: 11px;
+  min-width: 0;
+}
+
+.knowledgeIndex {
+  align-items: center;
+  background: #fff0e8;
+  border-radius: 8px;
+  color: var(--deck-orange, #f45f22);
+  display: inline-flex;
+  flex: 0 0 2rem;
+  font-size: 11px;
+  font-weight: 900;
+  height: 2rem;
+  justify-content: center;
+}
+
+.knowledgePoints h3 {
+  color: var(--deck-plum, #5e3853);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 20px;
+  line-height: 1.35;
+  margin: 4px 0 0;
+  overflow-wrap: anywhere;
+}
+
+.knowledgeTitleField,
+.knowledgeField {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.knowledgeTitleField {
+  flex: 1 1 auto;
+}
+
+.knowledgeTitleField > span,
+.knowledgeField > span,
+.knowledgeContext > span {
+  color: #8a737e;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.knowledgeTitleField input,
+.knowledgeField input,
+.knowledgeField select,
+.knowledgeField textarea,
+.knowledgeItem textarea {
+  background: #fcf9f6;
+  border: 1px solid #e6ddd8;
+  border-radius: 9px;
+  box-sizing: border-box;
+  color: var(--deck-ink, #30252c);
+  font: inherit;
+  line-height: 1.55;
+  padding: 10px 11px;
+  resize: vertical;
+  width: 100%;
+}
+
+.knowledgeTitleField input {
+  font-size: 18px;
+  font-weight: 700;
+  padding-block: 8px;
+}
+
+.knowledgeField textarea,
+.knowledgeItem textarea {
+  min-height: 76px;
+}
+
+.knowledgeTitleField input:focus,
+.knowledgeField textarea:focus,
+.knowledgeItem textarea:focus {
+  border-color: var(--deck-orange, #f45f22);
+  outline: 3px solid rgb(244 95 34 / 16%);
+  outline-offset: 1px;
+}
+
+.knowledgeTitleField input:disabled,
+.knowledgeField textarea:disabled,
+.knowledgeItem textarea:disabled {
+  background: #f4efec;
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+.knowledgeContextGrid,
+.knowledgeFieldGrid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.knowledgeContext {
+  background: #f8f3ef;
+  border-radius: 9px;
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  padding: 11px 12px;
+}
+
+.knowledgeContext strong {
+  color: var(--deck-plum, #5e3853);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.knowledgeContext ul {
+  display: grid;
+  gap: 7px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.knowledgeContext li {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.knowledgeContext small {
+  color: var(--deck-muted, #786d73);
+  font-size: 11px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.knowledgeField {
+  min-width: 0;
+}
+
+.knowledgeItems {
+  display: grid;
+  gap: 8px;
+}
+
+.knowledgeItem {
+  align-items: start;
+  display: grid;
+  gap: 7px;
+  grid-template-columns: minmax(0, 1fr) 28px;
+  min-width: 0;
+}
+
+.knowledgeItem > p {
+  background: #fcf9f6;
+  border: 1px solid #e6ddd8;
+  border-radius: 9px;
+  color: var(--deck-ink, #30252c);
+  line-height: 1.55;
+  margin: 0;
+  min-height: 42px;
+  padding: 10px 11px;
+  white-space: pre-wrap;
+}
+
+.knowledgeItem > button,
+.pointActions button,
+.addAction {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e3dad6;
+  border-radius: 8px;
+  color: var(--deck-plum, #5e3853);
+  display: inline-flex;
+  gap: 5px;
+  justify-content: center;
+  min-height: 28px;
+  padding: 5px 7px;
+}
+
+.knowledgeItem > button {
+  margin-top: 4px;
+  padding: 5px;
+}
+
+.pointActions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 5px;
+  justify-content: flex-end;
+}
+
+.pointActions button:hover:not(:disabled),
+.knowledgeItem > button:hover:not(:disabled),
+.addAction:hover:not(:disabled) {
+  background: #fff5ef;
+  border-color: #f2ae8d;
+  color: var(--deck-orange, #f45f22);
+}
+
+.pointActions button:disabled,
+.knowledgeItem > button:disabled,
+.addAction:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.addAction {
+  justify-self: start;
+  margin-top: 2px;
+}
+
+.knowledgeFieldGrid {
+  border-top: 1px solid #eee7e3;
+  padding-top: 18px;
+}
+
+.objectiveChoices {
+  display: grid;
+  gap: 6px;
+}
+
+.pageSemantics h3 {
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0 0 12px;
+  overflow-wrap: anywhere;
+}
+
+.pageSemantics {
+  border-block: 1px solid #e6ddd8;
+  padding: 16px 0;
+}
+
+.details {
+  display: grid;
+  gap: 8px 16px;
+  grid-template-columns: minmax(100px, 150px) minmax(0, 1fr);
+  margin: 12px 0 0;
+}
+
+.detailRow {
+  display: contents;
+}
+
+.details dt,
+.details dd {
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.details dt {
+  color: var(--deck-muted);
+}
+
+.details ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.details p {
+  color: var(--deck-muted);
+  margin: 4px 0 0;
+}
+
+.errors {
+  color: #b42318;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+  padding-left: 18px;
+}
+
+@media (max-width: 600px) {
+  .knowledgeCard {
+    padding: 14px;
+  }
+
+  .knowledgeCardHeader {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .pointActions {
+    justify-content: flex-start;
+  }
+
+  .knowledgeContextGrid,
+  .knowledgeFieldGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .details {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+
+  .details dd {
+    margin-bottom: 8px;
+  }
+}
+
+.storyEditor {
+  display: grid;
+  gap: 18px;
+}
+.storyGroup {
+  border-top: 1px solid #e6ddd8;
+  padding-top: 12px;
+  min-width: 0;
+}
+.storyGroup summary {
+  color: var(--deck-plum, #5e3853);
+  cursor: pointer;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.objectiveChoices {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.objectiveChoices legend {
+  color: #8a737e;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.objectiveChoices label {
+  align-items: start;
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.objectiveChoices input {
+  flex: 0 0 auto;
+  margin-top: 4px;
+}

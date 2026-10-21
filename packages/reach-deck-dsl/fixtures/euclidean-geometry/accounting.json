@@ -1,0 +1,98 @@
+[
+  {
+    "id": "typical-40-objects-8-measurements",
+    "bytes": 7672,
+    "nodes": 620,
+    "depth": 6,
+    "categories": {
+      "object": { "bytes": 2342, "nodes": 203 },
+      "parameter": { "bytes": 101, "nodes": 13 },
+      "measurement": { "bytes": 570, "nodes": 44 },
+      "assertion": { "bytes": 211, "nodes": 19 },
+      "AST": { "bytes": 55, "nodes": 23 },
+      "presentation": { "bytes": 3689, "nodes": 267 },
+      "interaction": { "bytes": 409, "nodes": 42 },
+      "envelope": { "bytes": 295, "nodes": 9 }
+    }
+  },
+  {
+    "id": "128-simple-objects",
+    "bytes": 5889,
+    "nodes": 671,
+    "depth": 5,
+    "categories": {
+      "object": { "bytes": 4993, "nodes": 385 },
+      "parameter": { "bytes": 2, "nodes": 1 },
+      "measurement": { "bytes": 2, "nodes": 1 },
+      "assertion": { "bytes": 2, "nodes": 1 },
+      "AST": { "bytes": 402, "nodes": 256 },
+      "presentation": { "bytes": 109, "nodes": 12 },
+      "interaction": { "bytes": 84, "nodes": 6 },
+      "envelope": { "bytes": 295, "nodes": 9 }
+    }
+  },
+  {
+    "id": "ast-depth-8",
+    "bytes": 687,
+    "nodes": 57,
+    "depth": 18,
+    "categories": {
+      "object": { "bytes": 37, "nodes": 4 },
+      "parameter": { "bytes": 2, "nodes": 1 },
+      "measurement": { "bytes": 2, "nodes": 1 },
+      "assertion": { "bytes": 2, "nodes": 1 },
+      "AST": { "bytes": 156, "nodes": 23 },
+      "presentation": { "bytes": 109, "nodes": 12 },
+      "interaction": { "bytes": 84, "nodes": 6 },
+      "envelope": { "bytes": 295, "nodes": 9 }
+    }
+  },
+  {
+    "id": "ast-nodes-64",
+    "bytes": 1299,
+    "nodes": 163,
+    "depth": 16,
+    "categories": {
+      "object": { "bytes": 37, "nodes": 4 },
+      "parameter": { "bytes": 2, "nodes": 1 },
+      "measurement": { "bytes": 2, "nodes": 1 },
+      "assertion": { "bytes": 2, "nodes": 1 },
+      "AST": { "bytes": 768, "nodes": 129 },
+      "presentation": { "bytes": 109, "nodes": 12 },
+      "interaction": { "bytes": 84, "nodes": 6 },
+      "envelope": { "bytes": 295, "nodes": 9 }
+    }
+  },
+  {
+    "id": "dag-depth-32",
+    "bytes": 2050,
+    "nodes": 191,
+    "depth": 5,
+    "categories": {
+      "object": { "bytes": 1554, "nodes": 159 },
+      "parameter": { "bytes": 2, "nodes": 1 },
+      "measurement": { "bytes": 2, "nodes": 1 },
+      "assertion": { "bytes": 2, "nodes": 1 },
+      "AST": { "bytes": 2, "nodes": 2 },
+      "presentation": { "bytes": 109, "nodes": 12 },
+      "interaction": { "bytes": 84, "nodes": 6 },
+      "envelope": { "bytes": 295, "nodes": 9 }
+    }
+  },
+  {
+    "id": "numeric-unicode-bytes-65536",
+    "bytes": 65536,
+    "nodes": 1055,
+    "depth": 5,
+    "categories": {
+      "object": { "bytes": 4993, "nodes": 385 },
+      "parameter": { "bytes": 2, "nodes": 1 },
+      "measurement": { "bytes": 2, "nodes": 1 },
+      "assertion": { "bytes": 2, "nodes": 1 },
+      "AST": { "bytes": 2144, "nodes": 256 },
+      "presentation": { "bytes": 58014, "nodes": 396 },
+      "interaction": { "bytes": 84, "nodes": 6 },
+      "envelope": { "bytes": 295, "nodes": 9 }
+    }
+  }
+]

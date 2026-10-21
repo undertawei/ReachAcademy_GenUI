@@ -1,0 +1,376 @@
+/* 加载与过渡反馈：Spinner、品牌加载动画、页面过渡、路由进度条、路由骨架（规范 03 §3.26–3.27，04 §3.1–3.3）。 */
+
+:root {
+  /* 规范 04 §3.1：Spinner 800ms/圈线性旋转。 */
+  --rx-spinner-period: 800ms;
+  /*
+   * 规范 04 §3.2：品牌加载动画一轮 3100ms——笔画加速 500ms（二次缓入）、匀速 1100ms
+   * 转满三圈、缓停 800ms（三次缓出），其余 700ms 停在标志原形。各段笔画的关键帧
+   * 在 `rx-brand-loader-spin-*` 中逐帧给出，时间点按此周期折算，改周期须同步重算。
+   */
+  --rx-brand-loader-period: 3100ms;
+  --rx-brand-loader-ease-in: cubic-bezier(0.333, 0, 0.667, 0.333);
+  --rx-brand-loader-ease-out: cubic-bezier(0.333, 1, 0.667, 1);
+}
+
+.rx-spinner {
+  display: inline-block;
+  width: var(--reachany-feedback-spinner-md);
+  height: var(--reachany-feedback-spinner-md);
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  border: 2px solid currentcolor;
+  border-right-color: transparent;
+  border-radius: var(--reachany-radius-pill);
+  animation: rx-spin var(--rx-spinner-period) linear infinite;
+}
+
+.rx-spinner-brand {
+  display: inline-flex;
+  width: var(--reachany-feedback-spinner-md);
+  height: var(--reachany-feedback-spinner-md);
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.rx-spinner-brand > .rx-brand-loader {
+  width: 100%;
+  height: 100%;
+}
+
+.rx-spinner-sm {
+  width: var(--reachany-feedback-spinner-sm);
+  height: var(--reachany-feedback-spinner-sm);
+  border-width: 1.5px;
+}
+
+.rx-spinner-lg {
+  width: var(--reachany-feedback-spinner-lg);
+  height: var(--reachany-feedback-spinner-lg);
+}
+
+.rx-brand-loader {
+  display: inline-block;
+  width: var(--reachany-feedback-spinner-md);
+  height: var(--reachany-feedback-spinner-md);
+  flex: 0 0 auto;
+}
+
+.rx-brand-loader-sm {
+  width: var(--reachany-feedback-spinner-sm);
+  height: var(--reachany-feedback-spinner-sm);
+}
+
+.rx-brand-loader-lg {
+  width: var(--reachany-feedback-spinner-lg);
+  height: var(--reachany-feedback-spinner-lg);
+}
+
+.rx-brand-loader-stroke {
+  fill: none;
+  stroke: currentcolor;
+  stroke-dasharray: var(--rx-brand-loader-length) 20000px;
+  stroke-dashoffset: calc(-1 * var(--rx-brand-loader-offset));
+  stroke-linejoin: miter;
+  stroke-width: 62.5;
+  animation-duration: var(--rx-brand-loader-period);
+  animation-iteration-count: infinite;
+}
+
+.rx-brand-loader-stroke-top {
+  animation-name: rx-brand-loader-spin-top;
+}
+
+.rx-brand-loader-stroke-corner {
+  animation-name: rx-brand-loader-spin-corner;
+}
+
+.rx-brand-loader-stroke-side {
+  animation-name: rx-brand-loader-spin-side;
+}
+
+/*
+ * 多圈绕行：笔画头部统一运动（方环周长 2107.44，转三圈后与起点重合，循环无跳变），
+ * 尾部 = 头部 − 当前长度。匀速段每段笔画按各自序列伸缩、节奏错开，长度不超过身后
+ * 可用空间以免追尾；缓停时拖尾追上头部，收拢回标志原形。长度用 dasharray、尾部位置
+ * 用 dashoffset 表达，关键帧值为预先算好的定值。
+ */
+@keyframes rx-brand-loader-spin-top {
+  0% {
+    stroke-dasharray: 216.45px 20000px;
+    stroke-dashoffset: -31.25px;
+    animation-timing-function: var(--rx-brand-loader-ease-in);
+  }
+
+  16.129% {
+    stroke-dasharray: 232px 20000px;
+    stroke-dashoffset: -993.38px;
+    animation-timing-function: linear;
+  }
+
+  22.043% {
+    stroke-dasharray: 218px 20000px;
+    stroke-dashoffset: -1724.34px;
+    animation-timing-function: linear;
+  }
+
+  27.957% {
+    stroke-dasharray: 240px 20000px;
+    stroke-dashoffset: -2419.31px;
+    animation-timing-function: linear;
+  }
+
+  33.871% {
+    stroke-dasharray: 216px 20000px;
+    stroke-dashoffset: -3160.27px;
+    animation-timing-function: linear;
+  }
+
+  39.785% {
+    stroke-dasharray: 236px 20000px;
+    stroke-dashoffset: -3857.23px;
+    animation-timing-function: linear;
+  }
+
+  45.699% {
+    stroke-dasharray: 222px 20000px;
+    stroke-dashoffset: -4588.2px;
+    animation-timing-function: linear;
+  }
+
+  51.613% {
+    stroke-dasharray: 238px 20000px;
+    stroke-dashoffset: -5289.16px;
+    animation-timing-function: var(--rx-brand-loader-ease-out);
+  }
+
+  77.419%,
+  100% {
+    stroke-dasharray: 216.45px 20000px;
+    stroke-dashoffset: -6353.57px;
+  }
+}
+
+@keyframes rx-brand-loader-spin-corner {
+  0% {
+    stroke-dasharray: 565.71px 20000px;
+    stroke-dashoffset: -729.43px;
+    animation-timing-function: var(--rx-brand-loader-ease-in);
+  }
+
+  16.129% {
+    stroke-dasharray: 900px 20000px;
+    stroke-dashoffset: -1372.82px;
+    animation-timing-function: linear;
+  }
+
+  22.043% {
+    stroke-dasharray: 690px 20000px;
+    stroke-dashoffset: -2299.78px;
+    animation-timing-function: linear;
+  }
+
+  27.957% {
+    stroke-dasharray: 940px 20000px;
+    stroke-dashoffset: -2766.75px;
+    animation-timing-function: linear;
+  }
+
+  33.871% {
+    stroke-dasharray: 640px 20000px;
+    stroke-dashoffset: -3783.71px;
+    animation-timing-function: linear;
+  }
+
+  39.785% {
+    stroke-dasharray: 830px 20000px;
+    stroke-dashoffset: -4310.67px;
+    animation-timing-function: linear;
+  }
+
+  45.699% {
+    stroke-dasharray: 710px 20000px;
+    stroke-dashoffset: -5147.64px;
+    animation-timing-function: linear;
+  }
+
+  51.613% {
+    stroke-dasharray: 880px 20000px;
+    stroke-dashoffset: -5694.6px;
+    animation-timing-function: var(--rx-brand-loader-ease-out);
+  }
+
+  77.419%,
+  100% {
+    stroke-dasharray: 565.71px 20000px;
+    stroke-dashoffset: -7051.75px;
+  }
+}
+
+@keyframes rx-brand-loader-spin-side {
+  0% {
+    stroke-dasharray: 225.37px 20000px;
+    stroke-dashoffset: -1850.83px;
+    animation-timing-function: var(--rx-brand-loader-ease-in);
+  }
+
+  16.129% {
+    stroke-dasharray: 420px 20000px;
+    stroke-dashoffset: -2633.88px;
+    animation-timing-function: linear;
+  }
+
+  22.043% {
+    stroke-dasharray: 660px 20000px;
+    stroke-dashoffset: -3110.84px;
+    animation-timing-function: linear;
+  }
+
+  27.957% {
+    stroke-dasharray: 370px 20000px;
+    stroke-dashoffset: -4117.81px;
+    animation-timing-function: linear;
+  }
+
+  33.871% {
+    stroke-dasharray: 610px 20000px;
+    stroke-dashoffset: -4594.77px;
+    animation-timing-function: linear;
+  }
+
+  39.785% {
+    stroke-dasharray: 450px 20000px;
+    stroke-dashoffset: -5471.73px;
+    animation-timing-function: linear;
+  }
+
+  45.699% {
+    stroke-dasharray: 690px 20000px;
+    stroke-dashoffset: -5948.7px;
+    animation-timing-function: linear;
+  }
+
+  51.613% {
+    stroke-dasharray: 500px 20000px;
+    stroke-dashoffset: -6855.66px;
+    animation-timing-function: var(--rx-brand-loader-ease-out);
+  }
+
+  77.419%,
+  100% {
+    stroke-dasharray: 225.37px 20000px;
+    stroke-dashoffset: -8173.15px;
+  }
+}
+
+/*
+ * 页面内容入场：opacity 0→1 + translateY(distance-md→0)，moderate + easing-enter。
+ * 位移类进场动画一律用 `backwards`：`forwards` 会把结束态的 transform 留成计算值，
+ * 容器随即成为后代 `position: fixed` 元素的包含块，弹窗与遮罩会被困在容器盒子里。
+ */
+.rx-page-transition {
+  min-height: inherit;
+  animation: rx-rise-in var(--reachany-motion-duration-moderate) var(--reachany-motion-easing-enter)
+    backwards;
+}
+
+/* 高度跟随父级的页面（固定视口模板）用 fill 变体。 */
+.rx-page-transition[data-fill='true'] {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+  flex-direction: column;
+}
+
+/* 路由进度条：内容区顶部 2px primary，不定进度缓慢爬到 80%，完成后走满并淡出。 */
+.rx-route-progress {
+  position: fixed;
+  z-index: var(--reachany-z-header);
+  top: var(--rx-role-header-effective-height, 0px);
+  right: 0;
+  left: 0;
+  height: 2px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.rx-route-progress-bar {
+  display: block;
+  height: 100%;
+  background: var(--reachany-color-primary);
+  transform: scaleX(0.8);
+  transform-origin: left center;
+  animation: rx-route-progress-crawl 8s var(--reachany-motion-easing-enter) backwards;
+}
+
+.rx-route-progress[data-state='done'] {
+  opacity: 0;
+  animation: rx-route-progress-out var(--reachany-motion-duration-moderate)
+    var(--reachany-motion-easing-standard) var(--reachany-motion-duration-fast) backwards;
+}
+
+.rx-route-progress[data-state='done'] .rx-route-progress-bar {
+  transform: scaleX(1);
+  animation: none;
+  transition: transform var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+@keyframes rx-route-progress-crawl {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes rx-route-progress-out {
+  from {
+    opacity: 1;
+  }
+}
+
+/* 路由级骨架占位（loading.tsx 的兜底；页面应优先提供与内容同形的骨架）。 */
+.rx-route-loading {
+  width: min(42rem, calc(100% - 2 * var(--reachany-space-8)));
+  box-sizing: border-box;
+  margin: var(--reachany-space-10) auto;
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-card);
+  background: var(--reachany-color-surface);
+  padding: var(--reachany-space-6);
+  color: var(--reachany-color-text);
+}
+
+.rx-route-loading-heading {
+  display: flex;
+  align-items: center;
+  gap: var(--reachany-space-3);
+  color: var(--reachany-color-primary);
+}
+
+.rx-route-loading-heading strong {
+  display: block;
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-body);
+  font-weight: 500;
+}
+
+.rx-route-loading-heading p {
+  margin: var(--reachany-space-1) 0 0;
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+}
+
+.rx-route-loading-skeletons {
+  display: grid;
+  gap: var(--reachany-space-4);
+  margin-top: var(--reachany-space-6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rx-spinner,
+  .rx-brand-loader-stroke,
+  .rx-page-transition,
+  .rx-route-progress-bar {
+    animation: none;
+  }
+}

@@ -1,0 +1,590 @@
+/*
+ * @reachany/ui 样式入口。各 app 只引入本文件一次：`@import '@reachany/ui/styles.css';`
+ * 规范：docs/wiki/frontend/。组件样式按组拆在 ./styles/ 下，只引用 --reachany-* token。
+ */
+@import '@reachany/brand/styles/variables.css';
+@import './styles/foundation.css';
+@import './styles/button.css';
+@import './styles/floating.css';
+@import './styles/field.css';
+@import './styles/select.css';
+@import './styles/course-catalog-filters.css';
+@import './styles/touch-target.css';
+@import './styles/choice.css';
+@import './styles/question-option.css';
+@import './styles/navigation.css';
+@import './styles/overlay.css';
+@import './styles/display.css';
+@import './styles/upload.css';
+@import './styles/date-picker.css';
+@import './styles/sortable.css';
+@import './styles/virtual-tree.css';
+@import './styles/feedback.css';
+@import './styles/toast.css';
+@import './styles/header.css';
+@import './styles/layout.css';
+
+/* —— FeedbackCapture 与 PasswordDialog（第一期遗留，待按第二期规范迁移）—— */
+
+@import '@reachany/brand/styles/variables.css';
+
+.rx-feedback-upload-section {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.5rem;
+}
+.rx-feedback-upload-heading {
+  font-weight: 700;
+}
+.rx-feedback-upload-label {
+  display: flex;
+  width: calc((100% - 1rem) / 3);
+  aspect-ratio: 1;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--reachany-color-border);
+  border-radius: 0.75rem;
+  background: var(--reachany-color-surface-muted);
+  color: var(--reachany-color-text-secondary);
+  cursor: pointer;
+  transition:
+    border-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    background-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+.rx-feedback-upload-label:hover {
+  border-color: var(--reachany-color-primary);
+  background: var(--reachany-color-primary-soft);
+}
+.rx-feedback-upload-label:focus-within {
+  outline: 2px solid var(--reachany-color-primary);
+  outline-offset: 2px;
+}
+.rx-feedback-upload-icon {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid currentcolor;
+  border-radius: 999px;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1;
+}
+.rx-feedback-file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.rx-feedback-attachments {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.rx-feedback-attachment .rx-feedback-preview {
+  aspect-ratio: 1;
+}
+.rx-feedback-attachment .rx-feedback-preview img {
+  height: 100%;
+  max-height: none;
+}
+.rx-feedback-attachments .rx-feedback-upload-label {
+  width: 100%;
+  margin: 0;
+}
+
+/*
+ * 贴边标签（规范 02 §6.1）：贴在视口左边缘、离底部 inset，左侧直角、右侧半圆。
+ * 收起态宽度恰好是 tab-width，页面安全留白 --reachany-layout-page-gutter-safe 由同一个 token 派生，
+ * 所以标签永远落在留白里；高度 size 同时是触控目标高度。悬停/聚焦时向右展开显示文字，属于瞬时浮层。
+ */
+.rx-feedback-launcher {
+  position: fixed;
+  left: env(safe-area-inset-left, 0px);
+  bottom: max(var(--reachany-layout-feedback-inset), env(safe-area-inset-bottom, 0px));
+  z-index: var(--reachany-z-dropdown);
+  display: inline-flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--reachany-space-2);
+  min-width: var(--reachany-layout-feedback-tab-width);
+  height: var(--reachany-layout-feedback-size);
+  padding: 0 calc((var(--reachany-layout-feedback-tab-width) - var(--reachany-space-4)) / 2);
+  border: 0;
+  border-radius: 0 var(--reachany-radius-pill) var(--reachany-radius-pill) 0;
+  background: var(--reachany-color-ink);
+  color: var(--reachany-color-primary-contrast);
+  box-shadow: var(--reachany-shadow-raised);
+  cursor: pointer;
+}
+.rx-feedback-launcher[aria-expanded='true'] {
+  padding-right: var(--reachany-space-4);
+}
+.rx-feedback-launcher:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+.rx-feedback-launcher > span:first-child {
+  display: grid;
+  flex: 0 0 auto;
+  width: var(--reachany-space-4);
+  height: var(--reachany-space-4);
+  place-items: center;
+  line-height: 1;
+}
+.rx-feedback-launcher > span:first-child svg {
+  width: 100%;
+  height: 100%;
+}
+.rx-feedback-label {
+  white-space: nowrap;
+  font-size: var(--reachany-text-body-sm);
+}
+.rx-feedback-label-hidden {
+  display: none;
+}
+.rx-feedback-backdrop,
+.rx-feedback-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--reachany-z-modal);
+  display: grid;
+  place-items: center;
+  background: var(--reachany-color-overlay);
+  padding: 1rem;
+}
+.rx-feedback-dialog {
+  width: min(38rem, 100%);
+  max-height: min(44rem, calc(100dvh - 2rem));
+  overflow: auto;
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-lg);
+  background: var(--reachany-color-surface);
+  padding: 1.5rem;
+  color: var(--reachany-color-text);
+  box-shadow: var(--reachany-shadow-overlay);
+  animation: rx-dialog-enter var(--reachany-motion-duration-moderate)
+    var(--reachany-motion-easing-enter) backwards;
+}
+.rx-feedback-dialog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--reachany-color-border);
+  margin: -0.25rem 0 1.25rem;
+  padding-bottom: 1rem;
+}
+.rx-feedback-dialog-header h2 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+.rx-feedback-dialog-header p {
+  margin: 0.35rem 0 0;
+  color: var(--reachany-color-text-secondary);
+  font-size: 0.875rem;
+}
+.rx-feedback-close,
+.rx-feedback-lightbox-close {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.rx-feedback-close:hover,
+.rx-feedback-lightbox-close:hover {
+  background: var(--reachany-color-surface-muted);
+}
+.rx-feedback-dialog fieldset {
+  border: 0;
+  padding: 0;
+}
+.rx-feedback-dialog legend,
+.rx-feedback-dialog > label {
+  font-weight: 700;
+}
+.rx-feedback-consent,
+.rx-feedback-categories label {
+  display: flex;
+  align-items: center;
+}
+.rx-feedback-dialog input[type='checkbox'],
+.rx-feedback-dialog input[type='radio'] {
+  accent-color: var(--reachany-color-primary);
+  flex: 0 0 auto;
+  width: 1em;
+  height: 1em;
+  margin: 0;
+  vertical-align: middle;
+}
+.rx-feedback-categories {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 0.65rem 0 1.25rem;
+}
+.rx-feedback-categories label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--reachany-color-border);
+  border-radius: 0.65rem;
+  padding: 0.65rem 0.75rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+.rx-feedback-categories label:has(input:checked) {
+  border-color: var(--reachany-color-primary);
+  background: var(--reachany-color-primary-soft);
+}
+.rx-feedback-dialog textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0.4rem 0 1.25rem;
+  border: 1px solid var(--reachany-color-border);
+  border-radius: 0.65rem;
+  padding: 0.75rem;
+  font: inherit;
+  resize: vertical;
+}
+.rx-feedback-preview {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.35rem;
+  border: 1px solid var(--reachany-color-border);
+  border-radius: 0.75rem;
+  background: var(--reachany-color-surface-muted);
+  cursor: zoom-in;
+}
+.rx-feedback-preview img {
+  display: block;
+  width: 100%;
+  max-height: 12rem;
+  object-fit: contain;
+  border-radius: 0.5rem;
+}
+.rx-feedback-attachments {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  gap: 0.75rem;
+  margin: 0.75rem 0;
+}
+.rx-feedback-attachment {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+  font-size: 0.75rem;
+}
+.rx-feedback-attachment .rx-feedback-preview {
+  margin: 0;
+}
+.rx-feedback-attachment span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rx-feedback-attachment button {
+  justify-self: start;
+  border: 0;
+  background: none;
+  color: var(--reachany-color-danger);
+  cursor: pointer;
+  padding: 0;
+}
+.rx-feedback-lightbox {
+  z-index: calc(var(--reachany-z-modal) + 1);
+  background: var(--reachany-color-overlay);
+}
+.rx-feedback-lightbox img {
+  max-width: calc(100vw - 3rem);
+  max-height: calc(100dvh - 3rem);
+  object-fit: contain;
+  border-radius: 0.5rem;
+  box-shadow: var(--reachany-shadow-overlay);
+}
+.rx-feedback-lightbox-close {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: var(--reachany-color-surface);
+  color: var(--reachany-color-text);
+}
+.rx-feedback-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--reachany-color-border);
+}
+@media (max-width: 600px) {
+  .rx-feedback-dialog {
+    padding: 1rem;
+  }
+  .rx-feedback-categories {
+    grid-template-columns: 1fr;
+  }
+  .rx-feedback-actions {
+    position: sticky;
+    bottom: -1rem;
+    background: var(--reachany-color-surface);
+    padding-bottom: 1rem;
+  }
+}
+
+/* 自助修改密码弹窗：触发按钮与退出登录同形，保证头像弹窗里两个操作视觉一致。 */
+.rx-password-dialog-trigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 0;
+  border-radius: 0.75rem;
+  background: var(--reachany-color-brick-soft);
+  padding: 0.625rem 0.75rem;
+  color: var(--reachany-color-primary);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.rx-password-dialog-trigger:hover {
+  background: color-mix(in srgb, var(--reachany-color-primary) 22%, white);
+}
+
+.rx-password-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--reachany-z-modal);
+  display: grid;
+  place-items: center;
+  background: var(--reachany-color-overlay);
+  padding: 1rem;
+}
+
+.rx-password-dialog-backdrop[hidden] {
+  display: none;
+}
+
+.rx-password-dialog {
+  width: min(100%, 28rem);
+  border-radius: 1rem;
+  background: var(--reachany-color-surface);
+  box-shadow: var(--reachany-shadow-overlay);
+  padding: 1.25rem;
+  color: var(--reachany-color-text);
+  text-align: left;
+}
+
+.rx-password-dialog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.rx-password-dialog-header h2,
+.rx-password-dialog-header p {
+  margin: 0;
+}
+
+.rx-password-dialog-header h2 {
+  font-size: 1.1rem;
+}
+
+.rx-password-dialog-header p {
+  margin-top: 0.35rem;
+  color: var(--reachany-color-text-secondary);
+  font-size: 0.82rem;
+}
+
+.rx-password-dialog-close {
+  border: 0;
+  background: transparent;
+  color: var(--reachany-color-text-secondary);
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.rx-password-dialog-form {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.rx-password-dialog-form label {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--reachany-color-text);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.rx-password-dialog-form input {
+  min-height: 2.6rem;
+  border: 1px solid var(--reachany-color-border);
+  border-radius: 0.65rem;
+  padding: 0 0.7rem;
+  font: inherit;
+  outline: none;
+}
+
+.rx-password-dialog-form input:focus {
+  border-color: var(--reachany-color-primary);
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-password-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+
+.rx-password-dialog-actions button {
+  border: 1px solid var(--reachany-color-border);
+  border-radius: 0.65rem;
+  background: var(--reachany-color-surface);
+  padding: 0.5rem 0.9rem;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.rx-password-dialog-actions button[type='submit'] {
+  border-color: transparent;
+  background: var(--reachany-color-primary);
+  color: var(--reachany-color-primary-contrast);
+}
+
+.rx-password-dialog-actions button[disabled] {
+  cursor: progress;
+  opacity: 0.6;
+}
+
+.rx-password-dialog-error {
+  margin: 0 0 0.85rem;
+  border-radius: 0.65rem;
+  background: var(--reachany-color-danger-soft);
+  color: var(--reachany-color-danger-text);
+  padding: 0.65rem 0.75rem;
+  font-size: 0.82rem;
+}
+
+@keyframes rx-dialog-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.98);
+  }
+}
+
+.rx-profile-form,
+.rx-profile-avatar-actions,
+.rx-profile-conflict,
+.rx-profile-crop {
+  display: flex;
+  flex-direction: column;
+  gap: var(--reachany-space-4);
+  min-width: 0;
+}
+.rx-profile-avatar-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--reachany-space-4);
+  overflow-wrap: anywhere;
+}
+.rx-profile-avatar-actions {
+  align-items: flex-start;
+  gap: var(--reachany-space-2);
+}
+.rx-profile-preview {
+  position: relative;
+  flex: none;
+  width: calc(var(--reachany-space-10) * 2);
+  aspect-ratio: 1;
+  border-radius: var(--reachany-radius-pill);
+  overflow: hidden;
+  background: var(--reachany-color-surface-muted);
+}
+.rx-profile-preview > .rx-avatar {
+  width: 100%;
+  height: 100%;
+  font-size: var(--reachany-space-8);
+}
+.rx-profile-preview > img,
+.rx-profile-crop-frame > img {
+  position: absolute;
+  height: auto;
+  pointer-events: none;
+}
+.rx-profile-crop {
+  margin: 0;
+  padding: var(--reachany-space-4);
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-md);
+}
+.rx-profile-crop-frame {
+  position: relative;
+  width: min(100%, calc(var(--reachany-space-10) * 5));
+  aspect-ratio: 1;
+  overflow: hidden;
+  align-self: center;
+  background: var(--reachany-color-surface-muted);
+}
+.rx-profile-crop label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--reachany-space-2);
+}
+.rx-profile-crop input {
+  width: 100%;
+  accent-color: var(--reachany-color-primary);
+}
+.rx-profile-hint {
+  margin: 0;
+  color: var(--reachany-color-text-secondary);
+}
+.rx-profile-error {
+  margin: 0;
+  color: var(--reachany-color-danger-text);
+}
+.rx-profile-conflict {
+  padding: var(--reachany-space-4);
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-md);
+  background: var(--reachany-color-surface);
+}
+.rx-profile-conflict p {
+  margin: 0;
+}
+.rx-profile-success {
+  position: fixed;
+  top: var(--reachany-space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--reachany-z-toast);
+  max-width: calc(100% - var(--reachany-space-8));
+  padding: var(--reachany-space-3) var(--reachany-space-4);
+  border-radius: var(--reachany-radius-md);
+  background: var(--reachany-color-surface);
+  color: var(--reachany-color-success-text);
+  box-shadow: var(--reachany-shadow-raised);
+}

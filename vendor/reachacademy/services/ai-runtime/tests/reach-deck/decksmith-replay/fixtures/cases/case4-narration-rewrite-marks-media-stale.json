@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "decksmith-replay-case/v1",
+  "id": "case4-narration-rewrite-marks-media-stale",
+  "teacherCase": 4,
+  "summary": "有具体要求的讲稿改写直接用 set_native_narration：讲稿更新，音频、字幕时间与讲稿动画失效。",
+  "provenance": {
+    "kind": "synthetic-reconstruction",
+    "observedOn": "2026-10-08",
+    "notes": "重建自\"讲稿改了看不到/只给按钮\"反馈；冻结摘要为合成文本。"
+  },
+  "document": "energy-lesson.json",
+  "request": {
+    "prompt": "把这一页讲稿改成先回顾电功公式 W=UIt，再引入三种用电器",
+    "pageId": "55555555-5555-4555-8555-555555555555:page-1",
+    "contextSummary": "教师此前在本页调整过题图，要求讲稿先回顾已学的电功公式。",
+    "promptContractVersion": "decksmith-prompt/v2"
+  },
+  "capturedWith": {
+    "toolParameterSha256": {
+      "set_native_narration": "2cc0091b00fb4b375716316e3f9a47e57f43ecf2fc43edb8a41d2da01540105b"
+    }
+  },
+  "transcript": [
+    {
+      "toolCalls": [
+        {
+          "id": "narration",
+          "name": "set_native_narration",
+          "arguments": {
+            "pageId": "55555555-5555-4555-8555-555555555555:page-1",
+            "markdown": "先回顾电功公式 W=UIt，再看这三种用电器分别把电能转化成了什么能。"
+          }
+        }
+      ],
+      "usage": {
+        "input": 7600,
+        "output": 90
+      }
+    },
+    {
+      "text": "已改写本页讲稿。旧的音频、字幕和讲稿动画已清除，预览暂时没有声音；采用后需要重新生成音频。",
+      "usage": {
+        "input": 7900,
+        "output": 70
+      }
+    }
+  ],
+  "expect": {
+    "changed": true,
+    "outcome": {
+      "mutationStatus": "proposal",
+      "toolErrorCount": 0
+    },
+    "modelTurns": 2,
+    "toolResults": [
+      {
+        "callId": "narration",
+        "isError": false,
+        "includes": ["derived media is stale"]
+      }
+    ],
+    "userPromptIncludes": ["Validated summary of earlier conversation on this page and topic:"]
+  }
+}

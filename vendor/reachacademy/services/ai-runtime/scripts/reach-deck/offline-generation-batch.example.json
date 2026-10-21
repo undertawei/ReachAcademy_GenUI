@@ -1,0 +1,13 @@
+{
+  "name": "reach-deck-layout-regression",
+  "defaults": {
+    "pages": 5,
+    "media": "auto",
+    "runs": 2
+  },
+  "cases": [
+    {
+      "id": "newton-first-law"
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+/* Toast（规范 03 §3.20，动效 04 §3.6）。 */
+
+.rx-toast-region {
+  position: fixed;
+  z-index: var(--reachany-z-toast);
+  right: var(--reachany-space-6);
+  display: flex;
+  width: min(var(--reachany-feedback-toast-width), calc(100vw - 2 * var(--reachany-space-6)));
+  flex-direction: column-reverse;
+  gap: var(--reachany-space-2);
+  pointer-events: none;
+}
+
+/* 新的在上：右上角时列表反向堆叠；Header 折叠后 effective height 为 0。 */
+.rx-toast-region[data-placement='top-right'] {
+  top: calc(
+    var(--rx-role-header-effective-height, var(--reachany-header-height)) + var(--reachany-space-4)
+  );
+}
+
+.rx-toast-region[data-placement='bottom-right'] {
+  bottom: var(--reachany-space-6);
+  flex-direction: column;
+}
+
+.rx-toast {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  align-items: flex-start;
+  gap: var(--reachany-space-3);
+  overflow: hidden;
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--reachany-radius-md);
+  background: var(--reachany-color-surface);
+  padding: var(--reachany-space-3) var(--reachany-space-4);
+  color: var(--reachany-color-text);
+  font-family: var(--reachany-font-sans);
+  box-shadow: var(--reachany-shadow-overlay);
+  pointer-events: auto;
+  animation: rx-toast-enter var(--reachany-motion-duration-moderate)
+    var(--reachany-motion-easing-enter) backwards;
+}
+
+.rx-toast[data-state='closed'] {
+  opacity: 0;
+  transform: translateX(var(--reachany-motion-distance-sm));
+  animation: rx-toast-exit var(--reachany-motion-duration-fast) var(--reachany-motion-easing-exit)
+    backwards;
+}
+
+.rx-toast-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  stroke-width: 1.5;
+}
+
+.rx-toast-success .rx-toast-icon {
+  color: var(--reachany-color-success-text);
+  animation: rx-toast-icon-pop var(--reachany-motion-duration-fast)
+    var(--reachany-motion-easing-emphasized) 80ms backwards;
+}
+
+/* 成功图标：圆与对勾依次「画出」（共 320ms）。 */
+.rx-toast-success .rx-toast-icon :is(circle, path) {
+  stroke-dasharray: 64;
+  animation: rx-toast-draw 320ms linear 80ms backwards;
+}
+
+.rx-toast-info .rx-toast-icon {
+  color: var(--reachany-color-info-text);
+}
+
+.rx-toast-warning .rx-toast-icon {
+  color: var(--reachany-color-warning-text);
+}
+
+.rx-toast-error .rx-toast-icon {
+  color: var(--reachany-color-danger-text);
+}
+
+.rx-toast-content {
+  display: grid;
+  min-width: 0;
+  flex: 1 1 auto;
+  gap: var(--reachany-space-1);
+  padding-top: 1px;
+}
+
+.rx-toast-title {
+  font-size: var(--reachany-text-body);
+  font-weight: 500;
+  line-height: var(--reachany-text-body-line-height);
+}
+
+.rx-toast-description {
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+.rx-toast-action {
+  justify-self: start;
+  border: 0;
+  background: none;
+  padding: 0;
+  color: var(--reachany-color-primary);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--reachany-text-caption);
+  font-weight: 500;
+}
+
+.rx-toast-action:hover {
+  text-decoration: underline;
+}
+
+.rx-toast-action:focus-visible,
+.rx-toast-dismiss:focus-visible {
+  border-radius: var(--reachany-radius-sm);
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-toast-dismiss {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  place-items: center;
+  margin: -2px -6px 0 0;
+  border: 0;
+  border-radius: var(--reachany-radius-sm);
+  background: transparent;
+  color: var(--reachany-color-icon);
+  cursor: pointer;
+}
+
+.rx-toast-dismiss:hover {
+  background: var(--reachany-color-surface-muted);
+  color: var(--reachany-color-text);
+}
+
+.rx-toast-dismiss svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.5;
+}
+
+/* 底部 2px 细条显示剩余时间；悬停或聚焦时与计时一起暂停。 */
+.rx-toast-countdown {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--reachany-color-border);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: rx-toast-countdown var(--rx-toast-duration, 5000ms) linear backwards;
+}
+
+.rx-toast-countdown[data-paused='true'] {
+  animation-play-state: paused;
+}
+
+@keyframes rx-toast-enter {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+}
+
+@keyframes rx-toast-exit {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rx-toast-icon-pop {
+  from {
+    transform: scale(0.8);
+  }
+}
+
+@keyframes rx-toast-draw {
+  from {
+    stroke-dashoffset: 64;
+  }
+}
+
+@keyframes rx-toast-countdown {
+  from {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rx-toast,
+  .rx-toast[data-state='closed'],
+  .rx-toast-success .rx-toast-icon,
+  .rx-toast-success .rx-toast-icon :is(circle, path) {
+    animation: none;
+  }
+
+  .rx-toast[data-state='closed'] {
+    transform: none;
+  }
+}

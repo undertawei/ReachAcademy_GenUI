@@ -1,0 +1,1416 @@
+/*
+ * 展示类组件（规范 03 §3.17 Card/StatTile、§3.18 标签、§3.21 InlineNotice、§3.22 Collapse、§3.24 Table、
+ * §3.25 Pagination、§3.26 Progress、§3.27 Skeleton、§3.28 Empty、§3.33 Avatar；
+ * 动效 04 §3.3、§3.9、§3.12、§3.14；状态 05 §2–3）。只引用 --reachany-* / --rx-* 变量。
+ */
+
+/* —— Card —— */
+.rx-card {
+  --rx-card-padding: var(--reachany-space-4);
+  --rx-card-radius: var(--reachany-radius-card);
+
+  position: relative;
+  box-sizing: border-box;
+  min-width: 0;
+  border: 1px solid var(--reachany-color-border);
+  border-radius: var(--rx-card-radius);
+  background: var(--reachany-color-surface);
+  padding: var(--rx-card-padding);
+  color: var(--reachany-color-text);
+}
+
+.rx-card[data-padding='none'] {
+  --rx-card-padding: 0px;
+}
+
+.rx-card[data-padding='sm'] {
+  --rx-card-padding: var(--reachany-space-3);
+}
+
+.rx-card[data-padding='lg'] {
+  --rx-card-padding: var(--reachany-space-5);
+}
+
+.rx-card[data-radius='md'] {
+  --rx-card-radius: var(--reachany-radius-md);
+}
+
+.rx-card[data-elevated='true'] {
+  box-shadow: var(--reachany-shadow-card);
+}
+
+/* 可点击卡片（规范 04 §3.14）：上移 2px + raised 阴影；阴影用伪元素透明度过渡，不逐帧动画 box-shadow。 */
+.rx-card[data-interactive='true'] {
+  transition:
+    transform var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    border-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+.rx-card[data-interactive='true']::before {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  box-shadow: var(--reachany-shadow-raised);
+  content: '';
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+.rx-card[data-interactive='true']:hover {
+  transform: translateY(-2px);
+}
+
+.rx-card[data-interactive='true']:hover::before {
+  opacity: 1;
+}
+
+.rx-card:has(.rx-card-overlay-link:focus-visible) {
+  border-color: var(--reachany-color-primary);
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+/* 覆盖链接：伪元素铺满卡片；卡内其它可交互元素叠在其上方。 */
+.rx-card-overlay-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.rx-card-overlay-link:focus-visible {
+  outline: none;
+}
+
+.rx-card-overlay-link::after {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: var(--rx-card-radius, var(--reachany-radius-card));
+  content: '';
+}
+
+.rx-card:has(.rx-card-overlay-link)
+  :is(
+    button,
+    input,
+    select,
+    textarea,
+    summary,
+    [role='button'],
+    a[href]:not(.rx-card-overlay-link)
+  ) {
+  position: relative;
+  z-index: 1;
+}
+
+.rx-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--reachany-space-3);
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--reachany-color-border);
+  padding: var(--reachany-space-5);
+}
+
+.rx-card-header[data-size='sm'] {
+  padding-block: var(--reachany-space-3);
+}
+
+/* 头尾贴齐卡片边缘，不受卡片内边距影响。 */
+.rx-card > .rx-card-header {
+  margin: 0 calc(var(--rx-card-padding) * -1) var(--rx-card-padding);
+}
+
+.rx-card > .rx-card-header:first-child {
+  margin-top: calc(var(--rx-card-padding) * -1);
+}
+
+.rx-card-header-text {
+  display: grid;
+  min-width: 0;
+  flex: 1 1 auto;
+  gap: var(--reachany-space-1);
+}
+
+.rx-card-title {
+  margin: 0;
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-subtitle);
+  font-weight: var(--reachany-text-subtitle-weight);
+  line-height: var(--reachany-text-subtitle-line-height);
+  overflow-wrap: anywhere;
+}
+
+.rx-card-header[data-tone='primary'] .rx-card-title {
+  color: var(--reachany-color-primary);
+}
+
+.rx-card-description {
+  margin: 0;
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+.rx-card-actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--reachany-space-2);
+}
+
+.rx-card-body {
+  min-width: 0;
+}
+
+.rx-card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--reachany-space-2);
+  box-sizing: border-box;
+  border-top: 1px solid var(--reachany-color-border);
+  padding: var(--reachany-space-3) var(--reachany-space-5);
+}
+
+.rx-card > .rx-card-footer {
+  margin: var(--rx-card-padding) calc(var(--rx-card-padding) * -1) 0;
+}
+
+.rx-card > .rx-card-footer:last-child {
+  margin-bottom: calc(var(--rx-card-padding) * -1);
+}
+
+/* —— StatTile —— */
+.rx-stat-tile {
+  --rx-stat-color: var(--reachany-color-category-1);
+  --rx-stat-soft: var(--reachany-color-category-1-soft);
+
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: var(--reachany-space-3);
+}
+
+.rx-stat-tile[data-category='2'] {
+  --rx-stat-color: var(--reachany-color-category-2);
+  --rx-stat-soft: var(--reachany-color-category-2-soft);
+}
+
+.rx-stat-tile[data-category='3'] {
+  --rx-stat-color: var(--reachany-color-category-3);
+  --rx-stat-soft: var(--reachany-color-category-3-soft);
+}
+
+.rx-stat-tile[data-category='4'] {
+  --rx-stat-color: var(--reachany-color-category-4);
+  --rx-stat-soft: var(--reachany-color-category-4-soft);
+}
+
+.rx-stat-tile-icon {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--reachany-radius-md);
+  background: var(--rx-stat-soft);
+  color: var(--rx-stat-color);
+}
+
+.rx-stat-tile-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.rx-stat-tile-text {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.rx-stat-tile-figure {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--reachany-space-1);
+  margin: 0;
+  color: var(--reachany-color-text);
+}
+
+.rx-stat-tile-value {
+  font-size: var(--reachany-text-title-md);
+  font-weight: 700;
+  line-height: var(--reachany-text-title-md-line-height);
+}
+
+[data-density='comfortable'] .rx-stat-tile-value {
+  font-size: var(--reachany-text-title-lg);
+  line-height: var(--reachany-text-title-lg-line-height);
+}
+
+.rx-stat-tile-unit {
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--rx-body-font-size, var(--reachany-text-body));
+}
+
+.rx-stat-tile-label {
+  margin: 0;
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+/* —— Tag / MetaTag / StatusPill / Badge / Ribbon / Dot / CountBadge —— */
+.rx-tag,
+.rx-status-pill {
+  --rx-tag-bg: var(--reachany-color-surface-muted);
+  --rx-tag-fg: var(--reachany-color-text-secondary);
+
+  display: inline-flex;
+  max-width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--reachany-space-1);
+  background: var(--rx-tag-bg);
+  color: var(--rx-tag-fg);
+  font-family: inherit;
+  font-size: var(--reachany-text-caption);
+  font-weight: 400;
+  line-height: 16px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.rx-tag {
+  border-radius: var(--reachany-radius-sm);
+  padding: 2px var(--reachany-space-2);
+}
+
+.rx-tag-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rx-tag-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.rx-tag-icon svg {
+  width: 12px;
+  height: 12px;
+}
+
+.rx-meta-tag,
+.rx-tag[data-tone='amber'] {
+  --rx-tag-bg: var(--reachany-color-amber-soft);
+  --rx-tag-fg: var(--reachany-color-accent-text);
+}
+
+.rx-tag[data-tone='primary'] {
+  --rx-tag-bg: var(--reachany-color-primary-soft);
+  --rx-tag-fg: var(--reachany-color-primary-text-on-soft);
+}
+
+/* orange-strong 在 orange-soft 上只有 3.9:1，向墨蓝混 20% 达到 AA（5.1:1）。 */
+.rx-tag[data-tone='orange'] {
+  --rx-tag-bg: var(--reachany-color-orange-soft);
+  --rx-tag-fg: color-mix(
+    in srgb,
+    var(--reachany-color-orange-strong) 80%,
+    var(--reachany-color-text)
+  );
+}
+
+.rx-tag[data-tone='purple'] {
+  --rx-tag-bg: var(--reachany-color-purple-soft);
+  --rx-tag-fg: var(--reachany-color-info-text);
+}
+
+.rx-tag[data-tone='green'] {
+  --rx-tag-bg: var(--reachany-color-success-soft);
+  --rx-tag-fg: var(--reachany-color-success-text);
+}
+
+.rx-status-pill {
+  border-radius: var(--reachany-radius-pill);
+  padding: 2px var(--reachany-space-2);
+}
+
+.rx-status-pill[data-size='md'] {
+  padding: 6px var(--reachany-space-3);
+  font-size: var(--reachany-text-body);
+  line-height: 20px;
+}
+
+.rx-status-pill[data-size='md'] .rx-tag-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* 描边用内阴影，不改变胶囊高度。 */
+.rx-status-pill[data-bordered='true'] {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 30%, transparent);
+}
+
+.rx-status-pill[data-tone='success'] {
+  --rx-tag-bg: var(--reachany-color-success-soft);
+  --rx-tag-fg: var(--reachany-color-success-text);
+}
+
+/* warning-text 在 warning-soft 上只有 4.2:1，向墨蓝混 15% 达到 AA（5.1:1）。 */
+.rx-status-pill[data-tone='warning'] {
+  --rx-tag-bg: var(--reachany-color-warning-soft);
+  --rx-tag-fg: color-mix(
+    in srgb,
+    var(--reachany-color-warning-text) 85%,
+    var(--reachany-color-text)
+  );
+}
+
+.rx-status-pill[data-tone='danger'] {
+  --rx-tag-bg: var(--reachany-color-danger-soft);
+  --rx-tag-fg: var(--reachany-color-danger-text);
+}
+
+.rx-status-pill[data-tone='info'] {
+  --rx-tag-bg: var(--reachany-color-info-soft);
+  --rx-tag-fg: var(--reachany-color-info-text);
+}
+
+.rx-status-pill[data-tone='pending'] {
+  --rx-tag-bg: var(--reachany-color-pending-soft);
+  --rx-tag-fg: var(--reachany-color-primary);
+
+  box-shadow: inset 0 0 0 1px var(--reachany-color-primary);
+}
+
+.rx-status-pill[data-tone='published'] {
+  --rx-tag-bg: var(--reachany-color-published);
+  --rx-tag-fg: var(--reachany-color-primary-contrast);
+}
+
+.rx-badge,
+.rx-ribbon {
+  --rx-badge-bg: var(--reachany-color-primary);
+
+  display: inline-flex;
+  box-sizing: border-box;
+  align-items: center;
+  background: var(--rx-badge-bg);
+  color: var(--reachany-color-primary-contrast);
+  font-family: inherit;
+  font-size: var(--reachany-text-caption);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.rx-badge {
+  height: 20px;
+  border-radius: var(--reachany-radius-sm);
+  padding: 0 6px;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.rx-badge[data-tone='published'],
+.rx-ribbon {
+  --rx-badge-bg: var(--reachany-color-published);
+}
+
+.rx-badge[data-tone='warning'],
+.rx-ribbon[data-tone='warning'] {
+  --rx-badge-bg: var(--reachany-color-warning);
+}
+
+.rx-badge[data-tone='success'],
+.rx-ribbon[data-tone='success'] {
+  --rx-badge-bg: var(--reachany-color-success-strong);
+}
+
+.rx-ribbon[data-tone='primary'] {
+  --rx-badge-bg: var(--reachany-color-primary);
+}
+
+/* 贴卡片右上角（压住卡片 1px 描边）；圆角「右上随卡片、左下 8」。 */
+.rx-ribbon {
+  position: absolute;
+  z-index: 1;
+  top: -1px;
+  right: -1px;
+  border-radius: 0 var(--rx-card-radius, var(--reachany-radius-card)) 0 var(--reachany-radius-md);
+  padding: 2px var(--reachany-space-2);
+  line-height: 16px;
+  pointer-events: none;
+}
+
+.rx-dot {
+  position: relative;
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  flex: 0 0 auto;
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-primary);
+  vertical-align: middle;
+}
+
+.rx-count-badge {
+  display: inline-flex;
+  min-width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-primary);
+  padding: 0 var(--reachany-space-1);
+  color: var(--reachany-color-primary-contrast);
+  font-size: var(--reachany-text-micro);
+  font-weight: 600;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* —— Empty —— */
+.rx-empty {
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--reachany-space-1);
+  padding: var(--reachany-space-8) var(--reachany-space-4);
+  color: var(--reachany-color-text-secondary);
+  text-align: center;
+}
+
+.rx-empty-icon {
+  display: inline-flex;
+  margin-bottom: var(--reachany-space-2);
+  color: var(--reachany-color-text-tertiary);
+}
+
+.rx-empty-icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+.rx-empty-title {
+  margin: 0;
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-body);
+  font-weight: 500;
+  line-height: var(--reachany-text-body-line-height);
+  overflow-wrap: anywhere;
+}
+
+.rx-empty-description {
+  max-width: 360px;
+  margin: 0;
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+  overflow-wrap: anywhere;
+}
+
+.rx-empty-action {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--reachany-space-2);
+  margin-top: var(--reachany-space-3);
+}
+
+/* —— InlineNotice / ContextChip —— */
+.rx-inline-notice {
+  --rx-notice-bg: var(--reachany-color-purple-soft);
+  --rx-notice-fg: var(--reachany-color-info-text);
+
+  display: flex;
+  box-sizing: border-box;
+  align-items: flex-start;
+  gap: var(--reachany-space-2);
+  border-radius: var(--reachany-radius-md);
+  background: var(--rx-notice-bg);
+  padding: var(--reachany-space-3) var(--reachany-space-4);
+  color: var(--rx-notice-fg);
+  font-size: var(--reachany-text-body);
+  line-height: var(--reachany-text-body-line-height);
+}
+
+.rx-inline-notice[data-banner='true'] {
+  border-radius: var(--reachany-radius-lg);
+}
+
+.rx-inline-notice[data-tone='warning'] {
+  --rx-notice-bg: var(--reachany-color-warning-soft);
+  --rx-notice-fg: color-mix(
+    in srgb,
+    var(--reachany-color-warning-text) 85%,
+    var(--reachany-color-text)
+  );
+}
+
+.rx-inline-notice[data-tone='error'] {
+  --rx-notice-bg: var(--reachany-color-danger-soft);
+  --rx-notice-fg: var(--reachany-color-danger-text);
+}
+
+.rx-inline-notice[data-tone='tip'] {
+  --rx-notice-bg: var(--reachany-color-surface);
+  --rx-notice-fg: var(--reachany-color-primary);
+
+  box-shadow: inset 0 0 0 1px var(--reachany-color-border);
+}
+
+.rx-inline-notice-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  margin-top: 3px;
+}
+
+.rx-inline-notice-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.rx-inline-notice-content {
+  display: grid;
+  min-width: 0;
+  flex: 1 1 auto;
+  gap: 2px;
+  overflow-wrap: anywhere;
+}
+
+.rx-inline-notice-title {
+  margin: 0;
+  font-weight: 500;
+}
+
+.rx-inline-notice-title + .rx-inline-notice-body {
+  font-size: var(--reachany-text-caption);
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+.rx-inline-notice-body :where(p) {
+  margin: 0;
+}
+
+.rx-inline-notice-body :where(a) {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.rx-inline-notice-action {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  align-self: center;
+  gap: var(--reachany-space-2);
+}
+
+.rx-inline-notice-dismiss {
+  flex: 0 0 auto;
+  margin: -3px calc(var(--reachany-space-2) * -1) -3px 0;
+  color: inherit;
+}
+
+.rx-context-chip {
+  display: inline-flex;
+  min-width: 0;
+  max-width: 100%;
+  height: 24px;
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--reachany-space-1);
+  border: 1px solid var(--reachany-color-primary);
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-primary-soft);
+  padding: 0 10px;
+  color: var(--reachany-color-primary);
+  font-size: var(--reachany-text-caption);
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.rx-context-chip-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.rx-context-chip-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.rx-context-chip-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rx-context-chip-remove {
+  display: inline-grid;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  place-items: center;
+  margin-right: -7px;
+  border: 0;
+  border-radius: var(--reachany-radius-pill);
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+  transition: background-color var(--reachany-motion-duration-instant)
+    var(--reachany-motion-easing-standard);
+}
+
+.rx-context-chip-remove svg {
+  width: 12px;
+  height: 12px;
+}
+
+.rx-context-chip-remove:hover {
+  background: var(--reachany-color-primary-soft-strong);
+}
+
+.rx-context-chip-remove:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+/* —— Avatar —— */
+.rx-avatar {
+  --rx-avatar-size: 34px;
+  --rx-avatar-bg: var(--reachany-color-surface-muted);
+
+  position: relative;
+  display: inline-flex;
+  width: var(--rx-avatar-size);
+  height: var(--rx-avatar-size);
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--reachany-radius-pill);
+  background: var(--rx-avatar-bg);
+  color: var(--reachany-color-primary-contrast);
+  font-size: calc(var(--rx-avatar-size) * 0.42);
+  font-weight: 600;
+  line-height: 1;
+  user-select: none;
+  vertical-align: middle;
+}
+
+.rx-avatar[data-size='sm'] {
+  --rx-avatar-size: 24px;
+}
+
+.rx-avatar[data-size='lg'] {
+  --rx-avatar-size: 40px;
+}
+
+.rx-avatar[data-size='xl'] {
+  --rx-avatar-size: 56px;
+}
+
+.rx-avatar[data-category='1'] {
+  --rx-avatar-bg: var(--reachany-color-category-1);
+}
+
+.rx-avatar[data-category='2'] {
+  --rx-avatar-bg: var(--reachany-color-category-2);
+}
+
+.rx-avatar[data-category='3'] {
+  --rx-avatar-bg: var(--reachany-color-category-3);
+}
+
+.rx-avatar[data-category='4'] {
+  --rx-avatar-bg: var(--reachany-color-category-4);
+}
+
+.rx-avatar-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rx-avatar-group {
+  display: inline-flex;
+  align-items: center;
+}
+
+.rx-avatar-group > .rx-avatar {
+  box-shadow: 0 0 0 2px var(--reachany-color-surface);
+}
+
+.rx-avatar-group > .rx-avatar + .rx-avatar {
+  margin-left: calc(var(--rx-avatar-size) * -0.25);
+}
+
+.rx-avatar-overflow {
+  color: var(--reachany-color-text-secondary);
+  font-size: calc(var(--rx-avatar-size) * 0.34);
+}
+
+/* —— Skeleton（04 §3.3：surface-muted 底，1.2s 一轮的线性微光）—— */
+.rx-skeleton {
+  display: grid;
+  width: 100%;
+  gap: 10px;
+}
+
+.rx-skeleton-line {
+  display: block;
+  min-height: 14px;
+  border-radius: var(--reachany-radius-sm);
+  background-color: var(--reachany-color-surface-muted);
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--reachany-color-surface) 80%, transparent) 50%,
+    transparent 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  animation: rx-shimmer 1.2s linear infinite;
+}
+
+.rx-skeleton-line:last-of-type:not(:first-of-type) {
+  width: 72%;
+}
+
+.rx-skeleton-circle,
+.rx-skeleton-rectangle {
+  display: block;
+}
+
+.rx-skeleton-circle {
+  aspect-ratio: 1;
+  border-radius: var(--reachany-radius-pill);
+}
+
+.rx-skeleton-rectangle {
+  border-radius: var(--reachany-radius-md);
+}
+
+.rx-skeleton-circle .rx-skeleton-line,
+.rx-skeleton-rectangle .rx-skeleton-line {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  border-radius: inherit;
+}
+
+.rx-skeleton-list {
+  display: grid;
+  gap: var(--reachany-space-4);
+}
+
+.rx-skeleton-list-row {
+  display: flex;
+  align-items: center;
+  gap: var(--reachany-space-3);
+}
+
+.rx-skeleton-list-avatar {
+  width: 40px;
+  flex: 0 0 auto;
+}
+
+.rx-skeleton-list-text .rx-skeleton-line:first-of-type {
+  width: 45%;
+}
+
+.rx-skeleton-list-text .rx-skeleton-line:last-of-type:not(:first-of-type) {
+  width: 80%;
+}
+
+.rx-skeleton-card {
+  display: grid;
+  gap: var(--reachany-space-3);
+}
+
+.rx-skeleton-card-cover {
+  border-radius: var(--reachany-radius-card);
+}
+
+.rx-skeleton-card-cover .rx-skeleton-line {
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+/* —— ProgressBar（03 §3.26、04 §3.12）—— */
+.rx-progress {
+  --rx-progress-height: var(--reachany-feedback-progress-height);
+  --rx-progress-fill: var(--reachany-color-primary);
+
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: center;
+  gap: var(--reachany-space-2);
+}
+
+.rx-progress[data-size='lg'] {
+  --rx-progress-height: 10px;
+}
+
+.rx-progress[data-tone='success'] {
+  --rx-progress-fill: var(--reachany-color-success);
+}
+
+.rx-progress[data-tone='orange'] {
+  --rx-progress-fill: var(--reachany-color-orange);
+}
+
+.rx-progress[data-tone='purple'] {
+  --rx-progress-fill: var(--reachany-color-purple);
+}
+
+.rx-progress-track {
+  position: relative;
+  display: block;
+  min-width: 0;
+  height: var(--rx-progress-height);
+  flex: 1 1 auto;
+  overflow: hidden;
+  border-radius: var(--reachany-radius-pill);
+  background: var(--reachany-color-track);
+}
+
+.rx-progress-value {
+  position: absolute;
+  inset: 0;
+  display: block;
+  border-radius: inherit;
+  background: var(--rx-progress-fill);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition:
+    transform var(--reachany-motion-duration-slow) var(--reachany-motion-easing-standard),
+    background-color var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard);
+}
+
+[dir='rtl'] .rx-progress-value {
+  transform-origin: right center;
+}
+
+.rx-progress-indeterminate .rx-progress-value {
+  right: auto;
+  width: 40%;
+  transform: none;
+  animation: rx-indeterminate 1.2s var(--reachany-motion-easing-standard) infinite;
+}
+
+.rx-progress-label {
+  flex: 0 0 auto;
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-caption);
+  font-weight: 600;
+  line-height: var(--reachany-text-caption-line-height);
+}
+
+/* —— AsyncState（05 §1–3）—— */
+.rx-async-state {
+  display: flex;
+  min-height: 64px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  gap: var(--reachany-space-2);
+  border-radius: var(--reachany-radius-md);
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-body);
+  text-align: center;
+}
+
+/* 骨架 → 真实内容：淡入 fast（04 §3.3）。 */
+.rx-async-state-enter {
+  animation: rx-fade-in var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard)
+    backwards;
+}
+
+/* —— Collapse（03 §3.22、04 §3.9）—— */
+.rx-collapse {
+  min-width: 0;
+}
+
+.rx-collapse-header {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: var(--reachany-space-2);
+}
+
+.rx-collapse-heading {
+  min-width: 0;
+  flex: 1 1 auto;
+  margin: 0;
+  font: inherit;
+}
+
+.rx-collapse-trigger {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--reachany-space-2);
+  border: 0;
+  border-radius: var(--reachany-radius-md);
+  background: transparent;
+  padding: var(--reachany-space-2) 0;
+  color: var(--reachany-color-text);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--reachany-text-subtitle);
+  font-weight: var(--reachany-text-subtitle-weight);
+  line-height: var(--reachany-text-subtitle-line-height);
+  text-align: start;
+}
+
+.rx-collapse-trigger:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-collapse-trigger:disabled {
+  color: var(--reachany-color-text-tertiary);
+  cursor: not-allowed;
+}
+
+.rx-collapse-chevron {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  color: var(--reachany-color-icon);
+  transition:
+    transform var(--reachany-motion-duration-fast) var(--reachany-motion-easing-standard),
+    color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard);
+}
+
+.rx-collapse-trigger:hover:not(:disabled) .rx-collapse-chevron {
+  color: var(--reachany-color-text);
+}
+
+.rx-collapse-trigger[data-state='open'] .rx-collapse-chevron {
+  transform: rotate(90deg);
+}
+
+.rx-collapse-title {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.rx-collapse-actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--reachany-space-2);
+}
+
+.rx-collapse-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows var(--reachany-motion-duration-moderate)
+      var(--reachany-motion-easing-standard),
+    opacity var(--reachany-motion-duration-moderate) var(--reachany-motion-easing-standard);
+}
+
+.rx-collapse-panel[data-state='open'] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+/* 收起后隐藏（不可聚焦、读屏不读）；visibility 等收起过渡结束再切换。 */
+.rx-collapse-panel-inner {
+  min-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: visibility 0s linear var(--reachany-motion-duration-moderate);
+}
+
+.rx-collapse-panel[data-state='open'] .rx-collapse-panel-inner {
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.rx-collapse-content {
+  margin-top: var(--reachany-space-2);
+  border-radius: var(--reachany-radius-card);
+  background: var(--reachany-color-surface-warm);
+  padding: var(--reachany-space-4);
+}
+
+/* —— Table（03 §3.24）—— */
+.rx-table-scroll {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+.rx-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: var(--reachany-color-text);
+  font-size: var(--reachany-text-body);
+  line-height: var(--reachany-text-body-line-height);
+}
+
+.rx-table-caption {
+  padding: 0 0 var(--reachany-space-2);
+  color: var(--reachany-color-text);
+  font-weight: 600;
+  text-align: start;
+}
+
+.rx-table-head {
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  height: 40px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--reachany-color-border-subtle);
+  background: var(--reachany-color-surface-muted);
+  padding: 0 var(--reachany-space-4);
+  color: var(--reachany-color-text-secondary);
+  font-size: var(--reachany-text-caption);
+  font-weight: 500;
+  line-height: var(--reachany-text-caption-line-height);
+  text-align: start;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.rx-table-loading {
+  display: flex;
+  min-height: calc(var(--rx-table-loading-rows) * var(--reachany-space-6) * 2);
+}
+
+.rx-table-custom-loading {
+  position: relative;
+}
+
+.rx-table-loading-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  background: color-mix(
+    in srgb,
+    var(--reachany-color-surface) calc(100% - var(--reachany-opacity-disabled) * 100%),
+    transparent
+  );
+}
+
+.rx-table-cell {
+  height: 48px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--reachany-color-border-subtle);
+  background: var(--reachany-color-surface);
+  padding: var(--reachany-space-2) var(--reachany-space-4);
+  vertical-align: middle;
+  transition: background-color var(--reachany-motion-duration-instant)
+    var(--reachany-motion-easing-standard);
+}
+
+:is(.rx-table-head, .rx-table-cell)[data-align='right'] {
+  text-align: end;
+}
+
+:is(.rx-table-head, .rx-table-cell)[data-align='center'] {
+  text-align: center;
+}
+
+:is(.rx-table-head, .rx-table-cell)[data-numeric='true'] {
+  font-variant-numeric: tabular-nums;
+}
+
+.rx-table-row:hover > .rx-table-cell {
+  background: var(--reachany-color-surface-muted);
+}
+
+.rx-table-row[data-state='selected'] > .rx-table-cell {
+  background: var(--reachany-color-primary-soft);
+}
+
+/* 展开行：展开中的行不再画下边框，与下面的内容连成一块；内容区暖底、不随悬停变色。 */
+.rx-table-row[data-expanded='true'] > .rx-table-cell {
+  border-bottom-color: transparent;
+  background: var(--reachany-color-surface-muted);
+}
+
+.rx-table-expanded {
+  padding: 0;
+  border-bottom: 1px solid var(--reachany-color-border-subtle);
+  background: var(--reachany-color-surface-warm);
+}
+
+.rx-table-row-skeleton:hover > .rx-table-cell {
+  background: var(--reachany-color-surface);
+}
+
+.rx-table-skeleton {
+  width: 60%;
+  max-width: 160px;
+}
+
+.rx-table-cell[data-align='right'] .rx-table-skeleton {
+  margin-left: auto;
+}
+
+.rx-table-cell[data-align='center'] .rx-table-skeleton {
+  margin-inline: auto;
+}
+
+.rx-table-empty {
+  border-bottom: 1px solid var(--reachany-color-border-subtle);
+  padding: var(--reachany-space-6) var(--reachany-space-4);
+}
+
+.rx-table-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--reachany-space-1);
+  margin: 0;
+  border: 0;
+  border-radius: var(--reachany-radius-sm);
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  transition: color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard);
+}
+
+.rx-table-sort:hover,
+.rx-table-sort[data-state] {
+  color: var(--reachany-color-text);
+}
+
+.rx-table-sort:focus-visible {
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-table-sort-icon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  color: var(--reachany-color-text-tertiary);
+}
+
+.rx-table-sort[data-state] .rx-table-sort-icon {
+  color: var(--reachany-color-primary);
+}
+
+/* 宽表横向滚动：固定首列与操作列。 */
+.rx-table-scroll[data-sticky-first='true'] :is(.rx-table-head, .rx-table-cell):first-child {
+  position: sticky;
+  z-index: 1;
+  left: 0;
+  box-shadow: inset -1px 0 0 var(--reachany-color-border-subtle);
+}
+
+.rx-table-scroll[data-sticky-last='true'] :is(.rx-table-head, .rx-table-cell):last-child {
+  position: sticky;
+  z-index: 1;
+  right: 0;
+  box-shadow: inset 1px 0 0 var(--reachany-color-border-subtle);
+}
+
+.rx-table-scroll:is([data-sticky-first='true'], [data-sticky-last='true'])
+  .rx-table-head:is(:first-child, :last-child) {
+  z-index: 3;
+}
+
+/* —— Pagination（03 §3.25）—— */
+.rx-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--reachany-space-2);
+  color: var(--reachany-color-text);
+  font-size: var(--rx-control-font-size);
+}
+
+.rx-pagination-total {
+  margin-inline-end: var(--reachany-space-2);
+  color: var(--reachany-color-text-secondary);
+}
+
+.rx-pagination-pages {
+  display: flex;
+  align-items: center;
+  gap: var(--reachany-space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rx-pagination-button,
+.rx-pagination-size {
+  display: inline-flex;
+  height: var(--rx-control-height);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: var(--rx-control-radius);
+  background: transparent;
+  color: var(--reachany-color-text);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--rx-control-font-size);
+  line-height: 1;
+  transition:
+    background-color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard),
+    border-color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard),
+    color var(--reachany-motion-duration-instant) var(--reachany-motion-easing-standard);
+}
+
+.rx-pagination-button {
+  min-width: var(--rx-control-height);
+  padding: 0 6px;
+}
+
+.rx-pagination-button svg,
+.rx-pagination-size svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+}
+
+.rx-pagination-button:hover:not(:disabled) {
+  background: var(--reachany-color-surface-muted);
+}
+
+.rx-pagination-button[data-state='selected'] {
+  border-color: var(--reachany-color-primary);
+  background: var(--reachany-color-surface);
+  color: var(--reachany-color-primary);
+  font-weight: 600;
+}
+
+.rx-pagination-button:disabled,
+.rx-pagination-size:disabled {
+  color: var(--reachany-color-text-tertiary);
+  cursor: not-allowed;
+}
+
+.rx-pagination-button:focus-visible,
+.rx-pagination-size:focus-visible {
+  border-color: var(--reachany-color-primary);
+  outline: none;
+  box-shadow: var(--reachany-shadow-focus);
+}
+
+.rx-pagination-ellipsis {
+  min-width: 24px;
+  color: var(--reachany-color-text-tertiary);
+  text-align: center;
+}
+
+.rx-pagination-size {
+  gap: var(--reachany-space-1);
+  border-color: var(--reachany-color-border);
+  background: var(--reachany-color-surface);
+  padding: 0 var(--reachany-space-2) 0 var(--reachany-space-3);
+}
+
+.rx-pagination-size:hover:not(:disabled) {
+  border-color: var(--reachany-color-text-tertiary);
+}
+
+.rx-floating-panel.rx-pagination-size-panel {
+  padding: var(--reachany-space-1);
+}
+
+.rx-pagination-size-list {
+  min-width: 120px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rx-pagination-size-option {
+  display: flex;
+  width: 100%;
+  height: var(--rx-option-height);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--reachany-space-2);
+  border: 0;
+  border-radius: var(--reachany-radius-sm);
+  background: transparent;
+  padding: 0 var(--reachany-space-2);
+  color: var(--reachany-color-text);
+  cursor: pointer;
+  font: inherit;
+  text-align: start;
+  transition: background-color var(--reachany-motion-duration-instant)
+    var(--reachany-motion-easing-standard);
+}
+
+.rx-pagination-size-option:hover,
+.rx-pagination-size-option:focus-visible {
+  outline: none;
+  background: var(--reachany-color-surface-muted);
+}
+
+.rx-pagination-size-option[data-state='selected'] {
+  color: var(--reachany-color-primary);
+  font-weight: 500;
+}
+
+.rx-pagination-size-check {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+}
+
+/* —— 减少动效（04 §4）：不抬起、不播放微光、进度直接跳到新值、折叠瞬变 —— */
+@media (prefers-reduced-motion: reduce) {
+  .rx-skeleton-line,
+  .rx-progress-indeterminate .rx-progress-value,
+  .rx-async-state-enter {
+    animation: none;
+  }
+
+  .rx-card[data-interactive='true'],
+  .rx-card[data-interactive='true']::before,
+  .rx-progress-value,
+  .rx-collapse-chevron,
+  .rx-collapse-panel,
+  .rx-collapse-panel-inner,
+  .rx-table-cell,
+  .rx-table-sort,
+  .rx-pagination-button,
+  .rx-pagination-size,
+  .rx-pagination-size-option,
+  .rx-context-chip-remove {
+    transition: none;
+  }
+
+  .rx-card[data-interactive='true']:hover {
+    transform: none;
+  }
+}
